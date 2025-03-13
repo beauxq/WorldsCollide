@@ -4,3 +4,8 @@ $py.class
 *-objective.json
 *-flag.json
 wip/
+.venv*
+.coverage
+.vscode
+
+*.sfc
