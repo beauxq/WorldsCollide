@@ -6,7 +6,7 @@ def __init__():
             continue
 
         module_name = module_file[:-3]
-        module = importlib.import_module("objectives.results." + module_name)
+        module = importlib.import_module("WorldsCollide.objectives.results." + module_name)
 
         results[module.Result.NAME] = module.Result
 __init__()

@@ -13,7 +13,7 @@ class Arguments:
         ]
         self.group_modules = {}
         for group in self.groups:
-            self.group_modules[group] = importlib.import_module("args." + group)
+            self.group_modules[group] = importlib.import_module("WorldsCollide.args." + group)
 
         from argparse import ArgumentParser
         self.parser = ArgumentParser()

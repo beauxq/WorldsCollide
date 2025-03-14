@@ -54,7 +54,7 @@ def menu(args):
     return (short_name, entries)
 
 def log(args):
-    from log import format_option
+    from ..log import format_option
     log = [name()]
 
     entries = options(args)

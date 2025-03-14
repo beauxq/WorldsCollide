@@ -11,7 +11,7 @@ def _log_tab(tab_name, left_groups, right_groups):
         rcolumn.append("")
         rcolumn.extend(args.group_modules[rgroup].log(args))
 
-    import log
+    from .. import log
     log.section(tab_name, lcolumn, rcolumn)
 
 def log():

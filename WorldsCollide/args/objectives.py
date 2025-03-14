@@ -119,7 +119,7 @@ def flags(args):
     return flags
 
 def log(args):
-    from log import format_option
+    from ..log import format_option
 
     lentries = [[]]
     rentries = [[]]
@@ -153,5 +153,5 @@ def log(args):
         else:
             lentries.append(entry)
 
-    from log import section_entries
+    from ..log import section_entries
     section_entries("Objectives", lentries, rentries)

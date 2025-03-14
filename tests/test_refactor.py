@@ -48,7 +48,7 @@ def compare_hash(flags: list[str], expected_hash: str) -> None:
                 file = getattr(mod, "__file__", "")
                 if file and "WorldsCollide" in file:
                     sys.modules.pop(mod_name)
-        from wc import main
+        from WorldsCollide.wc import main
         main()
 
         dir_list = glob.glob(str(temp_dir_path) + "/*.sfc")

@@ -254,7 +254,7 @@ def menu(args):
 
 
 def log(args):
-    from log import format_option
+    from ..log import format_option
     log = [name()]
 
     entries = options(args)

@@ -128,7 +128,7 @@ def _truncated_name(name):
     return name
 
 def _sprite_palettes_log(args):
-    from log import format_option
+    from ..log import format_option
     log = ["Sprite Palettes"]
 
     for index, palette, in enumerate(args.palettes):
@@ -137,7 +137,7 @@ def _sprite_palettes_log(args):
     return log
 
 def _other_portraits_sprites_log(args):
-    from log import format_option
+    from ..log import format_option
     log = ["Other Portraits & Sprites"]
 
     sprite_index = Characters.CHARACTER_COUNT
@@ -158,7 +158,7 @@ def _other_portraits_sprites_log(args):
     return log
 
 def _character_customization_log(args):
-    from log import format_option
+    from ..log import format_option
     log = ["Character Customization"]
 
     for index in range(Characters.CHARACTER_COUNT):
@@ -170,7 +170,7 @@ def _character_customization_log(args):
     return log
 
 def _other_options_log(args):
-    from log import format_option
+    from ..log import format_option
     log = ["Other Graphics"]
 
     remove_flashes = "Original"
@@ -211,5 +211,5 @@ def log(args):
     rcolumn = [""]
     rcolumn.extend(_character_customization_log(args))
 
-    from log import section
+    from ..log import section
     section("Graphics", lcolumn, rcolumn)

@@ -30,7 +30,7 @@ class Events():
                 continue
 
             module_name = event_file[:-3]
-            event_module = importlib.import_module('event.' + module_name)
+            event_module = importlib.import_module('WorldsCollide.event.' + module_name)
 
             for event_name, event_class in inspect.getmembers(event_module, inspect.isclass):
                 if event_name.lower() != module_name.replace('_', '').lower():
