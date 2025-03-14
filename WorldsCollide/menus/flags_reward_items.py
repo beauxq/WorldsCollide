@@ -1,6 +1,6 @@
-import menus.pregame_track_scroll_area as scroll_area
-from data.text.text2 import text_value
-import instruction.f0 as f0
+from ..menus import pregame_track_scroll_area as scroll_area
+from ..data.text.text2 import text_value
+from ..instruction import f0 as f0
 
 class FlagsRewardItems(scroll_area.ScrollArea):
     MENU_NUMBER = 16
@@ -21,7 +21,7 @@ class FlagsRewardItems(scroll_area.ScrollArea):
         super().__init__()
 
     def _format_items_menu(item_ids):
-        from constants.items import id_name
+        from ..constants.items import id_name
         COLUMN_WIDTHS = [13, 13]
         item_lines = []
 
@@ -44,9 +44,9 @@ class FlagsRewardItems(scroll_area.ScrollArea):
         return item_lines
 
     def _get_item_icon(item_id):
-        from constants.items import DIRKS, SWORDS, LANCES, KNIVES, KATANAS, RODS, BRUSHES, \
+        from ..constants.items import DIRKS, SWORDS, LANCES, KNIVES, KATANAS, RODS, BRUSHES, \
             STARS, SPECIAL, GAMBLER, CLAWS, SHIELDS, HELMETS, ARMORS, TOOLS, SKEANS, RELICS
-        from data.text.text2 import text_value
+        from ..data.text.text2 import text_value
         icon = ''
         if item_id in DIRKS or item_id in KNIVES:
             icon = chr(text_value['<dirk icon>'])

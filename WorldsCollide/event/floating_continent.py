@@ -1,4 +1,4 @@
-from event.event import *
+from ..event.event import *
 
 # TODO game can freeze, is this something i did or a bug in emulator/game?
 #      go through and when you get to the hole that brings you to three possible holes (including the one you came from)

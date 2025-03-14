@@ -1,4 +1,4 @@
-from event.event import *
+from ..event.event import *
 
 class FigaroCastleWOR(Event):
     def name(self):

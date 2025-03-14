@@ -1,26 +1,26 @@
 def main():
-    import args
-    import log
+    from . import args
+    from . import log
 
-    from memory.memory import Memory
+    from .memory.memory import Memory
     memory = Memory()
 
-    from data.data import Data
+    from .data.data import Data
     data = Data(memory.rom, args)
 
-    from event.events import Events
+    from .event.events import Events
     events = Events(memory.rom, args, data)
 
-    from menus.menus import Menus
+    from .menus.menus import Menus
     menus = Menus(data.characters, data.dances, data.rages, data.enemies)
 
-    from battle import Battle
+    from .battle import Battle
     battle = Battle()
 
-    from settings import Settings
+    from .settings import Settings
     settings = Settings()
 
-    from bug_fixes import BugFixes
+    from .bug_fixes import BugFixes
     bug_fixes = BugFixes()
 
     data.write()

@@ -1,5 +1,5 @@
-from memory.space import Bank, Reserve, Allocate, Write
-import instruction.asm as asm
+from ..memory.space import Bank, Reserve, Allocate, Write
+from ..instruction import asm as asm
 
 class Steal:
     def __init__(self, rom, args):

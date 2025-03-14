@@ -1,8 +1,8 @@
-from memory.space import Bank, START_ADDRESS_SNES, Reserve, Write, Read
-import instruction.asm as asm
+from ..memory.space import Bank, START_ADDRESS_SNES, Reserve, Write, Read
+from ..instruction import asm as asm
 
-import data.event_bit as event_bit
-import objectives
+from ..data import event_bit as event_bit
+from .. import objectives as objectives
 
 class _MagitekUpgrade:
     '''Set the Magitek menu in battle to match the Magitek Upgrade objective result.'''

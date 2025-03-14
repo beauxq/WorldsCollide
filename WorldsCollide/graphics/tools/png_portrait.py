@@ -1,5 +1,5 @@
 def get_palette(image):
-    from graphics.palette import Palette
+    from ...graphics.palette import Palette
 
     RGB_CHANNELS = 3
     PALETTE_COLORS = 16
@@ -16,8 +16,8 @@ def get_palette(image):
     return palette
 
 def get_tiles(image):
-    from graphics.sprite_tile import SpriteTile
-    import graphics.poses as poses
+    from ...graphics.sprite_tile import SpriteTile
+    from ...graphics import poses as poses
 
     image_color_indices = image.getdata()
     tile_indices = poses.PORTRAIT
@@ -66,7 +66,7 @@ def convert(image_path):
     palette = get_palette(image)
     write_palette(output_prefix, palette)
 
-    from graphics.sprite import Sprite
+    from ...graphics.sprite import Sprite
     tiles, tile_indices = get_tiles(image)
     sprite = Sprite(tiles, palette)
     write_sprite(output_prefix, sprite, tile_indices)

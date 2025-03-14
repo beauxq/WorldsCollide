@@ -1,19 +1,19 @@
-from memory.space import Bank, Space, Reserve, Allocate, Free, Write, Read
-import data.direction as direction
+from ..memory.space import Bank, Space, Reserve, Allocate, Free, Write, Read
+from ..data import direction as direction
 
-import data.event_bit as event_bit
-import data.event_word as event_word
-import data.npc_bit as npc_bit
-import data.battle_bit as battle_bit
+from ..data import event_bit as event_bit
+from ..data import event_word as event_word
+from ..data import npc_bit as npc_bit
+from ..data import battle_bit as battle_bit
 
-import instruction.asm as asm
-import instruction.field as field
-import instruction.field.entity as field_entity
-import instruction.world as world
-import instruction.vehicle as vehicle
+from ..instruction import asm as asm
+from ..instruction import field as field
+from ..instruction.field import entity as field_entity
+from ..instruction import world as world
+from ..instruction import vehicle as vehicle
 
-from instruction.event import EVENT_CODE_START
-from event.event_reward import RewardType, Reward
+from ..instruction.event import EVENT_CODE_START
+from ..event.event_reward import RewardType, Reward
 
 class Event():
     def __init__(self, events, rom, args, dialogs, characters, items, maps, enemies, espers, shops):
@@ -65,7 +65,7 @@ class Event():
     # get_replacement_formation("Goddess")
     # if you fight Ultros in the Goddess location, return Ultros
     def get_replacement_formation(self, boss_name):
-        from data.bosses import pack_name
+        from ..data.bosses import pack_name
         replacement = self.get_boss(boss_name, False)
         location_boss = pack_name[replacement]
         formation_id = self.enemies.formations.get_id(location_boss)

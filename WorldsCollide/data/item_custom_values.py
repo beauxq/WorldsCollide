@@ -1,5 +1,5 @@
-from data.item_names import name_id
-import args
+from ..data.item_names import name_id
+from .. import args as args
 
 custom_values = {
     name_id["Aegis Shld"]   : 38000,

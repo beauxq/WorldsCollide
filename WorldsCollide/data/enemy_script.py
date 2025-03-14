@@ -1,4 +1,4 @@
-import data.enemy_script_parser as parser
+from ..data import enemy_script_parser as parser
 
 class EnemyScript():
     def __init__(self, id, data):
@@ -73,7 +73,7 @@ class EnemyScript():
         return data
 
     def format_instructions(self, instructions, include_addresses = False):
-        import data.enemy_script_commands as ai_instr
+        from ..data import enemy_script_commands as ai_instr
 
         result = ""
         indentation = 0

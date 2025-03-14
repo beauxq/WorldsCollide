@@ -1,5 +1,5 @@
-from data.map_event import MapEvent, LongMapEvent
-from event.event import *
+from ..data.map_event import MapEvent, LongMapEvent
+from ..event.event import *
 
 class MapEvents:
     EVENT_COUNT = 1164

@@ -1,7 +1,7 @@
-from data.sketch import Sketch
-from data.structures import DataArray
-from memory.space import Reserve, Bank, Write
-import instruction.asm as asm
+from ..data.sketch import Sketch
+from ..data.structures import DataArray
+from ..memory.space import Reserve, Bank, Write
+from ..instruction import asm as asm
 
 class Sketches():
     ATTACKS_DATA_START = 0xf4300
@@ -54,8 +54,8 @@ class Sketches():
         )
 
     def enable_sketch_improved_abilities(self):
-        from data.spell_names import name_id
-        from data.sketch_custom_commands import custom_commands
+        from ..data.spell_names import name_id
+        from ..data.sketch_custom_commands import custom_commands
 
         for sketch in self.sketches:
             # if either is Battle, replace with opposite

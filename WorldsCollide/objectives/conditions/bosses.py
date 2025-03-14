@@ -1,4 +1,4 @@
-from objectives.conditions._objective_condition import *
+from ...objectives.conditions._objective_condition import *
 import random
 
 class Condition(ObjectiveCondition):

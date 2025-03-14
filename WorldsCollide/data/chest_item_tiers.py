@@ -1,5 +1,5 @@
-from data.item_names import name_id
-import args
+from ..data.item_names import name_id
+from .. import args as args
 
 tiers = [
     [
@@ -99,7 +99,6 @@ tiers = [
         name_id["Sniper Sight"],
         name_id["Tintinabar"],
         name_id["Sprint Shoes"],
-        name_id["Rename Card"],
     ],
     [
         name_id["Guardian"],

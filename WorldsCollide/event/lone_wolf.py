@@ -1,4 +1,4 @@
-from event.event import *
+from ..event.event import *
 
 class LoneWolf(Event):
     def name(self):
@@ -75,7 +75,7 @@ class LoneWolf(Event):
         space.write(field.Pause(0.5)) # shorten from 2 seconds
 
     def character_music_mod(self, character):
-        from music.song_utils import get_character_theme
+        from ..music.song_utils import get_character_theme
         src = [
             field.StartSong(get_character_theme(character)),
         ]
@@ -157,8 +157,8 @@ class LoneWolf(Event):
 
     def alternative_item_mod(self):
         # item lone wolf will give as a reward for not picking self.reward1
-        import data.text
-        item_name = data.text.convert(self.items.get_name(self.reward2.id), data.text.TEXT1) # item names are stored as TEXT2, dialogs are TEXT1
+        from ..data import text as data_text
+        item_name = data_text.convert(self.items.get_name(self.reward2.id), data_text.TEXT1) # item names are stored as TEXT2, dialogs are TEXT1
 
         self.dialogs.set_text(1765, "<line><     >Grrrr…<line><     >You'll never get this<line><     >“" + item_name + "”!<end>")
         self.dialogs.set_text(1742, "<line><      >Got “" + item_name + "”!<end>")

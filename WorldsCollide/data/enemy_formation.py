@@ -61,7 +61,7 @@ class EnemyFormation():
                 self.enemy_ids[enemy_index] += 256
 
     def flags_data(self):
-        from data.enemy_formations import EnemyFormations
+        from ..data.enemy_formations import EnemyFormations
         flags_data = [0x00] * EnemyFormations.FLAGS_SIZE
 
         flags_data[0]       = self.appearance_animation     << 0
@@ -91,7 +91,7 @@ class EnemyFormation():
         return flags_data
 
     def enemies_data(self):
-        from data.enemy_formations import EnemyFormations
+        from ..data.enemy_formations import EnemyFormations
         enemies_data = [0x00] * EnemyFormations.ENEMIES_SIZE
 
         enemies_data[0]     = self.mold

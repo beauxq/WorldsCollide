@@ -1,8 +1,8 @@
-from data.dialogs.dialog import Dialog
-from data.structures import DataList
-from memory.space import Space
-from data.fonts import widths
-import data.text
+from ...data.dialogs.dialog import Dialog
+from ...data.structures import DataList
+from ...memory.space import Space
+from ...data.fonts import widths
+from ...data import text as data_text
 
 class Dialogs():
     DIALOG_PTRS_START = 0xce602
@@ -33,7 +33,7 @@ class Dialogs():
     MULTI_LINE_BATTLE_DIALOGS_START = 0x10d200
     MULTI_LINE_BATTLE_DIALOGS_END = 0x10fcff
 
-    from constants.objectives import MAX_OBJECTIVES
+    from ...constants.objectives import MAX_OBJECTIVES
     OBJECTIVES = list(range(3084, 3084 + MAX_OBJECTIVES))
     BATTLE_OBJECTIVES = list(range(70, 70 + MAX_OBJECTIVES))
 
@@ -55,7 +55,7 @@ class Dialogs():
 
         self.dialogs = []
         for dialog_index, dialog_data in enumerate(self.dialog_data):
-            dialog = Dialog(dialog_index, data.text.TEXT1, dialog_data)
+            dialog = Dialog(dialog_index, data_text.TEXT1, dialog_data)
             self.dialogs.append(dialog)
 
         # the last used dialog ends with garbage data because the last pointer pointed to the end of
@@ -71,7 +71,7 @@ class Dialogs():
 
         self.battle_messages = []
         for message_index, message_data in enumerate(self.battle_message_data):
-            dialog = Dialog(message_index, data.text.TEXT3, message_data)
+            dialog = Dialog(message_index, data_text.TEXT3, message_data)
             self.battle_messages.append(dialog)
 
         # free garbage memory at end of messages space
@@ -88,7 +88,7 @@ class Dialogs():
 
         self.single_line_battle_dialogs = []
         for dialog_index, dialog_data in enumerate(self.single_line_battle_dialog_data):
-            dialog = Dialog(dialog_index, data.text.TEXT3, dialog_data)
+            dialog = Dialog(dialog_index, data_text.TEXT3, dialog_data)
             self.single_line_battle_dialogs.append(dialog)
 
     def read_multi_line_battle_dialogs(self):
@@ -102,11 +102,11 @@ class Dialogs():
 
         self.multi_line_battle_dialogs = []
         for dialog_index, dialog_data in enumerate(self.multi_line_battle_dialog_data):
-            dialog = Dialog(dialog_index, data.text.TEXT3, dialog_data)
+            dialog = Dialog(dialog_index, data_text.TEXT3, dialog_data)
             self.multi_line_battle_dialogs.append(dialog)
 
     def free(self):
-        import data.dialogs.free as free
+        from ...data.dialogs import free as free
 
         self.free_multi_line_battle_dialogs = []
         for dialog_id in free.multi_line_battle_dialogs:
@@ -143,7 +143,7 @@ class Dialogs():
         return (" " * left_spaces) + string
 
     def move_battle_messages(self):
-        from memory.space import START_ADDRESS_SNES, Bank, Reserve, Allocate, Free
+        from ...memory.space import START_ADDRESS_SNES, Bank, Reserve, Allocate, Free
         space = Allocate(Bank.F0, 4000, "battle messages new location")
 
         # update pointers to messages (leave pointers in d1 bank)
@@ -164,7 +164,7 @@ class Dialogs():
         Free(0x11f000, 0x11f79f)
 
     def objectives_mod(self):
-        import objectives
+        from ... import objectives as objectives
         self.multi_line_battle_objectives = []
         for index, objective in enumerate(objectives):
             line2 = self.get_centered(str(objective.result))
@@ -183,7 +183,7 @@ class Dialogs():
         self.move_battle_messages()
         self.objectives_mod()
 
-        import args
+        from ... import args as args
         if args.npc_dialog_tips:
 
             # clear out vanilla dialog to make room for tips

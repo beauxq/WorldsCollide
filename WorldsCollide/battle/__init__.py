@@ -1,12 +1,12 @@
-import battle.formation_flags
-from battle.multipliers import Multipliers
-import battle.load_enemy_level
-import battle.no_exp_party_divide
-import battle.suplex_train_check
-import battle.auto_status
-import battle.end_checks
-import battle.magitek_upgrade
-from battle.animations import Animations
+from ..battle import formation_flags
+from ..battle.multipliers import Multipliers
+from ..battle import load_enemy_level
+from ..battle import no_exp_party_divide
+from ..battle import suplex_train_check
+from ..battle import auto_status
+from ..battle import end_checks
+from ..battle import magitek_upgrade
+from ..battle.animations import Animations
 
 __all__ = ["Battle"]
 class Battle:

@@ -1,9 +1,9 @@
-from memory.space import Bank, START_ADDRESS_SNES, Reserve, Write
-import instruction.asm as asm
-import data.event_bit as event_bit
+from ..memory.space import Bank, START_ADDRESS_SNES, Reserve, Write
+from ..instruction import asm as asm
+from ..data import event_bit as event_bit
 
-from data.spell_names import name_id as spell_name_id
-from data.bosses import name_formation
+from ..data.spell_names import name_id as spell_name_id
+from ..data.bosses import name_formation
 
 class _SuplexTrainCheck:
     def __init__(self):

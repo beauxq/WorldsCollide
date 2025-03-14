@@ -1,9 +1,9 @@
-from memory.space import Bank, START_ADDRESS_SNES, Reserve, Write
-import instruction.asm as asm
+from ..memory.space import Bank, START_ADDRESS_SNES, Reserve, Write
+from ..instruction import asm as asm
 
-import constants.status_effects as status_effects
-import data.event_bit as event_bit
-import objectives
+from ..constants import status_effects as status_effects
+from ..data import event_bit as event_bit
+from .. import objectives as objectives
 
 class _AutoStatus:
     def __init__(self):

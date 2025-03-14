@@ -1,6 +1,6 @@
-from memory.space import Reserve
-import instruction.asm as asm
-import args
+from ..memory.space import Reserve
+from ..instruction import asm as asm
+from .. import args as args
 
 class Sketch:
     def __init__(self):

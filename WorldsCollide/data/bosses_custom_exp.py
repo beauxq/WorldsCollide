@@ -1,4 +1,4 @@
-from data.bosses import name_enemy
+from ..data.bosses import name_enemy
 
 custom_exp = {
     name_enemy["Marshal"]               : 80,

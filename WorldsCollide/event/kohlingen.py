@@ -1,4 +1,4 @@
-from event.event import *
+from ..event.event import *
 
 # TODO use setzer npc instead of shadow's
 #      for character reward show the animations setzer does in wor before daryl's tomb

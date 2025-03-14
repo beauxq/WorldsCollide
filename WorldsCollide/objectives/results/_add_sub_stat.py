@@ -1,8 +1,8 @@
-from memory.space import Bank, Write
-import instruction.asm as asm
-import instruction.field as field
+from ...memory.space import Bank, Write
+from ...instruction import asm as asm
+from ...instruction import field as field
 
-from objectives.results._apply_characters_party import ApplyToCharacter, ApplyToCharacters
+from ...objectives.results._apply_characters_party import ApplyToCharacter, ApplyToCharacters
 
 def AddStat(stat_address):
     MAX_STAT = 0x80

@@ -1,4 +1,4 @@
-from event.event import *
+from ..event.event import *
 
 class LeteRiver(Event):
     BATTLE_1_INVOKE_ADDR = 0xb0498 # the event code that initiates fixed battle 1

@@ -1,13 +1,13 @@
-from data.character import Character
-from data.natural_magic import NaturalMagic
-from data.commands import Commands
-from data.menu_character_sprites import MenuCharacterSprites
-from data.character_sprites import CharacterSprites
-from data.character_palettes import CharacterPalettes
-from data.party_battle_scripts import PartyBattleScripts
-from data.structures import DataArray
+from ..data.character import Character
+from ..data.natural_magic import NaturalMagic
+from ..data.commands import Commands
+from ..data.menu_character_sprites import MenuCharacterSprites
+from ..data.character_sprites import CharacterSprites
+from ..data.character_palettes import CharacterPalettes
+from ..data.party_battle_scripts import PartyBattleScripts
+from ..data.structures import DataArray
 
-import data.characters_asm as characters_asm
+from ..data import characters_asm as characters_asm
 
 class Characters():
     CHARACTER_COUNT = 14   # 14 playable characters
@@ -102,7 +102,7 @@ class Characters():
                     setattr(character, stat, max(min(value, 255), 0))
 
     def get_characters_with_command(self, command_name):
-        from constants.commands import name_id
+        from ..constants.commands import name_id
         command_id = name_id[command_name]
 
         result = []

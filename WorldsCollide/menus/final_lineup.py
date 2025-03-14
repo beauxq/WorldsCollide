@@ -1,6 +1,6 @@
-from memory.space import Bank, START_ADDRESS_SNES, Reserve, Allocate
-import instruction.asm as asm
-import args
+from ..memory.space import Bank, START_ADDRESS_SNES, Reserve, Allocate
+from ..instruction import asm as asm
+from .. import args as args
 
 class FinalLineupMenu:
     LINEUP_SIZE = 12 # number of characters listed in lineup
@@ -12,7 +12,7 @@ class FinalLineupMenu:
         self.mod()
 
     def original_names_mod(self):
-        import data.text as text
+        from ..data import text as text
 
         # shift left list further left and right list further right to make room for default names
         space = Reserve(0x3ac8a, 0x3ac8b, "final lineup menu 'End' text position")

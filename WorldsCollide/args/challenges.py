@@ -28,9 +28,8 @@ def parse(parser):
                             help = "Ironmog Mode: You cannot save (but save points still work for Tents/Sleeping Bags)")
 
 def process(args):
-    from constants.spells import black_magic_ids, white_magic_ids, gray_magic_ids, spell_id
-    from data.esper_spell_tiers import top_spells
-
+    from ..constants.spells import black_magic_ids, white_magic_ids, gray_magic_ids, spell_id
+    from ..data.esper_spell_tiers import top_spells
     # If no_ultima is on, add it to our exclude list for downstream use
     # If permadeath is on, add it to our exclude list for downstream use
     args.remove_learnable_spell_ids = []
@@ -118,21 +117,21 @@ def options(args):
         
     return opts
 def _format_spells_log_entries(spell_ids):
-    from constants.spells import id_spell
+    from ..constants.spells import id_spell
     spell_entries = []
     for i, spell_id in enumerate(spell_ids):
         spell_entries.append(("", id_spell[spell_id], f"rls_{i}"))
     return spell_entries
 
 def _format_spells_log_entries(spell_ids):
-    from constants.spells import id_spell
+    from ..constants.spells import id_spell
     spell_entries = []
     for spell_id in spell_ids:
         spell_entries.append(("", id_spell[spell_id]))
     return spell_entries
 
 def menu(args):
-    from menus.flags_remove_learnable_spells import FlagsRemoveLearnableSpells
+    from ..menus.flags_remove_learnable_spells import FlagsRemoveLearnableSpells
 
     entries = options(args)
     for index, entry in enumerate(entries):

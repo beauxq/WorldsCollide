@@ -88,5 +88,5 @@ def reward_slot_weights(slot_iterations, iteration):
 def weighted_reward_choice(slot_iterations, iteration):
     weights = reward_slot_weights(slot_iterations, iteration)
 
-    from utils.weighted_random import weighted_random
+    from ..utils.weighted_random import weighted_random
     return weighted_random(weights)

@@ -1,6 +1,6 @@
-from memory.space import Bank, Allocate
-from event.event_reward import CHARACTER_ESPER_ONLY_REWARDS, RewardType, choose_reward, weighted_reward_choice
-import instruction.field as field
+from ..memory.space import Bank, Allocate
+from ..event.event_reward import CHARACTER_ESPER_ONLY_REWARDS, RewardType, choose_reward, weighted_reward_choice
+from ..instruction import field as field
 
 class Events():
     def __init__(self, rom, args, data):
@@ -22,7 +22,7 @@ class Events():
     def mod(self):
         # generate list of events from files
         import os, importlib, inspect
-        from event.event import Event
+        from ..event.event import Event
         events = []
         name_event = {}
         for event_file in sorted(os.listdir(os.path.dirname(__file__))):
@@ -57,7 +57,7 @@ class Events():
         space.write(field.Return())
 
         if self.args.spoiler_log:
-            from log import section
+            from ..log import section
             section("Events", log_strings, [])
 
         return events

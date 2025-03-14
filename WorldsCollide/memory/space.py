@@ -1,6 +1,7 @@
-from memory.rom import ROM
-from memory.heap import Heap
-from memory.label import Label, LabelPointer
+from ..memory.rom import ROM
+from ..memory.heap import Heap
+from ..memory.label import Label, LabelPointer
+from .. import args as args
 
 from enum import IntEnum
 BANK_SIZE = 0x10000
@@ -75,7 +76,7 @@ class Space():
         return self._description
 
     def write(self, *values):
-        from utils.flatten import flatten
+        from ..utils.flatten import flatten
         values = flatten(values)
         values = self._invoke_callables(values)
         values = self._parse_labels(values)
@@ -129,7 +130,7 @@ class Space():
         return label_pointer # return a new pointer to a new label
 
     def _invoke_callables(self, values):
-        from utils.flatten import flatten
+        from ..utils.flatten import flatten
         result = []
         index = 0
         for value in values:
@@ -281,7 +282,7 @@ def Free(start_address, end_address):
     heap.free(start_address, end_address)
 
 def Write(destination, data, description):
-    from utils.flatten import flatten
+    from ..utils.flatten import flatten
 
     size = 0
     data = flatten(data)

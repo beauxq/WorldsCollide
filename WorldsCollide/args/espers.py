@@ -1,5 +1,5 @@
-from data.espers import Espers
-from event.event_reward import CHARACTER_ESPER_ONLY_REWARDS
+from ..data.espers import Espers
+from ..event.event_reward import CHARACTER_ESPER_ONLY_REWARDS
 
 # If all 27 espers are allocated at start, there will be logic errors when it comes to
 # assigning characters to character/esper only checks.
@@ -11,8 +11,8 @@ def name():
     return "Espers"
 
 def parse(parser):
-    from data.esper import Esper
-    from data.characters import Characters
+    from ..data.esper import Esper
+    from ..data.characters import Characters
     espers = parser.add_argument_group("Espers")
 
     esper_start = espers.add_mutually_exclusive_group()

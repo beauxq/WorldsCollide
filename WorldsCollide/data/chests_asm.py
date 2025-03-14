@@ -1,6 +1,6 @@
-from memory.space import Bank, Reserve, Write, Read, START_ADDRESS_SNES
-import instruction.asm as asm
-import instruction.c0 as c0
+from ..memory.space import Bank, Reserve, Write, Read, START_ADDRESS_SNES
+from ..instruction import asm as asm
+from ..instruction import c0 as c0
 
 def _next_scaled_contents(bits, contents):
     # write chest contents in the order they should be received

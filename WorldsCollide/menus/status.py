@@ -1,6 +1,6 @@
-from memory.space import Bank, Reserve, Allocate
-import instruction.asm as asm
-import args
+from ..memory.space import Bank, Reserve, Allocate
+from ..instruction import asm as asm
+from .. import args as args
 
 class StatusMenu:
     def __init__(self, characters):
@@ -10,7 +10,7 @@ class StatusMenu:
         self.mod()
 
     def mod_natural_magic(self):
-        import data.text as text
+        from ..data import text as text
 
         natural_magic_learners = []
         if self.characters.natural_magic.learner1 is not None:

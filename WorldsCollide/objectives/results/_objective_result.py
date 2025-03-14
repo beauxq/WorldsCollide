@@ -1,11 +1,11 @@
-import objectives.results._field_result as field_result
-import objectives.results._battle_result as battle_result
+from ...objectives.results import _field_result as field_result
+from ...objectives.results import _battle_result as battle_result
 
-from constants.objectives.results import name_type
+from ...constants.objectives.results import name_type
 
-from memory.space import Bank, START_ADDRESS_SNES, Write
-import instruction.field as field
-import instruction.asm as asm
+from ...memory.space import Bank, START_ADDRESS_SNES, Write
+from ...instruction import field as field
+from ...instruction import asm as asm
 import random
 
 class ObjectiveResult:

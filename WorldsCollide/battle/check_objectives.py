@@ -1,10 +1,10 @@
-from memory.space import Bank, Write
-import instruction.asm as asm
+from ..memory.space import Bank, Write
+from ..instruction import asm as asm
 
 class CheckObjectives(asm.JSR):
     def __init__(self):
-        import objectives
-        import data.dialogs as dialogs
+        from .. import objectives as objectives
+        from ..data import dialogs as dialogs
 
         src = [
             asm.PHP(),

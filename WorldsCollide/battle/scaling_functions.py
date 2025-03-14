@@ -1,7 +1,7 @@
-from memory.space import Bank, Write
-import instruction.asm as asm
-import instruction.c2 as c2
-import args
+from ..memory.space import Bank, Write
+from ..instruction import asm as asm
+from ..instruction import c2 as c2
+from .. import args as args
 
 class ScalingFunctions():
     def __init__(self):
@@ -165,7 +165,7 @@ class ScalingFunctions():
     def ce_mod(self):
         # output: 16 bit a = characters recruited + espers found
 
-        import data.event_word as event_word
+        from ..data import event_word as event_word
         espers_found_address = event_word.address(event_word.ESPERS_FOUND)
 
         src = [
@@ -189,7 +189,7 @@ class ScalingFunctions():
     def ced_mod(self):
         # output: 16 bit a = characters recruited + espers found + dragons defeated
 
-        import data.event_word as event_word
+        from ..data import event_word as event_word
         dragons_defeated_address = event_word.address(event_word.DRAGONS_DEFEATED)
 
         src = [
@@ -209,7 +209,7 @@ class ScalingFunctions():
     def checks_mod(self):
         # output: 16 bit a = checks completed
 
-        import data.event_word as event_word
+        from ..data import event_word as event_word
         checks_complete_address = event_word.address(event_word.CHECKS_COMPLETE)
 
         src = [
@@ -227,7 +227,7 @@ class ScalingFunctions():
     def bosses_dragons_mod(self):
         # output: 16 bit a = bosses completed
 
-        import data.event_word as event_word
+        from ..data import event_word as event_word
         boss_complete_address = event_word.address(event_word.BOSSES_DEFEATED)
         dragons_defeated_address = event_word.address(event_word.DRAGONS_DEFEATED)
 

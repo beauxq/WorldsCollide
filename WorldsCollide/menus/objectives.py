@@ -1,10 +1,10 @@
-from memory.space import Bank, Write
-import instruction.asm as asm
-import instruction.f0 as f0
-import args
+from ..memory.space import Bank, Write
+from ..instruction import asm as asm
+from ..instruction import f0 as f0
+from .. import args as args
 
-import objectives
-import menus.pregame_track_scroll_area as scroll_area
+from .. import objectives as objectives
+from ..menus import pregame_track_scroll_area as scroll_area
 
 class Objectives(scroll_area.ScrollArea):
     MENU_NUMBER = 11
@@ -53,8 +53,8 @@ class Objectives(scroll_area.ScrollArea):
         super().__init__()
 
     def draw_character_mod(self):
-        import objectives
-        from data.text.text2 import text_value
+        from .. import objectives as objectives
+        from ..data.text.text2 import text_value
 
         if len(objectives) == 0:
             super().draw_character_mod()

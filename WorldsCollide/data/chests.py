@@ -1,6 +1,6 @@
-from data.chest import Chest
-import data.chests_asm as chests_asm
-from data.structures import DataArrays
+from ..data.chest import Chest
+from ..data import chests_asm as chests_asm
+from ..data.structures import DataArrays
 import random
 
 class Chests():
@@ -47,7 +47,7 @@ class Chests():
                                                              chest.id != lone_wolf_chest_id and \
                                                              chest.id != gem_box_chest_id]
 
-        from data.chest_item_tiers import tiers, tier_s_distribution
+        from ..data.chest_item_tiers import tiers, tier_s_distribution
         self.item_tiers = tiers
 
         # remove excluded items from tiers
@@ -107,8 +107,8 @@ class Chests():
 
     def random_tiered(self):
         def get_item(tiers, tier_s_distribution):
-            from data.chest_item_tiers import weights
-            from utils.weighted_random import weighted_random
+            from ..data.chest_item_tiers import weights
+            from ..ff6wcutils.weighted_random import weighted_random
 
             random_tier = weighted_random(weights)
             if random_tier < len(weights) - 1: # not s tier, use equal distribution
@@ -133,7 +133,7 @@ class Chests():
 
     def random_scaled(self):
         import math
-        from utils.weighted_random import weighted_random
+        from ..ff6wcutils.weighted_random import weighted_random
 
         # shuffle the chests to mix up empty/item/gold positions
         self.shuffle([Chest.EMPTY, Chest.ITEM, Chest.GOLD])
@@ -195,7 +195,7 @@ class Chests():
         chests_asm.scale_gold(gold_bits, self.gold_contents)
 
     def chest_random_monsters(self, enemy_percent, boss_percent):
-        from data.enemy_battle_groups import event_battle_groups_to_avoid, boss_event_battle_groups, event_battle_group_name, dragon_event_battle_groups, name_event_battle_group
+        from ..data.enemy_battle_groups import event_battle_groups_to_avoid, boss_event_battle_groups, event_battle_group_name, dragon_event_battle_groups, name_event_battle_group
         MIAB_noboss = [a for a in range(256) if a not in event_battle_groups_to_avoid.keys() and a not in event_battle_group_name.keys()]
         if self.args.mix_bosses_dragons:
             MIAB_boss = [a for a in range(256) if a in boss_event_battle_groups.keys() or a in dragon_event_battle_groups.keys()]
@@ -239,7 +239,7 @@ class Chests():
     def fix_shared_bits(self):
         # some chests on different maps share the same opened bits but have different contents
         # give them unique bits so both can be opened and contents aren't lost
-        from data.area_chests import area_chests
+        from ..data.area_chests import area_chests
 
         shared_chests = list(area_chests["Narshe Mines WOB"])
         shared_chests += list(area_chests["South Figaro Cave WOB"])
@@ -329,12 +329,12 @@ class Chests():
         self.chest_data.write()
 
     def log(self):
-        from log import SECTION_WIDTH, section, format_option
-        from data.area_chests import area_chests
-        from data.item_names import id_name
-        from data.item import Item
+        from ..log import SECTION_WIDTH, section, format_option
+        from ..data.area_chests import area_chests
+        from ..data.item_names import id_name
+        from ..data.item import Item
         from textwrap import wrap
-        from data.enemy_battle_groups import event_battle_group_name
+        from ..data.enemy_battle_groups import event_battle_group_name
 
         lcolumn = []
         if self.args.chest_contents_random_scaled:

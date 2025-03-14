@@ -1,4 +1,4 @@
-from data.spell_names import name_id
+from ..data.spell_names import name_id
 
 tiers = [
     [

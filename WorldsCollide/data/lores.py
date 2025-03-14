@@ -1,9 +1,9 @@
-from data.lore import Lore
-from data.ability_data import AbilityData
-from data.structures import DataBits, DataArray, DataList
+from ..data.lore import Lore
+from ..data.ability_data import AbilityData
+from ..data.structures import DataBits, DataArray, DataList
 
-from memory.space import Bank, Reserve, Allocate, Write, Space
-import instruction.asm as asm
+from ..memory.space import Bank, Reserve, Allocate, Write, Space
+from ..instruction import asm as asm
 
 class Lores:
     LORE_COUNT = 24
@@ -55,7 +55,7 @@ class Lores:
         self.learners_table_end = self.learners_table + len(self.learners)
 
     def write_is_learner(self):
-        import instruction.c0 as c0
+        from ..instruction import c0 as c0
 
         src = [
             asm.PHP(),
@@ -74,8 +74,8 @@ class Lores:
         self.is_learner_function = space.start_address_snes
 
     def after_battle_check_mod(self):
-        from memory.space import START_ADDRESS_SNES
-        import instruction.c0 as c0
+        from ..memory.space import START_ADDRESS_SNES
+        from ..instruction import c0 as c0
 
         character_available = START_ADDRESS_SNES + c0.character_available
 
@@ -286,7 +286,7 @@ class Lores:
         self.desc_data.write()
 
     def log(self):
-        from log import section
+        from ..log import section
 
         lcolumn = []
         for lore_index in range(self.LORE_COUNT):

@@ -1,8 +1,8 @@
-from memory.space import Bank, Reserve, Write, Read
+from ..memory.space import Bank, Reserve, Write, Read
 
-import instruction.asm as asm
-import instruction.f0 as f0
-import args
+from ..instruction import asm as asm
+from ..instruction import f0 as f0
+from .. import args as args
 
 from enum import IntFlag
 

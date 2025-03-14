@@ -1,7 +1,7 @@
-from memory.space import Bank, Reserve, Write
-import instruction.asm as asm
-import instruction.c2 as c2
-import args
+from ..memory.space import Bank, Reserve, Write
+from ..instruction import asm as asm
+from ..instruction import c2 as c2
+from .. import args as args
 
 class Multipliers():
     def __init__(self):

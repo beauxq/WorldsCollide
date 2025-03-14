@@ -1,12 +1,12 @@
-from memory.space import Bank, START_ADDRESS_SNES, Write
-import instruction.asm as asm
-import instruction.f0 as f0
-import args
+from ..memory.space import Bank, START_ADDRESS_SNES, Write
+from ..instruction import asm as asm
+from ..instruction import f0 as f0
+from .. import args as args
 
-import data.event_bit as event_bit
-from constants.gates import character_checks
-import constants.objectives.condition_bits as condition_bits
-import menus.pregame_track_scroll_area as scroll_area
+from ..data import event_bit as event_bit
+from ..constants.gates import character_checks
+from ..constants.objectives import condition_bits as condition_bits
+from ..menus import pregame_track_scroll_area as scroll_area
 
 # 0x0002 is not 0xffff after a battle (bug? c2d450), use 0x1202 instead
 constant_ffff = 0x1202 # always contains value 0xffff
@@ -56,7 +56,7 @@ class Checks(scroll_area.ScrollArea):
             self.line_skip_bits.append((constant_ffff, 0x01))   # never skip
 
     def character_gating_init(self):
-        from data.characters import Characters
+        from ..data.characters import Characters
 
         self.lines = []
         self.line_skip_bits = []

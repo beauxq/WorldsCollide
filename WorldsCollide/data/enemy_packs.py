@@ -1,6 +1,6 @@
-from data.enemy_pack import EnemyPack4, EnemyPack2
-from data.structures import DataArray
-import data.bosses as bosses
+from ..data.enemy_pack import EnemyPack4, EnemyPack2
+from ..data.structures import DataArray
+from ..data import bosses as bosses
 
 class EnemyPacks():
     # the first 256 enemy packs are groups of 4 formations -- these are the Battle -> "Random Battle Groups" in ff6tools
@@ -146,8 +146,10 @@ class EnemyPacks():
         self.phunbaba3_safety_check(bosses_to_replace)
 
     def randomize_event_bosses(self):
-        import args, random, objectives
-        from constants.objectives.conditions import names as possible_condition_names
+        from .. import args as args
+        import random
+        from .. import objectives as objectives
+        from ..constants.objectives.conditions import names as possible_condition_names
 
         boss_condition_name = "Boss"
         dragon_condition_name = "Dragon"
@@ -358,7 +360,7 @@ class EnemyPacks():
 
     def pad_enemy_packs(self):
         # add more random groups to the otherwise limited event battle groups
-        from data.enemy_battle_groups import unused_event_battle_groups
+        from ..data.enemy_battle_groups import unused_event_battle_groups
         for pack in self.packs:
             if pack.FORMATION_COUNT == 2:
                 # pack formation 0, 0 is Lobo -- it fills out unused spaces. Id 0, though, is MIAB Lobo, which we want to keep.

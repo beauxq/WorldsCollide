@@ -1,5 +1,5 @@
-from objectives.conditions._objective_condition import *
-from constants.objectives.condition_bits import quest_bit
+from ...objectives.conditions._objective_condition import *
+from ...constants.objectives.condition_bits import quest_bit
 
 class Condition(ObjectiveCondition):
     NAME = "Quest"

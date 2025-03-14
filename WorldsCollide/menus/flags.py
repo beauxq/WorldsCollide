@@ -1,10 +1,10 @@
-from memory.space import START_ADDRESS_SNES, Bank, Reserve, Allocate, Write
-import instruction.asm as asm
-import instruction.f0 as f0
-import args
+from ..memory.space import START_ADDRESS_SNES, Bank, Reserve, Allocate, Write
+from ..instruction import asm as asm
+from ..instruction import f0 as f0
+from .. import args as args
 
-import menus.pregame_track_scroll_area as scroll_area
-from data.text.text2 import text_value
+from ..menus import pregame_track_scroll_area as scroll_area
+from ..data.text.text2 import text_value
 
 class Flags(scroll_area.ScrollArea):
     MENU_NUMBER = 12

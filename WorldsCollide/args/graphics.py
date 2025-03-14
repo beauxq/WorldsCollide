@@ -1,6 +1,6 @@
-from data.character_sprites import PORTRAIT_CHARACTERS, SPRITE_CHARACTERS, DEFAULT_CHARACTER_PORTRAITS, DEFAULT_CHARACTER_SPRITES
-from data.character_palettes import SPRITE_PALETTE_COUNT, DEFAULT_CHARACTER_PALETTES, DEFAULT_CHARACTER_SPRITE_PALETTES
-from data.characters import Characters
+from ..data.character_sprites import PORTRAIT_CHARACTERS, SPRITE_CHARACTERS, DEFAULT_CHARACTER_PORTRAITS, DEFAULT_CHARACTER_SPRITES
+from ..data.character_palettes import SPRITE_PALETTE_COUNT, DEFAULT_CHARACTER_PALETTES, DEFAULT_CHARACTER_SPRITE_PALETTES
+from ..data.characters import Characters
 
 def parse(parser):
     graphics = parser.add_argument_group("Graphics")
@@ -23,9 +23,9 @@ def parse(parser):
                               help = "Makes healing text blue, to be able to distinguish from damage.")
 
 def process(args):
-    import graphics.palettes.palettes as palettes
-    import graphics.portraits.portraits as portraits
-    import graphics.sprites.sprites as sprites
+    from ..graphics.palettes import palettes as palettes
+    from ..graphics.portraits import portraits as portraits
+    from ..graphics.sprites import sprites as sprites
 
     if args.character_names is not None:
         args.names = args.character_names.split('.')

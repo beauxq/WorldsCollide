@@ -1,4 +1,4 @@
-from event.event import *
+from ..event.event import *
 
 class MtZozo(Event):
     def name(self):
@@ -119,7 +119,7 @@ class MtZozo(Event):
         self.dialogs.set_text(2568, letter_text)
 
     def character_music_mod(self, character):
-        from music.song_utils import get_character_theme
+        from ..music.song_utils import get_character_theme
 
         space = Reserve(0xc4007, 0xc4008, "Play Song Cyan")
         space.write([

@@ -48,10 +48,11 @@ class Arguments:
         self.seed_rng_flags = self.seed_rng_flags.strip()
 
         # seed game based on given flags as well so players can't change them for competitions without changing the rest of the game
-        from seed import seed_rng
+        from ..seed import seed_rng
         self.seed = seed_rng(self.seed, self.seed_rng_flags)
 
-        import sprite_hash, version
+        from .. import sprite_hash
+        from .. import version
         self.sprite_hash = sprite_hash.generate_hash(self.seed + self.seed_rng_flags + version.__version__)
 
         import os

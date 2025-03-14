@@ -1,4 +1,4 @@
-import args
+from .. import args as args
 
 SECTION_WIDTH = 120
 COLUMN_WIDTH = 60
@@ -36,7 +36,7 @@ def section_entries(label, lentries, rentries):
         lentries[-1] = lentries[-1][:-1]
         rentries[-1] = rentries[-1][:-1]
 
-    from utils.flatten import flatten
+    from ..utils.flatten import flatten
     lcolumn = flatten(lentries)
     rcolumn = flatten(rentries)
 
@@ -54,7 +54,7 @@ def get_separator(label):
     return separator
 
 def format_option(option, value, unique_name = ''):
-    from constants.standard_flags import standard_flags
+    from ..constants.standard_flags import standard_flags
     standard_flag = standard_flags.get(unique_name)
     if(standard_flag != str(value)):
         pass # nothing for now -- uncomment once we have new standard

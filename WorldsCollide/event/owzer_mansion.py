@@ -1,4 +1,4 @@
-from event.event import *
+from ..event.event import *
 
 class OwzerMansion(Event):
     def name(self):
@@ -110,7 +110,7 @@ class OwzerMansion(Event):
             )
 
     def character_music_mod(self, character):
-        from music.song_utils import get_character_theme
+        from ..music.song_utils import get_character_theme
         src = [
             field.StartSong(get_character_theme(character)),
         ]

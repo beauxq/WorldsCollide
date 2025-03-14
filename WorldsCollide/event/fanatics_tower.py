@@ -1,4 +1,4 @@
-from event.event import *
+from ..event.event import *
 
 class FanaticsTower(Event):
     def name(self):
@@ -96,7 +96,7 @@ class FanaticsTower(Event):
         self.maps.delete_event(0x16a, 9, 13) # relm/strago event tile (east)
         self.maps.delete_event(0x16a, 8, 14) # relm/strago event tile (south)
 
-        from data.map_event import MapEvent
+        from ..data.map_event import MapEvent
 
         # add event tile to bottom left of stairs
         new_event = MapEvent()
@@ -143,7 +143,7 @@ class FanaticsTower(Event):
         )
 
     def character_music_mod(self, character):
-        from music.song_utils import get_character_theme
+        from ..music.song_utils import get_character_theme
 
         space = Reserve(0xc5327, 0xc5328, "Play Song Relm")
         space.write([

@@ -1,11 +1,11 @@
-from data.enemy import Enemy
-from data.structures import DataArray
+from ..data.enemy import Enemy
+from ..data.structures import DataArray
 
-from data.enemy_formations import EnemyFormations
-from data.enemy_packs import EnemyPacks
-from data.enemy_zones import EnemyZones
-from data.enemy_scripts import EnemyScripts
-import data.bosses as bosses
+from ..data.enemy_formations import EnemyFormations
+from ..data.enemy_packs import EnemyPacks
+from ..data.enemy_zones import EnemyZones
+from ..data.enemy_scripts import EnemyScripts
+from ..data import bosses as bosses
 
 class Enemies():
     DATA_START = 0xf0000
@@ -93,7 +93,7 @@ class Enemies():
 
     def remove_fenix_downs(self):
         import random
-        from data.item_names import name_id
+        from ..data.item_names import name_id
 
         fenix_down = name_id["Fenix Down"]
         possible_replacements = ["Tonic", "Potion", "Tincture", "Antidote", "Echo Screen", "Eyedrop", "Green Cherry",
@@ -146,7 +146,7 @@ class Enemies():
                 enemy.hp *= 2
 
     def boss_experience(self):
-        from data.bosses_custom_exp import custom_exp
+        from ..data.bosses_custom_exp import custom_exp
         for enemy_id, exp in custom_exp.items():
             self.enemies[enemy_id].exp = exp * self.enemies[enemy_id].level
 
@@ -211,7 +211,7 @@ class Enemies():
         return False
 
     def skip_shuffling_pack(self, pack, encounter_rate):
-        from data.enemy_zone import EnemyZone
+        from ..data.enemy_zone import EnemyZone
 
         if pack == 0 and encounter_rate == EnemyZone.NORMAL_ENCOUNTER_RATE:
             # 0 is used as a placeholder (leafer x1 and leafer x2, dark wind)
@@ -315,7 +315,7 @@ class Enemies():
 
     def shuffle_steals_drops_random(self):
         import random
-        from data.bosses import final_battle_enemy_name
+        from ..data.bosses import final_battle_enemy_name
 
         # Assemble the list of steals and drops
         steals_drops = []

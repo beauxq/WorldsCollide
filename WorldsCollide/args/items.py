@@ -3,7 +3,7 @@ def name():
 
 
 def parse(parser):
-    from data.characters import Characters
+    from ..data.characters import Characters
     items = parser.add_argument_group("Items")
 
     items_equipable = items.add_mutually_exclusive_group()
@@ -58,8 +58,8 @@ def parse(parser):
 
 
 def process(args):
-    from constants.items import good_items, stronger_items, premium_items
-    from constants.items import id_name, name_id
+    from ..constants.items import good_items, stronger_items, premium_items
+    from ..constants.items import id_name, name_id
 
     args._process_min_max("item_equipable_random")
     if args.item_equipable_balanced_random is not None:
@@ -220,7 +220,7 @@ def options(args):
 
 
 def _format_items_log_entries(item_ids):
-    from constants.items import id_name
+    from ..constants.items import id_name
     item_entries = []
     for item_id in item_ids:
         item_entries.append(("", id_name[item_id]))
@@ -228,7 +228,7 @@ def _format_items_log_entries(item_ids):
 
 
 def menu(args):
-    from menus.flags_reward_items import FlagsRewardItems
+    from ..menus.flags_reward_items import FlagsRewardItems
 
     entries = options(args)
     for index, entry in enumerate(entries):

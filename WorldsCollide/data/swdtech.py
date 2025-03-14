@@ -1,4 +1,4 @@
-import data.text as text
+from ..data import text as text
 
 class SwdTech:
     NAME_SIZE = 12

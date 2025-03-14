@@ -1,17 +1,17 @@
-from memory.space import Bank, START_ADDRESS_SNES, Reserve, Allocate, Write
-import instruction.asm as asm
-import instruction.f0 as f0
-import args
+from ..memory.space import Bank, START_ADDRESS_SNES, Reserve, Allocate, Write
+from ..instruction import asm as asm
+from ..instruction import f0 as f0
+from .. import args as args
 
 class CheckDragonBoss(asm.JSL):
     def __init__(self):
         # after battle check if boss/dragon was defeated, if so increment/set boss/dragon count/bit
 
-        import data.event_word as event_word
+        from ..data import event_word as event_word
         dragons_defeated_address = event_word.address(event_word.DRAGONS_DEFEATED)
         bosses_defeated_address = event_word.address(event_word.BOSSES_DEFEATED)
 
-        import data.battle_bit as battle_bit
+        from ..data import battle_bit as battle_bit
         boss_bits_start = battle_bit.address(battle_bit.BOSS_DEFEATED_START)
         dragon_bits_start = battle_bit.address(battle_bit.DRAGON_DEFEATED_START)
 

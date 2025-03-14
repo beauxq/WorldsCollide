@@ -1,6 +1,6 @@
-from memory.space import Reserve, Bank, Write
-import instruction.asm as asm
-import args
+from ..memory.space import Reserve, Bank, Write
+from ..instruction import asm as asm
+from .. import args as args
 
 class Config:
     def __init__(self):

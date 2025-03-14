@@ -19,7 +19,7 @@ def parse(parser):
     misc.add_argument("-npctips", "--npc-dialog-tips", action = "store_true",
                       help = "NPC provide general game tips")
 
-    from data.movement import ALL
+    from ..data.movement import ALL
     movement = misc.add_mutually_exclusive_group()
     movement.name = "Movement"
     movement.add_argument("-move", "--movement", type = str.lower, choices = ALL,
@@ -139,7 +139,7 @@ def options(args):
     elif args.y_npc_remove:
         y_npc = "Remove"
 
-    from data.movement import key_name, AUTO_SPRINT
+    from ..data.movement import key_name, AUTO_SPRINT
     # Similar logic is present in the init fn of settings/movement.py
     if args.movement:
         movement = key_name[args.movement]

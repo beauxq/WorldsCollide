@@ -1,5 +1,5 @@
-from constants.entities import SETZER
-from event.event import *
+from ..constants.entities import SETZER
+from ..event.event import *
 
 class OperaHouseWOB(Event):
     def name(self):
@@ -368,7 +368,7 @@ class OperaHouseWOB(Event):
         )
 
     def character_music_mod(self, character):
-        from music.song_utils import get_character_theme
+        from ..music.song_utils import get_character_theme
         # 0xac16c-0xac16d typically play setzer's theme,
         # but in the after_battle_mod() 0xac16c-0xac26c are shifted 3 bytes to the right,
         # so the theme now occupies 0xac16f-0xac170

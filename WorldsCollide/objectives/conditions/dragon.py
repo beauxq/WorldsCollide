@@ -1,6 +1,6 @@
-from objectives.conditions._objective_condition import *
-from constants.objectives.condition_bits import dragon_bit
-from data.bosses import name_formation, name_pack
+from ...objectives.conditions._objective_condition import *
+from ...constants.objectives.condition_bits import dragon_bit
+from ...data.bosses import name_formation, name_pack
 
 class Condition(ObjectiveCondition):
     NAME = "Dragon"

@@ -1,8 +1,8 @@
-from data.magitek import Magitek
-from data.ability_data import AbilityData
-from data.structures import DataArray
+from ..data.magitek import Magitek
+from ..data.ability_data import AbilityData
+from ..data.structures import DataArray
 
-from memory.space import Bank, Reserve, Allocate, Write
+from ..memory.space import Bank, Reserve, Allocate, Write
 
 class Magiteks:
     MAGITEK_COUNT = 8

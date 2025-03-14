@@ -1,4 +1,4 @@
-from event.event import *
+from ..event.event import *
 
 class BarenFalls(Event):
     def name(self):
@@ -102,7 +102,7 @@ class BarenFalls(Event):
         )
 
     def character_music_mod(self, character):
-        from music.song_utils import get_character_theme
+        from ..music.song_utils import get_character_theme
 
         space = Reserve(0xbc0ff, 0xbc100, "Play Song Gau")
         space.write([

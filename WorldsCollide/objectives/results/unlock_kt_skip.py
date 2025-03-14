@@ -1,5 +1,5 @@
-from objectives.results._objective_result import *
-import data.event_bit as event_bit
+from ...objectives.results._objective_result import *
+from ...data import event_bit as event_bit
 
 class Field(field_result.Result):
     def src(self):

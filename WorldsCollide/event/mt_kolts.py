@@ -1,4 +1,4 @@
-from event.event import *
+from ..event.event import *
 
 class MtKolts(Event):
     def name(self):
@@ -125,7 +125,7 @@ class MtKolts(Event):
         space = Write(Bank.CA, src, "mt kolts exit move airship")
         exit_move_airship = space.start_address
 
-        from data.map_event import MapEvent
+        from ..data.map_event import MapEvent
         self.maps.delete_short_exit(0x64, 7, 13)
         new_event = MapEvent()
         new_event.x = 7
@@ -148,7 +148,7 @@ class MtKolts(Event):
         self.maps.delete_event(0x62, 10, 32) # vargas event tile (left)
         self.maps.delete_event(0x62, 11, 32) # vargas event tile (right)
 
-        from data.map_event import MapEvent
+        from ..data.map_event import MapEvent
         # add event tile to earlier on the path
         new_event = MapEvent()
         new_event.x = 21

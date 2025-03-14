@@ -1,6 +1,6 @@
-from memory.space import Bank, START_ADDRESS_SNES, Write
-import instruction.asm as asm
-from objectives._cached_function import _CachedFunction
+from ...memory.space import Bank, START_ADDRESS_SNES, Write
+from ...instruction import asm as asm
+from ...objectives._cached_function import _CachedFunction
 
 class Result(_CachedFunction, asm.JSR):
     def __init__(self, *args, **kwargs):
@@ -22,7 +22,7 @@ def SetBit(address, bit):
     ]
 
 def AddItem(item_id):
-    from instruction.c0 import add_item
+    from ...instruction.c0 import add_item
     return [
         asm.PHP(),
         asm.A8(),

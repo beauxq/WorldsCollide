@@ -1,5 +1,5 @@
-from data.ability_data import AbilityData
-import data.text as text
+from ..data.ability_data import AbilityData
+from ..data import text as text
 
 from enum import IntFlag
 
@@ -40,7 +40,7 @@ class Esper(AbilityData):
         self.equipable_characters = 0x3fff # equipable characters bitmask (default to all)
 
     def spells_bonus_data(self):
-        from data.espers import Espers
+        from ..data.espers import Espers
         data = [0x00] * Espers.SPELLS_BONUS_DATA_SIZE
 
         for spell_index in range(self.SPELL_COUNT):
@@ -51,7 +51,7 @@ class Esper(AbilityData):
         return data
 
     def name_data(self):
-        from data.espers import Espers
+        from ..data.espers import Espers
         data = text.get_bytes(self.name, text.TEXT2)
         data.extend([0xff] * (Espers.NAME_SIZE - len(data)))
         return data
@@ -133,7 +133,7 @@ class Esper(AbilityData):
 
     def randomize_rates_tiered(self):
         import random
-        from data.esper_spell_tiers import tiers
+        from ..data.esper_spell_tiers import tiers
         for spell_index in range(self.spell_count):
             if self.spells[spell_index].id in tiers[0]:
                 self.spells[spell_index].rate = random.choice([10, 15, 16, 20])
@@ -161,7 +161,7 @@ class Esper(AbilityData):
         self.set_bonus(random.choice(possible))
 
     def get_equipable_characters(self):
-        from data.characters import Characters
+        from ..data.characters import Characters
         characters = []
         for character in range(Characters.CHARACTER_COUNT):
             if self.equipable_characters & (1 << character):

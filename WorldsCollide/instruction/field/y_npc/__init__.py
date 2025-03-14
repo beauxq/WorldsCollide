@@ -1,1 +1,1 @@
-from instruction.field.y_npc.functions import Y_NPC
+from ....instruction.field.y_npc.functions import Y_NPC

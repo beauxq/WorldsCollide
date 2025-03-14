@@ -1,4 +1,4 @@
-import data.text as text
+from ..data import text as text
 
 class Blitz:
     LEVEL_SIZE = 1

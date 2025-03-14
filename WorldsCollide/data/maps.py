@@ -1,21 +1,21 @@
-from data.map_property import MapProperty
+from ..data.map_property import MapProperty
 
-import data.npcs as npcs
-from data.npc import NPC
+from ..data import npcs as npcs
+from ..data.npc import NPC
 
-from data.chests import Chests
+from ..data.chests import Chests
 
-import data.map_events as events
-from data.map_event import MapEvent, LongMapEvent
+from ..data import map_events as events
+from ..data.map_event import MapEvent, LongMapEvent
 
-import data.map_exits as exits
-from data.map_exit import ShortMapExit, LongMapExit
+from ..data import map_exits as exits
+from ..data.map_exit import ShortMapExit, LongMapExit
 
-import data.world_map_event_modifications as world_map_event_modifications
-from data.world_map import WorldMap
+from ..data import world_map_event_modifications as world_map_event_modifications
+from ..data.world_map import WorldMap
 
-import instruction.asm as asm
-from memory.space import Reserve
+from ..instruction import asm as asm
+from ..memory.space import Reserve
 
 class Maps():
     MAP_COUNT = 416
@@ -207,7 +207,7 @@ class Maps():
         # there is a box which can be walked into but not out of which causes the game to lock
         # fix the three boxes to no longer be walkable
 
-        from utils.compression import compress, decompress
+        from ..utils.compression import compress, decompress
         layer1_tilemap = 0x1c
         tilemap_ptrs_start = 0x19cd90
         tilemap_ptr_addr = tilemap_ptrs_start + layer1_tilemap * self.rom.LONG_PTR_SIZE
@@ -233,9 +233,9 @@ class Maps():
         self.rom.set_bytes(tilemaps_start + tilemap_addr, compressed)
 
     def _fix_Cid_timer_glitch(self):
-        from memory.space import Bank, Write
-        import instruction.field as field
-        from event.event import EVENT_CODE_START
+        from ..memory.space import Bank, Write
+        from ..instruction import field as field
+        from ..event.event import EVENT_CODE_START
         # If you start Cid's timer and then leave, the timer can affect event tile, NPC and objective triggering
         # Write some LongMapEvents to turn off the Cid timer when exiting to the world map.
         HORIZ = 0
