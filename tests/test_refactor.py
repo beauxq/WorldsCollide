@@ -19,8 +19,9 @@ ORIGINAL_HASH = "0f51b4fca41b7fd509e4b8f9d543151f68efa5e97b08493e4b2a0c06f5d8d5e
 def find_original_rom() -> Path | None:
     """ `None` if not found """
     sfc_files = glob.glob("*.sfc")
-    for sfc_file in sfc_files:
-        path = Path(sfc_file)
+    smc_files = glob.glob("*.smc")
+    for file in sfc_files + smc_files:
+        path = Path(file)
         hash_ = sha256(path.read_bytes()).hexdigest()
         if hash_ == ORIGINAL_HASH:
             return path
