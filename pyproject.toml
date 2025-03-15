@@ -70,6 +70,7 @@ ignore = [
 
     # auto fix looked reliable
     "E203",  # space before colon
+    "E241",  # space ofter comma (often used for lining up columns)
     "E251",  # f(x = 3)
     "E302", "E305",  # 2 blank lines in module scope
     # "E201",  # [ 2 ]
