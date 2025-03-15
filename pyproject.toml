@@ -78,6 +78,7 @@ ignore = [
     "E262",  # 1 space after #
     "E261",  # 2 spaces before line comment #
     "E231",  # whitespace after , :
+    "E201",  # space after bracket
 ]
 
 [tool.ruff.lint.per-file-ignores]

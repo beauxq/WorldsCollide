@@ -146,7 +146,7 @@ class Maps:
         last_event_id = first_event_id + self.get_event_count(map_id)
         self.events.delete_event(first_event_id, last_event_id, x, y)
 
-    ### LONG EVENTS ###
+    # LONG EVENTS
     def get_long_event_count(self, map_id):
         return (self.maps[map_id + 1]["long_events_ptr"] - self.maps[map_id][
             "long_events_ptr"]) // LongMapEvent.DATA_SIZE
@@ -179,7 +179,7 @@ class Maps:
             "long_events_ptr"]) // LongMapEvent.DATA_SIZE
         last_event_id = first_event_id + self.get_event_count(map_id)
         self.long_events.delete_event(first_event_id, last_event_id, x, y)
-    ### LONG EVENTS ###
+    # LONG EVENTS
 
     def get_short_exit_count(self, map_id):
         return (self.maps[map_id + 1]["short_exits_ptr"] - self.maps[map_id]["short_exits_ptr"]) // ShortMapExit.DATA_SIZE

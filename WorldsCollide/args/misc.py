@@ -78,7 +78,7 @@ def flags(args):
     if args.npc_dialog_tips:
         flags += " -npctips"
 
-    ### NPC tips
+    # NPC tips
     if args.npc_dialog_tips:
         flags += " -npctips"
 

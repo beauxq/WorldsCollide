@@ -555,7 +555,7 @@ class Dialogs:
                 self.set_text(2436, "You can enter the Phoenix Cave as long as you have at least 2 characters.<page><LOCKE> also needs to be recruited to get the reward at the end.<end>")
                 self.set_text(2685, "<RELM>'s checks include Esper Mountain near Thamasa in the World of Balance, and right here in Owzer's Mansion in the World of Ruin.<end>")
 
-        #### end of NPC dialog tip mod
+        # end of NPC dialog tip mod
 
     def write(self):
         self.dialog_data.assign([dialog.data() for dialog in self.dialogs])

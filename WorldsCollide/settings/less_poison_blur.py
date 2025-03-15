@@ -1,11 +1,11 @@
-## Inspired by this original mod from Beyond Chaos
-## https://github.com/FF6BeyondChaos/BeyondChaosRandomizer/blob/main/BeyondChaos/patches.py
-## look for section beginning with "nicer_poison(fout):"
+# Inspired by this original mod from Beyond Chaos
+# https://github.com/FF6BeyondChaos/BeyondChaosRandomizer/blob/main/BeyondChaos/patches.py
+# look for section beginning with "nicer_poison(fout):"
 from ..memory.space import Reserve
 from ..instruction import asm as asm
 
-### reduce poison pixellation effect while walking
-### does not affect poison sound effect while on overworld map
+# reduce poison pixellation effect while walking
+# does not affect poison sound effect while on overworld map
 class LessPoisonBlur:
     def __init__(self):
         self.mod()
