@@ -129,7 +129,7 @@ class LeteRiver(Event):
 
         for chance_encounter_call in chance_encounter_calls:
             start_address = chance_encounter_call[0]
-            end_address = start_address+3
+            end_address = start_address + 3
             action = chance_encounter_call[1]
             space = Reserve(start_address, end_address, "lete river call invoke battle subroutine", field.NOP())
             if action == TO_BATTLE_1:

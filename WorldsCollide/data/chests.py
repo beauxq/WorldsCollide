@@ -217,7 +217,7 @@ class Chests:
 
         for chest in random_chests:
             chest.type = Chest.MONSTER
-            is_boss = (random.random()*100 < boss_percent)
+            is_boss = (random.random() * 100 < boss_percent)
             if is_boss:
                 chest.contents = random.choice(MIAB_boss)
             else:

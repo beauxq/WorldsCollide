@@ -130,7 +130,7 @@ class NarsheMoogleDefense(Event):
         for party in range(2,4):
              for party_spot in range(0, 4):
                  src += [
-                     field.Call(self.add_moogle_to_party[party-1]),
+                     field.Call(self.add_moogle_to_party[party - 1]),
                  ]
 
         src += [

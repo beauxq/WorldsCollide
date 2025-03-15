@@ -18,7 +18,7 @@ def eggers_jump(c3addr):
         asm.PHK(),
         asm.PER(0x0009),
         asm.PEA(eggers_jump_return),
-        asm.PEA(c3addr-1), # return after execution
+        asm.PEA(c3addr - 1), # return after execution
         asm.JMP(eggers_jump_return + START_ADDRESS_SNES, asm.LNG),
     ]
     return src

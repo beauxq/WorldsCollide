@@ -49,7 +49,7 @@ class Animations:
             # For each address in its array
             for flash_address in flash_addresses:
                 # Read the current animation command at the address
-                animation_cmd = Read(flash_address, flash_address+1)
+                animation_cmd = Read(flash_address, flash_address + 1)
                 if(animation_cmd[0] in REPLACEMENTS.keys()):
                     Write(flash_address, REPLACEMENTS[animation_cmd[0]], "BG flash to monster flash")
                 else:
@@ -64,13 +64,13 @@ class Animations:
             # For each address in its array
             for flash_address in flash_addresses:
                 # Read the current animation command at the address
-                animation_cmd = Read(flash_address, flash_address+1)
+                animation_cmd = Read(flash_address, flash_address + 1)
                 if(animation_cmd[0] in ABSOLUTE_CHANGES):
                     # This is an absolute color change. To remove flashing effects, set the value to E0 to cause no background change
-                    Write(flash_address+1, 0xE0, "Background color change (absolute)")
+                    Write(flash_address + 1, 0xE0, "Background color change (absolute)")
                 elif(animation_cmd[0] in RELATIVE_CHANGES):
                     # This is a relative color change. To remove flash effects, set the value to F0 to cause no background change
-                    Write(flash_address+1, 0xF0, "Background color change (relative)")
+                    Write(flash_address + 1, 0xF0, "Background color change (relative)")
                 else:
                     # This is an error, reflecting a difference between the disassembly used to generate BATTLE_ANIMATION_FLASHES and the ROM
                     raise ValueError(f"Battle Animation Script Command at 0x{flash_address:x} (0x{animation_cmd[0]:x}) did not match an expected value.")

@@ -21,7 +21,7 @@ class WorldMap:
         location_indicator_addr = [0x12eeb8,  # WoB default: 1100
                                    0x12efb8]  # WoR default: 1100
         for loc_addr in location_indicator_addr:
-            space = Reserve(loc_addr, loc_addr+1, "high contrast minimap indicator")
+            space = Reserve(loc_addr, loc_addr + 1, "high contrast minimap indicator")
             space.write(0xff, 0x7f)
 
         # d2eeba=ff + d2eebb=7f
@@ -29,7 +29,7 @@ class WorldMap:
         location_indicator_addr = [0x12eeba,  # WoB default: 1f00
                                    0x12efba]  # WoR default: 1f00
         for loc_addr in location_indicator_addr:
-            space = Reserve(loc_addr, loc_addr+1, "high contrast minimap indicator")
+            space = Reserve(loc_addr, loc_addr + 1, "high contrast minimap indicator")
             space.write(0xff, 0x7f)
 
         # Additional minimap palette mods
@@ -40,7 +40,7 @@ class WorldMap:
         minimap_palette_addr = [0x12eea2, # WoB
                                 0x12efa2] # WoR
         for addr in minimap_palette_addr:
-            space = Reserve(addr, addr+len(minimap_palette_bytes)-1, "minimap palette")
+            space = Reserve(addr, addr + len(minimap_palette_bytes) - 1, "minimap palette")
             space.write(minimap_palette_bytes)
 
         # This changes the color of the Floating Continent (pre-floating) on WoB
@@ -48,7 +48,7 @@ class WorldMap:
         # d2eeac=82 + d2eead=28 + d2eeae=e4 + d2eeaf=38 + d2eeb0=67 + d2eeb1=51
         addr = 0x12eeac
         minimap_palette_bytes = [0x82, 0x28, 0xe4, 0x38, 0x67, 0x51]
-        space = Reserve(addr, addr+len(minimap_palette_bytes)-1, "floating continent palette")
+        space = Reserve(addr, addr + len(minimap_palette_bytes) - 1, "floating continent palette")
         space.write(minimap_palette_bytes)
 
     def mod(self):

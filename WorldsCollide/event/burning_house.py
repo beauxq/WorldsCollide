@@ -150,7 +150,7 @@ class BurningHouse(Event):
         for pack_id_address in replaced_encounters:
             pack_id = pack_id_address[0]
             # first byte of the command is the pack_id
-            invoke_encounter_pack_address = pack_id_address[1]+1
+            invoke_encounter_pack_address = pack_id_address[1] + 1
             space = Reserve(invoke_encounter_pack_address, invoke_encounter_pack_address, "flame invoke fixed battle (battle byte)")
             space.write(
                 # subtrack 256 since WC stores fixed encounter IDs starting at 256

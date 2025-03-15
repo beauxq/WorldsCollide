@@ -83,7 +83,7 @@ class Space:
 
         self._next_address = Space.rom.set_bytes(self.next_address, values)
         if(self.next_address - 1 > self.end_address):
-            raise MemoryError(f"Not enough room in space \"{self.description}\": Next (0x{self.next_address -1:x}) > End (0x{self.end_address:x}). Diff: {(self.next_address - 1) - (self.end_address)}")
+            raise MemoryError(f"Not enough room in space \"{self.description}\": Next (0x{self.next_address - 1:x}) > End (0x{self.end_address:x}). Diff: {(self.next_address - 1) - (self.end_address)}")
 
         self._update_label_pointers()
 

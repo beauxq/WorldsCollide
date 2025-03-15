@@ -24,7 +24,7 @@ class LabelPointer:
         elif self.mode == self.BRANCH_RELATIVE:
             value -= self.address
             if value > 127 or value < -128:
-                raise ValueError(f"Error on Branch to label {self.label.name}. Branch distance: {value-1}")
+                raise ValueError(f"Error on Branch to label {self.label.name}. Branch distance: {value - 1}")
             if value > 0:
                 return value - 1
             elif value < 0:

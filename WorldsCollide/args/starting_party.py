@@ -65,7 +65,7 @@ def options(args):
         elif start_char:
             value = start_char.capitalize()
 
-        result.append((f"Start Character {i+1}", value, f"start_char{i+1}"))
+        result.append((f"Start Character {i + 1}", value, f"start_char{i + 1}"))
     return result
 
 def menu(args):

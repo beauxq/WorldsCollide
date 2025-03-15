@@ -206,7 +206,7 @@ class EbotsRock(Event):
         GO_TO_SAVE_ADDR = 0xb6fa3 # The address in ROM of the event instruction to go to Save point
         GO_TO_EXIT_ADDR = 0xb6fac # the address in ROM of the event instruction to go to the exit
         NUM_CORAL_ADDR = 0xb7109 # The address of the number of coral that the chest checks
-        num_coral = Read(NUM_CORAL_ADDR, NUM_CORAL_ADDR+1)[0]
+        num_coral = Read(NUM_CORAL_ADDR, NUM_CORAL_ADDR + 1)[0]
 
         src = [
             field.BranchIfEventWordEqual(CORAL_EVENT_WORD, num_coral, NORMAL_LOGIC_ADDR), # coral count == 21, branch to regular logic
