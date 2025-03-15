@@ -151,18 +151,18 @@ class Enemy:
 
         data[27:30] = self.status_effects.data()
 
-        data[30]    = self.true_knight      << 0
-        data[30]   |= self.runic            << 1
-        data[30]   |= self.life_3           << 2
-        data[30]   |= self.unknown5         << 3
-        data[30]   |= self.unknown6         << 4
-        data[30]   |= self.unknown7         << 5
-        data[30]   |= self.unknown8         << 6
-        data[30]   |= self.float            << 7
+        data[30]    = self.true_knight       << 0
+        data[30]   |= self.runic             << 1
+        data[30]   |= self.life_3            << 2
+        data[30]   |= self.unknown5          << 3
+        data[30]   |= self.unknown6          << 4
+        data[30]   |= self.unknown7          << 5
+        data[30]   |= self.unknown8          << 6
+        data[30]   |= self.float             << 7
 
-        data[31]    = self.special_effect   << 0
-        data[31]   |= self.special_no_damage<< 6
-        data[31]   |= self.special_no_dodge << 7
+        data[31]    = self.special_effect    << 0
+        data[31]   |= self.special_no_damage << 6
+        data[31]   |= self.special_no_dodge  << 7
 
         return data
 
