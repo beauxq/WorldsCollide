@@ -14,7 +14,7 @@ class DebugRoom(Event):
 
     def remove_npcs_mod(self):
         # Remove all existing NPCs
-        while(self.maps.get_npc_count(self.DEBUG_ROOM) > 0):
+        while (self.maps.get_npc_count(self.DEBUG_ROOM) > 0):
             self.maps.remove_npc(self.DEBUG_ROOM, 0)
 
     def _add_recruit_npc(self, character, x, y, direction):

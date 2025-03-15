@@ -152,7 +152,7 @@ class DataArray:
         return self.elements[index].data
 
     def __setitem__(self, index, data):
-        assert(len(data) == self.element_size)
+        assert (len(data) == self.element_size)
         self.elements[index].data = data
 
     def __delitem__(self, index):
@@ -160,7 +160,7 @@ class DataArray:
         self.end_address -= self.element_size
 
     def append(self, data):
-        assert(len(data) == self.element_size)
+        assert (len(data) == self.element_size)
         self.elements.append(DataElement(data, self.end_address))
         self.end_address += self.element_size
 

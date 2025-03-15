@@ -37,14 +37,14 @@ class MapExits:
             exit_data = exit.to_data()
             exit_data_start = self.SHORT_DATA_START_ADDR + exit_index * ShortMapExit.DATA_SIZE
             # Assert that the address being written doesn't go beyond the expected end point
-            assert(exit_data_start < self.SHORT_DATA_END_ADDR)
+            assert (exit_data_start < self.SHORT_DATA_END_ADDR)
             self.rom.set_bytes(exit_data_start, exit_data)
 
         for exit_index, exit in enumerate(self.long_exits):
             exit_data = exit.to_data()
             exit_data_start = self.LONG_DATA_START_ADDR + exit_index * LongMapExit.DATA_SIZE
             # Assert that the address being written doesn't go beyond the expected end point
-            assert(exit_data_start < self.LONG_DATA_END_ADDR)
+            assert (exit_data_start < self.LONG_DATA_END_ADDR)
             self.rom.set_bytes(exit_data_start, exit_data)
 
     def mod(self):

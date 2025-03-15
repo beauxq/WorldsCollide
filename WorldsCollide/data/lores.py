@@ -175,13 +175,13 @@ class Lores:
     def _get_new_level_desc(lore_index, level_divisor):
         level_string = f'LV{level_divisor}' # keeping it simple to not use extra space
         new_desc = ''
-        if(lore_index == Lores.L_5_DOOM):
+        if (lore_index == Lores.L_5_DOOM):
             new_desc = f'Casts <dotted line>Doom" on {level_string} enemy<end>'
-        elif(lore_index == Lores.L_4_FLARE):
+        elif (lore_index == Lores.L_4_FLARE):
             new_desc = f'Casts <dotted line>Flare" on {level_string} enemy<end>'
-        elif(lore_index == Lores.L_3_MUDDLE):
+        elif (lore_index == Lores.L_3_MUDDLE):
             new_desc = f'Casts <dotted line>Muddle" on {level_string} enemy<end>'
-        elif(lore_index == Lores.L_PEARL):
+        elif (lore_index == Lores.L_PEARL):
             new_desc = f'Pearl attack on {level_string} enemy<end>'
         else:
             raise ValueError(f'Unexpected lore index: {lore_index}')

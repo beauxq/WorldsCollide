@@ -2,7 +2,7 @@ class Match:
     DATA_SIZE = 4
 
     def __init__(self, data):
-        assert(len(data) == self.DATA_SIZE)
+        assert (len(data) == self.DATA_SIZE)
 
         self.opponent = data[0]
         self.unknown = data[1]

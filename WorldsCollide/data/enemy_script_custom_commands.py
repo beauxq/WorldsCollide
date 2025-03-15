@@ -87,7 +87,7 @@ class EnemyScriptCommands:
 
                     script.instructions[instruction_index] = ai_instr.If(*values[1 : ])
                     replacement_count += 1
-            assert(replacement_count == check_count)
+            assert (replacement_count == check_count)
 
     def random_tiered_ability_mod(self, space):
         # modify script command [0xf0, possible_id, possible_id, possible_id]

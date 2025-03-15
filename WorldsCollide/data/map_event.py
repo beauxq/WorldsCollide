@@ -7,7 +7,7 @@ class MapEvent:
         self.event_address = 0
 
     def from_data(self, data):
-        assert(len(data) == self.DATA_SIZE)
+        assert (len(data) == self.DATA_SIZE)
 
         self.x = data[0]
         self.y = data[1]
@@ -42,7 +42,7 @@ class LongMapEvent:
         self.event_address = 0
 
     def from_data(self, data):
-        assert(len(data) == self.DATA_SIZE)
+        assert (len(data) == self.DATA_SIZE)
 
         self.x = data[0]
         self.y = data[1]

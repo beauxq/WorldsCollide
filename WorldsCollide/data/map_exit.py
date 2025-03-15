@@ -6,7 +6,7 @@ class ShortMapExit:
         self.y = 0
 
     def from_data(self, data):
-        assert(len(data) == self.DATA_SIZE)
+        assert (len(data) == self.DATA_SIZE)
 
         self.x = data[0]
         self.y = data[1]
@@ -38,7 +38,7 @@ class LongMapExit:
         self.y = 0
 
     def from_data(self, data):
-        assert(len(data) == self.DATA_SIZE)
+        assert (len(data) == self.DATA_SIZE)
 
         self.x = data[0]
         self.y = data[1]

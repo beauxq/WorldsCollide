@@ -30,7 +30,7 @@ class FlagsRewardItems(scroll_area.ScrollArea):
             current_line = ''
             # Populate each column on the line
             for col in range(0, len(COLUMN_WIDTHS)):
-                if(item_idx + col < len(item_ids)):
+                if (item_idx + col < len(item_ids)):
                     a_item_id = item_ids[item_idx + col]
                     icon = FlagsRewardItems._get_item_icon(a_item_id)
                     item_str = f"{icon}{id_name[a_item_id]}"

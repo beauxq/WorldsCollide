@@ -54,5 +54,5 @@ class NPCs:
             npc_data_start = self.DATA_START_ADDR + npc_index * NPC.DATA_SIZE
             # Assert that the address being written doesn't go beyond the expected end point
             # If it does, then the npc_index is too high -- you've added more NPCs than the ROM can handle
-            assert(npc_data_start < self.DATA_END_ADDR)
+            assert (npc_data_start < self.DATA_END_ADDR)
             self.rom.set_bytes(npc_data_start, npc_data)

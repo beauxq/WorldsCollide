@@ -92,7 +92,7 @@ class Shops:
             while not possible_items:
                 # no more items left in chosen tier, pick a different one
                 weights[item_type][random_tier] = 0
-                assert(any(weights[item_type])) # ensure tier left which has not been tried
+                assert (any(weights[item_type])) # ensure tier left which has not been tried
 
                 random_tier = weighted_random(weights[item_type])
                 possible_items = [item_id for item_id in tiers[item_type][random_tier] if item_id not in exclude]

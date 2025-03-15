@@ -88,7 +88,7 @@ class Objective:
                         # e.g. character x, remove x from possible values but other characters still possible
                         possible_random_values[arg_condition.name].remove(arg_condition.args[0])
                 except ValueError:
-                    pass# user chose the same type/value twice, ignore
+                    pass # user chose the same type/value twice, ignore
                 self.conditions[index] = conditions[arg_condition.name](*arg_condition.args)
 
         # next, initialize conditions with 'Random' argument chosen

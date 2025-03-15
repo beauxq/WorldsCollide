@@ -29,7 +29,7 @@ class FlagsRemoveLearnableSpells(scroll_area.ScrollArea):
             current_line = ''
             # Populate each column on the line
             for col in range(0, len(COLUMN_WIDTHS)):
-                if(spell_idx + col < len(spell_ids)):
+                if (spell_idx + col < len(spell_ids)):
                     a_spell_id = spell_ids[spell_idx + col]
                     icon = FlagsRemoveLearnableSpells._get_spell_icon(a_spell_id)
                     spell_str = f"{icon}{id_spell[a_spell_id]}"

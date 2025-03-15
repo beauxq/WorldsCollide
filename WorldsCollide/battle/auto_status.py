@@ -97,7 +97,7 @@ class _AutoStatus:
         ]
 
         # if the opcode is Y, that means we're accessing the SRAM offset, for which Y is multiples of 37
-        if(opcode == asm.ABS_Y):
+        if (opcode == asm.ABS_Y):
             src += [
                 asm.PHY(), # push current Y
                 asm.XY16(), # 16-bit X & Y
@@ -108,7 +108,7 @@ class _AutoStatus:
             asm.ORA(status_bit, asm.IMM8),
             asm.STA(status_address, opcode),
         ]
-        if(opcode == asm.ABS_Y):
+        if (opcode == asm.ABS_Y):
             src += [
                 asm.XY8(), # revert back to 8-bit X&Y
                 asm.PLY(), # pull original Y

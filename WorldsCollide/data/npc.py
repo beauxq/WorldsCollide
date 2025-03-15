@@ -33,7 +33,7 @@ class NPC:
         self.unknown2 = 0
 
     def from_data(self, data):
-        assert(len(data) == self.DATA_SIZE)
+        assert (len(data) == self.DATA_SIZE)
 
         event_addr = data[0] + (data[1] << 8) + ((data[2] & 0x03) << 16)
         self.event_address = event_addr

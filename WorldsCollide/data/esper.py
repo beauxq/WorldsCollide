@@ -96,7 +96,7 @@ class Esper(AbilityData):
         return [spell.id for spell in self.spells if spell.id != self.NO_SPELL]
 
     def replace_spell(self, old_spell, new_spell):
-        if(old_spell == self.NO_SPELL):
+        if (old_spell == self.NO_SPELL):
             return
 
         # get the old learn rate to reuse it

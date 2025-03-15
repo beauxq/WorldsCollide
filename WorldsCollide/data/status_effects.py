@@ -5,7 +5,7 @@ class StatusEffects:
     GROUP_D = ["rage", "frozen", "reraise", "morph", "chant", "hide", "interceptor", "float"]
 
     def __init__(self, groups, data):
-        assert(len(groups) == len(data))
+        assert (len(groups) == len(data))
         self.groups = groups
 
         for group, byte in zip(self.groups, data, strict=False):

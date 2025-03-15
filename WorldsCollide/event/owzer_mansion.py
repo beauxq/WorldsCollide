@@ -16,7 +16,7 @@ class OwzerMansion(Event):
 
         self.dialog_mod()
 
-        if(self.args.flashes_remove_most):
+        if (self.args.flashes_remove_most):
             self.flash_mod()
 
         if self.args.character_gating:

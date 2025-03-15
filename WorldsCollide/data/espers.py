@@ -149,13 +149,13 @@ class Espers:
     def remove_flagged_learnables(self):
         for a_spell_id in self.args.remove_learnable_spell_ids:
             for esper in self.espers:
-                if(esper.has_spell(a_spell_id)):
+                if (esper.has_spell(a_spell_id)):
                     esper.remove_spell(a_spell_id)
 
     def replace_flagged_learnables(self):
         for esper in self.espers:
             for a_spell_id in self.args.remove_learnable_spell_ids:
-                if(esper.has_spell(a_spell_id)):
+                if (esper.has_spell(a_spell_id)):
                     # Also exclude spells this Esper already knows, to avoid duplicates
                     exclude_spell_ids = self.args.remove_learnable_spell_ids.copy()
                     exclude_spell_ids.extend(esper.get_spell_ids())
