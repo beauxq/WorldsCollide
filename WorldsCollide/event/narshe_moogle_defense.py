@@ -552,7 +552,3 @@ class NarsheMoogleDefense(Event):
             self.item_mod(self.reward.id)
 
         self.log_reward(self.reward)
-
-
-
-

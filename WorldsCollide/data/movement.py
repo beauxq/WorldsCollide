@@ -31,4 +31,3 @@ name_key = {
 key_name = {v: k for k, v in name_key.items()}
 
 ALL = [ORIGINAL, AUTO_SPRINT, B_DASH, SPRINT_SHOES_B_DASH]
-

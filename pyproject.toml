@@ -32,6 +32,7 @@ force-sort-within-sections = true
 [tool.ruff]
 line-length = 120
 indent-width = 4
+preview = true
 
 [tool.ruff.lint]
 select = ["ALL"]
@@ -66,8 +67,14 @@ ignore = [
     "F401",  # unused import (from x import _a as a)
     "F811",  # redefined import (not confident about safety of fix)
     "B004",  # hasattr(x, "__call__")  (How is this a safe fix?)
+
+    # auto fix looked reliable
+    "E251",  # f(x = 3)
+    "E302", "E305",  # 2 blank lines in module scope
     # "E201",  # [ 2 ]
-    # "E251",  # f(x = 3)
+    # "E111",  # indent 4
+    "E261",  # 2 spaces before line comment #
+    "E231",  # whitespace after , :
 ]
 
 [tool.ruff.lint.per-file-ignores]

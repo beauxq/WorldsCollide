@@ -211,4 +211,3 @@ class Esper(AbilityData):
             if self.spells[x].id != self.NO_SPELL:
                 print(f"  {self.spells[x].id} {spells.get_name(self.spells[x].id)} x{self.spells[x].rate}, ")
         print(f"{self.get_bonus_string()}")
-

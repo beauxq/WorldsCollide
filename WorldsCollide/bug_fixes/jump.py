@@ -27,4 +27,3 @@ class Jump:
         space.write(
             asm.JSR(reset_counter, asm.ABS),
         )
-

@@ -235,4 +235,3 @@ class YNPCEffect(_Instruction):
 
     def __str__(self):
         return super().__str__(self.args[0])
-

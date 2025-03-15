@@ -99,4 +99,3 @@ class _MagitekUpgrade:
         return src
 
 magitek_upgrade = _MagitekUpgrade()
-

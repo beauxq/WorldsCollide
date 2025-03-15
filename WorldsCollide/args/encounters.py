@@ -95,4 +95,3 @@ def log(args):
         log.append(format_option(*entry))
 
     return log
-

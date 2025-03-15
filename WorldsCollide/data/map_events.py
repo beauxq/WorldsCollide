@@ -266,4 +266,3 @@ class LongMapEvents:
 
         if self.verbose:
             print('Added long event program at: ' + str(hex(space.start_address)) + ' -- ', str(hex(space.end_address)) )
-

@@ -199,4 +199,3 @@ class Capture:
             asm.JSR(dice_toss_animation_addr, asm.ABS), #Jump to our new routine
             asm.RTS(),                                  #Done
         )
-

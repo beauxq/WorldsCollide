@@ -49,4 +49,3 @@ class ObjectiveMetadataWriter:
 
     def __getitem__(self, index):
         return self.objectives[index]
-

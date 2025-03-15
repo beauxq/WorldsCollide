@@ -13,4 +13,3 @@ class Condition(ObjectiveCondition):
 
     def __str__(self):
         return super().__str__(self.dragon)
-

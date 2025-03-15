@@ -337,4 +337,3 @@ BATTLE_ANIMATION_FLASHES = {
         0x10785C, # B5 F1 - decrease background color addition by 1 (white)
         ],
 }
-
