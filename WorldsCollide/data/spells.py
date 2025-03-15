@@ -97,7 +97,7 @@ class Spells:
             spell.mp = max(min(value, 254), 0)
 
     def alternate_healing_text_color(self):
-        #Thanks to Osteoclave for identifying this change
+        # Thanks to Osteoclave for identifying this change
         space = Reserve(0x02c693, 0x02c694, "alternate healing color")
         space.write(0x44, 0x7f) # default: F6 4B
 

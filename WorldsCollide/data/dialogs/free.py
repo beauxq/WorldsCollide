@@ -56,7 +56,7 @@ multi_line_battle_dialogs = [
     54, # <EDGAR>:<line>Seems a little too perky……<wait for key><line>Ha…!<wait for key><end>
     55, # <TERRA>:<line><SABIN>!!!!!<wait for key><end>
     56, # <EDGAR>:<line><SABIN>!!!!<wait for key><line>Take care of yourself!<wait for key><end>
-    #57, # <GAU>:<line>Uwaou!! <wait for key>Waooo……ooo!<wait for key><line>You……strangers…! <wait for key>Go ...
+    # 57, # <GAU>:<line>Uwaou!! <wait for key>Waooo……ooo!<wait for key><line>You……strangers…! <wait for key>Go ...
     58, # <SABIN>:<line>What the……<wait for key><end>
     59, # <CYAN>:<line>I'm <CYAN> and he's <SABIN>.<wait for key><end>
     60, # <GAU>:<line>You <SABIN>…… you <CYAN>,<wait for key><line>me want more food!!<wait for key><end>
@@ -243,16 +243,16 @@ multi_line_battle_dialogs = [
     241, # ULTROS:<line>………<wait for key><line>………<wait for key><line>………<wait for key><line>……… ...
     242, # <RELM>:<line>Hee, hee, hee…<wait for key><line>You're gonna love it!<wait for key><end>
     243, # <STRAGO>:<line>At any rate, come here!<wait for key><end>
-    #244, # WREXSOUL:<line>I'm gonna possess your body!<wait for key><line>I'll only appear in this form ...
-    #245, # KEFKA:<line>Life… <wait 60 frames>Dreams… <wait 60 frames>Hope…<wait 60 frames> ...
-    #246, # Where'd they come from?<wait 60 frames><line>And where are they headed…?<wait 60 frames> ...
-    #247, # These things…<wait 60 frames><wait 60 frames><line>I am going to destroy!!<wait 60 frames><end>
+    # 244, # WREXSOUL:<line>I'm gonna possess your body!<wait for key><line>I'll only appear in this form ...
+    # 245, # KEFKA:<line>Life… <wait 60 frames>Dreams… <wait 60 frames>Hope…<wait 60 frames> ...
+    # 246, # Where'd they come from?<wait 60 frames><line>And where are they headed…?<wait 60 frames> ...
+    # 247, # These things…<wait 60 frames><wait 60 frames><line>I am going to destroy!!<wait 60 frames><end>
     248, # <GAU>:<line>And you……afraid of me!<wait for key><end>
     249, # <GAU>:<line>Wah, ha!<wait for key><line>That fun! You strong!<wait for key><end>
     250, # <end>
     251, # <SHADOW>:<line>My job here's over.<wait for key><line>I've earned my fee!<wait for key><end>
     252, # <SHADOW>:<line>Ta-ta……!<wait for key><end>
     253, # <end>
-    #254, # Uwaoo~!!<wait for key><end>
-    #255, # <end>
+    # 254, # Uwaoo~!!<wait for key><end>
+    # 255, # <end>
 ]

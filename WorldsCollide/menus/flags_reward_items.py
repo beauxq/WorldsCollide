@@ -59,7 +59,7 @@ class FlagsRewardItems(scroll_area.ScrollArea):
         elif item_id in RODS:
             # for some reason, the Rod icon causes submenus to not work
             icon = ''
-            #icon = chr(text_value['<rod icon'])
+            # icon = chr(text_value['<rod icon'])
         elif item_id in BRUSHES:
             icon = chr(text_value['<brush icon>'])
         elif item_id in STARS:

@@ -267,7 +267,7 @@ tiers = [
         name_id["Illumina"],
         name_id["Ragnarok"],
         name_id["Fixed Dice"],
-        #name_id["Cursed Shld"],
+        # name_id["Cursed Shld"],
         name_id["Paladin Shld"],
         name_id["Cat Hood"],
         name_id["Minerva"],
@@ -281,7 +281,7 @@ tiers = [
 weights = [0.10, 0.12, 0.03, 0.015, 0.005, 0.09, 0.25, 0.30, 0.085, 0.005]
 
 tier_s_distribution = [
-    #name_id["Cursed Shld"],
+    # name_id["Cursed Shld"],
     (name_id["Marvel Shoes"],   0.15),
     (name_id["Cat Hood"],       0.12),
     (name_id["Snow Muffler"],   0.12),

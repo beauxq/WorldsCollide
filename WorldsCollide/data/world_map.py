@@ -10,7 +10,7 @@ class WorldMap:
 
         # Increases the sprite priority for the minimap sprites
         # So it gets drawn on top of the overworld instead of being translucent
-        #ee4146=1b
+        # ee4146=1b
         space = Reserve(0x2e4146, 0x2e4146, "minimap sprite priority")
         space.write(0x1b) # default: 0x0b
 

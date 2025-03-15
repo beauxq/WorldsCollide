@@ -158,13 +158,13 @@ class NaturalMagic:
     def remove_excluded(self):
         for a_spell_id in self.args.remove_learnable_spell_ids:
 
-            #linear search through Terra's spells
+            # linear search through Terra's spells
             for terra_spell in self.terra_spells:
                 if terra_spell.spell == a_spell_id:
                     terra_spell.spell = 0xFF
                     terra_spell.level = 0
 
-            #linear search through Celes' spells
+            # linear search through Celes' spells
             for celes_spell in self.celes_spells:
                 if celes_spell.spell == a_spell_id:
                     celes_spell.spell = 0xFF

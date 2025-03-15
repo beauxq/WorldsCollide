@@ -61,7 +61,7 @@ class NarsheMoogleDefense(Event):
                 # or, is the character currently in a party (aka, they're a moogle)?
                 field.LoadCreatedCharacters(),
                 field.BranchIfEventBitSet(event_bit.multipurpose(character_idx), f"SKIP_{character_idx}"),
-                #if not, make it a moogle
+                # if not, make it a moogle
                 # Make character look like a moogle
                 field.SetSprite(character_idx, self.characters.get_sprite(self.characters.MOG)),
                 field.SetPalette(character_idx, self.characters.get_palette(self.characters.MOG)),
@@ -313,7 +313,7 @@ class NarsheMoogleDefense(Event):
         )
 
     def event_start_mod(self):
-        #Replace Terra commands in script with new NPC for which we can manipulate the sprite/palette to match the reward
+        # Replace Terra commands in script with new NPC for which we can manipulate the sprite/palette to match the reward
         terra_action_queues = [0xCA2EB, 0xCA2F3, 0xCA31F, 0xCA32D, 0xCA34F, 0xCA362, 0xCA371, 0xCA38B, 0xCA390, 0xCA397, 0xCA3BC]
         for address in terra_action_queues:
             space = Reserve(address, address, "terra chased action queues")
@@ -447,7 +447,7 @@ class NarsheMoogleDefense(Event):
         ]
         for character_idx in range(self.characters.CHARACTER_COUNT):
             src += [
-                #only restore if character has not been recruited (meaning they were moogled)
+                # only restore if character has not been recruited (meaning they were moogled)
                 field.BranchIfEventBitSet(event_bit.multipurpose(character_idx), f"SKIP_{character_idx}"),
                 field.RemoveStatusEffects(character_idx, field.Status.FLOAT | field.Status.DARKNESS | field.Status.ZOMBIE | field.Status.POISON | field.Status.VANISH | field.Status.IMP | field.Status.PETRIFY | field.Status.DEATH),
                 field.RemoveDeath(character_idx), # added due to permadeath situations to make sure the corresponding party member is alive
@@ -507,7 +507,7 @@ class NarsheMoogleDefense(Event):
 
     def esper_item_mod(self, esper_item_instructions):
         if self.args.character_gating:
-            #Using thematic Moogle sprite for Esper/Items
+            # Using thematic Moogle sprite for Esper/Items
             esper_item_sprite = self.characters.get_sprite(self.characters.MOG)
         else:
             # Open world -- use standard sprites

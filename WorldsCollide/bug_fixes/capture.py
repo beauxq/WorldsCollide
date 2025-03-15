@@ -47,7 +47,7 @@ class Capture:
             asm.JSR(c1_steal_print_addr, asm.ABS),
         )
 
-        #These two subroutines reset the stolen item index
+        # These two subroutines reset the stolen item index
         src = [
             asm.JSR(0x1429, asm.ABS),                   # displaced instruction
             asm.STZ(STOLEN_ITEM_ARRAY_INDEX, asm.ABS),  # zero the index
@@ -129,7 +129,7 @@ class Capture:
         space = Write(Bank.C2, src, "Capture Fix: null dog block")
         null_dog_block_addr = space.start_address
 
-        #Call Square's per-target special effect function as normal.  Then call it again with
+        # Call Square's per-target special effect function as normal.  Then call it again with
         # a secondary variable so the Capture command can steal, unless the first function call
         # already handled stealing.
         src = [

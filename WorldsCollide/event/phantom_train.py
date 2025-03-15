@@ -361,8 +361,8 @@ class PhantomTrain(Event):
 
         # when eating a second time it looks like sabin/cyan/shadow events can trigger
         # skip them
-        #space = Reserve(0xbb088, 0xbb09a, "phantom train restaurant skip other scenes")
-        #space.clear(field.NOP())
+        # space = Reserve(0xbb088, 0xbb09a, "phantom train restaurant skip other scenes")
+        # space.clear(field.NOP())
 
     def ziegfried_mod(self):
         space = Reserve(0xbb809, 0xbb862, "phantom train before ziegfried appears", field.NOP())

@@ -64,7 +64,7 @@ class SetEquipmentAndCommands(_Instruction):
 
         # subset of SetProperties vanilla command (0x40), which only sets equipment, commands, and character ID
         src = [
-            #C0/A07C:	20AD9D  	JSR $9DAD
+            # C0/A07C:	20AD9D  	JSR $9DAD
             asm.JSR(character_data_offset, asm.ABS),
             # C0/A07F:	A916    	LDA #$16
             asm.LDA(0x16, asm.IMM8),

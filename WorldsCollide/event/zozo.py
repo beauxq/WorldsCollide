@@ -163,13 +163,13 @@ class Zozo(Event):
         from collections import namedtuple
 
         # original clues:
-        #1046 'It's now 2:00.<end>'
-        #1047 'Time?<line>It's 4:00.<end>'
-        #1048 'You can trust me!<line>It's 8:00.<end>'
-        #1049 '10:00!<line>Time to go home!<end>'
-        #1050 'It's already 12:00.<end>'
-        #1057 'Clock's second hand's pointin' at 30.<end>'
-        #1061 'The second hand of my watch is pointing at four.<end>'
+        # 1046 'It's now 2:00.<end>'
+        # 1047 'Time?<line>It's 4:00.<end>'
+        # 1048 'You can trust me!<line>It's 8:00.<end>'
+        # 1049 '10:00!<line>Time to go home!<end>'
+        # 1050 'It's already 12:00.<end>'
+        # 1057 'Clock's second hand's pointin' at 30.<end>'
+        # 1061 'The second hand of my watch is pointing at four.<end>'
 
         number_string = {
             2 : "two",

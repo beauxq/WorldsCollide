@@ -212,7 +212,7 @@ class Chests:
         possible_chests = [chest for chest in self.chests if (chest.type in randomizable_types) and
                            chest not in ze_crush_room_chests]
         num_monster_chests = int(len(possible_chests) * ((enemy_percent) / 100.0))
-        #gets the specific chests that will be randomized
+        # gets the specific chests that will be randomized
         random_chests = random.sample(possible_chests, num_monster_chests)
 
         for chest in random_chests:
