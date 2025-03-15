@@ -1,12 +1,19 @@
 results = {}
-def __init__():
-    import os, importlib
-    for module_file in os.listdir(os.path.dirname(__file__)):
-        if module_file[0] == '_' or module_file[-3:] != ".py":
+
+
+def _init() -> None:
+    import os
+    import pkgutil
+    import importlib
+
+    for module_file in sorted(pkgutil.iter_modules([os.path.dirname(__file__)])):
+        if module_file.name.startswith("_"):
             continue
 
-        module_name = module_file[:-3]
-        module = importlib.import_module("WorldsCollide.objectives.results." + module_name)
+        module_name = module_file.name
+        module = importlib.import_module("." + module_name, __name__)
 
         results[module.Result.NAME] = module.Result
-__init__()
+
+
+_init()

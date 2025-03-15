@@ -61,7 +61,7 @@ def compare_hash(flags: list[str], expected_hash: str) -> None:
 
 params = [
     # (["-s", "1"], "0"),  # assert(item_possible) fails
-    (["-s", "2"], "5aa45c600c1b1a8dd9a51860cd387c3d89ecbac6f3ce622c08bfe4ed97a9beff"),
+    (["-s", "2"], "b06e39606144921d2f683e0db467698b3b9cc2f768c292c5111a5a26365c1a1f"),
     ([
         "-s", "12",
         "-fc",
@@ -89,18 +89,18 @@ params = [
         "-cspp", "2.1.1.4.0.0.0.3.3.4.5.3.3.5.1.0.6.1.0.3",
         "-frw", "-wmhc", "-ahtc",
         "-ymain", "-etr",
-    ], "1d9b3e4e2c7ce59877874e7f547e230923654b44e99d24890ce3919a48100503"),
+    ], "e3f097222ff38da360e60aac2187014487d427439364f27f9a54dc82762d8589"),
     ([
-        "-s", "15",
+        "-s", "17",
         "-cg",
         "-ir", "premium",
         "-ietr",
         "-com", "98989898989898989898989898",
         "-esrt", "-elr", "-stesp", "2", "4", "-ebr", "80", "-emprv", "10", "20", "-eer", "4", "6",
         "-yrandom", "-etn",
-    ], "d569dea6498ce47315bf925765bf8b63fa307e8271b1bb56a406d0cfd71d515e"),
+    ], "1f7d89c13c8ded9e190404814818524c390a7d462e86bafa60d69ce10f2982c6"),
     ([  # ultros league
-        "-s", "21",
+        "-s", "19",
         "-cg",
         "-oa", "2.2.2.2.6.6.4.9.9", "-ob", "3.1.1.2.9.9.4.12.12.10.22.22",
         "-oc", "30.8.8.1.1.11.8", "-od", "59.1.1.11.31",
@@ -124,7 +124,7 @@ params = [
         "-chrm", "0", "0", "-cms", "-frw", "-wmhc", "-cor", "100", "-crr", "100", "-crvr", "100", "120", "-crm",
         "-ari", "-anca", "-adeh", "-ame", "1", "-nmc", "-noshoes", "-u254", "-nfps",
         "-fs", "-fe", "-fvd", "-fr", "-fj", "-fbs", "-fedc", "-fc", "-ond", "-rr", "-etn",
-    ], "8b4af936f7319aba5db03be7ed71ea22f5d21c84fb28306a78e77d32c1099a96"),
+    ], "3f514b916c4b269f0d8ce5363ae7b679518a80dae885a98b2975af00af075178"),
 ]
 
 
