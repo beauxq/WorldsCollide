@@ -79,6 +79,7 @@ ignore = [
     "E221",  # 1 space before operator
     "E262",  # 1 space after #
     "E261",  # 2 spaces before line comment #
+    "E271",  # multiple spaces after keyword (only because None is a keyword and used in a dict literal)
     "E231",  # whitespace after , :
     "E201",  # space after bracket
 ]

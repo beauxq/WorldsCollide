@@ -69,7 +69,7 @@ class Objective:
         for type_name in possible_random_types:
             _type = name_type[type_name]
             if not _type.min_max:
-                possible_random_values[type_name] = [value for value  in _type.value_range if value != 'r']
+                possible_random_values[type_name] = [value for value in _type.value_range if value != 'r']
 
         if not args.blitz_command_possible:
             possible_random_values["Quest"].remove(Objective.suplex_train_quest_value)

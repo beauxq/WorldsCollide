@@ -314,12 +314,12 @@ class PreGameTrack:
                 asm.JSL(START_ADDRESS_SNES + self.progress.initialize),
             ]
         if self.flags.initialize is not None:
-            src+= [
+            src += [
                 asm.JSL(START_ADDRESS_SNES + self.flags.initialize),
             ]
         for submenu_idx in self.flags.submenus.keys():
             if self.flags.submenus[submenu_idx].initialize is not None:
-                src+= [
+                src += [
                     asm.JSL(START_ADDRESS_SNES + self.flags.submenus[submenu_idx].initialize),
                 ]
 

@@ -69,7 +69,7 @@ class BGR15:
         self.blue  = new_rgb[2]
 
     def __repr__(self):
-        return f"0x{hex(self.bgr15)[2:].zfill(4)}: {self!s}"
+        return f"0x{f"{self.bgr15:x}".zfill(4)}: {self!s}"
 
     def __str__(self):
         return f"r: {self.red:<2}, g: {self.green:<2}, b: {self.blue:<2}"
