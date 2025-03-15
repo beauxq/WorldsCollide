@@ -4,6 +4,7 @@ from ...data.bosses import name_formation, name_pack
 
 class Condition(ObjectiveCondition):
     NAME = "Boss"
+
     def __init__(self, boss):
         self.boss = boss
         self.boss_name = boss_bit[self.boss].name

@@ -26,5 +26,6 @@ class Battle(battle_result.Result):
 
 class Result(ObjectiveResult):
     NAME = "Max Morph Duration"
+
     def __init__(self):
         super().__init__(Field, Battle)

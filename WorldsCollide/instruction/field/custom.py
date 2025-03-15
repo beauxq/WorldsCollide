@@ -369,6 +369,7 @@ class LongCall(_Instruction):
     # input: 24 bit address of the function to call and an optional argument to call it with
 
     ARG_ADDRESS = 0xee
+
     def __init__(self, function_address, arg = 0):
         src = [
             asm.TDC(),

@@ -16,6 +16,7 @@ class Battle(battle_result.Result):
 
 class Result(ObjectiveResult):
     NAME = "High Tier Helm"
+
     def __init__(self):
         import random
         from ...data.items import Items

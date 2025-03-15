@@ -15,5 +15,6 @@ class Battle(battle_result.Result):
 
 class Result(ObjectiveResult):
     NAME = "Dried Meat"
+
     def __init__(self):
         super().__init__(Field, Battle)

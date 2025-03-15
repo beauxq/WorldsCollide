@@ -19,6 +19,7 @@ class Battle(battle_result.Result):
 
 class Result(ObjectiveResult):
     NAME = "Dragoon"
+
     def __init__(self):
         import random
         lances = ["Partisan", "Pearl Lance", "Aura Lance"]

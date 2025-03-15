@@ -50,5 +50,6 @@ class Battle(battle_result.Result):
 
 class Result(ObjectiveResult):
     NAME = "Full Heal"
+
     def __init__(self):
         super().__init__(Field, Battle)

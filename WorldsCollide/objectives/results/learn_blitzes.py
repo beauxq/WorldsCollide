@@ -91,6 +91,7 @@ class Battle(battle_result.Result):
 
 class Result(ObjectiveResult):
     NAME = "Learn Blitzes"
+
     def __init__(self, min_count, max_count):
         self.count = random.randint(min_count, max_count)
         super().__init__(Field, Battle, self.count)

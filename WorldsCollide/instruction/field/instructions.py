@@ -131,6 +131,7 @@ def AddItem(item, sound_effect = True):
 
 class AddGP(_Instruction):
     MAX = 2 ** 16 - 1 # 2 bytes max value
+
     def __init__(self, amount):
         self.amount = amount
         super().__init__(0x84, amount.to_bytes(2, "little"))
@@ -141,6 +142,7 @@ class AddGP(_Instruction):
 class RemoveGP(_Instruction):
     # NOTE: if not enough gp, event bit 0x1be is set and no gp is removed
     MAX = 2 ** 16 - 1 # 2 bytes max value
+
     def __init__(self, amount):
         self.amount = amount
         super().__init__(0x85, amount.to_bytes(2, "little"))

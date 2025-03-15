@@ -46,6 +46,7 @@ class Battle(battle_result.Result):
 
 class Result(ObjectiveResult):
     NAME = "MagPwr Random"
+
     def __init__(self, min_count, max_count):
         from ...constants.entities import id_character, CHARACTER_COUNT
         character = random.randint(0, CHARACTER_COUNT - 1)

@@ -3,6 +3,7 @@ from ...constants.objectives.condition_bits import quest_bit
 
 class Condition(ObjectiveCondition):
     NAME = "Quest"
+
     def __init__(self, quest):
         self.quest = quest
         super().__init__(ConditionType.EventBit, quest_bit[self.quest].bit)

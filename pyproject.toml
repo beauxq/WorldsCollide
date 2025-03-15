@@ -66,6 +66,7 @@ ignore = [
 
     "F401",  # unused import (from x import _a as a)
     "F811",  # redefined import (not confident about safety of fix)
+    "RUF055",  # regex operation to str (not confident on safety of fix (because I don't know regex))
     "B004",  # hasattr(x, "__call__")  (How is this a safe fix?)
 
     # auto fix looked reliable
