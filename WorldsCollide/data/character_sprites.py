@@ -58,28 +58,28 @@ class CharacterSprites:
             character = SPRITE_CHARACTERS[sprite_index]
 
             if self.args.sprite_ids[sprite_index] != character:
-                with open(sprite_file, "rb") as sfile:
-                    sprite_data = list(sfile.read())
+                from ..graphics.sprites.sprites import get_sprite_data
+                sprite_data = list(get_sprite_data(sprite_file))
 
-                    if len(sprite_data) < len(self.sprites[character].data):
-                        # if sprite file does not contain every tile (e.g. missing poses) of sprite it is replacing, pad it with zeros
-                        # this will cause the character to go invisible for these poses in-game but does not seem to break anything
-                        padding = [0] * (len(self.sprites[character].data) - len(sprite_data))
-                        sprite_data += padding
-                    elif len(sprite_data) > len(self.sprites[character].data):
-                        # sprite has more tile information than the original requires, extract only the needed tiles
-                        sprite_data = sprite_data[ : len(self.sprites[character].data)]
+                if len(sprite_data) < len(self.sprites[character].data):
+                    # if sprite file does not contain every tile (e.g. missing poses) of sprite it is replacing, pad it with zeros
+                    # this will cause the character to go invisible for these poses in-game but does not seem to break anything
+                    padding = [0] * (len(self.sprites[character].data) - len(sprite_data))
+                    sprite_data += padding
+                elif len(sprite_data) > len(self.sprites[character].data):
+                    # sprite has more tile information than the original requires, extract only the needed tiles
+                    sprite_data = sprite_data[: len(self.sprites[character].data)]
 
-                    self.sprites[character].data = sprite_data
+                self.sprites[character].data = sprite_data
 
     def mod_character_portraits(self):
         for index, portrait_sprite_file in enumerate(self.args.portrait_sprite_files):
             if self.args.portrait_ids[index] != DEFAULT_CHARACTER_PORTRAITS[index]:
                 character = PORTRAIT_CHARACTERS[index]
 
-                with open(portrait_sprite_file, "rb") as pfile:
-                    portrait_data = list(pfile.read())
-                    self.portrait_sprites[character].data = portrait_data
+                from ..graphics.portraits.portraits import get_portrait_data
+                portrait_data = list(get_portrait_data(portrait_sprite_file))
+                self.portrait_sprites[character].data = portrait_data
 
     def mod(self):
         if self.args.character_sprites:

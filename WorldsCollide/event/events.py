@@ -21,16 +21,20 @@ class Events():
 
     def mod(self):
         # generate list of events from files
-        import os, importlib, inspect
+        import importlib, inspect
         from ..event.event import Event
+        from pathlib import Path
+        import pkgutil
         events = []
         name_event = {}
-        for event_file in sorted(os.listdir(os.path.dirname(__file__))):
-            if event_file[-3:] != '.py' or event_file == 'events.py' or event_file == 'event.py':
+        prefix_end_index = __name__.rfind(".") + 1
+        module_prefix = __name__[:prefix_end_index]
+        for event_file in sorted(pkgutil.iter_modules([str(Path(__file__).parents[0])])):
+            if event_file.name == 'events' or event_file.name == 'event':
                 continue
 
-            module_name = event_file[:-3]
-            event_module = importlib.import_module('WorldsCollide.event.' + module_name)
+            module_name = event_file.name
+            event_module = importlib.import_module(module_prefix + module_name)
 
             for event_name, event_class in inspect.getmembers(event_module, inspect.isclass):
                 if event_name.lower() != module_name.replace('_', '').lower():

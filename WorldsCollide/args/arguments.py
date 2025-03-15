@@ -12,8 +12,10 @@ class Arguments:
             "coliseum", "auction_house", "challenges", "bug_fixes", "misc",
         ]
         self.group_modules = {}
+        prefix_end_index = __name__.rfind(".") + 1
+        module_prefix = __name__[:prefix_end_index]
         for group in self.groups:
-            self.group_modules[group] = importlib.import_module("WorldsCollide.args." + group)
+            self.group_modules[group] = importlib.import_module(module_prefix + group)
 
         from argparse import ArgumentParser
         self.parser = ArgumentParser()

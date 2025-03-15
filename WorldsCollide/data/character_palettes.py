@@ -74,11 +74,11 @@ class CharacterPalettes:
 
         for palette_index, palette_file in enumerate(self.args.palette_files):
             if modified[palette_index]:
-                with open(palette_file, "rb") as pfile:
-                    palette_data = list(pfile.read())
+                from ..graphics.palettes.palettes import get_palette_data
+                palette_data = list(get_palette_data(palette_file))
 
-                    self.field_palettes[palette_index].data = palette_data
-                    self.battle_palettes[palette_index].data = palette_data
+                self.field_palettes[palette_index].data = palette_data
+                self.battle_palettes[palette_index].data = palette_data
 
     def mod_character_palettes(self):
         from ..data.character_sprites import SPRITE_CHARACTERS
@@ -101,10 +101,9 @@ class CharacterPalettes:
         for index, portrait_palette_file in enumerate(self.args.portrait_palette_files):
             if self.args.portrait_ids[index] != DEFAULT_CHARACTER_PORTRAITS[index]:
                 character = PORTRAIT_CHARACTERS[index]
-
-                with open(portrait_palette_file, "rb") as pfile:
-                    palette_data = list(pfile.read())
-                    self.portrait_palettes[character].data = palette_data
+                from ..graphics.portraits.portraits import get_portrait_data
+                palette_data = list(get_portrait_data(portrait_palette_file))
+                self.portrait_palettes[character].data = palette_data
 
     def mod(self):
         if self.args.character_palettes or self.args.character_sprite_palettes:
