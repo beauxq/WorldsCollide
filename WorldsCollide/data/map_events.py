@@ -265,4 +265,4 @@ class LongMapEvents:
         pointspace = Reserve(self.POINTER_START_ADDR_LONG, self.DATA_START_ADDR_LONG, 'Long Event Pointers', 0x0)
 
         if self.verbose:
-            print('Added long event program at: ' + str(hex(space.start_address)) + ' -- ', str(hex(space.end_address)) )
+            print('Added long event program at: ' + str(hex(space.start_address)) + ' -- ', str(hex(space.end_address)))

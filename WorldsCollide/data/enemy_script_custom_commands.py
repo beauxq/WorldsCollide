@@ -85,7 +85,7 @@ class EnemyScriptCommands:
                     hp_percent = min(100, math.ceil(((hp_value * 128) / enemy.original_hp) * 100))
                     values[3] = hp_percent
 
-                    script.instructions[instruction_index] = ai_instr.If(*values[1 : ])
+                    script.instructions[instruction_index] = ai_instr.If(*values[1 :])
                     replacement_count += 1
             assert (replacement_count == check_count)
 

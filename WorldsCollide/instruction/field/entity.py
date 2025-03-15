@@ -6,11 +6,11 @@ CAMERA, PARTY0, PARTY1, PARTY2, PARTY3 = range(0x30, 0x35)
 class MoveDiagonal(_Instruction):
     def __init__(self, dir1, dist1, dir2, dist2):
         from ...data import direction as direction
-        dir_letter = { direction.UP : "u", direction.RIGHT : "r",
-                       direction.DOWN : "d", direction.LEFT : "l" }
+        dir_letter = {direction.UP : "u", direction.RIGHT : "r",
+                      direction.DOWN : "d", direction.LEFT : "l"}
         dest_opcode = {"ru11" : 0xa0, "rd11" : 0xa1, "ld11" : 0xa2, "lu11" : 0xa3,
                        "ru12" : 0xa4, "ru21" : 0xa5, "rd21" : 0xa6, "rd12" : 0xa7,
-                       "ld12" : 0xa8, "ld21" : 0xa9, "lu21" : 0xaa, "lu12" : 0xab }
+                       "ld12" : 0xa8, "ld21" : 0xa9, "lu21" : 0xaa, "lu12" : 0xab}
 
         if dir1 == direction.UP or dir1 == direction.DOWN:
             dir1, dir2 = dir2, dir1

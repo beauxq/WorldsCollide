@@ -11,7 +11,7 @@ START_ADDRESS_SNES = 0xc00000
 
 class Space:
     rom = None
-    heaps = { bank : Heap() for bank in Bank }
+    heaps = {bank : Heap() for bank in Bank}
     spaces = []
 
     def __init__(self, start_address, end_address, description, clear_value = None):
