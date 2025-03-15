@@ -1,6 +1,7 @@
 from collections.abc import Generator
-import pytest
 import sys
+
+import pytest
 
 
 @pytest.fixture(autouse=True)

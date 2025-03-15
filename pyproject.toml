@@ -1,0 +1,19 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "WorldsCollide/version.py"
+
+[project]
+name = "WorldsCollide"
+readme = "README.md"
+requires-python = ">=3.10"
+dynamic = [
+ "version",
+]
+
+[tool.pytest.ini_options]
+pythonpath = [
+    ".",
+]

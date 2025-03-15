@@ -8,7 +8,7 @@ import tempfile
 import pytest
 
 # if root directory is not in sys.path, add it
-root = str(Path(".").absolute())
+root = str(Path().absolute())
 if root not in sys.path:
     sys.path.append(root)
 print(f"{sys.path = }")
@@ -31,8 +31,7 @@ def find_original_rom() -> Path | None:
 
 def compare_hash(flags: list[str], expected_hash: str) -> None:
     original_rom = find_original_rom()
-    if not original_rom:
-        assert False, "no original rom found"
+    assert original_rom is not None, "no original rom found"
 
     result_hash = None
     with tempfile.TemporaryDirectory() as temp_dir:
@@ -69,9 +68,6 @@ params = [
         "-ir", "stronger", "-mca", "-stra", "-saw",
         "-scc", "-rec1", "7", "-rec2", "15", "-rec3", "16",
         "-sed", "-sfb", "-asr", "3.5",
-        # I can't find anything that doesn't fail item_possible with these options:
-        # "-ccrs",  # TODO: others in mutually exclusive group
-        # "-chrm", "4", "6", "-cms",
         "-oa", "2.3.3.2.12.12.4.24.24.6.8.8",
         "-ob", "3.1.1.2.9.9.4.12.12.10.21.21",
         "-oc", "30.8.8.1.1.11.8",
@@ -129,7 +125,7 @@ params = [
 ]
 
 
-@pytest.mark.parametrize("flags, expected_hash", params)
+@pytest.mark.parametrize(("flags", "expected_hash"), params)
 def test_refactor(flags: list[str], expected_hash: str) -> None:
     compare_hash(flags, expected_hash)
 
