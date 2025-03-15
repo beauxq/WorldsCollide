@@ -12,20 +12,20 @@ class _MagitekUpgrade:
         # We're moving them from C1/910C - C1/911B
         # Default: Match Regular character's default
         src = [
-            0x00, 0x01, #FIRE_BEAM, BOLT_BEAM,
-            0x02, 0xFF, #ICE_BEAM, <empty>,
-            0x04, 0xFF, #HEAL_FORCE, <empty>,
-            0xFF, 0xFF,  #<empty>, <empty>
+            0x00, 0x01, # FIRE_BEAM, BOLT_BEAM,
+            0x02, 0xFF, # ICE_BEAM, <empty>,
+            0x04, 0xFF, # HEAL_FORCE, <empty>,
+            0xFF, 0xFF, # <empty>, <empty>
         ]
         space = Write(Bank.F0, src, "magitek default table")
         magitek_default_table_addr = space.start_address
 
         # Upgraded: Match Terra's options
         src = [
-            0x00, 0x01, #FIRE_BEAM, BOLT_BEAM,
-            0x02, 0x03, #ICE_BEAM, BIO_BLAST,
-            0x04, 0x05, #HEAL_FORCE, CONFUSER,
-            0x06, 0x07,  #X_FER, TEKMISSILE
+            0x00, 0x01, # FIRE_BEAM, BOLT_BEAM,
+            0x02, 0x03, # ICE_BEAM, BIO_BLAST,
+            0x04, 0x05, # HEAL_FORCE, CONFUSER,
+            0x06, 0x07, # X_FER, TEKMISSILE
         ]
         space = Write(Bank.F0, src, "magitek upgraded table")
         magitek_upgraded_table_addr = space.start_address

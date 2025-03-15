@@ -40,7 +40,7 @@ class Objectives(scroll_area.ScrollArea):
                     ).space.start_address
                     self.lines.append(scroll_area.Line(condition_line, line_color_address))
 
-                if conditions_required != "": #exclude "All 1 of"
+                if conditions_required != "": # exclude "All 1 of"
                     completed_line = " -- " + chr(self.special_characters_start + oi) + " completed --"
                     self.lines.append(scroll_area.Line(completed_line, f0.set_user_text_color))
             self.lines.append(scroll_area.Line("", f0.set_user_text_color))

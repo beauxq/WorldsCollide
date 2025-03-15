@@ -99,7 +99,7 @@ class Spells:
     def alternate_healing_text_color(self):
         #Thanks to Osteoclave for identifying this change
         space = Reserve(0x02c693, 0x02c694, "alternate healing color")
-        space.write(0x44, 0x7f) #default: F6 4B
+        space.write(0x44, 0x7f) # default: F6 4B
 
     def mod(self):
         if self.args.magic_mp_shuffle:

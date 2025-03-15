@@ -23,15 +23,15 @@ class Capture:
 
         # Make the "Steal <item>" text go through the array
         src = [
-            asm.REP(0x20),              #Set A to 16 bits
-            asm.LDA(0x76, asm.DIR_16),  #Load first two bytes of current animation entry
-            asm.CMP(0x0302, asm.IMM16), #Check for animation opcode 2 (upper text box) and text message 3 (Steal <item>)
-            asm.SEP(0x20),              #Set A back to 8 bits
-            asm.BEQ("GET_STEAL_ITEM"),  #If the above condition was true, branch
-            asm.LDA(0x2f35, asm.ABS),   #Else, perform the displaced command (Note: it's unclear if this will ever get called)
-            asm.RTS(),                  #      and return
+            asm.REP(0x20),              # Set A to 16 bits
+            asm.LDA(0x76, asm.DIR_16),  # Load first two bytes of current animation entry
+            asm.CMP(0x0302, asm.IMM16), # Check for animation opcode 2 (upper text box) and text message 3 (Steal <item>)
+            asm.SEP(0x20),              # Set A back to 8 bits
+            asm.BEQ("GET_STEAL_ITEM"),  # If the above condition was true, branch
+            asm.LDA(0x2f35, asm.ABS),   # Else, perform the displaced command (Note: it's unclear if this will ever get called)
+            asm.RTS(),                  #       and return
             "GET_STEAL_ITEM",
-            asm.SEP(0x10),              #Set X to 8 bits
+            asm.SEP(0x10),              # Set X to 8 bits
             asm.LDX(STOLEN_ITEM_ARRAY_INDEX, asm.ABS),   # Load the index to the stolen item array
             asm.LDA(STOLEN_ITEM_ARRAY_START, asm.ABS_X), # Put the item from index into A
             asm.REP(0x10),              # Set X back to 16 bits
@@ -122,8 +122,8 @@ class Capture:
         #####
         # Null the dog block [displaced Square code], and clear my custom special effect byte.
         src = [
-            asm.STA(0x3a83, asm.ABS),                 #Null Dog block
-            asm.STZ(NEW_SPECIAL_EFFECT_VAR, asm.ABS), #Clear new special effect variable
+            asm.STA(0x3a83, asm.ABS),                 # Null Dog block
+            asm.STZ(NEW_SPECIAL_EFFECT_VAR, asm.ABS), # Clear new special effect variable
             asm.RTS(),
         ]
         space = Write(Bank.C2, src, "Capture Fix: null dog block")
@@ -155,19 +155,19 @@ class Capture:
         #####
         # Modify data in "Character Executes One Hit" function to use new subroutines and variable
         #####
-        space = Reserve(0x23185, 0x23187, "Capture Fix: call new null dog block subroutine")#, asm.NOP())
+        space = Reserve(0x23185, 0x23187, "Capture Fix: call new null dog block subroutine")# , asm.NOP())
         space.write(
-            asm.JSR(null_dog_block_addr, asm.ABS), #(Null Dog block, then clear my custom special effect
+            asm.JSR(null_dog_block_addr, asm.ABS), # (Null Dog block, then clear my custom special effect
                                                    # variable for Capture)
         )
         space = Reserve(0x231b0, 0x231b2, "Capture Fix: Save Special Effect to new byte")
         space.write(
-            asm.STA(NEW_SPECIAL_EFFECT_VAR, asm.ABS), #save special effect in our fancy new byte, so we won't
+            asm.STA(NEW_SPECIAL_EFFECT_VAR, asm.ABS), # save special effect in our fancy new byte, so we won't
                                                      # overwrite the weapon's special effect.
         )
         space = Reserve(0x2345c, 0x2345e, "Capture Fix: call new special effect function")
         space.write(
-            asm.JSR(new_special_effect_addr, asm.ABS), #Special effect code for target .. customized
+            asm.JSR(new_special_effect_addr, asm.ABS), # Special effect code for target .. customized
         )
 
         ####
@@ -194,6 +194,6 @@ class Capture:
 
         space = Reserve(0x241d9, 0x241e5, "Capture Fix: replace dice toss animation", asm.NOP())
         space.write(
-            asm.JSR(dice_toss_animation_addr, asm.ABS), #Jump to our new routine
-            asm.RTS(),                                  #Done
+            asm.JSR(dice_toss_animation_addr, asm.ABS), # Jump to our new routine
+            asm.RTS(),                                  # Done
         )

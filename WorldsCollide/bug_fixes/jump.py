@@ -23,7 +23,7 @@ class Jump:
         )
         reset_counter = space.start_address
 
-        space = Reserve(0x23515, 0x23517, "call jump super ball launcher bug fix")#, asm.NOP())
+        space = Reserve(0x23515, 0x23517, "call jump super ball launcher bug fix")# , asm.NOP())
         space.write(
             asm.JSR(reset_counter, asm.ABS),
         )

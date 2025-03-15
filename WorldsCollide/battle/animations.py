@@ -77,7 +77,7 @@ class Animations:
 
     def stray_flash_mod(self):
         # port of https://www.romhacking.net/hacks/6740/
-        Write(0x10784b, 0xa7, "Flash tool position") #default: 0xaf
+        Write(0x10784b, 0xa7, "Flash tool position") # default: 0xaf
 
     def health_animation_reflect_mod(self):
         # Ref: https://www.ff6hacking.com/forums/thread-4145.html
@@ -91,8 +91,8 @@ class Animations:
         # We tell the HEALTH animation to ignore block graphics, which prevents the reflect animation from playing.
         # When encountering a reflection, the regular green Cure 2 animation will follow on the reflect recipient.
         src = [
-            asm.INC(0x62C0, asm.ABS), #Makes the animation ignore blocking graphics
-            asm.JSR(0xBC35, asm.ABS), #Call the subroutine that got displaced to inject the block override
+            asm.INC(0x62C0, asm.ABS), # Makes the animation ignore blocking graphics
+            asm.JSR(0xBC35, asm.ABS), # Call the subroutine that got displaced to inject the block override
             asm.RTS(),
         ]
         space = Write(Bank.C1, src, "Health animation fix")

@@ -177,7 +177,7 @@ class BarenFalls(Event):
         # Slow the scrolling background by modifying the ADC command.
         space = Reserve(0x2b1f7, 0x2b1f9, "waterfall background movement")
         space.write(
-            asm.ADC(0x0001, asm.IMM16), #default: 0x0006
+            asm.ADC(0x0001, asm.IMM16), # default: 0x0006
         )
 
         # Eliminate the palette swaps without reducing any cpu cycles by just writing back the value from the previous LDA

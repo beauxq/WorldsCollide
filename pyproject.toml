@@ -73,6 +73,7 @@ ignore = [
     "E302", "E305",  # 2 blank lines in module scope
     # "E201",  # [ 2 ]
     # "E111",  # indent 4
+    "E262",  # 1 space after #
     "E261",  # 2 spaces before line comment #
     "E231",  # whitespace after , :
 ]

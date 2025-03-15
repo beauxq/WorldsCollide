@@ -29,7 +29,7 @@ class MagicMenu:
         # Move where MP gets written 1 space to the left,
         # to avoid having the number show up at the top of the "Espers" menu
         space = Reserve(0x351cd, 0x351cd, "MP String location")
-        space.write(0xbd) #original: 0xbf (each text space is a value of 2)
+        space.write(0xbd) # original: 0xbf (each text space is a value of 2)
 
     def fix_in_battle_mp_tens_digit(self):
         # Fix Vanilla in-battle MP listing in which the ten's digit is blanked

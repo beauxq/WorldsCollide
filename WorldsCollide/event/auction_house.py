@@ -52,7 +52,7 @@ class AuctionHouse(Event):
             self.reward2 = self.add_reward(RewardType.ESPER | RewardType.ITEM)
             if self.args.auction_max_espers == 1:
                 self.reward1 = self.add_reward(RewardType.ITEM)
-            else: #auction_max_espers == 2:
+            else: # auction_max_espers == 2:
                 self.reward1 = self.add_reward(RewardType.ESPER | RewardType.ITEM)
 
     def mod(self):
@@ -122,7 +122,7 @@ class AuctionHouse(Event):
 
     def get_reward_announce_dialog(self, name, start_price, item):
         if item:
-            reward_dialog = '“' + name + '”!' #https://discord.com/channels/666661907628949504/666811452350398493/1085018091844554832
+            reward_dialog = '“' + name + '”!' # https://discord.com/channels/666661907628949504/666811452350398493/1085018091844554832
         else:
             reward_dialog = 'The Magicite, “' + name + '”!'
 

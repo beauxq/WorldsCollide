@@ -33,8 +33,8 @@ class NarsheMoogleDefense(Event):
         # index is the character (0 - 14) -- note: no Terra, Locke, or Umaro replacement
         # value is the associated replacement Moogle (-1 = no replacement)
         MOOGLE_REPLACEMENT = [
-            -1, #TERRA
-            -1, #LOCKE
+            -1, # TERRA
+            -1, # LOCKE
             0x12, # CYAN -> KUPEK
             0x13, # SHADOW -> KUPOP
             0x14, # EDGAR -> KUMAMA
@@ -46,7 +46,7 @@ class NarsheMoogleDefense(Event):
             0x0A, # MOG
             0x1A, # GAU -> KURU
             0x1B, # GOGO -> KAMOG
-            -1, #UMARO
+            -1, # UMARO
         ]
 
         # Goes through moogles, checking whether they're already created (either them or their associated character)
@@ -92,7 +92,7 @@ class NarsheMoogleDefense(Event):
     def add_moogles_to_parties(self):
         # Method for selecting parties or moogle replacements
 
-        self.add_moogle_to_party = [] #note: 0-indexed whereas parties are 1 indexed in code
+        self.add_moogle_to_party = [] # note: 0-indexed whereas parties are 1 indexed in code
         # Create the needed methods for adding a moogle to a party
         for i in range(1,4):
             space = Write(Bank.CC, self._add_moogle_to_party_src(i), f"Add moogle to party {i}")
@@ -162,7 +162,7 @@ class NarsheMoogleDefense(Event):
         self.terra_npc.y = 11
         self.terra_npc.direction = direction.UP
         self.terra_npc.speed = 0
-        self.terra_npc.event_byte = npc_bit.event_byte(npc_bit.MARSHAL_NARSHE_WOB) #dual purpose with showing Marshal NPC
+        self.terra_npc.event_byte = npc_bit.event_byte(npc_bit.MARSHAL_NARSHE_WOB) # dual purpose with showing Marshal NPC
         self.terra_npc.event_bit = npc_bit.event_bit(npc_bit.MARSHAL_NARSHE_WOB)
         self.terra_npc_id = self.maps.append_npc(50, self.terra_npc)
 

@@ -123,9 +123,9 @@ class FloatingContinent(Event):
         battle_background = 48 # airship, right
 
         pack_start_addresses = [
-            (382, 0xa5932), #sky armor / spit fire
-            (416, 0xa59fc), #unused
-            (382, 0xa5a0d)] #sky armor / spit fire
+            (382, 0xa5932), # sky armor / spit fire
+            (416, 0xa59fc), # unused
+            (382, 0xa5a0d)] # sky armor / spit fire
         for pack_start_address in pack_start_addresses:
             pack_id = pack_start_address[0]
             start_address = pack_start_address[1]
@@ -153,7 +153,7 @@ class FloatingContinent(Event):
             # Slow the scrolling background by modifying the ADC command.
             space = Reserve(0x2b1b1, 0x2b1b3, "falling through clouds background movement")
             space.write(
-                asm.ADC(0x0001, asm.IMM16), #default: 0x0006
+                asm.ADC(0x0001, asm.IMM16), # default: 0x0006
             )
 
         boss_pack_id = self.get_boss("Air Force")

@@ -66,13 +66,13 @@ class Controls:
             asm.CMP(0xFF, asm.IMM8),
             asm.BEQ("exit"),              # branch if nobody controls them
             asm.TAX(),                    # if there's a valid Controller, use their stats (vigor/magic/level)
-            asm.LDA(0x11A2, asm.ABS),     #Spell Properties
-            asm.LSR(),                    #Check if Physical/Magical
-            asm.LDA(0x3B41, asm.ABS_X),   #Controller's Mag.Pwr
-            asm.BCC("magical"),           #Branch if not physical damage
-            asm.LDA(0x3B2C, asm.ABS_X),   #Controller's Vigor * 2
+            asm.LDA(0x11A2, asm.ABS),     # Spell Properties
+            asm.LSR(),                    # Check if Physical/Magical
+            asm.LDA(0x3B41, asm.ABS_X),   # Controller's Mag.Pwr
+            asm.BCC("magical"),           # Branch if not physical damage
+            asm.LDA(0x3B2C, asm.ABS_X),   # Controller's Vigor * 2
             "magical",
-            asm.STA(0x11AE, asm.ABS),     #Set Controller's Magic or Vigor
+            asm.STA(0x11AE, asm.ABS),     # Set Controller's Magic or Vigor
             "exit",
             asm.LDA(0x3B18, asm.ABS_X),   # displaced code: get Level
             asm.RTS(),

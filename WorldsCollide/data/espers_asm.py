@@ -24,13 +24,13 @@ def mastered_mod(espers):
         asm.XBA(),
         asm.LDA(0x36, asm.IMM8), # 54 spells
         asm.A16(),
-        asm.STA(0x004202, asm.LNG), #prepare multiplication (actor ID * 54)
+        asm.STA(0x004202, asm.LNG), # prepare multiplication (actor ID * 54)
         asm.NOP(),
         asm.NOP(),
         asm.NOP(),
         asm.NOP(),
-        asm.LDA(0x004216, asm.LNG), #load multiplication result
-        asm.STA(SPELL_OFFSET_STORAGE_RAM, asm.ABS), #store it
+        asm.LDA(0x004216, asm.LNG), # load multiplication result
+        asm.STA(SPELL_OFFSET_STORAGE_RAM, asm.ABS), # store it
         asm.A8(),
         asm.PLX(), # restore X
         asm.JSL(0xc20006), # get actor stats -- displaced code
@@ -104,7 +104,7 @@ def mastered_mod(espers):
     src = [
         asm.LDA(0xfb, asm.DIR), # load mastered esper byte
         asm.BEQ("NOT_MASTERED"), # branch if not mastered
-        asm.LDA(MASTERED_ICON, asm.IMM8), #load our mastered icon
+        asm.LDA(MASTERED_ICON, asm.IMM8), # load our mastered icon
         asm.BRA("RETURN"),
         "NOT_MASTERED",
         asm.LDA(text_value['…'], asm.IMM8), # load the normal icon

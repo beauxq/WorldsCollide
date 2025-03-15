@@ -209,8 +209,8 @@ class EbotsRock(Event):
         num_coral = Read(NUM_CORAL_ADDR, NUM_CORAL_ADDR+1)[0]
 
         src = [
-            field.BranchIfEventWordEqual(CORAL_EVENT_WORD, num_coral, NORMAL_LOGIC_ADDR), #coral count == 21, branch to regular logic
-            field.BranchIfEventWordLess(CORAL_EVENT_WORD, num_coral, NORMAL_LOGIC_ADDR),  #coral count  < 21, branch to regular logic
+            field.BranchIfEventWordEqual(CORAL_EVENT_WORD, num_coral, NORMAL_LOGIC_ADDR), # coral count == 21, branch to regular logic
+            field.BranchIfEventWordLess(CORAL_EVENT_WORD, num_coral, NORMAL_LOGIC_ADDR),  # coral count  < 21, branch to regular logic
             # else, we've > 21
             field.BranchRandomly(GO_TO_CHEST_ADDR), # 50% chance to go to chest
             field.BranchRandomly(GO_TO_SAVE_ADDR),  # 50% chance to go to save
