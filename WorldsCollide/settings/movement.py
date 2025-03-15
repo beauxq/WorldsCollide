@@ -26,7 +26,6 @@ class Movement:
 
         self.sliding_dash_fix()
 
-
     def get_auto_sprint_src(self):
         from .. import args as args
         CURRENT_MAP_BYTE = 0x82 # 2 bytes
@@ -98,7 +97,6 @@ class Movement:
         ]
 
         return src
-
 
     #  DIRECTION VALUE
     #   $087F ------dd

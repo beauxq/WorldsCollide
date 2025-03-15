@@ -92,7 +92,6 @@ class EnemyPacks:
             # boss assignment is handled in the shuffle/random functions
             pass
 
-
     # As MIX is handled in the shuffle/random functions, this is for handling the other options
     def _handle_original_shuffle_dragons(self):
         dragons = list(bosses.dragon_pack_name)
@@ -199,7 +198,6 @@ class EnemyPacks:
             for formation_id in formations:
                 if formation_id in required_dragon_formations:
                     required_dragon_packs.add(pack_id)
-
 
         # randomizing and shuffling
         bosses_to_replace = self._replaceable_bosses()

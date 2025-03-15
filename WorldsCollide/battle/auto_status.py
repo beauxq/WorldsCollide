@@ -25,7 +25,6 @@ class _AutoStatus:
         for status in auto_phantasm_overcast_status_effects:
             auto_addresses.append(self.auto_status(status, status_effects.PhantasmOvercast))
 
-
         src = [
             # original replaced code
             asm.LDA(0xbc, asm.DIR),

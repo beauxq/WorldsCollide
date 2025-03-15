@@ -99,7 +99,6 @@ class Character:
         ADJUSTMENT_VALUE = {0 : 0, 2 : 1, 5 : 2, -3 : 3} # level adjustment -> data value
         self._init_level_factor = ADJUSTMENT_VALUE[adjustment]
 
-
     def print(self):
         print(f"{self.id}: {self.name}\n"
               f"{self.init_extra_hp}, {self.init_extra_mp}, {self.commands}"

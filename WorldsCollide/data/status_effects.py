@@ -4,7 +4,6 @@ class StatusEffects:
     GROUP_C = ["dance", "regen", "slow", "haste", "stop", "shell", "safe", "reflect"]
     GROUP_D = ["rage", "frozen", "reraise", "morph", "chant", "hide", "interceptor", "float"]
 
-
     def __init__(self, groups, data):
         assert(len(groups) == len(data))
         self.groups = groups

@@ -72,7 +72,6 @@ def options(args):
         ("L.x Spells", lvl_x_spells, "lvl_x_spells"),
     ]
 
-
     return opts
 
 def menu(args):

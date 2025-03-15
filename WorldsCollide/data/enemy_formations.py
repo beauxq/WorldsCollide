@@ -133,7 +133,6 @@ class EnemyFormations:
         self.formations[bosses.name_formation["Marshal"]].enemy_ids[0] = random_minion
         self.formations[bosses.name_formation["Marshal"]].enemy_ids[1] = random_minion
 
-
     def add_chupon(self):
         # Add Chupon (Coliseum) to an unused formation for use with random_encounters_chupon
         self.formations[self.CHUPON].enemy_ids[0] = 64 # Chupon (Coliseum)

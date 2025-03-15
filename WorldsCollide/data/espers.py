@@ -163,7 +163,6 @@ class Espers:
                     new_spell_id = self.spells.get_replacement(a_spell_id, exclude = exclude_spell_ids)
                     esper.replace_spell(a_spell_id, new_spell_id)
 
-
     def clear_spells(self):
         for esper in self.espers:
             esper.clear_spells()
@@ -323,7 +322,6 @@ class Espers:
 
         if self.args.esper_multi_summon:
             self.multi_summon()
-
 
     def write(self):
         if self.args.spoiler_log:

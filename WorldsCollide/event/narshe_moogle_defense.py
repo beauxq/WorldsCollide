@@ -197,7 +197,6 @@ class NarsheMoogleDefense(Event):
         test_npc.set_event_address(test_marshal_battle)
         self.maps.append_npc(0x6, test_npc)
 
-
         # Add Item-giver NPC
         src = []
         for i in range(0, 10):

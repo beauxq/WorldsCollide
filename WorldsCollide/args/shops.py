@@ -47,7 +47,6 @@ def parse(parser):
     shops.add_argument("-sesb", "--shops-expensive-super-balls", action = "store_true",
                        help = "Super Balls base price increase")
 
-
     shops.add_argument("-snee", "--shops-no-exp-eggs", action = "store_true",
                        help = "Exp. Eggs not sold in shops")
     shops.add_argument("-snil", "--shops-no-illuminas", action = "store_true",

@@ -75,8 +75,6 @@ class Capture:
             asm.JSR(stolen_item_index_reset, asm.ABS),
         )
 
-
-
         # New subroutine for storing acquired item
         src = [
             asm.TSB(0x3a8c, asm.ABS),   # set character's reserve item to be added
