@@ -50,7 +50,7 @@ class RageMenu:
 
         # # remove duplicate white spaces
         import re
-        rage_str = re.sub(' +', ' ', rage_str)
+        rage_str = re.sub(r' +', ' ', rage_str)
 
         # remove leading and trailing spaces
         rage_str = rage_str.strip()

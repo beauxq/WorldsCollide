@@ -209,9 +209,9 @@ class Lores:
             else: # zero - use for L?
                 level_divisor = '?'
                 lore.effect = LQ_EFFECT
-            lore.name = re.sub('L.*[?1-9]', f'L.{level_divisor}', lore.name)
+            lore.name = re.sub(r'L.*[?1-9]', f'L.{level_divisor}', lore.name)
             lore.desc = Lores._get_new_level_desc(lore_index, level_divisor)
-            battle_message = re.sub('<dotted line>', '“', lore.desc)
+            battle_message = re.sub(r'<dotted line>', '“', lore.desc)
             dialogs.set_battle_message_text(self.DIALOG_OFFSET + lore_index, battle_message)
 
     def show_mp_mod(self):
