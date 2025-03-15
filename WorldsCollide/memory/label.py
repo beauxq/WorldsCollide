@@ -59,4 +59,4 @@ class LabelPointer:
         return int(self) >= other
 
     def __repr__(self):
-        return f"{hex(int(self))}, *{hex(self.address)} = {repr(self.label)} + {hex(self.offset)}"
+        return f"{hex(int(self))}, *{hex(self.address)} = {self.label!r} + {hex(self.offset)}"

@@ -1,4 +1,4 @@
-class Chest():
+class Chest:
     EMPTY, MONSTER, ITEM, GOLD, UNUSED = (0x08, 0x20, 0x40, 0x80, 0xfe)
     MAX_GOLD_VALUE = 2 ** 8 - 1 # 1 byte for chest contents, 2^8 - 1 max gold value
 
@@ -68,5 +68,5 @@ class Chest():
         return "Unknown"
 
     def print(self):
-        print("{}: ({}, {}), {}, {}, {}".format(self.id, self.x, self.y, self.bit, hex(self.type), self.contents), end = ' ')
+        print(f"{self.id}: ({self.x}, {self.y}), {self.bit}, {hex(self.type)}, {self.contents}", end = ' ')
         print(self.get_type_string())

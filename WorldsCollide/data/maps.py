@@ -17,7 +17,7 @@ from ..data.world_map import WorldMap
 from ..instruction import asm as asm
 from ..memory.space import Reserve
 
-class Maps():
+class Maps:
     MAP_COUNT = 416
 
     EVENT_PTR_START = 0x40000
@@ -272,7 +272,7 @@ class Maps():
         space = Reserve(0x32ead, 0x32eae, asm.NOP())
         space.add_label("DISABLE SAVE", 0x32ebf)
         space.write(
-            asm.BRA("DISABLE SAVE") # replace the vanilla BPL $2EBF to always branch)
+            asm.BRA("DISABLE SAVE"), # replace the vanilla BPL $2EBF to always branch)
         )
 
     def mod(self, characters):

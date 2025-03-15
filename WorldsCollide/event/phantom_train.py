@@ -370,7 +370,7 @@ class PhantomTrain(Event):
         space = Reserve(0xbb871, 0xbb885, "phantom train face ziegfriend", field.NOP())
         space.write(
             field.EntityAct(field_entity.PARTY0, True,
-                field_entity.Turn(direction.RIGHT)
+                field_entity.Turn(direction.RIGHT),
             ),
         )
 

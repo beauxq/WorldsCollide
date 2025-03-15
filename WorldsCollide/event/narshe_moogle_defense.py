@@ -80,10 +80,10 @@ class NarsheMoogleDefense(Event):
                 field.CreateEntity(character_idx),
                 field.AddCharacterToParty(character_idx, party_idx),
                 field.Branch("RETURN"), # added 1 - we're done
-                f"SKIP_{character_idx}", 
+                f"SKIP_{character_idx}",
             ]
         src += [
-            f"RETURN",
+            "RETURN",
             field.Return(),
         ]
 
@@ -130,7 +130,7 @@ class NarsheMoogleDefense(Event):
         for party in range(2,4):
              for party_spot in range(0, 4):
                  src += [
-                     field.Call(self.add_moogle_to_party[party-1])
+                     field.Call(self.add_moogle_to_party[party-1]),
                  ]
 
         src += [
@@ -151,11 +151,11 @@ class NarsheMoogleDefense(Event):
 
         space = Reserve(0xcadac, 0xcadae, "marshal invoke battle", field.NOP())
         space.write(
-            field.InvokeBattle(boss_pack_id, check_game_over = False)
+            field.InvokeBattle(boss_pack_id, check_game_over = False),
         )
 
     def terra_npc_mod(self):
-        # Add an NPC to replace Terra during the chase scene in Narshe South Caves (map 50). 
+        # Add an NPC to replace Terra during the chase scene in Narshe South Caves (map 50).
         # By doing so, it allows us to change her sprite without affecting a party Terra
         self.terra_npc = NPC()
         self.terra_npc.x = 55
@@ -165,14 +165,14 @@ class NarsheMoogleDefense(Event):
         self.terra_npc.event_byte = npc_bit.event_byte(npc_bit.MARSHAL_NARSHE_WOB) #dual purpose with showing Marshal NPC
         self.terra_npc.event_bit = npc_bit.event_bit(npc_bit.MARSHAL_NARSHE_WOB)
         self.terra_npc_id = self.maps.append_npc(50, self.terra_npc)
-        
+
         # Replace collapsed Terra NPC
         self.terra_collapsed_npc = self.maps.get_npc(self.WOB_MAP_ID, self.COLLAPSED_TERRA_NPC_ID)
 
         # ensure that the terra falls in hole event never triggers, as we're reusing the associated event bit
         space = Reserve(0xca2e5, 0xca2e5, "terra falls in hole event start")
         space.write(
-            field.Return()
+            field.Return(),
         )
 
     def marshal_test_mod(self):
@@ -228,7 +228,7 @@ class NarsheMoogleDefense(Event):
             field.AddItem("Cherub Down", sound_effect = False),
             field.AddItem("Cure Ring", sound_effect = False),
             field.AddItem("Hero Ring", sound_effect = True),
-            field.Return()
+            field.Return(),
         ]
         space = Write(Bank.CC, src, "Item Giver Debug NPC")
         item_giver = space.start_address
@@ -263,7 +263,7 @@ class NarsheMoogleDefense(Event):
         src = []
         for npc_id in range(0x15, 0x1b):
             src += [
-                field.HideEntity(npc_id)
+                field.HideEntity(npc_id),
             ]
         # - Hide Arvis if in WoR
         # - Hide Arvis if character gating and no Mog
@@ -298,19 +298,19 @@ class NarsheMoogleDefense(Event):
             field.LoadMap(0x32, direction.UP, True, 55, 11),
             field.FadeInScreen(),
             field.WaitForFade(),
-            field.Branch(0xCCA2EB) # 'Got her!' scene
+            field.Branch(0xCCA2EB), # 'Got her!' scene
         ]
         space = Write(Bank.CC, src, "load narshe caves map for Terra event")
         got_her_map_change = space.start_address
 
         # Change Arvis Script
         prepared_dialog = 0x21 # reuse "OLD MAN: Make your way out through the mines! I’ll keep these brutes occupied!"
-        self.dialogs.set_text(prepared_dialog, f"Imperial troops are searching the mines as we speak. They must have found something important!<line>Will you stop them?<line><choice> Yes<line><choice> No<end>")
+        self.dialogs.set_text(prepared_dialog, "Imperial troops are searching the mines as we speak. They must have found something important!<line>Will you stop them?<line><choice> Yes<line><choice> No<end>")
         space = Reserve(0xca06f, 0xca07d, "arvis dialog", field.NOP())
         space.write(
              field.DialogBranch(prepared_dialog,
                                 dest1 = got_her_map_change,
-                                dest2 = field.RETURN)
+                                dest2 = field.RETURN),
         )
 
     def event_start_mod(self):
@@ -340,9 +340,9 @@ class NarsheMoogleDefense(Event):
         space.write(field.Pause(0.50))
 
         # Change Locke actions to Party Leader
-        locke_action_queues = [0xca76b, 0xca77b, 0xca786, 
-                               0xca78e, 0xca793 , 0xca799, 0xca79f, 
-                               0xca7a4, 0xca7a8, 0xca7af, 0xca7b3, 
+        locke_action_queues = [0xca76b, 0xca77b, 0xca786,
+                               0xca78e, 0xca793 , 0xca799, 0xca79f,
+                               0xca7a4, 0xca7a8, 0xca7af, 0xca7b3,
                                0xca7b8]
                                # 0xca868 NO-OP'd below
         for address in locke_action_queues:
@@ -377,7 +377,7 @@ class NarsheMoogleDefense(Event):
             field.EntityAct(self.LEFT_MOOGLE_NPC_ID, True,
                 field_entity.Turn(direction.DOWN),
                 field_entity.Move(direction.DOWN, 1),
-            )
+            ),
         )
 
         # Remove small pause
@@ -392,7 +392,7 @@ class NarsheMoogleDefense(Event):
             Read(0xcaa23, 0xcaa26), # displaced code -- place party 2 on map
             field.BranchIfPartyEmpty(3, "RETURN"),
             Read(0xcaa27, 0xcaa2a), # displaced code -- place party 3 on map
-            "RETURN", 
+            "RETURN",
             field.Return(),
         ]
         space = Write(Bank.CC, src, "Check for Party 2 and 3 sizes before placing")
@@ -419,7 +419,7 @@ class NarsheMoogleDefense(Event):
             field.Call(position_parties),
         )
 
-        # Clear use of event_bit.12E (TERRA_COLLAPSED_NARHSE_WOB) and event_bit.003 (moogle defense) at cc/aaab so that we can reuse 12E 
+        # Clear use of event_bit.12E (TERRA_COLLAPSED_NARHSE_WOB) and event_bit.003 (moogle defense) at cc/aaab so that we can reuse 12E
         # and so that 003 doesn't cause issues at WoB Narshe entrance
         space = Reserve(0xcaaab, 0xcaaae, "set terra falls event bit & initiated moogle defense bit", field.NOP())
 
@@ -428,9 +428,9 @@ class NarsheMoogleDefense(Event):
         self.dialogs.set_text(1744, "Couldn't hold out…!?<line>Uh oh…<end>")
 
         # Victory condition (marshal defeated)
-        # Remove moogles from party 
-        src = [ 
-            reward_instructions, 
+        # Remove moogles from party
+        src = [
+            reward_instructions,
 
             Read(0xcade5, 0xcadec), # vanilla fade out and pan camera north
 
@@ -449,7 +449,7 @@ class NarsheMoogleDefense(Event):
         for character_idx in range(self.characters.CHARACTER_COUNT):
             src += [
                 #only restore if character has not been recruited (meaning they were moogled)
-                field.BranchIfEventBitSet(event_bit.multipurpose(character_idx), f"SKIP_{character_idx}"), 
+                field.BranchIfEventBitSet(event_bit.multipurpose(character_idx), f"SKIP_{character_idx}"),
                 field.RemoveStatusEffects(character_idx, field.Status.FLOAT | field.Status.DARKNESS | field.Status.ZOMBIE | field.Status.POISON | field.Status.VANISH | field.Status.IMP | field.Status.PETRIFY | field.Status.DEATH),
                 field.RemoveDeath(character_idx), # added due to permadeath situations to make sure the corresponding party member is alive
                 field.RestoreHp(character_idx, 0x7f), # restore all HP
@@ -464,7 +464,7 @@ class NarsheMoogleDefense(Event):
         src += [
             # give Shadow Interceptor again
             field.AddStatusEffects(self.characters.SHADOW, field.Status.DOG_BLOCK),
-            
+
             field.Call(field.REFRESH_CHARACTERS_AND_SELECT_PARTY),
             field.UpdatePartyLeader(),
             field.ShowEntity(field_entity.PARTY0),
@@ -478,7 +478,7 @@ class NarsheMoogleDefense(Event):
             field.SetEventBit(event_bit.FINISHED_MOOGLE_DEFENSE),
             field.FreeMovement(),
 
-            # hide Arvis 
+            # hide Arvis
             field.ClearEventBit(npc_bit.ARVIS_INTRO),
             field.FinishCheck(),
             field.Return(),
@@ -533,7 +533,7 @@ class NarsheMoogleDefense(Event):
         ])
 
     def mod(self):
-        self.terra_npc_mod() 
+        self.terra_npc_mod()
 
         if self.args.debug:
             self.marshal_test_mod()

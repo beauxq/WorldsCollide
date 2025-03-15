@@ -4,7 +4,11 @@ HASH_CHARACTERS = [name_id[x] for x in ["General Leo", "Banon/Duncan", "Esper Te
 # overwrite some memory reserved for 4 chars which don't appear on save/load/shop/coliseum/party select screens
 
 from typing import NamedTuple
-HashSprite = NamedTuple("HashSprite", [("name", str), ("sprite_address", int), ("palette", int), ("y_offset", int)])
+class HashSprite(NamedTuple):
+    name: str
+    sprite_address: int
+    palette: int
+    y_offset: int
 
 hash_sprites = [
     HashSprite("Leo", 0xd66a00, 0, 0),
@@ -66,7 +70,8 @@ def generate_hash(string):
     return hash_result
 
 if __name__ == "__main__":
-    import os, sys
+    import os
+    import sys
     sys.path.append(os.path.dirname(__file__))
 
     from args.arguments import Arguments

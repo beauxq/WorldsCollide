@@ -1,12 +1,12 @@
 
 def get_portraits():
     from ..graphics.portraits.portraits import id_portrait
-    
+
     sprites = [{
         'id': portrait_id,
         'key': key,
     } for ((portrait_id, key)) in id_portrait.items()]
-    
+
     return sprites
 
 if __name__ == '__main__':

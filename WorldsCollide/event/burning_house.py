@@ -140,7 +140,7 @@ class BurningHouse(Event):
         # 415 is an otherwise unused encounter
 
         replaced_encounters = [
-            (415, 0xBE6FF), 
+            (415, 0xBE6FF),
             (415, 0xBE740),
             (415, 0xBE70C),
             (415, 0xBE733),
@@ -154,7 +154,7 @@ class BurningHouse(Event):
             space = Reserve(invoke_encounter_pack_address, invoke_encounter_pack_address, "flame invoke fixed battle (battle byte)")
             space.write(
                 # subtrack 256 since WC stores fixed encounter IDs starting at 256
-                pack_id - 0x100
+                pack_id - 0x100,
             )
 
     def character_mod(self, character):

@@ -276,7 +276,7 @@ tiers = [
         name_id["Gem Box"],
         name_id["Marvel Shoes"],
         name_id["Exp. Egg"],
-    ]
+    ],
 ]
 weights = [0.10, 0.12, 0.03, 0.015, 0.005, 0.09, 0.25, 0.30, 0.085, 0.005]
 

@@ -17,3 +17,59 @@ dynamic = [
 pythonpath = [
     ".",
 ]
+
+[tool.basedpyright]
+typeCheckingMode = "recommended"
+strictGenericNarrowing = true
+reportImplicitOverride = "none"
+reportImplicitStringConcatenation = "none"
+reportUnusedCallResult = "none"
+reportUnusedParameter = "hint"
+
+[tool.ruff.lint.isort]
+force-sort-within-sections = true
+
+[tool.ruff]
+line-length = 120
+indent-width = 4
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "B011", "PT015",  # no assert false
+    "S101", "S311", "S603", "S605", "S607",
+    "E714",  # prefer not is
+    "D105", "D107", "D202", "D210", "D212", "D400", "D403", "D415",
+    "CPY", "TC001", "ERA001",
+    "SIM108", "SIM118", "SIM910",
+    "PLR5501",  # elif when possible (else: if)
+    "DOC201",  # return in docstring
+    "PLC1802",  # len(_) condition
+    "PLC0415",  # no imports in functions
+    "TID252",  # no .. in imports
+    "Q000", "Q001", "Q002", "D300",  # prefer double quotes (single/triple/docstring)
+    "Q003",  # change outer to avoid escaping inner
+    "PLR1730",  # use max() instead of if
+    "PLR2044",  # empty comment (holding space)
+    "RET505", "RET506",  # no elif after return/raise
+    "PIE808",  # start arg 0 in range (range(0, 3))
+    "SIM300",  # constant left of == (incorrect detection of constant)
+    "I001",  # import order - global module state relies on order
+    "PLR6104",  # use |=
+    "C901", "PLR0912", "PLR0915",  # function too complex / too many statements/branches
+    "F405",  # from star imports
+    "PLR2004",  # magic numbers
+    # "ANN",
+    "D100", "D101", "D102",  # docstring in module/class/public method
+    "PTH207",  # Path.glob
+
+    "F401",  # unused import (from x import _a as a)
+    "F811",  # redefined import (not confident about safety of fix)
+    "B004",  # hasattr(x, "__call__")  (How is this a safe fix?)
+    # "E201",  # [ 2 ]
+    # "E251",  # f(x = 3)
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["PLR2004", "D100", "D103", "T201", "INP001"]
+"*" = ["D103", "T201"]

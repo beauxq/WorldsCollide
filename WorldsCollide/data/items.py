@@ -9,7 +9,7 @@ from ..constants.items import id_name, name_id
 from ..data import items_asm as items_asm
 from ..data import text as text
 
-class Items():
+class Items:
     ITEM_COUNT = 256
     EMPTY = 0xff  # item 255 is empty
 
@@ -385,7 +385,6 @@ class Items():
         self.receive_dialogs[item_id] = dialog_id
 
         # item names are stored as TEXT2, dialogs are TEXT1
-        from ..data import text as text
         item_name = text.convert(self.items[item_id].name, text.TEXT1)
 
         self.dialogs.set_text(dialog_id, '<line><     >Received “' + item_name + '”!<end>')

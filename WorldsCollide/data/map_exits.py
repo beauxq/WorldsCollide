@@ -1,6 +1,6 @@
 from ..data.map_exit import ShortMapExit, LongMapExit
 
-class MapExits():
+class MapExits:
     SHORT_EXIT_COUNT = 0x469
     LONG_EXIT_COUNT = 0x98
 

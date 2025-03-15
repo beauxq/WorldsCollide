@@ -53,10 +53,10 @@ def options(args):
         ("Start Fenix Downs", args.start_fenix_downs, "start_fenix_downs"),
         ("Start Tools", args.start_tools, "start_tools"),
     ]
-    
+
     if args.start_junk != 0:
         opts += [
-            ("Start Junk", args.start_junk, "start_junk")
+            ("Start Junk", args.start_junk, "start_junk"),
         ]
 
     return opts

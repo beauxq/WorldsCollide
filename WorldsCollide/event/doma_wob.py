@@ -125,7 +125,7 @@ class DomaWOB(Event):
 
             field.EntityAct(field_entity.CAMERA, True,
                 field_entity.SetSpeed(field_entity.Speed.NORMAL),
-                field_entity.Move(direction.DOWN, 7)
+                field_entity.Move(direction.DOWN, 7),
             ),
         )
 
@@ -192,7 +192,7 @@ class DomaWOB(Event):
             ),
             field.EntityAct(field_entity.CAMERA, True,
                 field_entity.SetSpeed(field_entity.Speed.NORMAL),
-                field_entity.Move(direction.DOWN, 7)
+                field_entity.Move(direction.DOWN, 7),
             ),
             field.FadeInScreen(),
             field.Return(),

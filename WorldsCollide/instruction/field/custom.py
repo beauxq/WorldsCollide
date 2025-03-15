@@ -32,7 +32,7 @@ class RemoveDeath(_Instruction):
 
         self.current_status = 0x1614 # character status effects address
         self.death_mask = field.Status.DEATH >> 8
-        # add a special command specifically for removing death. 
+        # add a special command specifically for removing death.
         # This is used in special events (like Moogle Defense), where we want to revive even with permadeath
         # Code based on C0/AE2D - AE44 (gen. act. 88 to Remove status effects)
         src = [
@@ -64,7 +64,7 @@ class SetEquipmentAndCommands(_Instruction):
 
         # subset of SetProperties vanilla command (0x40), which only sets equipment, commands, and character ID
         src = [
-            #C0/A07C:	20AD9D  	JSR $9DAD		
+            #C0/A07C:	20AD9D  	JSR $9DAD
             asm.JSR(character_data_offset, asm.ABS),
             # C0/A07F:	A916    	LDA #$16
             asm.LDA(0x16, asm.IMM8),
@@ -189,6 +189,7 @@ class LoadEsperFound(_Instruction):
 
 class LoadPartiesWithCharacters(_Instruction):
     ''' Sets bits 0-2 in event word when those parties have characters.'''
+
     def __init__(self):
         from ...data import event_bit as event_bit
         result_byte = event_bit.address(event_bit.multipurpose(0))
@@ -196,7 +197,7 @@ class LoadPartiesWithCharacters(_Instruction):
             asm.STZ(result_byte, asm.ABS),
             asm.LDX(0x0000, asm.IMM16),
             "START_CHARACTER_LOOP",
-            asm.LDA(0x1850, asm.ABS_X), # load the character data 
+            asm.LDA(0x1850, asm.ABS_X), # load the character data
             asm.AND(0x47, asm.IMM8),    # isolate the enabled bit and party bits (note: there are 3 party bits, but we only use 2.)
             "CHECK_PARTY_1",
             asm.CMP(0x41, asm.IMM8),
@@ -211,7 +212,7 @@ class LoadPartiesWithCharacters(_Instruction):
             asm.BNE("CHECK_PARTY_3"),
             # character enabled and in party 2
             asm.LDA(result_byte, asm.ABS),
-            asm.ORA(0x02, asm.IMM8), # set bit 1 in the result to indicate party 2 has an enabled character 
+            asm.ORA(0x02, asm.IMM8), # set bit 1 in the result to indicate party 2 has an enabled character
             asm.STA(result_byte, asm.ABS),
             asm.BRA("NEXT_CHARACTER"),
             "CHECK_PARTY_3",
@@ -272,7 +273,7 @@ class _InvokeBattleType(_Instruction):
         super().__init__(self.write(), pack - 0x100, background | (battle_type << 6))
 
     def __str__(self):
-        return super().__str__(f"{str(self.pack)}, {str(self.battle_type)}")
+        return super().__str__(f"{self.pack!s}, {self.battle_type!s}")
 
     def write(self):
         src = [

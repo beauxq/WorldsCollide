@@ -1,7 +1,8 @@
 SEED_LENGTH = 12
 
 def generate_seed():
-    import secrets, string
+    import secrets
+    import string
     alpha_digits = string.ascii_lowercase + string.digits
     return ''.join(secrets.choice(alpha_digits) for i in range(SEED_LENGTH))
 

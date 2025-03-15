@@ -3,7 +3,7 @@ from ..data.structures import DataArray
 from ..memory.space import Reserve, Allocate, Bank, Write
 from ..instruction import asm as asm
 
-class Controls():
+class Controls:
     ATTACKS_DATA_START = 0xf3d00
     ATTACKS_DATA_END = 0xf42ff
     ATTACKS_DATA_SIZE = 4
@@ -31,13 +31,13 @@ class Controls():
         # Default: LDA $CF3D00,X
         space = Reserve(0x23758, 0x2375B, "get Control command table")
         space.write(
-            asm.LDA(self.new_attack_data_space.start_address_snes, asm.LNG_X)
+            asm.LDA(self.new_attack_data_space.start_address_snes, asm.LNG_X),
         )
 
     def ignore_randomize_target(self):
         # Ignoring Randomize Target bit when Control is used, to ensure that those commands respect the selected targetting
         # This is a bug-fix for a vanilla bug, in which Controlled Dance abilities (ex: Sandstorm) swap targetting.
-        src = [ 
+        src = [
             asm.LDA(0x3A7A, asm.ABS), # load the command
             asm.CMP(0x0E, asm.IMM8),  # is it Control?
             asm.BEQ("exit"),          # if so, skip over displaced code
@@ -53,10 +53,10 @@ class Controls():
         space = Write(Bank.C2, src, "Control: ignore Randomize Target bit")
         ignore_randomize_target_addr = space.start_address
 
-        # Call our new subroutine 
+        # Call our new subroutine
         space = Reserve(0x2276A, 0x22771, "control: call ignore randomize target bit subroutine", asm.NOP())
         space.write(
-            asm.JSR(ignore_randomize_target_addr, asm.ABS)
+            asm.JSR(ignore_randomize_target_addr, asm.ABS),
         )
 
     def enable_control_casters_stats(self):
@@ -83,7 +83,7 @@ class Controls():
         # Call our new subroutine
         space = Reserve(0x22c28, 0x22c2A, "jump to new routine")
         space.write(
-            asm.JSR(use_controller_stats_addr, asm.ABS)
+            asm.JSR(use_controller_stats_addr, asm.ABS),
         )
 
     def enable_control_chances_always(self):

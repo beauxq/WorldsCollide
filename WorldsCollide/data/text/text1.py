@@ -192,10 +192,10 @@ for ascii_val in range(ord('0'), ord('9') + 1):
 
 # 0x11xx 0x14xx 0x16xx use two bytes
 for frame_count in range(0x01, 0x100):
-    text_value['<wait {} frames>'.format(frame_count * 15)] = 0x1100 | frame_count
+    text_value[f'<wait {frame_count * 15} frames>'] = 0x1100 | frame_count
 for space_count in range(0x03, 0x20):
     text_value['<' + ' ' * space_count + '>'] = 0x1400 | space_count
 for frame_count in range(0x01, 0x100):
-    text_value['<wait for key {} frames>'.format(frame_count * 15)] = 0x1600 | frame_count
+    text_value[f'<wait for key {frame_count * 15} frames>'] = 0x1600 | frame_count
 
 value_text = {v: k for k, v in text_value.items()}

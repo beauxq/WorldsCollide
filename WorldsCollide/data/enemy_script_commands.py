@@ -156,7 +156,7 @@ class Arithmetic(Instruction):
     def __str__(self):
         if self.operation == self.ADD:
             return f"VAR_{self.variable} += {self.value}"
-        elif self.operation == self.SUBTRACT:
+        if self.operation == self.SUBTRACT:
             return f"VAR_{self.variable} -= {self.value}"
         return f"VAR_{self.variable} = {self.value}"
 

@@ -6,7 +6,7 @@ from ..instruction import asm as asm
 def _eggers_jump_return_mod():
     src = [
         asm.RTS(),
-        asm.RTL()
+        asm.RTL(),
     ]
     space =  Write(Bank.C3, src, "C3 eggers jump return")
     return space.start_address

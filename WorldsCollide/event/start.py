@@ -149,11 +149,11 @@ class Start(Event):
 
         for esper_id in self.espers.starting_espers:
             src += [
-                field.AddEsper(esper_id, sound_effect = False)
+                field.AddEsper(esper_id, sound_effect = False),
             ]
 
         src += [
-            field.Return()
+            field.Return(),
         ]
 
         space = Write(Bank.CC, src, "start espers")
@@ -222,7 +222,7 @@ class Start(Event):
 
         for junk_id in start_junk:
             src += [
-                field.AddItem(id_name[junk_id], sound_effect = False)
+                field.AddItem(id_name[junk_id], sound_effect = False),
             ]
 
         if self.args.debug:

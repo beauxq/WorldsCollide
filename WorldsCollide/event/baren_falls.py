@@ -37,7 +37,7 @@ class BarenFalls(Event):
     def add_gating_condition(self):
         src = [
             field.ReturnIfEventBitClear(event_bit.character_recruited(self.character_gate())),
-            Read(0xbc03f, 0xbc057)   # jump? dialog
+            Read(0xbc03f, 0xbc057),  # jump? dialog
         ]
         space = Write(Bank.CB, src, "baren falls character gating")
         gate_check = space.start_address
@@ -177,11 +177,11 @@ class BarenFalls(Event):
         # Slow the scrolling background by modifying the ADC command.
         space = Reserve(0x2b1f7, 0x2b1f9, "waterfall background movement")
         space.write(
-            asm.ADC(0x0001, asm.IMM16) #default: 0x0006
+            asm.ADC(0x0001, asm.IMM16), #default: 0x0006
         )
 
         # Eliminate the palette swaps without reducing any cpu cycles by just writing back the value from the previous LDA
         space = Reserve(0x2b20b, 0x2b20d, "waterfall palette change")
         space.write(
-            asm.STA(0xEC71, asm.ABS_X)
+            asm.STA(0xEC71, asm.ABS_X),
         )

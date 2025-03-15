@@ -149,5 +149,5 @@ class UmaroCave(Event):
 
         self.esper_item_mod(
             field.AddItem(item, sound_effect = False),
-            field.Dialog(self.items.get_receive_dialog(item))
+            field.Dialog(self.items.get_receive_dialog(item)),
         )

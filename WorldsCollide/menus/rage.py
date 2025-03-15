@@ -16,14 +16,14 @@ class RageMenu:
         self.status_effects.extend(list(C.id_name.values()))
         self.status_effects.extend(list(D.id_name.values()))
 
-        # Remove death from the status effects list, as it requires a second bit from flags1 
+        # Remove death from the status effects list, as it requires a second bit from flags1
         self.status_effects = list(map(lambda x: x.replace("Death", ""), self.status_effects))
 
         # Remove other statuses that aren't really relevant
         self.status_effects = list(map(lambda x: x.replace("Near Fatal", ""), self.status_effects))
         self.status_effects = list(map(lambda x: x.replace("Hide", ""), self.status_effects))
 
-        self.special_effects = []  
+        self.special_effects = []
         self.special_effects.extend(self.status_effects)
         for i in range(15, 95, 5): # going from 1.5x - 9.0x damage
             dmg_multiplier = i / 10
@@ -98,17 +98,17 @@ class RageMenu:
             asm.BEQ("END_STRING_RETURN"),   # branch if rage at cursor index not learned
             asm.A16(),
             asm.ASL(),                      # a = rage index * 2 (2 bytes per table offset)
-            asm.TAX(),                      # x = rage index * 2 
+            asm.TAX(),                      # x = rage index * 2
             asm.LDA(lines_table_offsets, asm.LNG_X), # get the offset
             asm.TAX(),
             asm.A8(),
             "STRING_LOOP_START",
             asm.LDA(lines_table, asm.LNG_X), # get the character
             asm.STA(0x2180, asm.ABS),        # add character to string
-            asm.CMP(0x00, asm.IMM8),         # was it the end of the string? 
+            asm.CMP(0x00, asm.IMM8),         # was it the end of the string?
             asm.BEQ("RETURN"),               # if so, be done
             asm.INX(),                       # move to next character in ability name
-            asm.BRA("STRING_LOOP_START"),    
+            asm.BRA("STRING_LOOP_START"),
             "END_STRING_RETURN",
             asm.STZ(0x2180, asm.ABS),       # end string
             "RETURN",

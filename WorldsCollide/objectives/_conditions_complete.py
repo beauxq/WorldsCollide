@@ -21,7 +21,7 @@ class Field(_CachedFunction, field.Call):
         src += [
             field.Return(),
         ]
-        return Write(Bank.CA, src, f"conditions complete field {str(conditions)}")
+        return Write(Bank.CA, src, f"conditions complete field {conditions!s}")
 
 class Battle(_CachedFunction, asm.JSR):
     def __init__(self, *args, **kwargs):
@@ -39,7 +39,7 @@ class Battle(_CachedFunction, asm.JSR):
         src += [
             asm.RTS(),
         ]
-        return Write(Bank.F0, src, f"conditions complete battle {str(conditions)}")
+        return Write(Bank.F0, src, f"conditions complete battle {conditions!s}")
 
 class Menu(_CachedFunction, asm.JSR):
     def __init__(self, *args, **kwargs):
@@ -57,7 +57,7 @@ class Menu(_CachedFunction, asm.JSR):
         src += [
             asm.RTS(),
         ]
-        return Write(Bank.F0, src, f"conditions complete menu {str(conditions)}")
+        return Write(Bank.F0, src, f"conditions complete menu {conditions!s}")
 
 class ConditionsComplete:
     def __init__(self, objective):

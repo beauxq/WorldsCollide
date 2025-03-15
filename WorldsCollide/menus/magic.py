@@ -13,10 +13,10 @@ class MagicMenu:
         src = [
             asm.LDA(0xF7, asm.DIR),             # Hundreds digit
             asm.STA(STRING_DRAW_ADDR, asm.ABS), # Add to string
-            # displaced vanilla logic, from C3/51E9 - 51ED 
+            # displaced vanilla logic, from C3/51E9 - 51ED
             asm.LDA(0xF8, asm.DIR),             # Tens digit
             asm.STA(STRING_DRAW_ADDR, asm.ABS), # Add to string
-            asm.RTL()
+            asm.RTL(),
         ]
         space = Write(Bank.F0, src, "Create MP Cost string")
         create_string = space.start_address_snes
@@ -26,7 +26,7 @@ class MagicMenu:
             asm.JSL(create_string),
         )
 
-        # Move where MP gets written 1 space to the left, 
+        # Move where MP gets written 1 space to the left,
         # to avoid having the number show up at the top of the "Espers" menu
         space = Reserve(0x351cd, 0x351cd, "MP String location")
         space.write(0xbd) #original: 0xbf (each text space is a value of 2)

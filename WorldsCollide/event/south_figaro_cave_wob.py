@@ -107,7 +107,7 @@ class SouthFigaroCaveWOB(Event):
         )
 
     def tunnel_armor_battle_mod(self):
-        space = Reserve(0x10a8c4, 0x10a8cf, "figaro cave tunnel armor battle dialog",)
+        space = Reserve(0x10a8c4, 0x10a8cf, "figaro cave tunnel armor battle dialog")
         space.clear(0xfd)
         space.write(0xff)
 

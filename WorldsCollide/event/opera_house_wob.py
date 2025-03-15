@@ -107,7 +107,7 @@ class OperaHouseWOB(Event):
         # 414 is an otherwise unused encounter
 
         replaced_encounters = [
-            (414, 0xAC37B), 
+            (414, 0xAC37B),
             (414, 0xAC3B4),
         ]
         for pack_id_address in replaced_encounters:
@@ -117,7 +117,7 @@ class OperaHouseWOB(Event):
             space = Reserve(invoke_encounter_pack_address, invoke_encounter_pack_address, "rat invoke fixed battle (battle byte)")
             space.write(
                 # subtrack 256 since WC stores fixed encounter IDs starting at 256
-                pack_id - 0x100
+                pack_id - 0x100,
             )
 
     def performance_mod(self):
@@ -198,7 +198,7 @@ class OperaHouseWOB(Event):
             )
 
             timer_display = f"{seconds // 60}:{seconds % 60:>02}"
-            self.log_change(f"Timer 5:00", timer_display)
+            self.log_change("Timer 5:00", timer_display)
         elif self.args.event_timers_none:
             space = Reserve(0xaba02, 0xaba07, "opera house timer", field.NOP())
 

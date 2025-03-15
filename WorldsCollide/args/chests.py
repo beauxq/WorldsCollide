@@ -41,7 +41,7 @@ def flags(args):
         flags += " -ccrs"
     elif args.chest_contents_empty:
         flags += " -cce"
-    
+
     if args.chest_random_monsters:
         flags += f" -chrm {args.chest_random_monsters_enemy} {args.chest_random_monsters_boss}"
 
@@ -66,7 +66,7 @@ def options(args):
     result.append(("Contents", contents_value, "contents_value"))
     if args.chest_contents_shuffle_random:
         result.append(("Random Percent", f"{args.chest_contents_shuffle_random_percent}%", "chest_contents_shuffle_random_percent"))
-    
+
     if args.chest_random_monsters:
         result.append(("MIAB Percent", f"{args.chest_random_monsters_enemy}%", "chest_random_monsters_enemy"))
         result.append(("  Boss Percent", f"{args.chest_random_monsters_boss}%", "chest_random_monsters_boss"))
@@ -83,7 +83,7 @@ def menu(args):
         del entries[1]                                   # delete random percent line
     else:
         entries[0] = (entries[0][1], "")
-    
+
     return (name(), entries)
 
 def log(args):

@@ -75,7 +75,8 @@ class Arguments:
             setattr(self, arg_name + "_max", values[1])
 
 if __name__ == "__main__":
-    import os, sys
+    import os
+    import sys
 
     # execute from parent directory for import paths
     sys.path[0] = os.path.join(sys.path[0], os.path.pardir)

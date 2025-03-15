@@ -28,7 +28,7 @@ class SerpentTrench(Event):
         self.log_reward(self.reward)
 
     def fixed_battles_mod(self):
-        # Serpents Trench has 3 fixed encounters: 
+        # Serpents Trench has 3 fixed encounters:
         #  275 - encountered once (first battle)
         #  276 - encountered 3 times
         #  277 - encountered 3 times
@@ -36,7 +36,7 @@ class SerpentTrench(Event):
         # 410 - 413 are otherwise unused fixed encounters
 
         replaced_encounters = [
-            (410, 0xA8BB7), 
+            (410, 0xA8BB7),
             (411, 0xA8C25),
             (412, 0xA8BD0),
             (413, 0xA8C6C),
@@ -48,7 +48,7 @@ class SerpentTrench(Event):
             space = Reserve(invoke_encounter_pack_address, invoke_encounter_pack_address, "serpent trench invoke fixed battle (battle byte)")
             space.write(
                 # subtrack 256 since WC stores fixed encounter IDs starting at 256
-                pack_id - 0x100
+                pack_id - 0x100,
             )
 
     def cave_mod(self):
@@ -145,7 +145,7 @@ class SerpentTrench(Event):
             vehicle.ClearEventBit(event_bit.TEMP_SONG_OVERRIDE),
             vehicle.FadeLoadMap(0xbb, direction.DOWN, default_music = True,
                                 x = 24, y = 11, entrance_event = True),
-            field.Return()
+            field.Return(),
         ]
         space = Write(Bank.CA, src, "serpent trench move airship to nikeah")
         self.move_airship_to_nikeah = space.start_address

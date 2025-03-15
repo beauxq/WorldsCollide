@@ -208,7 +208,7 @@ class NarsheBattle(Event):
             reward_instructions,
 
             field.SetParty(1),
-            
+
             # ref: CB/7217
             field.HoldScreen(),
             field.DisableEntityCollision(field_entity.PARTY0),

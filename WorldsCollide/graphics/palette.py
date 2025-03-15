@@ -75,11 +75,11 @@ class Palette:
     def __repr__(self):
         result = ""
         for color_index in range(len(self)):
-            result += f"{repr(self.colors[color_index])}\n"
+            result += f"{self.colors[color_index]!r}\n"
         return result[:-1]
 
     def __str__(self):
         result = ""
         for color_index in range(len(self)):
-            result += f"{color_index:>2}: {str(self.colors[color_index])}\n"
+            result += f"{color_index:>2}: {self.colors[color_index]!s}\n"
         return result[:-1]

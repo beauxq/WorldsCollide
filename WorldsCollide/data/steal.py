@@ -7,7 +7,7 @@ class Steal:
         self.args = args
 
     def enable_steal_chances_always(self):
-        #Always steal if the enemy has an item. 
+        #Always steal if the enemy has an item.
         # If the enemy has both rare and common, the rare item will be stolen 3/8 of the time.
         space = Reserve(0x0239b7, 0x0239e4, "steal common vs rare logic", asm.NOP())
         space.add_label("SPACE_END", space.end_address + 1)

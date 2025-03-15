@@ -2,7 +2,7 @@ from ..data.rage import Rage
 from ..data.structures import DataBits, DataArray
 from ..data.ability_data import AbilityData
 
-class Rages():
+class Rages:
     RAGE_COUNT = 256 # 255 available
     DOOM_DRGN_RAGE_ID = 37
     NIGHTSHADE_RAGE_ID = 51

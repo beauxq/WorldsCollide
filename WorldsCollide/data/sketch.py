@@ -1,4 +1,4 @@
-class Sketch():
+class Sketch:
     def __init__(self, id, attack_data):
         self.id = id
 

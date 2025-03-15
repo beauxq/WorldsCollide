@@ -38,7 +38,7 @@ class EightDragons(Event):
 
     def dialog_mod(self):
         # remove reference to crusader
-        self.dialogs.set_text(1593, f"I found this in a 1000 year-old text:<line>8 dragons seal away awesome artifacts.<page>Defeat these dragons, and their power can be released…<end>")
+        self.dialogs.set_text(1593, "I found this in a 1000 year-old text:<line>8 dragons seal away awesome artifacts.<page>Defeat these dragons, and their power can be released…<end>")
 
         # remove the number of dragons
         self.dialogs.set_text(1505, "    Dragon Seal broken!!<end>")

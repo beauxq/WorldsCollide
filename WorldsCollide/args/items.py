@@ -147,7 +147,7 @@ def flags(args):
     elif args.item_equipable_balanced_random:
         flags += f" -iebr {args.item_equipable_balanced_random_value}"
     elif args.item_equipable_tiered_random:
-        flags += f" -ietr"
+        flags += " -ietr"
     elif args.item_equipable_original_random:
         flags += f" -ieor {args.item_equipable_original_random_percent}"
     elif args.item_equipable_shuffle_random:
@@ -158,7 +158,7 @@ def flags(args):
     elif args.item_equipable_relic_balanced_random:
         flags += f" -ierbr {args.item_equipable_relic_balanced_random_value}"
     elif args.item_equipable_relic_tiered_random:
-        flags += f" -iertr"
+        flags += " -iertr"
     elif args.item_equipable_relic_original_random:
         flags += f" -ieror {args.item_equipable_relic_original_random_percent}"
     elif args.item_equipable_relic_shuffle_random:
@@ -188,7 +188,7 @@ def options(args):
     elif args.item_equipable_balanced_random:
         equipable = f"Balanced Random {args.item_equipable_balanced_random_value}"
     elif args.item_equipable_tiered_random:
-        equipable = f"Tiered Random"
+        equipable = "Tiered Random"
     elif args.item_equipable_original_random:
         equipable = f"Original + Random {args.item_equipable_original_random_percent}%"
     elif args.item_equipable_shuffle_random:
@@ -200,7 +200,7 @@ def options(args):
     elif args.item_equipable_relic_balanced_random:
         equipable_relics = f"Balanced Random {args.item_equipable_relic_balanced_random_value}"
     elif args.item_equipable_relic_tiered_random:
-        equipable_relics = f"Tiered Random"
+        equipable_relics = "Tiered Random"
     elif args.item_equipable_relic_original_random:
         equipable_relics = f"Original + Random {args.item_equipable_relic_original_random_percent}%"
     elif args.item_equipable_relic_shuffle_random:

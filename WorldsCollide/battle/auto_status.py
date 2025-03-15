@@ -24,7 +24,7 @@ class _AutoStatus:
             auto_addresses.append(self.auto_status(status, status_effects.D))
         for status in auto_phantasm_overcast_status_effects:
             auto_addresses.append(self.auto_status(status, status_effects.PhantasmOvercast))
-        
+
 
         src = [
             # original replaced code
@@ -72,7 +72,7 @@ class _AutoStatus:
             status_address = 0x3c6d
             opcode = asm.ABS_X
         elif status_effects_group == status_effects.D:
-            status_address = 0x1615 
+            status_address = 0x1615
             opcode = asm.ABS_Y
         elif status_effects_group == status_effects.PhantasmOvercast:
             status_address = 0x3e4d
@@ -96,13 +96,13 @@ class _AutoStatus:
 
             auto_status_name_upper,
         ]
-        
+
         # if the opcode is Y, that means we're accessing the SRAM offset, for which Y is multiples of 37
         if(opcode == asm.ABS_Y):
             src += [
                 asm.PHY(), # push current Y
                 asm.XY16(), # 16-bit X & Y
-                asm.LDY(0x3010, asm.ABS_X) # get the pointer to the character
+                asm.LDY(0x3010, asm.ABS_X), # get the pointer to the character
             ]
         src += [
             asm.LDA(status_address, opcode),

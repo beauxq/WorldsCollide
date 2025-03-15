@@ -5,7 +5,7 @@ from ..data.structures import DataArray
 from ..data import espers_asm as espers_asm
 import random
 
-class Espers():
+class Espers:
     ESPER_COUNT = 27
 
     RAMUH, IFRIT, SHIVA, SIREN, TERRATO, SHOAT, MADUIN, BISMARK, STRAY, PALIDOR, TRITOCH, ODIN, RAIDEN, BAHAMUT, ALEXANDR,\
@@ -371,7 +371,7 @@ class Espers():
             for spell_index in range(esper.spell_count):
                 spell_name = self.spells.get_name(esper.spells[spell_index].id)
                 learn_rate = esper.spells[spell_index].rate
-                entry.append(format_option("{:<7} x{}".format(spell_name, str(learn_rate)), ""))
+                entry.append(format_option(f"{spell_name:<7} x{learn_rate!s}", ""))
 
             bonus_string = esper.get_bonus_string()
             if bonus_string:

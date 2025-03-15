@@ -114,7 +114,7 @@ def options(args):
         ("Remove Learnable Spells", args.remove_learnable_spell_ids, "remove_learnable_spell_ids"),
         ("No Saves", args.no_saves, "no_saves"),
     ]
-        
+
     return opts
 def _format_spells_log_entries(spell_ids):
     from ..constants.spells import id_spell

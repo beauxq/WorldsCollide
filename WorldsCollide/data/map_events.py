@@ -252,14 +252,14 @@ class LongMapEvents:
             asm.JSR(0x2fed, asm.ABS),   # C0EDB2:    JSR $2FED                     [20 ED 2F]
 
             asm.REP(0x20),              # C0EDB5:    REP  # $20                    [C2 20]
-            asm.BRA("DO_NORMAL_TRIGGERS")  # C0EDB7:    BRA C08CE8; do normal event triggers now  [80 AB]
+            asm.BRA("DO_NORMAL_TRIGGERS"),  # C0EDB7:    BRA C08CE8; do normal event triggers now  [80 AB]
         ]
 
         space = Write(Bank.C0, src, "Long event program code")
 
         hook = Reserve(0x0bcaa, 0x0bcac, "Hook for long event program code", field.NOP())
         hook.write(
-            asm.JSR(space.start_address, asm.ABS)
+            asm.JSR(space.start_address, asm.ABS),
         )
 
         pointspace = Reserve(self.POINTER_START_ADDR_LONG, self.DATA_START_ADDR_LONG, 'Long Event Pointers', 0x0)

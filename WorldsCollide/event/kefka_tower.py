@@ -266,7 +266,7 @@ class KefkaTower(Event):
 
         space = Reserve(start_target, end_target, description, asm.NOP())
         space.write([
-            field.Call(post_battle.start_address)
+            field.Call(post_battle.start_address),
         ])
 
     def guardian_mod(self):

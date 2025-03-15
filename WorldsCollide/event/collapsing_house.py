@@ -48,7 +48,7 @@ class CollapsingHouse(Event):
             )
 
             timer_display = f"{seconds // 60}:{seconds % 60:>02}"
-            self.log_change(f"Timer 6:00", timer_display)
+            self.log_change("Timer 6:00", timer_display)
         elif self.args.event_timers_none:
             space = Reserve(0xc5923, 0xc5929, "collapsing house timer", field.NOP())
 

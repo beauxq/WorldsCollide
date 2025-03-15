@@ -16,7 +16,7 @@ def get_palettes_with_colors():
     palettes = [{
         'id': palette_id,
         'key': key,
-        'palette': get_palette_bytes(palette_id)
+        'palette': get_palette_bytes(palette_id),
     } for ((palette_id, key)) in id_palette.items()]
 
     return palettes

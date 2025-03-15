@@ -132,7 +132,7 @@ class PreGameMenu:
             asm.JSR(self.common.refresh_sprites, asm.ABS),
 
             # if in a scroll area, sustain it
-            asm.LDA(0x0200, asm.ABS), 
+            asm.LDA(0x0200, asm.ABS),
             asm.CMP(self.common.flags.MENU_NUMBER, asm.IMM8),
             asm.BEQ("SUSTAIN_SCROLL_AREA"),
             asm.CMP(self.common.objectives.MENU_NUMBER, asm.IMM8),
@@ -180,7 +180,7 @@ class PreGameMenu:
             "EXIT_SCROLL_AREA",
         ]
         src.extend(self.common.get_scroll_area_exit_src(self.MENU_NUMBER, self.invoke_flags))
-        
+
         # Called by C3 JSR jump table
         space = Write(Bank.C3, src, "pregame sustain")
         self.sustain = space.start_address
@@ -215,7 +215,7 @@ class PreGameMenu:
             asm.RTS(),
 
             "MAIN_MENU_EXIT",
-            Read(0x3230c, 0x32315)          # cursor sound, queue main menu, fade out
+            Read(0x3230c, 0x32315),         # cursor sound, queue main menu, fade out
         ]
         space = Write(Bank.C3, src, "pregame config menu exit check")
         config_menu_exit_check = space.start_address

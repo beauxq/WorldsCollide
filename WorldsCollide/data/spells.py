@@ -126,7 +126,7 @@ class Spells:
     def write(self):
         if self.args.spoiler_log:
             self.log()
-            
+
         for spell_index, spell in enumerate(self.spells):
             self.name_data[spell_index] = spell.name_data()
             self.ability_data[spell_index] = spell.ability_data()
@@ -136,13 +136,13 @@ class Spells:
 
     def log(self):
         from ..log import section
-        
+
         lcolumn = []
         for spell in self.spells:
             spell_name = spell.get_name()
 
             lcolumn.append(f"{spell_name:<{self.NAME_SIZE}} {spell.mp:>3} MP")
-        
+
         section("Spells", lcolumn, [])
 
     def print(self):

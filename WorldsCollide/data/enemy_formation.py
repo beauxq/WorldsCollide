@@ -1,5 +1,5 @@
 # Within https://everything8215.github.io/ff6tools/ff6tools.html, these are what's found under Battle -> Battles
-class EnemyFormation():
+class EnemyFormation:
     ENEMY_CAPACITY = 6 # up to 6 enemies in a formation
 
     def __init__(self, id, flags_data, enemies_data):

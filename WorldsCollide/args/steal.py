@@ -18,7 +18,6 @@ def process(args):
     if args.shuffle_steals_drops is not None:
         args.shuffle_steals_drops_random_percent = args.shuffle_steals_drops
         args.shuffle_steals_drops = True
-    pass
 
 def flags(args):
     flags = ""

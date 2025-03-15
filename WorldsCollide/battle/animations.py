@@ -22,14 +22,14 @@ class Animations:
         elif args.flashes_remove_worst:
             replace_flash_animation.extend(["Boss Death"])
             remove_flash_animation.extend(["Ice 3", "Fire 3", "Bolt 3", "Schiller", "R.Polarity", "X-Zone",
-                               "Muddle", "Dispel", "Shock", "Bum Rush", "Quadra Slam", "Slash", "Flash", 
+                               "Muddle", "Dispel", "Shock", "Bum Rush", "Quadra Slam", "Slash", "Flash",
                                "Step Mine", "Rippler", "WallChange", "Ultima", "ForceField"])
 
         # Replace any specified above
         flash_address_arrays = [battle_animation_scripts.BATTLE_ANIMATION_FLASHES[name] for name in replace_flash_animation]
         if flash_address_arrays:
             self.replace_bg_flash_with_monster_flash_mod(flash_address_arrays)
-        
+
         # Remove any remainder specified above
         flash_address_arrays = [battle_animation_scripts.BATTLE_ANIMATION_FLASHES[name] for name in remove_flash_animation if name not in replace_flash_animation]
         if flash_address_arrays:
@@ -82,18 +82,18 @@ class Animations:
     def health_animation_reflect_mod(self):
         # Ref: https://www.ff6hacking.com/forums/thread-4145.html
         # Banon's Health command casts Cure 2 on the party with a unique animation.
-        # Because the animation is unique, it has the step-forward component built into it.  
-        # And because Cure 2 can be reflected, if the command hits a mirrored target it will bounce and make Banon step forward again.  
+        # Because the animation is unique, it has the step-forward component built into it.
+        # And because Cure 2 can be reflected, if the command hits a mirrored target it will bounce and make Banon step forward again.
         # Note: this only occurs if the whole party doesn't have reflect, only a subset.
         # Used over and over, Banon can be made to walk completely off-screen.
-        # 
+        #
         # Fix:
-        # We tell the HEALTH animation to ignore block graphics, which prevents the reflect animation from playing.  
+        # We tell the HEALTH animation to ignore block graphics, which prevents the reflect animation from playing.
         # When encountering a reflection, the regular green Cure 2 animation will follow on the reflect recipient.
         src = [
             asm.INC(0x62C0, asm.ABS), #Makes the animation ignore blocking graphics
             asm.JSR(0xBC35, asm.ABS), #Call the subroutine that got displaced to inject the block override
-            asm.RTS()
+            asm.RTS(),
         ]
         space = Write(Bank.C1, src, "Health animation fix")
         jsrAddr = space.start_address

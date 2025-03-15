@@ -118,7 +118,7 @@ class FloatingContinent(Event):
     def airship_fixed_battles_mod(self):
         # change iaf battles to front attacks, even if the original pack id happens to be the new random one
         # because other random formations in the pack may not work with pincer attacks
-        
+
         # adding an unused pack id (416) to increase variety of encounters
         battle_background = 48 # airship, right
 
@@ -153,7 +153,7 @@ class FloatingContinent(Event):
             # Slow the scrolling background by modifying the ADC command.
             space = Reserve(0x2b1b1, 0x2b1b3, "falling through clouds background movement")
             space.write(
-                asm.ADC(0x0001, asm.IMM16) #default: 0x0006
+                asm.ADC(0x0001, asm.IMM16), #default: 0x0006
             )
 
         boss_pack_id = self.get_boss("Air Force")
@@ -377,7 +377,7 @@ class FloatingContinent(Event):
             field.WaitForEntityAct(0x21),
             field.WaitForEntityAct(0x1f),
 
-            field.Branch(begin_escape)
+            field.Branch(begin_escape),
         ]
         space = Write(Bank.CA, src, "floating continent statues shoot light at gestahl and party")
         light_shot = space.start_address
@@ -400,7 +400,7 @@ class FloatingContinent(Event):
             )
 
             timer_display = f"{seconds // 60}:{seconds % 60:>02}"
-            self.log_change(f"Timer 6:00", timer_display)
+            self.log_change("Timer 6:00", timer_display)
 
             # floating continent escape has a second timer which expires 5 seconds before game over timer
             seconds -= 5

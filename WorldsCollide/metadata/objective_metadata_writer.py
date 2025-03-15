@@ -32,11 +32,11 @@ class ObjectiveMetadataWriter:
         for index in range(0, len(self.conditions)):
             condition = self.conditions[index]
             metadata['conditions'].append(condition.to_json())
-      
+
         return metadata
 
     def write(self):
-        import json        
+        import json
         from .. import args as args
         file_name = f"{args.output_file}"
         metadata = self.get_objective_metadata()

@@ -21,7 +21,5 @@ class LessPoisonBlur:
              0x6F, 0x6F, 0x5F, 0x5F, # vanilla: EF DF CF BF
              0x4F, 0x4F, 0x3F, 0x3F, # vanilla: AF 9F 8F 7F
              0x2F, 0x2F, 0x1F, 0x1F, # vanilla: 6F 5F 4F 3F
-             0x0F, 0x0F]             # vanilla: 2F 1F
+             0x0F, 0x0F],            # vanilla: 2F 1F
         )
-        
-

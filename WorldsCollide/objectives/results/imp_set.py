@@ -9,7 +9,7 @@ class Field(field_result.Result):
         src = []
         for item_id in IMP_ITEM_IDS:
             src += [
-                field.AddItem(item_id)
+                field.AddItem(item_id),
             ]
         return src
 

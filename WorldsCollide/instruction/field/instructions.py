@@ -1031,6 +1031,6 @@ class RestoreHp(_Instruction):
 class RestoreMp(_Instruction):
     def __init__(self, character, amount):
         # Modify actor A's Magic Points. B is the amount, however, bit 0x80 tells it to subtract. The amount in 0x7F is a power of 2 to add/subtract.
-        # This command appears to have been a copy/paste of the Hit Points, however, they did not code the powers of 2 part, so in reality, the only 
+        # This command appears to have been a copy/paste of the Hit Points, however, they did not code the powers of 2 part, so in reality, the only
         # thing this can do is set MP to max via the 7F second parameter.
         super().__init__(0x8c, character, amount)

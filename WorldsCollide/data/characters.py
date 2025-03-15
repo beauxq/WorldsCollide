@@ -9,7 +9,7 @@ from ..data.structures import DataArray
 
 from ..data import characters_asm as characters_asm
 
-class Characters():
+class Characters:
     CHARACTER_COUNT = 14   # 14 playable characters
     TERRA, LOCKE, CYAN, SHADOW, EDGAR, SABIN, CELES, STRAGO, RELM, SETZER, MOG, GAU, GOGO, UMARO = range(CHARACTER_COUNT)
     SOLDIER, IMP, GENERAL_LEO, BANON_DUNCAN, ESPER_TERRA, MERCHANT, GHOST, KEFKA = range(CHARACTER_COUNT, 22)

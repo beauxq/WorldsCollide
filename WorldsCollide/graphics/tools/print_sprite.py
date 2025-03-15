@@ -4,7 +4,7 @@ def print_sprite(sprite_id, palette_id, pose_id):
     (sprite_bytes, palette_bytes) = get_sprite_palette_bytes(sprite_id, palette_id, pose_id)
     print({
         'sprite': sprite_bytes,
-        'palette': palette_bytes
+        'palette': palette_bytes,
     })
 
 def get_sprite_bytes(sprite_id, palette_id, pose_id):

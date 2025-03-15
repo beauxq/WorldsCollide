@@ -1,6 +1,6 @@
 from ..data import direction as direction
 
-class NPC():
+class NPC:
     DATA_SIZE = 0x09
 
     NO_MOVE, SCRIPT_MOVE, PLAYER_MOVE, RANDOM_MOVE, ACTIVATED_MOVE = range(5)
@@ -99,4 +99,4 @@ class NPC():
         self.event_address = address - EVENT_CODE_START
 
     def print(self):
-        print(" ".join("{}: {}".format(k, v) for k, v in vars(self).items()))
+        print(" ".join(f"{k}: {v}" for k, v in vars(self).items()))

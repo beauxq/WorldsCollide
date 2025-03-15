@@ -1,6 +1,6 @@
 from ..data.enemy_zone import WOBZone, WORZone, MapZone
 
-class EnemyZones():
+class EnemyZones:
     # world of balance is split into 64 zones
     # world of ruin is split into 64 zones
     # maps are 1 zone each

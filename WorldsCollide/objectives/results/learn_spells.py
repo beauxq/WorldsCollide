@@ -5,7 +5,7 @@ def _random_spell_table():
     from ...constants.spells import spell_id
 
     spell_table = list(range(len(spell_id)))
-    
+
     for a_spell_id in args.remove_learnable_spell_ids:
         spell_table.remove(a_spell_id)
 
@@ -89,7 +89,7 @@ def _learn_random_spells():
         ]
     else: # no spells to learn
         src = [
-            asm.RTL()
+            asm.RTL(),
         ]
     space = Write(Bank.F0, src, "learn spells learn random spells")
     return space.start_address

@@ -15,7 +15,7 @@ def convert(string, to_type):
     elif to_type == TEXT3:
         from ...data.text.text3 import text_value
     else:
-        raise NameError("text_type {} not found".format(text_type))
+        raise NameError(f"text_type {text_type} not found")
 
     result = ""
     string_index = 0
@@ -48,7 +48,7 @@ def get_string(values, text_type):
     elif text_type == TEXT3:
         from ...data.text.text3 import value_text
     else:
-        raise NameError("text_type {} not found".format(text_type))
+        raise NameError(f"text_type {text_type} not found")
 
     result = ''
     value_index = 0
@@ -76,7 +76,7 @@ def get_bytes(string, text_type):
     elif text_type == TEXT3:
         from ...data.text.text3 import text_value
     else:
-        raise NameError("text_type {} not found".format(text_type))
+        raise NameError(f"text_type {text_type} not found")
 
     result = [None] * len(string)
     result_index = 0

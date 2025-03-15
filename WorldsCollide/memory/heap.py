@@ -125,7 +125,7 @@ class Heap:
         return f"{self.available} bytes available in {len(self.blocks)} blocks"
 
     def __repr__(self):
-        result = f"{str(self)}\n"
+        result = f"{self!s}\n"
         for block in self.blocks:
             result += f"  [0x{block.start:06x} - 0x{block.end:06x}] {block.size} bytes\n"
         return result[:-1]

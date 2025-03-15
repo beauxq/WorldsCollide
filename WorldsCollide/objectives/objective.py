@@ -113,9 +113,9 @@ class Objective:
                     self.conditions[index] = conditions[random_type.name](random_value)
 
     def __str__(self):
-        result = f"{self.letter} {str(self.result)} {self.conditions_required}"
+        result = f"{self.letter} {self.result!s} {self.conditions_required}"
         for condition in self.conditions:
-            result += f"\n  {str(condition)}"
+            result += f"\n  {condition!s}"
         return result
 
     @classmethod

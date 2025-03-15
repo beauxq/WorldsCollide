@@ -20,5 +20,5 @@ class ObjectiveConditionMetadata:
             'condition_type_name': self.condition.name,
             'value_range': getattr(self.condition, 'value_range', None),
             'value_descriptions': value_descriptions,
-            'range': self.condition.min_max
+            'range': self.condition.min_max,
         }

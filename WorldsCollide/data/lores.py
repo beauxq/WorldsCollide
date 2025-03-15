@@ -188,7 +188,8 @@ class Lores:
         return new_desc
 
     def random_lx_levels(self, dialogs):
-        import random, re
+        import random
+        import re
         LX_LORE_IDX = [Lores.L_5_DOOM, Lores.L_4_FLARE, Lores.L_3_MUDDLE, Lores.L_PEARL]
         LQ_EFFECT = 29 # the AbilityData.effect setting for L?
         NO_EFFECT = 255 # The AbilityData.effect setting for no effect
@@ -200,7 +201,7 @@ class Lores:
             level_divisor = random.randint(0, MAX_DIVISOR)
             if lore_index == Lores.L_5_DOOM:
                 # prevent soft-locks with bosses by removing unmissable doom
-                level_divisor = random.randint(2, MAX_DIVISOR) 
+                level_divisor = random.randint(2, MAX_DIVISOR)
 
             lore.accuracy = level_divisor
             if level_divisor: # non-zero

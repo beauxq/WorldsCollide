@@ -20,5 +20,5 @@ class ObjectiveMetadata:
             'name': self.objective.name,
             'value_range': self.objective.value_range,
             'format_string': formatter,
-            'group': self.group
+            'group': self.group,
         }

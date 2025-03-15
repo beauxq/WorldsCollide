@@ -26,7 +26,7 @@ def get_spritesheet_tile_indices(full):
     import itertools
     tile_indices = []
     for row in SPRITESHEET_POSES:
-        for tile_row in zip(*[poses.CHARACTER[pose_row] for pose_row in row]):
+        for tile_row in zip(*[poses.CHARACTER[pose_row] for pose_row in row], strict=False):
             tile_indices.append(list(itertools.chain.from_iterable(tile_row)))
 
     if not full:
@@ -113,7 +113,8 @@ def convert(image_path):
     write_sprite(output_prefix, sprite, tile_indices)
 
 if __name__ == "__main__":
-    import os, sys
+    import os
+    import sys
     sys.path.append(os.path.join(os.path.dirname(__file__), "..", ".."))
 
     import argparse

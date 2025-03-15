@@ -69,10 +69,10 @@ def options(args):
         ("Start Lores", start_lores, "start_lores"),
         ("MP", mp, "lores_mp"),
         ("Everyone Learns", args.lores_everyone_learns, "lores_everyone_learns"),
-        ("L.x Spells", lvl_x_spells, "lvl_x_spells")
+        ("L.x Spells", lvl_x_spells, "lvl_x_spells"),
     ]
-    
-    
+
+
     return opts
 
 def menu(args):

@@ -201,7 +201,7 @@ class NaturalMagic:
             if self.args.random_natural_spells2:
                 self.randomize_spells2()
 
-        # Remove any excluded spells remaining. 
+        # Remove any excluded spells remaining.
         # As randomize_spells respects the exclusion list, this should only have the effect of removing any excluded non-random spells.
         self.remove_excluded()
 

@@ -9,7 +9,8 @@ def separator(label):
     logging.info(get_separator(label))
 
 def columns(lcolumn, rcolumn):
-    import logging, itertools
+    import logging
+    import itertools
     for column in itertools.zip_longest(lcolumn, rcolumn, fillvalue = ""):
         logging.info(f"{column[0]:<{COLUMN_WIDTH}}{column[1]:<{COLUMN_WIDTH}}".rstrip())
 
@@ -59,5 +60,5 @@ def format_option(option, value, unique_name = ''):
     if(standard_flag != str(value)):
         pass # nothing for now -- uncomment once we have new standard
     #    option = f"!{option}" # prepend a ! to indicate it's non standard
-        
+
     return f"    {option:<26} {value}"

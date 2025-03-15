@@ -1,7 +1,7 @@
 from ..data import text as text
 from ..data.text.text2 import text_value, value_text
 
-class Item():
+class Item:
     NAME_LENGTH = 13
     NAMES_START_ADDR = 0x12b300
 
@@ -109,4 +109,4 @@ class Item():
     def print(self):
         type_string = {self.TOOL : "TOOL", self.WEAPON : "WEAPON", self.ARMOR : "ARMOR",
                        self.SHIELD : "SHIELD", self.HELMET : "HELMET", self.RELIC : "RELIC", self.ITEM : "ITEM"}
-        print("{}: {} {}: {} {}".format(self.id, self.name, type_string[self.type], hex(self.equipable_characters), self.price))
+        print(f"{self.id}: {self.name} {type_string[self.type]}: {hex(self.equipable_characters)} {self.price}")

@@ -6,7 +6,7 @@ from ..data.structures import DataMap
 
 from ..data import enemy_script_commands as ai_instr
 
-class EnemyScripts():
+class EnemyScripts:
     SCRIPT_PTRS_START = 0xf8400
     SCRIPT_PTRS_END   = 0xf86ff
     SCRIPTS_START = 0xf8700
@@ -122,7 +122,7 @@ class EnemyScripts():
         zinger_turn = [
             ai_instr.EndTurn(),                 # wait until next turn
             ai_instr.SetTarget(0x44),           # set target: random ally
-            ai_instr.RandomAttack(name_id["Nothing"], name_id["Zinger"], name_id["Zinger"])
+            ai_instr.RandomAttack(name_id["Nothing"], name_id["Zinger"], name_id["Zinger"]),
         ]
         wrexsoul_script.remove(zinger_turn)
 

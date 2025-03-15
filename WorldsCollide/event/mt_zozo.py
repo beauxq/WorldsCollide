@@ -52,7 +52,7 @@ class MtZozo(Event):
             Read(0xaefb3, 0xaefb6), # woman laying down animate
             field.BranchIfEventBitSet(event_bit.IN_WOR, "IN_WOR"),
             field.EntityAct(drunk_npc_id, True,
-                field_entity.SetPosition(50, 36)
+                field_entity.SetPosition(50, 36),
             ),
             field.Return(),
 

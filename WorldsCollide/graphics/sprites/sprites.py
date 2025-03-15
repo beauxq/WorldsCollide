@@ -158,7 +158,7 @@ id_sprite = {
     158 : "Chen-HoxNorf-Touhou",
     159 : "Selphie-HoxNorf-FF8",
     160 : "Sora-HoxNorf-KH",
-    
+
     200 : "Flandre-HoxNorf-Touhou",
     201 : "Porom-Devout-HoxNorf-FF4",
     202 : "Remilia-HoxNorf-Touhou",
@@ -169,7 +169,7 @@ id_sprite = {
     207 : "Patchouli-HoxNorf-Touhou",
     208 : "Suwako-HoxNorf-Touhou",
     209 : "Eiko_Miko-ScarabEnigma-FF9",
-    
+
     210 : "Akari-HoxNorf-LB",
     211 : "Angeal-HoxNorf-FF7",
     212 : "Bombette-HoxNorf-Mario",
@@ -252,7 +252,7 @@ id_sprite = {
     289 : "Vargas-PocoLoco-FF6",
     290 : "Vincent-FEOK-FF7",
     291 : "Yoshi-Badass-Mario",
-    
+
     # FFT
     300 : "Alma-HoxNorf-FFT",
     301 : "Orlandeau-ctrlxz-FFT",

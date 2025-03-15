@@ -6,7 +6,7 @@ from ..instruction import asm as asm
 from ..instruction import c2 as c2
 from .. import args as args
 
-class _Scaling():
+class _Scaling:
     def __init__(self):
         self.scaling_functions = ScalingFunctions()
 

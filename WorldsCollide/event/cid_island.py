@@ -128,12 +128,12 @@ class CidIsland(Event):
         values = [value * 2 for value in values]    # double them
 
         addresses = [
-            0xa539c, 0xa53a8, 0xa53b4, 0xa53c0
+            0xa539c, 0xa53a8, 0xa53b4, 0xa53c0,
         ]
         for index, address in enumerate(addresses):
             space = Reserve(address, address + 1, "EWFEF")
             space.write(
-                values[index].to_bytes(2, "little")
+                values[index].to_bytes(2, "little"),
             )
 
     def cid_health_event_word_mod(self):
@@ -170,7 +170,7 @@ class CidIsland(Event):
         space.write(0x15)
         space = Reserve(0xa5583, 0xa5584, "cid's island pause before character kneels", field.NOP())
         space.write(
-            field.Pause(2)
+            field.Pause(2),
         )
         space = Reserve(0xa558d, 0xa558d, "cid's island pause before question mark", field.NOP())
         space = Reserve(0xa559e, 0xa55b1, "cid's island walk around bird", field.NOP())

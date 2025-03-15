@@ -1,7 +1,7 @@
 # on world maps enemy zones are regions of world map and contain 4 packs each
 # each non-world map corresponds to one enemy zone and has one pack
 
-class EnemyZone():
+class EnemyZone:
     ENCOUNTER_RATES = {0 : "Normal", 1 : "Lower", 2 : "Higher"}
     NORMAL_ENCOUNTER_RATE, LOW_ENCOUNTER_RATE, HIGH_ENCOUNTER_RATE = range(3)
 

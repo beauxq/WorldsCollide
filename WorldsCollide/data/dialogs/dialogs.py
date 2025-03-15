@@ -4,7 +4,7 @@ from ...memory.space import Space
 from ...data.fonts import widths
 from ...data import text as data_text
 
-class Dialogs():
+class Dialogs:
     DIALOG_PTRS_START = 0xce602
     DIALOG_PTRS_END = 0xcffff
     DIALOGS_START = 0xd0000

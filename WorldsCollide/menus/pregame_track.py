@@ -277,7 +277,7 @@ class PreGameTrack:
             asm.LDY(self.cursor_positions, asm.IMM16),
             c3.eggers_jump(0x0640),   # update cursor position
             c3.eggers_jump(0x07b0),   # add cursor to animation queue
-            asm.RTS(),                
+            asm.RTS(),
         ]
         space = Write(Bank.F0, src, "pregame track update cursor position")
         self.update_cursor_position = space.start_address
@@ -478,8 +478,8 @@ class PreGameTrack:
             asm.STA(scroll_area.MEMORY_PAGE_POSITIONS_START_ADDR, asm.ABS_Y),
 
             "UPDATE_PREGAME_TRACK_CURSOR",
-            asm.JSR(self.update_navigation_data, asm.ABS), 
-            asm.JSR(self.remember_cursor_position, asm.ABS), 
+            asm.JSR(self.update_navigation_data, asm.ABS),
+            asm.JSR(self.remember_cursor_position, asm.ABS),
             asm.JSR(self.update_cursor_position, asm.ABS),
 
             asm.RTL(),
@@ -699,7 +699,7 @@ class PreGameTrack:
 
             c3.eggers_jump(0x6a19),   # clear BG1 b
             c3.eggers_jump(0x6a3c),   # clear BG3 a
-            c3.eggers_jump(0x6a41),   # clear BG3 b 
+            c3.eggers_jump(0x6a41),   # clear BG3 b
             c3.eggers_jump(0x6a46),   # clear BG3 c
             c3.eggers_jump(0x6a4b),   # clear BG3 d
 

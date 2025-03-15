@@ -1,6 +1,6 @@
 from ..data import text as text
 
-class Character():
+class Character:
     # every 2 seconds while running in battle the character's run value is incremented by a
     # random number from 1 to run_success. Once it reaches battle's threshold (and atb full) the character runs
     # run_success value is between 2 and 5, but 0b11 = 2, 0b10 = 3, 0b01 = 4, 0b00 = 5 (run_val = 5 - bit_val)

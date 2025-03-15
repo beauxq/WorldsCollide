@@ -39,7 +39,7 @@ class MtKolts(Event):
     def add_gating_condition(self):
         src = [
             field.ReturnIfEventBitClear(event_bit.character_recruited(self.character_gate())),
-            Read(0xa8267, 0xa828e)
+            Read(0xa8267, 0xa828e),
         ]
         space = Write(Bank.CA, src, "mt kolts vargas appears at end gate")
         vargas_appears = space.start_address

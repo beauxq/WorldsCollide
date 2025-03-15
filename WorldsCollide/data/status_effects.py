@@ -9,7 +9,7 @@ class StatusEffects:
         assert(len(groups) == len(data))
         self.groups = groups
 
-        for group, byte in zip(self.groups, data):
+        for group, byte in zip(self.groups, data, strict=False):
             for index, name in enumerate(group):
                 value = (byte >> index) & 0x01
                 setattr(self, name, value)

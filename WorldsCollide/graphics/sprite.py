@@ -44,7 +44,7 @@ class Sprite:
                                 result_row += self.tiles[tile_id].colors[row_index]
                             except IndexError:
                                 result_row += [0] * SpriteTile.COL_COUNT
-                    except TypeError as error:
+                    except TypeError:
                         tile_id = tile_row # tile_row is not a list of lists, the matrix is one column
                         result_row = self.tiles[tile_id].colors[row_index]
                     result.append(result_row)

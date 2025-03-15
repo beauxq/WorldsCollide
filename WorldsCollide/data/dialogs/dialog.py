@@ -1,6 +1,6 @@
 from ...data.text import get_bytes, get_string
 
-class Dialog():
+class Dialog:
     def __init__(self, id, type, data):
         self.id = id
         self.type = type

@@ -104,7 +104,7 @@ class LeteRiver(Event):
                 (0xB06B4, TO_BATTLE_2),
                 (0xB06D0, TO_NOOP),
                 # Forced battle 1 here
-              # Left 
+              # Left
                 # Forced battle 1 here
                 (0xB071B, TO_NOOP),
                 (0xB0734, TO_BATTLE_2),
@@ -126,7 +126,7 @@ class LeteRiver(Event):
                 (0xB0873, TO_NOOP),
                 (0xB08A8, TO_NOOP),
              ]
-        
+
         for chance_encounter_call in chance_encounter_calls:
             start_address = chance_encounter_call[0]
             end_address = start_address+3
@@ -134,11 +134,11 @@ class LeteRiver(Event):
             space = Reserve(start_address, end_address, "lete river call invoke battle subroutine", field.NOP())
             if action == TO_BATTLE_1:
                 space.write(
-                    field.Call(self.BATTLE_1_INVOKE_ADDR)
+                    field.Call(self.BATTLE_1_INVOKE_ADDR),
                 )
             elif action == TO_BATTLE_2:
                 space.write(
-                    field.Call(self.BATTLE_2_INVOKE_ADDR)
+                    field.Call(self.BATTLE_2_INVOKE_ADDR),
                 )
 
     def before_ultros_mod(self):

@@ -38,13 +38,13 @@ unused_event_battle_groups = {
     124:  "Kefka (Thamasa)",
     127:  "Empty",
     128:  "Phunbaba 1",
-    129:  "Phunbaba 2"
+    129:  "Phunbaba 2",
 }
 
 event_battle_groups_to_avoid = {
     53:  "Zone Eater",
     83:  "Kefka (final)",
-    101: "Face/Long Arm/Short Arm"
+    101: "Face/Long Arm/Short Arm",
 }
 
 boss_event_battle_groups = {
@@ -87,7 +87,7 @@ boss_event_battle_groups = {
     130: "Phunbaba 3",
     131: "Phunbaba 4",
     140: "Guardian",
-    145: "MagiMaster"
+    145: "MagiMaster",
 }
 
 dragon_event_battle_groups = {

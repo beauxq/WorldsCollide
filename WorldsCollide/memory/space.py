@@ -9,7 +9,7 @@ Bank = IntEnum("Bank", [(f"{value:X}", (value - 0xc0) * BANK_SIZE) for value in 
 
 START_ADDRESS_SNES = 0xc00000
 
-class Space():
+class Space:
     rom = None
     heaps = { bank : Heap() for bank in Bank }
     spaces = []
@@ -152,7 +152,7 @@ class Space():
         for value in values:
             if isinstance(value, str):
                 if value in self.labels:
-                    raise ValueError(f"Label '{value}' already exists in space '{str(self)}'")
+                    raise ValueError(f"Label '{value}' already exists in space '{self!s}'")
 
                 self.add_label(value, self.next_address + index)
             elif isinstance(value, LabelPointer):
@@ -219,7 +219,7 @@ class Space():
 
         # format instructions/values/labels in space with their address
         index = 0
-        result = f"{str(self)}\n"
+        result = f"{self!s}\n"
         while index < len(self):
             address = self.start_address + index
             result += get_labels(address, address_label)
@@ -240,7 +240,7 @@ class Space():
                 for value_index in range(0, len(value_strings), values_per_line):
                     lines.append(' '.join(value_strings[value_index : value_index + values_per_line]))
 
-                lines[0] = f"{lines[0]:<{values_padding}}| {str(instruction)}"
+                lines[0] = f"{lines[0]:<{values_padding}}| {instruction!s}"
                 for line_index in range(1, len(lines)):
                     lines[line_index] = f"{' ' * start_column}{lines[line_index]:<{values_padding}}|"
 

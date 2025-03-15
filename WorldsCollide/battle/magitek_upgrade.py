@@ -6,15 +6,16 @@ from .. import objectives as objectives
 
 class _MagitekUpgrade:
     '''Set the Magitek menu in battle to match the Magitek Upgrade objective result.'''
+
     def __init__(self):
         # Write our 2 magitek tables
         # We're moving them from C1/910C - C1/911B
         # Default: Match Regular character's default
         src = [
-            0x00, 0x01, #FIRE_BEAM, BOLT_BEAM, 
-            0x02, 0xFF, #ICE_BEAM, <empty>, 
-            0x04, 0xFF, #HEAL_FORCE, <empty>, 
-            0xFF, 0xFF  #<empty>, <empty>
+            0x00, 0x01, #FIRE_BEAM, BOLT_BEAM,
+            0x02, 0xFF, #ICE_BEAM, <empty>,
+            0x04, 0xFF, #HEAL_FORCE, <empty>,
+            0xFF, 0xFF,  #<empty>, <empty>
         ]
         space = Write(Bank.F0, src, "magitek default table")
         magitek_default_table_addr = space.start_address
@@ -22,19 +23,19 @@ class _MagitekUpgrade:
         # Upgraded: Match Terra's options
         src = [
             0x00, 0x01, #FIRE_BEAM, BOLT_BEAM,
-            0x02, 0x03, #ICE_BEAM, BIO_BLAST, 
-            0x04, 0x05, #HEAL_FORCE, CONFUSER, 
-            0x06, 0x07  #X_FER, TEKMISSILE
+            0x02, 0x03, #ICE_BEAM, BIO_BLAST,
+            0x04, 0x05, #HEAL_FORCE, CONFUSER,
+            0x06, 0x07,  #X_FER, TEKMISSILE
         ]
         space = Write(Bank.F0, src, "magitek upgraded table")
         magitek_upgraded_table_addr = space.start_address
 
-        # Write our modifications to the C1 routines that use the 
+        # Write our modifications to the C1 routines that use the
         # magitek tables.
         # There are 2 that use the magitek tables in C1:
         #  1) C1/4D42 - C1/4D6D builds the magitek menu by writing to $575A & $5760
-        #  2) C1/866A - C1/8683 used when selecting from the menu - 
-        #                stores the menu option in A. 
+        #  2) C1/866A - C1/8683 used when selecting from the menu -
+        #                stores the menu option in A.
         self.magitek_upgrade_name = "Magitek Upgrade"
         magitek_upgrade_name_upper = self.magitek_upgrade_name.upper()
 

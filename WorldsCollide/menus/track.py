@@ -83,7 +83,7 @@ class TrackMenu:
 
         options.append(option_space.next_address)
         option_space.write(
-            Read(0x337db, 0x337e2)  # equip
+            Read(0x337db, 0x337e2),  # equip
         )
         options.append(option_space.next_address)
         option_space.write(
@@ -93,7 +93,7 @@ class TrackMenu:
         )
         options.append(option_space.next_address)
         option_space.write(
-            Read(0x337f4, 0x337fc)  # config
+            Read(0x337f4, 0x337fc),  # config
         )
 
         src = []
@@ -225,7 +225,7 @@ class TrackMenu:
             asm.JSR(self.common.refresh_sprites, asm.ABS),
 
             # if in a scroll-area menu, sustain the scroll area
-            asm.LDA(0x0200, asm.ABS), 
+            asm.LDA(0x0200, asm.ABS),
             asm.CMP(self.common.objectives.MENU_NUMBER, asm.IMM8),
             asm.BEQ("SUSTAIN_SCROLL_AREA"),
             asm.CMP(self.common.checks.MENU_NUMBER, asm.IMM8),

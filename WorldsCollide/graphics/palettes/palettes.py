@@ -141,7 +141,7 @@ id_palette = {
     146 : "Chen-HoxNorf-Touhou",
     147 : "Selphie-HoxNorf-FF8",
     148 : "Sora-HoxNorf-KH",
-    
+
     200 : "Flandre-HoxNorf-Touhou",
     201 : "Porom-Devout-HoxNorf-FF4",
     202 : "Remilia-HoxNorf-Touhou",
@@ -152,7 +152,7 @@ id_palette = {
     207 : "Patchouli-HoxNorf-Touhou",
     208 : "Suwako-HoxNorf-Touhou",
     209 : "Eiko_Miko-ScarabEnigma-FF9",
-    
+
     210 : "Akari-HoxNorf-LB",
     211 : "Angeal-HoxNorf-FF7",
     212 : "Bombette-HoxNorf-Mario",

@@ -35,7 +35,7 @@ class Move(_Instruction):
         super().__init__(opcode)
 
     def __str__(self):
-        return super().__str__(f"{str(self.direction)} {str(self.distance)}")
+        return super().__str__(f"{self.direction!s} {self.distance!s}")
 
 class Turn(_Instruction):
     def __init__(self, direction):

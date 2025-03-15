@@ -30,7 +30,7 @@ class WorldMap:
                                    0x12efba]  # WoR default: 1f00
         for loc_addr in location_indicator_addr:
             space = Reserve(loc_addr, loc_addr+1, "high contrast minimap indicator")
-            space.write(0xff, 0x7f) 
+            space.write(0xff, 0x7f)
 
         # Additional minimap palette mods
         # default: 84 10 e7 1c 4a 29 10 42 ff 7f

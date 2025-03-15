@@ -90,7 +90,7 @@ def _forget_random_spells():
         ]
     else: # no spells to forget
         src = [
-            asm.RTL()
+            asm.RTL(),
         ]
     space = Write(Bank.F0, src, "forget spells forget random spells")
     return space.start_address

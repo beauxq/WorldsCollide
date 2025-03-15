@@ -10,7 +10,7 @@ THROWABLE_IDS = [item_name_id[item_name] for item_name in THROWABLES]
 class Field(field_result.Result):
     def src(self):
         src = []
-        for item_id, count in zip(THROWABLE_IDS, THROWABLE_COUNTS):
+        for item_id, count in zip(THROWABLE_IDS, THROWABLE_COUNTS, strict=False):
             for _ in range(count):
                 src += [
                     field.AddItem(item_id),
@@ -21,7 +21,7 @@ class Field(field_result.Result):
 class Battle(battle_result.Result):
     def src(self):
         src = []
-        for item_id, count in zip(THROWABLE_IDS, THROWABLE_COUNTS):
+        for item_id, count in zip(THROWABLE_IDS, THROWABLE_COUNTS, strict=False):
             for _ in range(count):
                 src += [
                     battle_result.AddItem(item_id),

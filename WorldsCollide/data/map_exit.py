@@ -1,4 +1,4 @@
-class ShortMapExit():
+class ShortMapExit:
     DATA_SIZE = 0x06
 
     def __init__(self):
@@ -28,9 +28,9 @@ class ShortMapExit():
         return data
 
     def print(self):
-        print("{}, {} -> {}: {}, {} ({})".format(self.x, self.y, hex(self.dest_map), self.dest_x, self.dest_y, hex(self.unknown)))
+        print(f"{self.x}, {self.y} -> {hex(self.dest_map)}: {self.dest_x}, {self.dest_y} ({hex(self.unknown)})")
 
-class LongMapExit():
+class LongMapExit:
     DATA_SIZE = 0x07
 
     def __init__(self):
@@ -63,4 +63,4 @@ class LongMapExit():
         return data
 
     def print(self):
-        print("{}, {} {}, {} -> {}: {}, {}".format(self.x, self.y, self.size, self.direction, hex(self.dest_map), self.dest_x, self.dest_y))
+        print(f"{self.x}, {self.y} {self.size}, {self.direction} -> {hex(self.dest_map)}: {self.dest_x}, {self.dest_y}")

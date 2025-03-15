@@ -8,7 +8,7 @@ class DebugRoom(Event):
 
     def name(self):
         return "Debug Room"
-    
+
     def init_event_bits(self, space):
         pass
 

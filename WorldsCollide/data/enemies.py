@@ -7,7 +7,7 @@ from ..data.enemy_zones import EnemyZones
 from ..data.enemy_scripts import EnemyScripts
 from ..data import bosses as bosses
 
-class Enemies():
+class Enemies:
     DATA_START = 0xf0000
     DATA_END = 0xf2fff
     DATA_SIZE = 32
@@ -289,7 +289,7 @@ class Enemies():
                 packs.append(zone.packs[x])
 
         self.packs.chupon_packs(packs)
-        
+
     def randomize_encounters(self, maps):
         # find all packs that are randomly encountered in zones
         packs = []

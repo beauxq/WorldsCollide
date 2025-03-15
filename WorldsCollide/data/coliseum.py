@@ -1,6 +1,6 @@
 from ..data.match import Match
 
-class Coliseum():
+class Coliseum:
     MATCH_COUNT = 256
     DATA_START_ADDR = 0x1fb600
 

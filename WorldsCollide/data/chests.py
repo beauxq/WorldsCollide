@@ -3,7 +3,7 @@ from ..data import chests_asm as chests_asm
 from ..data.structures import DataArrays
 import random
 
-class Chests():
+class Chests:
     PTRS_START = 0x2d82f4
     PTRS_END = 0x2d8633
     DATA_START = 0x2d8634
@@ -209,11 +209,11 @@ class Chests():
         randomizable_types = [Chest.EMPTY, Chest.ITEM, Chest.GOLD]
         # Remove chests in the Zone Eater crushing ceiling room from the pool.
         ze_crush_room_chests = [chest for chest in self.map_chests[0x118] if chest.x != 1]
-        possible_chests = [chest for chest in self.chests if ((chest.type in randomizable_types)) and
+        possible_chests = [chest for chest in self.chests if (chest.type in randomizable_types) and
                            chest not in ze_crush_room_chests]
         num_monster_chests = int(len(possible_chests) * ((enemy_percent) / 100.0))
         #gets the specific chests that will be randomized
-        random_chests = random.sample(possible_chests, num_monster_chests)  
+        random_chests = random.sample(possible_chests, num_monster_chests)
 
         for chest in random_chests:
             chest.type = Chest.MONSTER

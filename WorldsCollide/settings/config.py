@@ -38,7 +38,7 @@ class Config:
         # RAM $1D4E, one byte sets: gcsr wwww (gauge g, cursor c, sound s, reequip r, wallpaper wwww (0-7))
         src = [
             asm.LDA(0x00, asm.IMM8),  # default: 0
-            asm.STA(0x1D4E, asm.ABS),  
+            asm.STA(0x1D4E, asm.ABS),
             asm.RTS(),
         ]
         space = Write(Bank.C3, src, "Config_3_default")

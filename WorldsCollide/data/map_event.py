@@ -1,4 +1,4 @@
-class MapEvent():
+class MapEvent:
     DATA_SIZE = 0x05
 
     def __init__(self):
@@ -27,10 +27,10 @@ class MapEvent():
         return data
 
     def print(self):
-        print("{}, {}: {}".format(self.x, self.y, hex(self.event_address)))
+        print(f"{self.x}, {self.y}: {hex(self.event_address)}")
 
 
-class LongMapEvent():
+class LongMapEvent:
     # By analogy to LongMapExit()
     DATA_SIZE = 0x06
 
@@ -67,4 +67,4 @@ class LongMapEvent():
         return data
 
     def print(self):
-        print("{}, {}, {}, {}: {}".format(self.x, self.y, self.size, self.direction, hex(self.event_address)))
+        print(f"{self.x}, {self.y}, {self.size}, {self.direction}: {hex(self.event_address)}")

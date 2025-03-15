@@ -89,7 +89,7 @@ class MoblizWOR(Event):
 
         space = Reserve(0xc4c56, 0xc4c5c, "mobliz wor invoke battle phunbaba 3", field.NOP())
         space.write(
-            field.InvokeBattle(boss_pack_id)
+            field.InvokeBattle(boss_pack_id),
         )
 
     def terra_npc_mod(self, sprite, palette):

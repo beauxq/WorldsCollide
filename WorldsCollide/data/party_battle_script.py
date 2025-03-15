@@ -96,4 +96,4 @@ class PartyBattleScript:
     def print(self):
         print(f"{self.id}: hide party {self.hide_party}, hide names {self.hide_names}, background {self.background}, targetable {hex(self.targetable)}, song {self.song}")
         for character_script in self.character_scripts:
-            print(f"    {str(character_script)}")
+            print(f"    {character_script!s}")

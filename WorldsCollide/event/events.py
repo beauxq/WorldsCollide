@@ -2,7 +2,7 @@ from ..memory.space import Bank, Allocate
 from ..event.event_reward import CHARACTER_ESPER_ONLY_REWARDS, RewardType, choose_reward, weighted_reward_choice
 from ..instruction import field as field
 
-class Events():
+class Events:
     def __init__(self, rom, args, data):
         self.rom = rom
         self.args = args
@@ -21,7 +21,8 @@ class Events():
 
     def mod(self):
         # generate list of events from files
-        import importlib, inspect
+        import importlib
+        import inspect
         from ..event.event import Event
         from pathlib import Path
         import pkgutil
@@ -149,7 +150,6 @@ class Events():
 
         # assign rest of rewards where item is possible
         self.choose_item_possible_rewards(reward_slots)
-        return
 
     def open_world_mod(self, events):
         import random

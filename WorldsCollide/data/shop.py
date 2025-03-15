@@ -1,4 +1,4 @@
-class Shop():
+class Shop:
     SHOP_TYPE_COUNT = 6
     EMPTY, WEAPON, ARMOR, ITEM, RELIC, VENDOR = range(SHOP_TYPE_COUNT)
 

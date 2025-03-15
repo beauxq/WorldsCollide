@@ -3,7 +3,7 @@ from ..instruction import asm as asm
 from ..instruction import c2 as c2
 from .. import args as args
 
-class Multipliers():
+class Multipliers:
     def __init__(self):
         if args.xp_mult != 1:
             self.set_xp_multiplier(args.xp_mult)

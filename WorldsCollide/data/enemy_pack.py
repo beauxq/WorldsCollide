@@ -1,5 +1,5 @@
 # enemy packs are groups of either 2 or 4 enemy formations
-class EnemyPack():
+class EnemyPack:
     FORMATION_ID_SIZE = 2
 
     def __init__(self, id, data):

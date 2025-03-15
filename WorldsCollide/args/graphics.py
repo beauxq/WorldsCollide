@@ -43,7 +43,7 @@ def process(args):
     args.palettes = []
     if args.character_palettes:
         args.palette_ids = [int(palette_id) for palette_id in args.character_palettes.split('.')]
-        if SPRITE_PALETTE_COUNT != len(args.palette_ids):
+        if len(args.palette_ids) != SPRITE_PALETTE_COUNT:
             raise ValueError(f"Invalid number of palette arguments ({len(args.palette_ids)} should be {SPRITE_PALETTE_COUNT})")
     else:
         args.palette_ids = DEFAULT_CHARACTER_PALETTES

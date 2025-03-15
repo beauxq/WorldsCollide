@@ -1,4 +1,4 @@
-class Match():
+class Match:
     DATA_SIZE = 4
 
     def __init__(self, data):

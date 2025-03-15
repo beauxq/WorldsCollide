@@ -1,6 +1,6 @@
 from ..data import enemy_script_parser as parser
 
-class EnemyScript():
+class EnemyScript:
     def __init__(self, id, data):
         self.id = id
         self.instructions = parser.parse_script(data)
@@ -37,7 +37,7 @@ class EnemyScript():
             try:
                 return self.instructions.index(instruction, start, end)
             except ValueError:
-                raise ValueError(f"{str(instruction)} not found in script {self.id}")
+                raise ValueError(f"{instruction!s} not found in script {self.id}")
 
     def remove(self, instructions, count = 1):
         if type(instructions) is list:
@@ -50,7 +50,7 @@ class EnemyScript():
                 for _ in range(count):
                     self.instructions.remove(instructions)
             except ValueError:
-                raise ValueError(f"{str(instructions)} not found in script {self.id}")
+                raise ValueError(f"{instructions!s} not found in script {self.id}")
 
     def replace(self, old_instructions, new_instructions, count = 1):
         old_instructions_len = 1
@@ -84,8 +84,8 @@ class EnemyScript():
                 indentation = 0
 
             if include_addresses:
-                result += f"{repr(instruction):<19} | "
-            result += f"{indentation * 4 * ' '}{str(instruction)}\n"
+                result += f"{instruction!r:<19} | "
+            result += f"{indentation * 4 * ' '}{instruction!s}\n"
 
             if type(instruction) is ai_instr.If:
                 indentation += 1

@@ -10,7 +10,7 @@ class FlagsRewardItems(scroll_area.ScrollArea):
         self.lines = []
 
         self.lines.append(scroll_area.Line(f"Item Rewards ({self.number_items})", f0.set_blue_text_color))
-        self.lines.append(scroll_area.Line(f"Checks may reward any of:", f0.set_gray_text_color))
+        self.lines.append(scroll_area.Line("Checks may reward any of:", f0.set_gray_text_color))
 
         item_lines = FlagsRewardItems._format_items_menu(item_ids)
 

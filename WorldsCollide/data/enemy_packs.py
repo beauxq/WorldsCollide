@@ -2,7 +2,7 @@ from ..data.enemy_pack import EnemyPack4, EnemyPack2
 from ..data.structures import DataArray
 from ..data import bosses as bosses
 
-class EnemyPacks():
+class EnemyPacks:
     # the first 256 enemy packs are groups of 4 formations -- these are the Battle -> "Random Battle Groups" in ff6tools
     PACK4_START = 0xf4800
     PACK4_END = 0xf4fff
@@ -347,7 +347,7 @@ class EnemyPacks():
 
     def get_event_boss_replacement(self, original_boss_name):
         original_boss_id = self.get_id(original_boss_name)
-        if not original_boss_id in self.event_boss_replacements:
+        if original_boss_id not in self.event_boss_replacements:
             return original_boss_id
 
         return self.event_boss_replacements[original_boss_id]
@@ -372,7 +372,7 @@ class EnemyPacks():
     def mod(self):
         self.event_boss_replacements = {
             self.DOOM_GAZE: self.DOOM_GAZE,
-            self.PHUNBABA3: self.PHUNBABA3
+            self.PHUNBABA3: self.PHUNBABA3,
         }
 
         if self.args.boss_battles_shuffle:

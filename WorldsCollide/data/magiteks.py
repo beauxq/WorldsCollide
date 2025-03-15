@@ -8,7 +8,7 @@ class Magiteks:
     MAGITEK_COUNT = 8
     FIRE_BEAM, BOLT_BEAM, ICE_BEAM, BIO_BLAST, HEAL_FORCE, CONFUSER, X_FER, TEKMISSILE = range(MAGITEK_COUNT)
 
-    NAMES_START = 0x26f9ad 
+    NAMES_START = 0x26f9ad
     NAMES_END = 0x26f9fc
     NAME_SIZE = 10
 
@@ -35,7 +35,6 @@ class Magiteks:
 
     def mod(self):
         self.fix_reflectable_beams()
-        pass
 
     def write(self):
         if self.args.spoiler_log:

@@ -1,4 +1,4 @@
-class Rage():
+class Rage:
     def __init__(self, id, attack_data):
         self.id = id
 

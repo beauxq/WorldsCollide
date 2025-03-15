@@ -1,4 +1,4 @@
-class ROM():
+class ROM:
     SHORT_PTR_SIZE = 2  # short ptr (16-bit)
     LONG_PTR_SIZE = 3   # long ptr  (24-bit)
 
@@ -69,13 +69,13 @@ class ROM():
         if decimal:
             print(self.get_byte(address))
         else:
-            print('0x{:02x}'.format(self.get_byte(address)))
+            print(f'0x{self.get_byte(address):02x}')
 
     def print_bytes(self, address, count, decimal = False):
         if decimal:
             print(' '.join(str(byte) for byte in self.get_bytes(address, count)))
         else:
-            print(' '.join("0x{:02x}".format(byte) for byte in self.get_bytes(address, count)))
+            print(' '.join(f"0x{byte:02x}" for byte in self.get_bytes(address, count)))
 
     def print_addresses(self, address, count):
         for offset, byte in enumerate(self.get_bytes(address, count)):

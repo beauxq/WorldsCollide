@@ -66,7 +66,7 @@ check_bit = [
     NameBit("Whelk Gate", event_bit.DEFEATED_WHELK),
     NameBit("Zone Eater", event_bit.RECRUITED_GOGO_WOR),
     NameBit("Zozo Tower", event_bit.GOT_ZOZO_REWARD),
-    NameBit("Narshe Moogle Defense", event_bit.FINISHED_MOOGLE_DEFENSE), 
+    NameBit("Narshe Moogle Defense", event_bit.FINISHED_MOOGLE_DEFENSE),
     NameBit("Auction 1", event_bit.AUCTION_BOUGHT_ESPER1),
     NameBit("Auction 2", event_bit.AUCTION_BOUGHT_ESPER2),
 ]

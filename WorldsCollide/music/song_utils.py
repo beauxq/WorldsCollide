@@ -16,7 +16,7 @@ character_to_song = {
     CELES: 0x12,
     GOGO: 0x2d,
     UMARO: 0x30,
-    MOG: 0x31
+    MOG: 0x31,
 }
 
 # Return id for character theme given a character id

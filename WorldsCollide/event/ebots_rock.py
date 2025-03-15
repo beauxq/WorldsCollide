@@ -111,7 +111,7 @@ class EbotsRock(Event):
             # disable collisions and draw party on top of the chairs
             field.DisableEntityCollision(field_entity.PARTY0),
             field.EntityAct(field_entity.PARTY0, True,
-                field_entity.SetSpriteLayer(2)
+                field_entity.SetSpriteLayer(2),
             ),
             field.Branch(space.end_address + 1), # skip nops
         )
@@ -142,7 +142,7 @@ class EbotsRock(Event):
         space.write(
             field.EnableEntityCollision(field_entity.PARTY0),
             field.EntityAct(field_entity.PARTY0, True,
-                field_entity.SetSpriteLayer(0)
+                field_entity.SetSpriteLayer(0),
             ),
             field.RecruitAndSelectParty(character),
             field.Branch(space.end_address + 1), # skip nops

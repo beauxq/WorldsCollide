@@ -3,7 +3,7 @@ from ..data.structures import DataArray
 from ..memory.space import Reserve, Bank, Write
 from ..instruction import asm as asm
 
-class Sketches():
+class Sketches:
     ATTACKS_DATA_START = 0xf4300
     ATTACKS_DATA_END = 0xf45ff
     ATTACKS_DATA_SIZE = 2
@@ -39,18 +39,18 @@ class Sketches():
             asm.LDA(0x3B41, asm.ABS_X), #Sketcher's Mag.Pwr
             asm.BCC("magical"),         #Branch if not physical damage
             asm.LDA(0x3B2C, asm.ABS_X), #Sketcher's Vigor * 2
-            "magical",           
+            "magical",
             asm.STA(0x11AE, asm.ABS),   #Set Sketcher's Magic or Vigor
             "exit",
             asm.RTS(),
         ]
         space = Write(Bank.C2, src, "Sketch Caster Stats")
         use_sketcher_stats_addr = space.start_address
-        
+
         # Call our new subroutine
         space = Reserve(0x22c25, 0x22c27, "jump to new routine")
         space.write(
-            asm.JSR(use_sketcher_stats_addr, asm.ABS)
+            asm.JSR(use_sketcher_stats_addr, asm.ABS),
         )
 
     def enable_sketch_improved_abilities(self):

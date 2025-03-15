@@ -33,7 +33,7 @@ def options(args):
 
     control_abilities = ("Control Ability", abilities, "control_abilities")
     control_stats = ("Control Stats", stats, "control_stats")
-        
+
     return [
         sketch_abilities,
         sketch_accuracy,

@@ -347,7 +347,7 @@ class Airship(Event):
     def fix_fly_offscreen_bug(self):
         # ref: https://discord.com/channels/666661907628949504/666811452350398493/1025236553875857468
         # fixes the vanilla bug that can occur in which characters can fly offscreen to the bottom-right
-        # per Osteoclave's research, this all originates with the the H ($0871,Y)) and V ($0873,Y) 
+        # per Osteoclave's research, this all originates with the the H ($0871,Y)) and V ($0873,Y)
         #  values of (0x4D0, 0x39C) being set after changing party in WoB airship.
         # CA/F5B2: C0    If ($1E80($06A) [$1E8D, bit 2] is clear), branch to $CAF5BC
         #  -> Replace with six [FD] (no-op)

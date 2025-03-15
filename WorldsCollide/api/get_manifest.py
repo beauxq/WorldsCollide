@@ -1,4 +1,4 @@
-  
+
 def get_manifest(flags = None, hash = None, seed_id = None):
   from ..version import __version__
   properties = [('version', __version__)]
@@ -9,7 +9,7 @@ def get_manifest(flags = None, hash = None, seed_id = None):
     properties.append(('hash', hash))
   if seed_id:
     properties.append(('seed_id', seed_id))
-    
+
   return {key: value for (key, value) in properties}
 
 if __name__ == '__main__':

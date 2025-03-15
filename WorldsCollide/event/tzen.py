@@ -62,7 +62,7 @@ class Tzen(Event):
         )
 
     def esper_mod(self, esper):
-        wob_dialog = f"For {self.wob_price} GP this glowing stone\'s yours.<line><choice> Yes<line><choice> No<end>"
+        wob_dialog = f"For {self.wob_price} GP this glowing stone's yours.<line><choice> Yes<line><choice> No<end>"
         self.esper_item_mod(wob_dialog, [
             field.AddEsper(esper),
             field.Dialog(self.espers.get_receive_esper_dialog(esper)),

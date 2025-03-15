@@ -2,7 +2,7 @@ from ..data.enemy_formation import EnemyFormation
 from ..data.structures import DataArray
 from ..data import bosses as bosses
 
-class EnemyFormations():
+class EnemyFormations:
     FLAGS_START = 0xf5900
     FLAGS_END = 0xf61ff
     FLAGS_SIZE = 4
@@ -127,7 +127,7 @@ class EnemyFormations():
             rage_id["Tyranosaur"],
             rage_id["PlutoArmor"],
             rage_id["Barb-e"],
-            rage_id["Retainer"]
+            rage_id["Retainer"],
         ]
         random_minion = random.choice(possible_minions)
         self.formations[bosses.name_formation["Marshal"]].enemy_ids[0] = random_minion
@@ -182,4 +182,4 @@ class EnemyFormations():
     def print_scripts(self):
         for formation_index, formation in enumerate(self.formations):
             if formation.enable_event_script:
-                print("{} {}: script {}".format(formation_index, self.get_name(formation_index), hex(formation.event_script)))
+                print(f"{formation_index} {self.get_name(formation_index)}: script {hex(formation.event_script)}")

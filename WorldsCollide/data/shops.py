@@ -1,7 +1,7 @@
 from ..data.shop import Shop
 from ..data.structures import DataArray
 
-class Shops():
+class Shops:
     DATA_START = 0x47ac0
     DATA_END = 0x47f3f
     DATA_SIZE = 9

@@ -76,7 +76,7 @@ class Movement:
                 "ON_B_BUTTON",
                 asm.LDA(SPRINT_SHOES_BYTE, asm.ABS),    # If sprint shoes equipped, store secondary movement speed
                 asm.AND(SPRINT_SHOES_MASK, asm.IMM8),
-                asm.BEQ("WALK")
+                asm.BEQ("WALK"),
             ]
             src += [
                 "DASH",
@@ -154,7 +154,7 @@ class Movement:
         subroutine_space.write(subroutine_src)
 
         src = [
-            asm.JSR(subroutine_space.start_address, asm.ABS)
+            asm.JSR(subroutine_space.start_address, asm.ABS),
         ]
 
         space = Reserve(0x5885, 0x5887, "Sprite offset calculation 1", asm.NOP())
