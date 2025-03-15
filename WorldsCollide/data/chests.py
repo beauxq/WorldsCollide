@@ -42,9 +42,9 @@ class Chests:
         lone_wolf_chest_id = 2
         gem_box_chest_id = 231
         self.unreachable_ids = [0, 32, 33, 34, 141, 142, 143, 144, 145]
-        self.chests = [chest for chest in self.all_chests if chest.id not in self.unreachable_ids and 
-                                                             chest.id not in [dup[1] for dup in self.duplicates] and 
-                                                             chest.id != lone_wolf_chest_id and 
+        self.chests = [chest for chest in self.all_chests if chest.id not in self.unreachable_ids and
+                                                             chest.id not in [dup[1] for dup in self.duplicates] and
+                                                             chest.id != lone_wolf_chest_id and
                                                              chest.id != gem_box_chest_id]
 
         from ..data.chest_item_tiers import tiers, tier_s_distribution
@@ -371,7 +371,7 @@ class Chests:
                     elif chest.type == Chest.EMPTY:
                         contents.append("Empty")
 
-                lines = wrap(", ".join(contents), width = SECTION_WIDTH, 
+                lines = wrap(", ".join(contents), width = SECTION_WIDTH,
                              initial_indent = "    ", subsequent_indent = "    ")
                 for line in lines:
                     lcolumn.append(line)
