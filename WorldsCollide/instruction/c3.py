@@ -8,7 +8,7 @@ def _eggers_jump_return_mod():
         asm.RTS(),
         asm.RTL(),
     ]
-    space =  Write(Bank.C3, src, "C3 eggers jump return")
+    space = Write(Bank.C3, src, "C3 eggers jump return")
     return space.start_address
 eggers_jump_return = _eggers_jump_return_mod()
 

@@ -27,7 +27,7 @@ class FlagMetadataWriter:
             title = group.title
             description = group.description
             actions = group._group_actions
-            group_title =  getattr(group, 'title', '')
+            group_title = getattr(group, 'title', '')
 
             for action in actions:
                 if action.dest in blacklisted_args:

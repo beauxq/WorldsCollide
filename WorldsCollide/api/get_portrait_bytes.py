@@ -13,5 +13,5 @@ def get_rgb_bytes(portrait_path, palette_path):
     sprite = SpriteFile(portrait_path, palette)
 
     portrait_bytes = [item for sublist in sprite.tile_matrix(PORTRAIT) for item in sublist]
-    palette_bytes =  [(color.red, color.green, color.blue) for color in palette.colors]
+    palette_bytes = [(color.red, color.green, color.blue) for color in palette.colors]
     return (portrait_bytes, palette_bytes)

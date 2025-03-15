@@ -69,10 +69,12 @@ ignore = [
     "B004",  # hasattr(x, "__call__")  (How is this a safe fix?)
 
     # auto fix looked reliable
+    "E203",  # space before colon
     "E251",  # f(x = 3)
     "E302", "E305",  # 2 blank lines in module scope
     # "E201",  # [ 2 ]
     # "E111",  # indent 4
+    "E221",  # 1 space before operator
     "E262",  # 1 space after #
     "E261",  # 2 spaces before line comment #
     "E231",  # whitespace after , :
