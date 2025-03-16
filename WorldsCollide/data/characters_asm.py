@@ -1,13 +1,13 @@
 from ..memory.space import Bank, START_ADDRESS_SNES, Reserve, Allocate, Write
 from ..instruction import asm as asm
 
-def equipable_umaro(character_count):
+def equipable_umaro(character_count: int) -> None:
     space = Reserve(0x31e6f, 0x31e6f, "Compare character id for equipment menu")
     space.write(character_count)
 
     space = Reserve(0x39ef4, 0x39ef7, "Reequip Umaro if genji glove/gauntlet/merit award equipped/removed", asm.NOP())
 
-def set_starting_level(start_level):
+def set_starting_level(start_level: int) -> None:
     space = Reserve(0x09fc6, 0x09fc6, "Starting level")
     space.write(start_level.to_bytes(1, 'little'))
 

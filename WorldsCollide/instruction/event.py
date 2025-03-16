@@ -16,13 +16,13 @@ class _Instruction:
     def __eq__(self, other):
         return type(self) is type(other) and self() == other()
 
-    def __str__(self, substring = ""):
+    def __str__(self, substring: str = "") -> str:
         if substring != "":
             substring = f" {substring}"
         return f"{type(self).__name__}{substring}"
 
 class _Branch(_Instruction):
-    def __init__(self, opcode, args, *destinations):
+    def __init__(self, opcode: int, args, *destinations):
         self.destinations = list(destinations)
         for destination in destinations:
             if isinstance(destination, str):
@@ -61,8 +61,8 @@ class _Branch(_Instruction):
         return super().__str__(' '.join(substrings))
 
 class _LoadMap(_Instruction):
-    def __init__(self, opcode, map_id, direction, default_music, x, y,
-                 fade_in, entrance_event, airship, chocobo, update_parent_map, unknown):
+    def __init__(self, opcode: int, map_id: int, direction: int, default_music: bool, x: int, y: int,
+                 fade_in: bool, entrance_event: bool, airship: bool, chocobo: bool, update_parent_map: bool, unknown: bool) -> None:
 
         self.map_id = map_id
         self.x = x

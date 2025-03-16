@@ -151,19 +151,19 @@ DOOM_STATUE_KEFKA_TOWER = 0x6b0
 GODDESS_STATUE_KEFKA_TOWER = 0x6b1
 POLTRGEIST_STATUE_KEFKA_TOWER = 0x6b2
 
-def byte(npc_bit):
+def byte(npc_bit: int) -> int:
     return npc_bit // 8
 
-def bit(npc_bit):
+def bit(npc_bit: int) -> int:
     return npc_bit % 8
 
-def address(npc_bit):
+def address(npc_bit: int) -> int:
     return 0x1e80 + byte(npc_bit)
 
-def event_byte(npc_bit):
+def event_byte(npc_bit: int) -> int:
     npc_bit_start = 0x1ee0
     event_bit_start = 0x1e80
     return (npc_bit // 8) - (npc_bit_start - event_bit_start)
 
-def event_bit(npc_bit):
+def event_bit(npc_bit: int) -> int:
     return npc_bit % 8

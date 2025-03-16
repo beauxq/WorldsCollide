@@ -1,5 +1,5 @@
 class Rage:
-    def __init__(self, id, attack_data):
+    def __init__(self, id: int, attack_data):
         self.id = id
 
         self.attack1 = attack_data[0]

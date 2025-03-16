@@ -3,7 +3,7 @@ from ..instruction.event import _Instruction
 from ..instruction import asm as asm
 from ..instruction import c1 as c1
 
-def _set_opcode_address(opcode, address):
+def _set_opcode_address(opcode: int, address: int) -> None:
     opcode_table_address = 0x1fdbe + opcode * 2
     space = Reserve(opcode_table_address, opcode_table_address + 1, "battle event table, {opcode} {hex(address)}")
     space.write(
@@ -28,7 +28,7 @@ class End(_Instruction):
         super().__init__(0xff)
 
 class AddTarget(_Instruction):
-    def __init__(self, entity_id):
+    def __init__(self, entity_id: int) -> None:
         self.entity_id = entity_id
         super().__init__(0x13, entity_id & 0x7f)
 
@@ -47,7 +47,7 @@ FIRST_CHARACTER_ANIMATION_SLOT = 3
 LAST_CHARACTER_ANIMATION_SLOT = 6
 _character_animation_slot = FIRST_CHARACTER_ANIMATION_SLOT
 class AddCharacterAnimation(_Instruction):
-    def __init__(self, character, address):
+    def __init__(self, character: int, address: int) -> None:
         global LAST_CHARACTER_ANIMATION_SLOT, _character_animation_slot
         self.character = character
         self.address = address
@@ -83,7 +83,7 @@ class DisplaySingleLineDialog(_Instruction):
         super().__init__(0x00, dialog_id)
 
 class DisplayMultiLineDialog(_Instruction):
-    def __init__(self, dialog_id):
+    def __init__(self, dialog_id: int) -> None:
         super().__init__(0x01, dialog_id)
 
 class IncrementChecksComplete(_Instruction):

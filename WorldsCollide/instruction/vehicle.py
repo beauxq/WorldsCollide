@@ -6,14 +6,14 @@ class End(_Instruction):
         super().__init__(0xff)
 
 class SetPosition(_Instruction):
-    def __init__(self, x, y):
+    def __init__(self, x: int, y: int) -> None:
         super().__init__(0xc7, x, y) # defined at ee/727b
 
     def __str__(self):
         return super().__str__(f"({self.args[0]}, {self.args[1]})")
 
 class SetEventBit(_Instruction):
-    def __init__(self, event_bit):
+    def __init__(self, event_bit: int) -> None:
         self.event_bit = event_bit
         assert event_bit <= 0x6ff
 
@@ -23,7 +23,7 @@ class SetEventBit(_Instruction):
         return super().__str__(hex(self.event_bit))
 
 class ClearEventBit(_Instruction):
-    def __init__(self, event_bit):
+    def __init__(self, event_bit: int) -> None:
         self.event_bit = event_bit
         assert event_bit <= 0x6ff
 
@@ -33,7 +33,7 @@ class ClearEventBit(_Instruction):
         return super().__str__(hex(self.event_bit))
 
 class BranchIfEventBitClear(_Branch):
-    def __init__(self, event_bit, destination):
+    def __init__(self, event_bit: int, destination: int) -> None:
         self.event_bit = event_bit
         event_bit_arg = event_bit.to_bytes(2, "little")
 
@@ -43,20 +43,20 @@ class BranchIfEventBitClear(_Branch):
         return super().__str__(hex(self.event_bit))
 
 class Branch(BranchIfEventBitClear):
-    def __init__(self, destination):
+    def __init__(self, destination: int) -> None:
         super().__init__(event_bit.ALWAYS_CLEAR, destination)
 
 class FadeLoadMap(_LoadMap):
     # same as load_map, except fades out screen
-    def __init__(self, map_id, direction, default_music, x, y, fade_in = False, entrance_event = False,
-                 airship = False, chocobo = False, update_parent_map = False, unknown = False):
+    def __init__(self, map_id: int, direction: int, default_music: bool, x: int, y: int, fade_in: bool = False, entrance_event: bool = False,
+                 airship: bool = False, chocobo: bool = False, update_parent_map: bool = False, unknown: bool = False) -> None:
 
         super().__init__(0xd2, map_id, direction, default_music, x, y,
                          fade_in, entrance_event, airship, chocobo, update_parent_map, unknown)
 
 class LoadMap(_LoadMap):
-    def __init__(self, map_id, direction, default_music, x, y, fade_in = False, entrance_event = False,
-                 airship = False, chocobo = False, update_parent_map = False, unknown = False):
+    def __init__(self, map_id: int, direction: int, default_music: bool, x: int, y: int, fade_in: bool = False, entrance_event: bool = False,
+                 airship: bool = False, chocobo: bool = False, update_parent_map: bool = False, unknown: bool = False) -> None:
 
         super().__init__(0xd3, map_id, direction, default_music, x, y,
                          fade_in, entrance_event, airship, chocobo, update_parent_map, unknown)

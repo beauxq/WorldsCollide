@@ -7,7 +7,7 @@ from .. import args as args
 import random
 
 class Objective:
-    def __init__(self, id):
+    def __init__(self, id: int) -> None:
         self.id = id
         arg_objective = args.objectives[self.id]
 

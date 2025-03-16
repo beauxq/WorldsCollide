@@ -1,5 +1,5 @@
 class Block:
-    def __init__(self, start, end):
+    def __init__(self, start: int, end: int) -> None:
         if start > end:
             self._start = end
             self._end = start

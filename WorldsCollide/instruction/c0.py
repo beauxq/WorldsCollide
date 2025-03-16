@@ -3,7 +3,7 @@ from ..instruction import asm as asm
 from .. import args as args
 
 # replace vanilla commands with calls to extracted functions
-def _extract_original(original_start, original_end):
+def _extract_original(original_start: int, original_end: int):
     space = Allocate(Bank.C0, original_end - original_start + 1, "extracted c0 command")
     new_address = space.start_address
 

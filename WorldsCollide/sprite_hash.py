@@ -56,11 +56,11 @@ hash_sprites = [
     HashSprite("Royal Guard", 0xd7cec0, 2, 0),
 ]
 
-def generate_hash(string):
+def generate_hash(string: str) -> list[HashSprite]:
     import hashlib
     hash_string = hashlib.sha256(string.encode('utf-8')).hexdigest()
 
-    hash_result = []
+    hash_result: list[HashSprite] = []
     sub_hash_len = len(hash_string) // len(HASH_CHARACTERS)
     for x in range(0, len(hash_string), sub_hash_len):
         sub_hash = hash_string[x : x + sub_hash_len]

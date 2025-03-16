@@ -8,7 +8,7 @@ def stronger_atma_weapon():
     space = Reserve(0x20e59, 0x20e59, "atma weapon divisor exponent")
     space.write(4) # change modifier from 2^(5+1) to 2^(4+1)
 
-def cursed_shield_mod(battles):
+def cursed_shield_mod(battles: int) -> None:
     src = [
         asm.LDA(battles, asm.IMM8),                 # a = battles required
         asm.INC(0x3ec0, asm.ABS),                   # increment cursed shield battle count

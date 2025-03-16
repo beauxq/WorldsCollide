@@ -1,5 +1,5 @@
 class Sketch:
-    def __init__(self, id, attack_data):
+    def __init__(self, id: int, attack_data):
         self.id = id
 
         self.rare = attack_data[0]

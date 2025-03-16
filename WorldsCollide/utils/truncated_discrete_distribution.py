@@ -1,5 +1,7 @@
-# not a "real" distribution, the discretization and clamping skew it
-def truncated_discrete_distribution(mean, stddev, minimum = None, maximum = None):
+def truncated_discrete_distribution(
+    mean: int, stddev: int, minimum: int | None = None, maximum: int | None = None,
+) -> int:
+    """ not a "real" distribution, the discretization and clamping skew it """
     import random
     result = round(random.gauss(mean, stddev))
     if minimum and result < minimum:

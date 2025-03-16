@@ -2,7 +2,7 @@ from ..data.ability_data import AbilityData
 from ..data import text as text
 
 class Lore(AbilityData):
-    def __init__(self, id, name_data, ability_data, desc_data):
+    def __init__(self, id: int, name_data, ability_data, desc_data):
         super().__init__(id, ability_data)
 
         self.id = id

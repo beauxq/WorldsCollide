@@ -9,7 +9,7 @@ IMM16, ABS, ABS_X, ABS_Y, ABS_16, ABS_X_16, ABS_24,\
 LNG, LNG_X = range(20)
 
 class _Instruction:
-    def __init__(self, arg, mode):
+    def __init__(self, arg, mode: int | None):
         self.arg = arg
         self.mode = mode
 
@@ -79,11 +79,11 @@ class NOP(_Instruction):
         super().__opcode__(0xea)
 
 class REP(_Instruction):
-    def __init__(self, arg):
+    def __init__(self, arg: int) -> None:
         super().__opcode__(0xc2, arg)
 
 class SEP(_Instruction):
-    def __init__(self, arg):
+    def __init__(self, arg: int) -> None:
         super().__opcode__(0xe2, arg)
 
 A8 = lambda : SEP(0x20)
@@ -521,7 +521,7 @@ class CPY(_Instruction):
     }
 
 class _Branch(_Instruction):
-    def __init__(self, opcode, arg):
+    def __init__(self, opcode: int, arg: str) -> None:
         if isinstance(arg, str):
             self.opcode = opcode
             self.args = arg
@@ -547,41 +547,41 @@ class _Branch(_Instruction):
         return super().__str__()
 
 class BRA(_Branch):
-    def __init__(self, arg):
+    def __init__(self, arg: str) -> None:
         super().__init__(0x80, arg)
 
 class BEQ(_Branch):
-    def __init__(self, arg):
+    def __init__(self, arg: str) -> None:
         super().__init__(0xf0, arg)
 
 class BNE(_Branch):
-    def __init__(self, arg):
+    def __init__(self, arg: str) -> None:
         super().__init__(0xd0, arg)
 
 class BCS(_Branch):
-    def __init__(self, arg):
+    def __init__(self, arg: str) -> None:
         super().__init__(0xb0, arg)
 BGE = BCS
 
 class BCC(_Branch):
-    def __init__(self, arg):
+    def __init__(self, arg: str) -> None:
         super().__init__(0x90, arg)
 BLT = BCC
 
 class BMI(_Branch):
-    def __init__(self, arg):
+    def __init__(self, arg: str) -> None:
         super().__init__(0x30, arg)
 
 class BPL(_Branch):
-    def __init__(self, arg):
+    def __init__(self, arg: str) -> None:
         super().__init__(0x10, arg)
 
 class BVS(_Branch):
-    def __init__(self, arg):
+    def __init__(self, arg: str) -> None:
         super().__init__(0x70, arg)
 
 class BVC(_Branch):
-    def __init__(self, arg):
+    def __init__(self, arg: str) -> None:
         super().__init__(0x50, arg)
 
 class CLC(_Instruction):

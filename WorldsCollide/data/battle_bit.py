@@ -8,32 +8,32 @@ MAGIC_POINTS_AFTER_BATTLE = 0x43
 DEFEATED_DOOM_GAZE = 0x48
 
 BOSS_DEFEATED_START = 0x68 # start at unused 0x1dd6
-BOSS_DEFEATED_BITS = {}
+BOSS_DEFEATED_BITS: dict[int, int] = {}
 from ..data.bosses import normal_formation_name
 for index, formation in enumerate(normal_formation_name):
     BOSS_DEFEATED_BITS[formation] = BOSS_DEFEATED_START + index
 
 DRAGON_DEFEATED_START = BOSS_DEFEATED_START + len(normal_formation_name)
-DRAGON_DEFEATED_BITS = {}
+DRAGON_DEFEATED_BITS: dict[int, int] = {}
 from ..data.bosses import dragon_formation_name
 for index, formation in enumerate(dragon_formation_name):
     DRAGON_DEFEATED_BITS[formation] = DRAGON_DEFEATED_START + index
 
-def boss_defeated(formation):
+def boss_defeated(formation: int) -> int:
     return BOSS_DEFEATED_BITS[formation]
 
-def dragon_defeated(formation):
+def dragon_defeated(formation: int) -> int:
     return DRAGON_DEFEATED_BITS[formation]
 
-def byte(battle_bit):
+def byte(battle_bit: int) -> int:
     return battle_bit // 8
 
-def bit(battle_bit):
+def bit(battle_bit: int) -> int:
     return battle_bit % 8
 
-def address(battle_bit):
+def address(battle_bit: int) -> int:
     return 0x1dc9 + byte(battle_bit)
 
-def battle_address(battle_bit):
+def battle_address(battle_bit: int) -> int:
     # sram battle bits copied at battle start and updated at battle end
     return 0x3eb4 + byte(battle_bit)

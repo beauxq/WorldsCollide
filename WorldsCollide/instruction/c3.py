@@ -13,7 +13,7 @@ def _eggers_jump_return_mod():
 eggers_jump_return = _eggers_jump_return_mod()
 
 # Eggers jump src to jump to the specified C3 subroutine and successfully return to another bank
-def eggers_jump(c3addr):
+def eggers_jump(c3addr: int):
     src = [
         asm.PHK(),
         asm.PER(0x0009),

@@ -6,7 +6,7 @@ class End(_Instruction):
         super().__init__(0xff)
 
 class Pause(_Instruction):
-    def __init__(self, units):
+    def __init__(self, units: int) -> None:
         # units = frames // 4, e.g. 24 frames = 6 units * 4
         super().__init__(0xe0, units)
 
@@ -14,7 +14,7 @@ class Pause(_Instruction):
         return super().__str__(str(self.args[0]))
 
 class Move(_Instruction):
-    def __init__(self, direction, distance):
+    def __init__(self, direction: int, distance: int) -> None:
         if distance > 8:
             print("Warning: char.move: distance > 8, reducing to 8")
             distance = 8
@@ -38,7 +38,7 @@ class Move(_Instruction):
         return super().__str__(f"{self.direction!s} {self.distance!s}")
 
 class Turn(_Instruction):
-    def __init__(self, direction):
+    def __init__(self, direction: int) -> None:
         self.direction = direction
 
         from ..data import direction as data_direction
