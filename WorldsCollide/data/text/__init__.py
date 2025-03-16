@@ -1,4 +1,7 @@
+from collections.abc import Sequence
 from enum import Enum
+
+
 class TextType(Enum):
     TEXT1 = 1
     TEXT2 = 2
@@ -7,7 +10,7 @@ TEXT1 = TextType.TEXT1
 TEXT2 = TextType.TEXT2
 TEXT3 = TextType.TEXT3
 
-def convert(string, to_type):
+def convert(string: str, to_type: TextType) -> str:
     if to_type == TEXT1:
         from ...data.text.text1 import text_value
     elif to_type == TEXT2:
@@ -15,7 +18,7 @@ def convert(string, to_type):
     elif to_type == TEXT3:
         from ...data.text.text3 import text_value
     else:
-        raise NameError(f"text_type {text_type} not found")
+        raise TypeError(f"text_type {to_type} not found")
 
     result = ""
     string_index = 0
@@ -40,7 +43,7 @@ def convert(string, to_type):
         string_index += 1
     return result
 
-def get_string(values, text_type):
+def get_string(values: Sequence[int], text_type: TextType) -> str:
     if text_type == TEXT1:
         from ...data.text.text1 import value_text
     elif text_type == TEXT2:
@@ -48,7 +51,7 @@ def get_string(values, text_type):
     elif text_type == TEXT3:
         from ...data.text.text3 import value_text
     else:
-        raise NameError(f"text_type {text_type} not found")
+        raise TypeError(f"{text_type=} not found")
 
     result = ''
     value_index = 0
@@ -68,7 +71,7 @@ def get_string(values, text_type):
 
     return result
 
-def get_bytes(string, text_type):
+def get_bytes(string: str, text_type: TextType) -> list[int]:
     if text_type == TEXT1:
         from ...data.text.text1 import text_value
     elif text_type == TEXT2:
@@ -76,9 +79,9 @@ def get_bytes(string, text_type):
     elif text_type == TEXT3:
         from ...data.text.text3 import text_value
     else:
-        raise NameError(f"text_type {text_type} not found")
+        raise TypeError(f"text_type {text_type} not found")
 
-    result = [None] * len(string)
+    result: list[int] = [-1] * len(string)
     result_index = 0
     string_index = 0
     slen = len(string)

@@ -16,7 +16,7 @@ class _Instruction:
     def __eq__(self, other):
         return type(self) is type(other) and self() == other()
 
-    def __str__(self, substring: str = "") -> str:
+    def __str__(self, substring: str | int = "") -> str:
         if substring != "":
             substring = f" {substring}"
         return f"{type(self).__name__}{substring}"

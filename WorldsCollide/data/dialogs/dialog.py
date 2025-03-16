@@ -1,7 +1,7 @@
 from ...data.text import get_bytes, get_string
 
 class Dialog:
-    def __init__(self, id, type, data):
+    def __init__(self, id: int, type, data):
         self.id = id
         self.type = type
         self._text = get_string(data, self.type)

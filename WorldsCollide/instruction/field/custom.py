@@ -4,7 +4,7 @@ from ...instruction import asm as asm
 from ...instruction import c0 as c0
 from enum import IntEnum
 
-def _set_opcode_address(opcode, address):
+def _set_opcode_address(opcode: int, address: int) -> None:
     FIRST_OPCODE = 0x35
     opcode_table_address = 0x098c4 + (opcode - FIRST_OPCODE) * 2
     space = Reserve(opcode_table_address, opcode_table_address + 1, "field opcode table, {opcode} {hex(address)}")
@@ -26,7 +26,7 @@ def _add_esper_increment():
 _add_esper_increment()
 
 class RemoveDeath(_Instruction):
-    def __init__(self, character):
+    def __init__(self, character: int) -> None:
         from ...instruction import field as field
         from ...instruction.c0 import character_data_offset
 
@@ -59,7 +59,7 @@ class RemoveDeath(_Instruction):
         self.__init__(character)
 
 class SetEquipmentAndCommands(_Instruction):
-    def __init__(self, to_character, from_character):
+    def __init__(self, to_character: int, from_character: int) -> None:
         from ...instruction.c0 import character_data_offset
 
         # subset of SetProperties vanilla command (0x40), which only sets equipment, commands, and character ID
@@ -241,7 +241,7 @@ class LoadPartiesWithCharacters(_Instruction):
         self.__init__()
 
 class RecruitCharacter(_Instruction):
-    def __init__(self, character):
+    def __init__(self, character: int) -> None:
         recruit_character_function = START_ADDRESS_SNES + c0.recruit_character
         src = [
             asm.JSL(recruit_character_function),
@@ -262,7 +262,7 @@ class RecruitCharacter(_Instruction):
 
 class _InvokeBattleType(_Instruction):
     # invoke battle with given type (front/back/pincer/side) regardless of formation settings
-    def __init__(self, pack, battle_type, background):
+    def __init__(self, pack: int, battle_type, background: int) -> None:
         self.pack = pack
         self.battle_type = battle_type
 
@@ -324,7 +324,7 @@ class _InvokeBattleType(_Instruction):
         return self.write()
 
 class BranchChance(_Branch):
-    def __init__(self, chance, destination):
+    def __init__(self, chance: float, destination: str | int) -> None:
         self.chance = chance
         if chance > 255 or chance < 0:
             raise ValueError(f"branch_chance: invalid chance {chance}")

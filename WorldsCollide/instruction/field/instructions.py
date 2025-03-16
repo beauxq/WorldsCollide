@@ -1,3 +1,4 @@
+from typing import Literal
 from ...data import event_bit as event_bit
 
 from ...instruction.event import _Instruction, _Branch, _LoadMap, EVENT_CODE_START
@@ -16,7 +17,7 @@ class End(_Instruction):
         super().__init__(0xff)
 
 class Call(_Instruction):
-    def __init__(self, address):
+    def __init__(self, address: int) -> None:
         self.address = address - EVENT_CODE_START
         super().__init__(0xb2, self.address.to_bytes(3, "little"))
 
@@ -32,14 +33,14 @@ class MultipleCalls(_Instruction):
         return super().__str__(hex(self.address))
 
 class SelectParties(_Instruction):
-    def __init__(self, count, unmovable_characters = 0x0000):
+    def __init__(self, count: int, unmovable_characters: int = 0x0000) -> None:
         super().__init__(0x99, count, unmovable_characters.to_bytes(2, "little"))
 
     def __str__(self):
         return super().__str__(self.args[0])
 
 class AddCharacterToParty(_Instruction):
-    def __init__(self, character, party):
+    def __init__(self, character: int, party: int) -> None:
         super().__init__(0x3f, character, party)
 
     def __str__(self):
@@ -52,31 +53,32 @@ class RemoveCharacterFromParties(_Instruction):
     def __str__(self):
         return super().__str__(f"{self.args[0]}")
 
-def RecruitAndSelectParty(character):
+def RecruitAndSelectParty(character: int):
     from ...instruction.field.custom import RecruitCharacter
     from ...instruction.field.functions import REFRESH_CHARACTERS_AND_SELECT_PARTY
     return RecruitCharacter(character), Call(REFRESH_CHARACTERS_AND_SELECT_PARTY)
 
 class SetParty(_Instruction):
-    def __init__(self, party):
+    def __init__(self, party: int) -> None:
         super().__init__(0x46, party)
 
     def __str__(self):
         return super().__str__(self.args[0])
 
 class SetPartyMap(_Instruction):
-    def __init__(self, party, map_id):
+    def __init__(self, party: int, map_id: int) -> None:
         super().__init__(0x79, party, map_id.to_bytes(2, "little"))
 
     def __str__(self):
         return super().__str__(f"{self.args[0]} {hex(self.args[1])}")
 
 class UpdatePartyLeader(_Instruction):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__(0x47)
 
 class ShakeScreen(_Instruction):
-    def __init__(self, intensity, permanent, layer1, layer2, layer3, sprite_layer):
+    def __init__(self, intensity: Literal[1, 2, 3], permanent: bool,
+                 layer1: bool, layer2: bool, layer3: bool, sprite_layer: bool) -> None:
         if intensity == 1:
             options_byte = 0x01
         elif intensity == 2:
@@ -107,7 +109,7 @@ class StopScreenShake(_Instruction):
         super().__init__(0x58, 0x00)
 
 class _AddItem(_Instruction):
-    def __init__(self, item):
+    def __init__(self, item: str | int) -> None:
         if isinstance(item, str):
             from ...data.item_names import name_id
             self.item = name_id[item]
@@ -122,7 +124,7 @@ class _AddItem(_Instruction):
     def __str__(self):
         return super().__str__(f"'{self.item_name}'")
 
-def AddItem(item, sound_effect = True):
+def AddItem(item: str | int, sound_effect: bool = True):
     AddItem = type("AddItem", (_AddItem,), {})
     if sound_effect:
         return AddItem(item), PlaySoundEffect(141)
@@ -151,14 +153,14 @@ class RemoveGP(_Instruction):
         return super().__str__(self.amount)
 
 class _AddEsper(_Instruction):
-    def __init__(self, esper_id):
+    def __init__(self, esper_id: int) -> None:
         self.esper_id = esper_id
         super().__init__(0x86, esper_id + 0x36)
 
     def __str__(self):
         return super().__str__(self.esper_id)
 
-def AddEsper(esper_id, sound_effect = True):
+def AddEsper(esper_id: int, sound_effect: bool = True):
     AddEsper = type("AddEsper", (_AddEsper,), {})
     if sound_effect:
         return AddEsper(esper_id), PlaySoundEffect(141)
@@ -166,7 +168,7 @@ def AddEsper(esper_id, sound_effect = True):
         return AddEsper(esper_id)
 
 class RemoveEsper(_Instruction):
-    def __init__(self, esper_id):
+    def __init__(self, esper_id: int) -> None:
         self.esper_id = esper_id
         super().__init__(0x87, esper_id + 0x36)
 
@@ -186,7 +188,7 @@ class Status(IntEnum):
     DEATH       = 0x8000
 
 class RemoveStatusEffects(_Instruction):
-    def __init__(self, character, status_effects):
+    def __init__(self, character: int, status_effects) -> None:
         status_effects = 0xffff - status_effects # command 0x88 is really remove all status effects EXCEPT given
         self.status_effects = status_effects
         super().__init__(0x88, character, (status_effects & 0xff00) >> 8, status_effects & 0xff)
@@ -195,7 +197,7 @@ class RemoveStatusEffects(_Instruction):
         return super().__str__(f"{self.args[0]} {hex(self.status_effects)}")
 
 class AddStatusEffects(_Instruction):
-    def __init__(self, character, status_effects):
+    def __init__(self, character: int, status_effects) -> None:
         self.status_effects = status_effects
         super().__init__(0x89, character, (status_effects & 0xff00) >> 8, status_effects & 0xff)
 
@@ -203,7 +205,7 @@ class AddStatusEffects(_Instruction):
         return super().__str__(f"{self.args[0]} {hex(self.status_effects)}")
 
 class ToggleStatusEffects(_Instruction):
-    def __init__(self, character, status_effects):
+    def __init__(self, character: int, status_effects) -> None:
         self.status_effects = status_effects
         super().__init__(0x8a, character, (status_effects & 0xff00) >> 8, status_effects & 0xff)
 
@@ -211,7 +213,7 @@ class ToggleStatusEffects(_Instruction):
         return super().__str__(f"{self.args[0]} {hex(self.status_effects)}")
 
 class RemoveAllEquipment(_Instruction):
-    def __init__(self, character):
+    def __init__(self, character: int) -> None:
         self.character = character
         super().__init__(0x8d, character)
 
@@ -219,7 +221,8 @@ class RemoveAllEquipment(_Instruction):
         return super().__str__(self.character)
 
 class Dialog(_Instruction):
-    def __init__(self, dialog_id, wait_for_input = True, inside_text_box = True, top_of_screen = True):
+    def __init__(self, dialog_id: int, wait_for_input: bool = True,
+                 inside_text_box: bool = True, top_of_screen: bool = True) -> None:
         self.dialog_id = dialog_id
 
         if wait_for_input:
@@ -242,7 +245,8 @@ class Dialog(_Instruction):
         return super().__str__(self.dialog_id)
 
 class _DialogBranch(_Branch):
-    def __init__(self, dest1, dest2, dest3, dest4, dest5, dest6):
+    def __init__(self, dest1: str | int, dest2: str | int | None, dest3: str | int | None,
+                 dest4: int | None, dest5: int | None, dest6: int | None) -> None:
 
         args = [dest1]
         if dest2 is not None:
@@ -258,8 +262,9 @@ class _DialogBranch(_Branch):
 
         super().__init__(0xb6, [], *args)
 
-def DialogBranch(dialog_id, dest1, dest2 = None, dest3 = None, dest4 = None, dest5 = None, dest6 = None,
-                 wait_for_input = True, inside_text_box = True, top_of_screen = True):
+def DialogBranch(dialog_id: int, dest1: str | int, dest2: str | int | None = None, dest3: str | int | None = None,
+                 dest4: int | None = None, dest5: int | None = None, dest6: int | None = None,
+                 wait_for_input: bool = True, inside_text_box: bool = True, top_of_screen: bool = True):
 
     dialog = Dialog(dialog_id, wait_for_input, inside_text_box, top_of_screen)
 
@@ -269,7 +274,7 @@ def DialogBranch(dialog_id, dest1, dest2 = None, dest3 = None, dest4 = None, des
     return dialog, dialog_branch, Return() # dialog branch always followed by a return to know how many options
 
 class SetName(_Instruction):
-    def __init__(self, character, name_index):
+    def __init__(self, character: int, name_index: int) -> None:
         # name_index = index of rom character name data
         super().__init__(0x7f, character, name_index)
 
@@ -277,7 +282,7 @@ class SetName(_Instruction):
         return super().__str__(self.args[0])
 
 class SetProperties(_Instruction):
-    def __init__(self, character, data_index):
+    def __init__(self, character: int, data_index: int) -> None:
         # data_index = index of init hp/mp/commands/stats/equip/relics/...
         super().__init__(0x40, character, data_index)
 
@@ -285,42 +290,42 @@ class SetProperties(_Instruction):
         return super().__str__(f"{self.args[0]} {self.args[1]}")
 
 class SetSprite(_Instruction):
-    def __init__(self, entity, sprite):
+    def __init__(self, entity: int, sprite: int) -> None:
         super().__init__(0x37, entity, sprite)
 
     def __str__(self):
         return super().__str__(f"{self.args[0]} {self.args[1]}")
 
 class SetPalette(_Instruction):
-    def __init__(self, entity, palette):
+    def __init__(self, entity: int, palette: int) -> None:
         super().__init__(0x43, entity, palette)
 
     def __str__(self):
         return super().__str__(f"{self.args[0]} {self.args[1]}")
 
 class CreateEntity(_Instruction):
-    def __init__(self, entity):
+    def __init__(self, entity: int) -> None:
         super().__init__(0x3d, entity)
 
     def __str__(self):
         return super().__str__(self.args[0])
 
 class DeleteEntity(_Instruction):
-    def __init__(self, entity):
+    def __init__(self, entity: int) -> None:
         super().__init__(0x3e, entity)
 
     def __str__(self):
         return super().__str__(self.args[0])
 
 class ShowEntity(_Instruction):
-    def __init__(self, entity):
+    def __init__(self, entity: int) -> None:
         super().__init__(0x41, entity)
 
     def __str__(self):
         return super().__str__(self.args[0])
 
 class HideEntity(_Instruction):
-    def __init__(self, entity):
+    def __init__(self, entity: int) -> None:
         super().__init__(0x42, entity)
 
     def __str__(self):
@@ -335,7 +340,7 @@ class Vehicle(IntEnum):
     MAGITEK_AND_RIDER   = 0xc0
     RAFT_AND_RIDER      = 0xe0
 class SetVehicle(_Instruction):
-    def __init__(self, entity, vehicle):
+    def __init__(self, entity: int, vehicle) -> None:
         super().__init__(0x44, entity, vehicle)
 
     def __str__(self):
@@ -346,14 +351,14 @@ class RefreshEntities(_Instruction):
         super().__init__(0x45)
 
 class EnableEntityCollision(_Instruction):
-    def __init__(self, entity):
+    def __init__(self, entity: int) -> None:
         super().__init__(0x36, entity)
 
     def __str__(self):
         return super().__str__(self.args[0])
 
 class DisableEntityCollision(_Instruction):
-    def __init__(self, entity):
+    def __init__(self, entity: int) -> None:
         super().__init__(0x78, entity)
 
     def __str__(self):
@@ -361,7 +366,7 @@ class DisableEntityCollision(_Instruction):
 
 class EnableTouchEvent(_Instruction):
     # entity's event triggered on touch
-    def __init__(self, entity):
+    def __init__(self, entity: int) -> None:
         super().__init__(0x7c, entity)
 
     def __str__(self):
@@ -424,19 +429,19 @@ class FlashScreen(_Instruction):
         return super().__str__(self.args[0])
 
 class HoldScreen(_Instruction):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__(0x38)
 
 class FreeScreen(_Instruction):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__(0x39),
 
 class FreeMovement(_Instruction):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__(0x3a)
 
 class FadeInScreen(_Instruction):
-    def __init__(self, speed = None):
+    def __init__(self, speed: int | None = None) -> None:
         self.speed = speed
 
         if speed is None:
@@ -450,7 +455,7 @@ class FadeInScreen(_Instruction):
         return super().__str__()
 
 class FadeOutScreen(_Instruction):
-    def __init__(self, speed = None):
+    def __init__(self, speed: int | None = None) -> None:
         self.speed = speed
 
         if speed is None:
@@ -464,11 +469,11 @@ class FadeOutScreen(_Instruction):
         return super().__str__()
 
 class WaitForFade(_Instruction):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__(0x5c)
 
 class Pause(_Instruction):
-    def __init__(self, seconds):
+    def __init__(self, seconds: int | float) -> None:
         import math
         if math.isclose(seconds, 0.25):         # 15 units
             super().__init__(0x91)
@@ -503,28 +508,28 @@ class PauseUnits(_Instruction):
         return super().__str__(self.args[0])
 
 class StartSong(_Instruction):
-    def __init__(self, song):
+    def __init__(self, song: int) -> None:
         super().__init__(0xf0, song)
 
     def __str__(self):
         return super().__str__(self.args[0])
 
 class FadeInSong(_Instruction):
-    def __init__(self, song, fade_time):
+    def __init__(self, song: int, fade_time: int) -> None:
         super().__init__(0xf1, song, fade_time)
 
     def __str__(self):
         return super().__str__(f"{self.args[0]}, {self.args[1]}")
 
 class FadeOutSong(_Instruction):
-    def __init__(self, fade_time):
+    def __init__(self, fade_time: int) -> None:
         super().__init__(0xf2, fade_time)
 
     def __str__(self):
         return super().__str__(self.args[0])
 
 class PlaySoundEffect(_Instruction):
-    def __init__(self, sound_effect_id):
+    def __init__(self, sound_effect_id: int) -> None:
         self.sound_effect_id = sound_effect_id
         super().__init__(0xf4, sound_effect_id)
 
@@ -532,7 +537,7 @@ class PlaySoundEffect(_Instruction):
         return super().__str__(self.sound_effect_id)
 
 class WaitForSong(_Instruction):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__(0xfa)
 
 class FadeSongVolume(_Instruction):
@@ -544,21 +549,23 @@ class FadeSongVolume(_Instruction):
 
 class FadeLoadMap(_LoadMap):
     # same as load map, except fades out screen
-    def __init__(self, map_id, direction, default_music, x, y, fade_in = False, entrance_event = False,
-                 airship = False, chocobo = False, update_parent_map = False, unknown = False):
+    def __init__(self, map_id: int, direction: int, default_music: bool, x: int, y: int,
+                 fade_in: bool = False, entrance_event: bool = False, airship: bool = False,
+                 chocobo: bool = False, update_parent_map: bool = False, unknown: bool = False) -> None:
 
         super().__init__(0x6a, map_id, direction, default_music, x, y,
                          fade_in, entrance_event, airship, chocobo, update_parent_map, unknown)
 
 class LoadMap(_LoadMap):
-    def __init__(self, map_id, direction, default_music, x, y, fade_in = False, entrance_event = False,
-                 airship = False, chocobo = False, update_parent_map = False, unknown = False):
+    def __init__(self, map_id: int, direction: int, default_music: bool, x: int, y: int,
+                 fade_in: bool = False, entrance_event: bool = False, airship: bool = False,
+                 chocobo: bool = False, update_parent_map: bool = False, unknown: bool = False) -> None:
 
         super().__init__(0x6b, map_id, direction, default_music, x, y,
                          fade_in, entrance_event, airship, chocobo, update_parent_map, unknown)
 
 class SetParentMap(_Instruction):
-    def __init__(self, map_id, direction, x, y):
+    def __init__(self, map_id: int, direction: int, x: int, y: int) -> None:
         self.map_id = map_id
         self.x = x
         self.y = y
@@ -582,7 +589,7 @@ class SetMapTiles(_Instruction):
     # x, y = top left of where to replace tiles
     # w, h = width, height of area to replace
     # tiles = what to replace the area with
-    def __init__(self, layer, x, y, w, h, tiles):
+    def __init__(self, layer: int, x: int, y: int, w: int, h: int, tiles) -> None:
         self.x = x
         self.y = y
         self.w = w
@@ -601,7 +608,7 @@ class SetMapTiles(_Instruction):
         return super().__str__(f"({self.x}, {self.y}) {self.w}x{self.h}")
 
 class SetEventBit(_Instruction):
-    def __init__(self, event_bit):
+    def __init__(self, event_bit: int) -> None:
         self.event_bit = event_bit
         assert self.event_bit <= 0x6ff
 
@@ -613,7 +620,7 @@ class SetEventBit(_Instruction):
         return super().__str__(hex(self.event_bit))
 
 class ClearEventBit(_Instruction):
-    def __init__(self, event_bit):
+    def __init__(self, event_bit: int) -> None:
         self.event_bit = event_bit
         assert self.event_bit <= 0x6ff
 
@@ -625,7 +632,7 @@ class ClearEventBit(_Instruction):
         return super().__str__(hex(self.event_bit))
 
 class BranchIfEventBitSet(_Branch):
-    def __init__(self, event_bit, destination):
+    def __init__(self, event_bit: int, destination: str | int) -> None:
         self.event_bit = event_bit
         event_bit_arg = (event_bit | 0x8000).to_bytes(2, "little")
 
@@ -635,12 +642,12 @@ class BranchIfEventBitSet(_Branch):
         return super().__str__(hex(self.event_bit))
 
 class ReturnIfEventBitSet(BranchIfEventBitSet):
-    def __init__(self, event_bit):
+    def __init__(self, event_bit: int) -> None:
         from ...instruction.field.functions import RETURN
         super().__init__(event_bit, RETURN)
 
 class BranchIfEventBitClear(_Branch):
-    def __init__(self, event_bit, destination):
+    def __init__(self, event_bit: int, destination: str | int) -> None:
         self.event_bit = event_bit
         event_bit_arg = event_bit.to_bytes(2, "little")
 
@@ -650,12 +657,12 @@ class BranchIfEventBitClear(_Branch):
         return super().__str__(hex(self.event_bit))
 
 class ReturnIfEventBitClear(BranchIfEventBitClear):
-    def __init__(self, event_bit):
+    def __init__(self, event_bit: int) -> None:
         from ...instruction.field.functions import RETURN
         super().__init__(event_bit, RETURN)
 
 class BranchIfAny(_Branch):
-    def __init__(self, checks, destination):
+    def __init__(self, checks, destination: str | int) -> None:
         assert len(checks) // 2 <= 7
         opcode = 0xc1 + (len(checks) // 2) - 2
 
@@ -678,7 +685,7 @@ class BranchIfAny(_Branch):
         return super().__str__(substring)
 
 class BranchIfAll(_Branch):
-    def __init__(self, checks, destination):
+    def __init__(self, checks, destination: int) -> None:
         assert len(checks) // 2 <= 7
         opcode = 0xc9 + (len(checks) // 2) - 2
 
@@ -711,15 +718,15 @@ class ReturnIfAll(BranchIfAll):
         super().__init__(checks, RETURN)
 
 class Branch(BranchIfEventBitClear):
-    def __init__(self, destination):
+    def __init__(self, destination: str | int) -> None:
         super().__init__(event_bit.ALWAYS_CLEAR, destination)
 
 class BranchRandomly(_Branch):
-    def __init__(self, destination):
+    def __init__(self, destination: int) -> None:
         super().__init__(0xbd, [], destination)
 
 class SetBattleEventBit(_Instruction):
-    def __init__(self, battle_event_bit):
+    def __init__(self, battle_event_bit: int) -> None:
         self.battle_event_bit = battle_event_bit
         super().__init__(0xb8, battle_event_bit)
 
@@ -727,7 +734,7 @@ class SetBattleEventBit(_Instruction):
         return super().__str__(hex(self.battle_event_bit))
 
 class BranchIfBattleEventBitClear(_Branch):
-    def __init__(self, battle_event_bit, destination):
+    def __init__(self, battle_event_bit: int, destination: str | int) -> None:
         self.battle_event_bit = battle_event_bit
         super().__init__(0xb7, [battle_event_bit], destination)
 
@@ -735,12 +742,12 @@ class BranchIfBattleEventBitClear(_Branch):
         return super().__str__(hex(self.battle_event_bit))
 
 class ReturnIfBattleEventBitClear(BranchIfBattleEventBitClear):
-    def __init__(self, battle_event_bit):
+    def __init__(self, battle_event_bit: int) -> None:
         from ...instruction.field.functions import RETURN
         super().__init__(battle_event_bit, RETURN)
 
 class SetEventWord(_Instruction):
-    def __init__(self, event_word, value):
+    def __init__(self, event_word: int, value: int) -> None:
         self.event_word = event_word
         self.value = value
         super().__init__(0xe8, event_word, value.to_bytes(2, "little"))
@@ -749,7 +756,7 @@ class SetEventWord(_Instruction):
         return super().__str__(f"{hex(self.event_word)} {self.value}")
 
 class AddToEventWord(_Instruction):
-    def __init__(self, event_word, value):
+    def __init__(self, event_word: int, value: int) -> None:
         self.value = value
         super().__init__(0xe9, event_word, value.to_bytes(2, "little"))
 
@@ -757,7 +764,7 @@ class AddToEventWord(_Instruction):
         return super().__str__(f"{self.args[0]} {self.args[1]}")
 
 class IncrementEventWord(AddToEventWord):
-    def __init__(self, event_word):
+    def __init__(self, event_word: int) -> None:
         super().__init__(event_word, 1)
 
     def __str__(self):
@@ -779,7 +786,7 @@ class DecrementEventWord(SubtractFromEventWord):
         return super(SubtractFromEventWord, self).__str__(f"{self.args[0]}")
 
 class CompareEventWord(_Instruction):
-    def __init__(self, event_word, value):
+    def __init__(self, event_word: int, value: int) -> None:
         # compare event word to value, set 0x1a0 if equal, set 0x1a1 if event_word > value, 0x1a2 if event_word < value
         self.value = value
         super().__init__(0xeb, event_word, value.to_bytes(2, "little"))
@@ -788,10 +795,10 @@ class CompareEventWord(_Instruction):
         return super().__str__(f"{self.args[0]} {self.value}")
 
 class _BranchIfEventWordEqual(BranchIfEventBitSet):
-    def __init__(self, destination):
+    def __init__(self, destination: int) -> None:
         super().__init__(0x1a0, destination)
 
-def BranchIfEventWordEqual(event_word, value, destination):
+def BranchIfEventWordEqual(event_word: int, value: int, destination: int):
     BranchIfEventWordEqual = type("BranchIfEventWordEqual", (_BranchIfEventWordEqual,), {})
     return CompareEventWord(event_word, value), BranchIfEventWordEqual(destination)
 
@@ -804,18 +811,18 @@ def BranchIfEventWordNotEqual(event_word, value, destination):
     return CompareEventWord(event_word, value), BranchIfEventWordNotEqual(destination)
 
 class _BranchIfEventWordGreater(BranchIfEventBitSet):
-    def __init__(self, destination):
+    def __init__(self, destination: str) -> None:
         super().__init__(0x1a1, destination)
 
-def BranchIfEventWordGreater(event_word, value, destination):
+def BranchIfEventWordGreater(event_word: int, value: int, destination: str):
     BranchIfEventWordGreater = type("BranchIfEventWordGreater", (_BranchIfEventWordGreater,), {})
     return CompareEventWord(event_word, value), BranchIfEventWordGreater(destination)
 
 class _BranchIfEventWordLess(BranchIfEventBitSet):
-    def __init__(self, destination):
+    def __init__(self, destination: str | int) -> None:
         super().__init__(0x1a2, destination)
 
-def BranchIfEventWordLess(event_word, value, destination):
+def BranchIfEventWordLess(event_word: int, value: int, destination: str | int):
     BranchIfEventWordLess = type("BranchIfEventWordLess", (_BranchIfEventWordLess,), {})
     return CompareEventWord(event_word, value), BranchIfEventWordLess(destination)
 
@@ -823,37 +830,37 @@ class _ReturnIfEventWordLess(ReturnIfEventBitSet):
     def __init__(self):
         super().__init__(0x1a2)
 
-def ReturnIfEventWordLess(event_word, value):
+def ReturnIfEventWordLess(event_word: int, value: int):
     ReturnIfEventWordLess = type("ReturnIfEventWordLess", (_ReturnIfEventWordLess,), {})
     return CompareEventWord(event_word, value), ReturnIfEventWordLess()
 
 class LoadPartyMembers(_Instruction):
-    def __init__(self):
+    def __init__(self) -> None:
         # caseword bits = characters in party
         super().__init__(0xde)
 
 class LoadCreatedCharacters(_Instruction):
-    def __init__(self):
+    def __init__(self) -> None:
         # caseword bits = characters created
         super().__init__(0xdf)
 
 class LoadRecruitedCharacters(_Instruction):
-    def __init__(self):
+    def __init__(self) -> None:
         # caseword bits = characters recruited
         super().__init__(0xe0)
 
 class LoadAvailableCharacters(_Instruction):
-    def __init__(self):
+    def __init__(self) -> None:
         # caseword bits = characters available
         super().__init__(0xe1)
 
-def BranchIfCharacterInParty(character, destination):
+def BranchIfCharacterInParty(character: int, destination: str | int):
     return LoadPartyMembers(), BranchIfEventBitSet(event_bit.multipurpose(character), destination)
 
-def ReturnIfCharacterNotInParty(character):
+def ReturnIfCharacterNotInParty(character: int):
     return LoadPartyMembers(), ReturnIfEventBitClear(event_bit.multipurpose(character))
 
-def BranchIfCharacterUnavailable(character, destination):
+def BranchIfCharacterUnavailable(character: int, destination: str | int):
     return LoadAvailableCharacters(), BranchIfEventBitClear(event_bit.multipurpose(character), destination)
 
 def BranchIfCharacterNotRecruited(character, destination):
@@ -863,7 +870,7 @@ def ReturnIfCharacterNotRecruited(character):
     return LoadRecruitedCharacters(), ReturnIfEventBitClear(event_bit.multipurpose(character))
 
 class _BranchIfPartySize(BranchIfEventBitSet):
-    def __init__(self, size, destination):
+    def __init__(self, size: int, destination: str) -> None:
         self.size = size
 
         event_bit_arg = event_bit.multipurpose(size - 1)
@@ -872,7 +879,7 @@ class _BranchIfPartySize(BranchIfEventBitSet):
     def __str__(self):
         return super(BranchIfEventBitSet, self).__str__(self.size)
 
-def BranchIfPartySize(size, destination):
+def BranchIfPartySize(size: int, destination: str):
     from ...instruction.field.functions import UPDATE_PARTY_SIZE_EVENT_BITS
     BranchIfPartySize = type("BranchIfPartySize", (_BranchIfPartySize,), {})
     return Call(UPDATE_PARTY_SIZE_EVENT_BITS), BranchIfPartySize(size, destination)
@@ -886,12 +893,12 @@ def BranchIfEsperNotFound(esper, destination):
     from ...instruction.field.custom import LoadEsperFound
     return LoadEsperFound(esper), BranchIfEventBitClear(event_bit.multipurpose(0), destination)
 
-def BranchIfPartyEmpty(party, destination):
+def BranchIfPartyEmpty(party: int, destination: str):
     from ...instruction.field.custom import LoadPartiesWithCharacters
     return LoadPartiesWithCharacters(), BranchIfEventBitClear(event_bit.multipurpose(party - 1), destination)
 
 class _InvokeBattle(_Instruction):
-    def __init__(self, pack, background, battle_sound, battle_animation):
+    def __init__(self, pack: int, background: int, battle_sound: bool, battle_animation: bool) -> None:
         self.pack = pack
 
         pack_arg = pack - 0x100
@@ -906,7 +913,8 @@ class _InvokeBattle(_Instruction):
     def __str__(self):
         return super().__str__(str(self.pack))
 
-def InvokeBattle(pack, background = 0x3f, battle_sound = True, battle_animation = True, check_game_over = True):
+def InvokeBattle(pack: int, background: int = 0x3f, battle_sound: bool = True,
+                 battle_animation: bool = True, check_game_over: bool = True):
     InvokeBattle = type("InvokeBattle", (_InvokeBattle,), {})
     commands = [InvokeBattle(pack, background, battle_sound, battle_animation)]
     if check_game_over:
@@ -919,7 +927,7 @@ class BattleType(IntEnum):
     BACK    = 1
     PINCER  = 2
     SIDE    = 3
-def InvokeBattleType(pack, battle_type, background = 0x3f, check_game_over = True):
+def InvokeBattleType(pack: int, battle_type, background: int = 0x3f, check_game_over: bool = True):
     from ...instruction.field.custom import _InvokeBattleType
     InvokeBattleType = type("InvokeBattleType", (_InvokeBattleType,), {})
     commands = [InvokeBattleType(pack, battle_type, background)]
@@ -933,9 +941,9 @@ class InvokeColiseumBattle(_Instruction):
         super().__init__(0xaf)
 
 class _EntityAct(_Instruction):
-    def __init__(self, entity, wait_until_complete, *actions):
+    def __init__(self, entity: int, wait_until_complete: bool, *actions: _Instruction) -> None:
         from ...instruction.field import entity as field_entity
-        actions = list(actions) + [field_entity.End()]
+        actions = tuple(actions) + (field_entity.End(),)
 
         self.actions_size = 0
         for action in actions:
@@ -957,13 +965,13 @@ class _EntityAct(_Instruction):
             result += ", No Wait"
         return result
 
-def EntityAct(entity, wait_until_complete, *actions):
-        from ...instruction.field import entity as field_entity
-        EntityAct = type("EntityAct", (_EntityAct,), {})
-        return EntityAct(entity, wait_until_complete, *actions), list(actions), field_entity.End()
+def EntityAct(entity: int, wait_until_complete: bool, *actions: _Instruction):
+    from ...instruction.field import entity as field_entity
+    EntityAct = type("EntityAct", (_EntityAct,), {})
+    return EntityAct(entity, wait_until_complete, *actions), list(actions), field_entity.End()
 
 class WaitForEntityAct(_Instruction):
-    def __init__(self, entity):
+    def __init__(self, entity: int) -> None:
         super().__init__(0x35, entity)
 
     def __str__(self):
@@ -977,7 +985,7 @@ class _RepeatStart(_Instruction):
         return super().__str__(self.args[0])
 
 class _RepeatEnd(_Instruction):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__(0xb1)
 
 def Repeat(count, *commands):
@@ -986,8 +994,9 @@ def Repeat(count, *commands):
     return RepeatStart(count), list(commands), RepeatEnd()
 
 class StartTimer(_Instruction):
-    def __init__(self, timer_id, units, expire_address, show_in_menu = False, show_on_map = False,
-                 pause_in_menu_and_battle = False, exit_menu_and_battle_if_expire = False):
+    def __init__(self, timer_id: int, units: int, expire_address: int,
+                 show_in_menu: bool = False, show_on_map: bool = False,
+                 pause_in_menu_and_battle: bool = False, exit_menu_and_battle_if_expire: bool = False) -> None:
         # 1 unit = ~1/60 of a second
 
         address_flags = (expire_address - EVENT_CODE_START)
@@ -1004,34 +1013,34 @@ class StartTimer(_Instruction):
         super().__init__(0xa0, units.to_bytes(2, "little"), address_flags.to_bytes(3, "little"))
 
 class ResetTimer(_Instruction):
-    def __init__(self, timer_id):
+    def __init__(self, timer_id: int) -> None:
         super().__init__(0xa1, timer_id)
 
 class ResetScreenColors(_Instruction):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__(0x54)
 
 class DeleteRotatingPyramids(_Instruction):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__(0xa6)
 
 class InvokeFinalLineup(_Instruction):
-    def __init__(self):
+    def __init__(self) -> None:
         super().__init__(0x9d)
 
 class AverageLevel(_Instruction):
-    def __init__(self, character):
+    def __init__(self, character: int) -> None:
         super().__init__(0x77, character)
 
 class RestoreHp(_Instruction):
-    def __init__(self, character, amount):
+    def __init__(self, character: int, amount: int) -> None:
         # Modify actor A's Hit Points. B is the amount, however, bit 0x80 tells it to subtract. The amount in 0x7F is a power of 2 to add/subtract.
         # So, for instance, 8B 01 04 would Add (high bit clear) to Locke (character 01) 16 HP (2^4). Clear as mud?
         # Caveats (1) if the parameter is 7F, it just sets the HP to maximum. (2) No matter how much is subtracted, it can't end up below 1 HP.
         super().__init__(0x8b, character, amount)
 
 class RestoreMp(_Instruction):
-    def __init__(self, character, amount):
+    def __init__(self, character: int, amount: int) -> None:
         # Modify actor A's Magic Points. B is the amount, however, bit 0x80 tells it to subtract. The amount in 0x7F is a power of 2 to add/subtract.
         # This command appears to have been a copy/paste of the Hit Points, however, they did not code the powers of 2 part, so in reality, the only
         # thing this can do is set MP to max via the 7F second parameter.

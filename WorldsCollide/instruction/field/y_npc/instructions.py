@@ -9,7 +9,7 @@ from ....instruction.field.custom import _set_opcode_address
 # set graphics for last npc interacted with using y button
 # if sprite, palette, or vehicle argument is 0xff, they will remain unmodified (TODO: 0xff restore original values?)
 class SetYNPCGraphics(_Instruction):
-    def __init__(self, sprite, palette, vehicle):
+    def __init__(self, sprite: int, palette: int, vehicle):
         src = [
             # store sprite as 4th argument (so eb can be overwritten)
             asm.LDA(0xeb, asm.DIR),         # a = sprite argument
