@@ -43,8 +43,10 @@ ignore = [
     "D105", "D107", "D202", "D210", "D212", "D400", "D403", "D415",
     "CPY", "TC001", "ERA001",
     "SIM108", "SIM118", "SIM910",
+    "PLC0414",  # import a as a (standard practice for reexport)
     "PLR5501",  # elif when possible (else: if)
     "DOC201",  # return in docstring
+    "RET504",  # don't assign variable before returning it (disables debugging a value at break point)
     "PLC1802",  # len(_) condition
     "PLC0415",  # no imports in functions
     "TID252",  # no .. in imports
@@ -53,6 +55,7 @@ ignore = [
     "PLR1730",  # use max() instead of if
     "PLR2044",  # empty comment (holding space)
     "RET505", "RET506",  # no elif after return/raise
+    "FURB140",  # use starmap (obscure function that's less type-safe)
     "PIE808",  # start arg 0 in range (range(0, 3))
     "SIM300",  # constant left of == (incorrect detection of constant)
     "I001",  # import order - global module state relies on order
@@ -74,7 +77,6 @@ ignore = [
     "E241",  # space ofter comma (often used for lining up columns)
     "E251",  # f(x = 3)
     "E302", "E305",  # 2 blank lines in module scope
-    # "E201",  # [ 2 ]
     # "E111",  # indent 4
     "E221",  # 1 space before operator
     "E262",  # 1 space after #
