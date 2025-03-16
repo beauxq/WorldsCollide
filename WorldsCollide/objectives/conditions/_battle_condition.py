@@ -12,7 +12,7 @@ class _Condition(_CachedFunction, asm.JSR):
         asm.JSR.__init__(self, self.address(*args, **kwargs), asm.ABS)
 
 class _BitCondition(_Condition):
-    def write(self, address, bit, true, false):
+    def write(self, address: int, bit: int, true, false):
         if true is None:
             true = []
         if false is None:
@@ -33,7 +33,7 @@ class _BitCondition(_Condition):
         return Write(Bank.F0, src, f"battle bit condition {hex(address)} {hex(bit)}")
 
 class EventBitCondition(_BitCondition):
-    def write(self, bit, true = None, false = None):
+    def write(self, bit: int, true = None, false = None):
         return super().write(event_bit.address(bit), event_bit.bit(bit), true, false)
 
 class BattleBitCondition(_BitCondition):
@@ -49,7 +49,7 @@ class EsperCondition(_BitCondition):
         return super().write(0x1a69 + esper // 8, esper % 8, true, false)
 
 class EventWordCondition(_Condition):
-    def write(self, word, count, ge = None, lt = None):
+    def write(self, word: int, count: int, ge = None, lt = None):
         if ge is None:
             ge = []
         if lt is None:

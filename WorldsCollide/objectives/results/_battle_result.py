@@ -14,7 +14,7 @@ class Result(_CachedFunction, asm.JSR):
         ]
         return Write(Bank.F0, src, f"battle result {type(self).__name__} {self.arg_string}")
 
-def SetBit(address, bit):
+def SetBit(address: int, bit: int):
     bitmask = 2 ** (bit % 8)
     return [
         asm.LDA(bitmask, asm.IMM8),

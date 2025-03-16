@@ -3,7 +3,7 @@ from .. import args as args
 SECTION_WIDTH = 120
 COLUMN_WIDTH = 60
 
-def separator(label):
+def separator(label: str) -> None:
     import logging
     logging.info("")
     logging.info(get_separator(label))
@@ -14,11 +14,11 @@ def columns(lcolumn, rcolumn):
     for column in itertools.zip_longest(lcolumn, rcolumn, fillvalue = ""):
         logging.info(f"{column[0]:<{COLUMN_WIDTH}}{column[1]:<{COLUMN_WIDTH}}".rstrip())
 
-def section(label, lcolumn, rcolumn):
+def section(label: str, lcolumn, rcolumn):
     separator(label)
     columns(lcolumn, rcolumn)
 
-def section_entries(label, lentries, rentries):
+def section_entries(label: str, lentries, rentries):
     # log section with multi-line entries in each column as a grid
 
     # resize each row of entries to the minimum number of lines needed
@@ -43,7 +43,7 @@ def section_entries(label, lentries, rentries):
 
     section(label, lcolumn, rcolumn)
 
-def get_separator(label):
+def get_separator(label: str) -> str:
     half_dash_count = SECTION_WIDTH // 2 - 1 # one space on each side of label
     side_dash_count = (half_dash_count - len(label) // 2)
 
@@ -54,7 +54,7 @@ def get_separator(label):
 
     return separator
 
-def format_option(option, value, unique_name = ''):
+def format_option(option: str, value: object, unique_name: str = '') -> str:
     from ..constants.standard_flags import standard_flags
     standard_flag = standard_flags.get(unique_name)
     if (standard_flag != str(value)):

@@ -7,7 +7,7 @@ FIRE0, FIRE1, FIRE2, ICE0, ICE1, ICE2, BOLT0, BOLT1, BOLT2, EARTH0, EARTH1, EART
 CURE0, CURE1, CURE2, TEK0, TEK1, TEK2, DAMAGE0, DAMAGE1, DAMAGE2, SPECIAL0, SPECIAL1, SPECIAL2 = range(0x55, 0x61)
 # NOTE: 0x61 to 0x63 still available
 
-def get_custom_ability_tier(category_tier):
+def get_custom_ability_tier(category_tier: int) -> int:
     if category_tier >= 0x55:
         category_tier -= 1
     return category_tier % 3

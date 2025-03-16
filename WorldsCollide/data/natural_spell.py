@@ -1,5 +1,5 @@
 class NaturalSpell:
-    def __init__(self, id, data):
+    def __init__(self, id: int, data):
         self.id = id
 
         self.spell = data[0]

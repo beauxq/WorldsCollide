@@ -214,47 +214,47 @@ from ..constants.objectives import MAX_OBJECTIVES
 for index in range(MAX_OBJECTIVES):
     globals()["OBJECTIVE" + str(index)] = 0xe0 + index
 
-def byte(event_bit):
+def byte(event_bit: int) -> int:
     return event_bit // 8
 
-def bit(event_bit):
+def bit(event_bit: int) -> int:
     return event_bit % 8
 
-def address(event_bit):
+def address(event_bit: int) -> int:
     return 0x1e80 + byte(event_bit)
 
-def character_recruited(char):
+def character_recruited(char: int) -> int:
     # char in shops, items, gogo menu
     return 0x2e0 + char
 
-def character_available(char):
+def character_available(char: int) -> int:
     # char can be chosen in party select menus
     return 0x2f0 + char
 
-def multipurpose(index):
+def multipurpose(index: int) -> int:
     assert index >= 0 and index <= 15
     return 0x1a0 + index
 
-def multipurpose_map(index):
+def multipurpose_map(index: int) -> int:
     # cleared on map load
     assert index >= 0 and index <= 15
     return 0x1f0 + index
 
-def multipurpose_party1_step(index):
+def multipurpose_party1_step(index: int) -> int:
     # cleared on each step by party1
     assert index >= 0 and index <= 3
     return 0x2c4 + index
 
-def multipurpose_party2_step(index):
+def multipurpose_party2_step(index: int) -> int:
     # cleared on each step by party2
     assert index >= 0 and index <= 3
     return 0x2c8 + index
 
-def multipurpose_party3_step(index):
+def multipurpose_party3_step(index: int) -> int:
     # cleared on each step by party3
     assert index >= 0 and index <= 3
     return 0x2cc + index
 
-def objective(index):
+def objective(index: int) -> int:
     assert index >= 0 and index <= MAX_OBJECTIVES
     return 0xe0 + index

@@ -4,7 +4,7 @@ from ...instruction.entity import *
 CAMERA, PARTY0, PARTY1, PARTY2, PARTY3 = range(0x30, 0x35)
 
 class MoveDiagonal(_Instruction):
-    def __init__(self, dir1, dist1, dir2, dist2):
+    def __init__(self, dir1: int, dist1: int, dir2: int, dist2: int) -> None:
         from ...data import direction as direction
         dir_letter = {direction.UP : "u", direction.RIGHT : "r",
                       direction.DOWN : "d", direction.LEFT : "l"}
@@ -31,7 +31,7 @@ class DisableWalkingAnimation(_Instruction):
         super().__init__(0xc7)
 
 class SetSpriteLayer(_Instruction):
-    def __init__(self, layer):
+    def __init__(self, layer: int) -> None:
         super().__init__(0xc8, layer)
 
     def __str__(self):
@@ -42,7 +42,7 @@ class Hide(_Instruction):
         super().__init__(0xd1)
 
 class SetPosition(_Instruction):
-    def __init__(self, x, y):
+    def __init__(self, x: int, y: int) -> None:
         super().__init__(0xd5, x, y)
 
     def __str__(self):
@@ -109,7 +109,7 @@ class AnimateHighJump(_Instruction):
         super().__init__(0xdd)
 
 class _BranchDistance(_Instruction):
-    def __init__(self, opcode, distance, offset):
+    def __init__(self, opcode: int, distance: str, offset: int) -> None:
         self.distance = distance
         self.offset = offset
         super().__init__(opcode, distance)
@@ -134,7 +134,7 @@ class RandomlyBranchForwards(_BranchDistance):
         super().__init__(0xfb, distance, 1)
 
 class BranchBackwards(_BranchDistance):
-    def __init__(self, distance):
+    def __init__(self, distance: str) -> None:
         super().__init__(0xfc, distance, -1)
 
 class BranchForwards(_BranchDistance):

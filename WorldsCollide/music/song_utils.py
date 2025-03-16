@@ -20,5 +20,5 @@ character_to_song = {
 }
 
 # Return id for character theme given a character id
-def get_character_theme(char_id):
+def get_character_theme(char_id: int) -> int:
     return character_to_song[char_id]

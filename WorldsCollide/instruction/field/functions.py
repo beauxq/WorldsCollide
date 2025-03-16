@@ -37,7 +37,7 @@ def _delete_all_characters_mod():
     return space.start_address
 DELETE_ALL_CHARACTERS = _delete_all_characters_mod()
 
-def _refresh_characters_and_select_parties_mod(count):
+def _refresh_characters_and_select_parties_mod(count: int):
     # create all available characters, select count parties, delete characters not placed into any party
     src = [
         field.Call(DELETE_ALL_CHARACTERS),

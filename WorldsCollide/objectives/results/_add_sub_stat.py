@@ -4,7 +4,7 @@ from ...instruction import field as field
 
 from ...objectives.results._apply_characters_party import ApplyToCharacter, ApplyToCharacters
 
-def AddStat(stat_address):
+def AddStat(stat_address: int):
     MAX_STAT = 0x80
     return [
         asm.LDA(stat_address, asm.ABS_Y),
@@ -17,7 +17,7 @@ def AddStat(stat_address):
         asm.STA(stat_address, asm.ABS_Y),
     ]
 
-def SubStat(stat_address):
+def SubStat(stat_address: int):
     return [
         asm.LDA(stat_address, asm.ABS_Y),
         asm.SEC(),
@@ -32,7 +32,7 @@ def SubStat(stat_address):
         asm.STA(stat_address, asm.ABS_Y),
     ]
 
-def add_stat_all(stat_address, stat_string):
+def add_stat_all(stat_address: int, stat_string: str):
     src = ApplyToCharacters(AddStat(stat_address))
     src += [
         asm.RTL(),
@@ -41,7 +41,7 @@ def add_stat_all(stat_address, stat_string):
     space = Write(Bank.F0, src, f"add {stat_string} all")
     return space.start_address
 
-def sub_stat_all(stat_address, stat_string):
+def sub_stat_all(stat_address: int, stat_string: str):
     src = ApplyToCharacters(SubStat(stat_address))
     src += [
         asm.RTL(),

@@ -12,7 +12,7 @@ class _Condition(_CachedFunction, field.Call):
         field.Call.__init__(self, self.address(*args, **kwargs))
 
 class _BitCondition(_Condition):
-    def write(self, branch, true, false, description):
+    def write(self, branch, true, false, description: str):
         if true is None:
             true = []
         if false is None:
@@ -31,7 +31,7 @@ class _BitCondition(_Condition):
         return Write(Bank.CA, src, description)
 
 class EventBitCondition(_BitCondition):
-    def write(self, bit, true = None, false = None):
+    def write(self, bit: int, true = None, false = None):
         return super().write(
             field.BranchIfEventBitClear(bit, "FALSE"),
             true, false,
@@ -63,7 +63,7 @@ class EsperCondition(_BitCondition):
         )
 
 class EventWordCondition(_Condition):
-    def write(self, word, count, ge = None, lt = None):
+    def write(self, word: int, count: int, ge = None, lt = None):
         if ge is None:
             ge = []
         if lt is None:

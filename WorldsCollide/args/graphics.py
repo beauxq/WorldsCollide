@@ -121,7 +121,7 @@ def flags(args):
 
     return flags
 
-def _truncated_name(name):
+def _truncated_name(name: str) -> str:
     MAX_LENGTH = 29 # if name is too long for column, truncate and add ...
     if len(name) > MAX_LENGTH:
         return name[ : (MAX_LENGTH - 3)] + "..."

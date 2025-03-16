@@ -30,13 +30,13 @@ def _learn_swdtechs():
 learn_swdtechs = _learn_swdtechs()
 
 class Field(field_result.Result):
-    def src(self, count):
+    def src(self, count: int):
         return [
             field.LongCall(START_ADDRESS_SNES + learn_swdtechs, count),
         ]
 
 class Battle(battle_result.Result):
-    def src(self, count):
+    def src(self, count: int):
         return [
             asm.LDA(count, asm.IMM8),
             asm.STA(field.LongCall.ARG_ADDRESS, asm.DIR),

@@ -53,9 +53,9 @@ set_line_x_pos = _set_line_x_pos_mod()
 # first custom scroll area menu number is 11, 0x22f + 0xb * 3 = 0x250
 MEMORY_CURSOR_POSITIONS_START_ADDR = 0x22f
 MEMORY_PAGE_POSITIONS_START_ADDR = 0x231
-def memory_cursor_position(menu_number):
+def memory_cursor_position(menu_number: int) -> int:
     return MEMORY_CURSOR_POSITIONS_START_ADDR + menu_number * 3
-def memory_page_position(menu_number):
+def memory_page_position(menu_number: int) -> int:
     return MEMORY_PAGE_POSITIONS_START_ADDR + menu_number * 3
 
 class ScrollArea:

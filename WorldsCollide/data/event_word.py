@@ -11,11 +11,11 @@ CORAL_FOUND = 7 # also used for cid's health
 BOSSES_DEFEATED = 27 # custom
 SCRATCH = 28 # custom, scratch space
 
-def address(event_word):
+def address(event_word: int) -> int:
     # event word 0 starts at 1fc2, 1 is at 1fc4, ..., 7 is at 1fd0
     return 0x1fc2 + event_word * 2
 
-def _init_event_words_mod():
+def _init_event_words_mod() -> None:
     from ..memory.space import Bank, Reserve, Write
     from ..instruction import asm as asm
 

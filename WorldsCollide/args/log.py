@@ -1,12 +1,12 @@
 from .. import args as args
 
-def _log_tab(tab_name, left_groups, right_groups):
-    lcolumn = []
+def _log_tab(tab_name: str, left_groups: list[str], right_groups: list[str]) -> None:
+    lcolumn: list[str] = []
     for lgroup in left_groups:
         lcolumn.append("")
         lcolumn.extend(args.group_modules[lgroup].log(args))
 
-    rcolumn = []
+    rcolumn: list[str] = []
     for rgroup in right_groups:
         rcolumn.append("")
         rcolumn.extend(args.group_modules[rgroup].log(args))
@@ -14,7 +14,7 @@ def _log_tab(tab_name, left_groups, right_groups):
     from .. import log
     log.section(tab_name, lcolumn, rcolumn)
 
-def log():
+def log() -> None:
     _log_tab("Game", ["settings"], [])
     args.group_modules["objectives"].log(args)
     _log_tab("Party", ["starting_party", "swdtechs", "blitzes", "lores", "rages", "dances", "steal", "sketch_control"], ["characters", "commands"])
