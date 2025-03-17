@@ -9,21 +9,19 @@ IMM16, ABS, ABS_X, ABS_Y, ABS_16, ABS_X_16, ABS_24,\
 LNG, LNG_X = range(20)
 
 class _Instruction:
-    def __init__(self, arg, mode: int | None):
+    def __init__(self, arg: int | None, mode: int | None) -> None:
         self.arg = arg
         self.mode = mode
 
         # convert arg to bytes based on given mode
-        if mode is None:
+        if mode is None or arg is None:
             self.args = []
         elif mode >= LNG:
             self.args = arg.to_bytes(3, "little")
         elif mode >= IMM16:
             self.args = (arg & 0xffff).to_bytes(2, "little")
-        elif arg is not None:
-            self.args = (arg & 0xff).to_bytes(1, "little")
         else:
-            self.args = []
+            self.args = (arg & 0xff).to_bytes(1, "little")
 
         self.opcode = self.mode_opcode[mode]
 
