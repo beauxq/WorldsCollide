@@ -1,8 +1,11 @@
+from ..memory.rom import ROM
+
+
 class MapProperty:
     DATA_SIZE = 33
     DATA_START = 0x2d8f00
 
-    def __init__(self, rom, id):
+    def __init__(self, rom: ROM, id):
         self.rom = rom
 
         self.set_id(id)

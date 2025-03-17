@@ -1,11 +1,14 @@
 # on world maps enemy zones are regions of world map and contain 4 packs each
 # each non-world map corresponds to one enemy zone and has one pack
 
+from ..memory.rom import ROM
+
+
 class EnemyZone:
     ENCOUNTER_RATES = {0 : "Normal", 1 : "Lower", 2 : "Higher"}
     NORMAL_ENCOUNTER_RATE, LOW_ENCOUNTER_RATE, HIGH_ENCOUNTER_RATE = range(3)
 
-    def __init__(self, rom, id):
+    def __init__(self, rom: ROM, id):
         self.rom = rom
 
         self.set_id(id)

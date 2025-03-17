@@ -1,12 +1,14 @@
 from ..data.shop import Shop
 from ..data.structures import DataArray
+from ..memory.rom import ROM
+
 
 class Shops:
     DATA_START = 0x47ac0
     DATA_END = 0x47f3f
     DATA_SIZE = 9
 
-    def __init__(self, rom, args, items):
+    def __init__(self, rom: ROM, args, items):
         self.rom = rom
         self.args = args
         self.items = items

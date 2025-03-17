@@ -1,5 +1,6 @@
 from ..data.sketch import Sketch
 from ..data.structures import DataArray
+from ..memory.rom import ROM
 from ..memory.space import Reserve, Bank, Write
 from ..instruction import asm as asm
 
@@ -8,7 +9,7 @@ class Sketches:
     ATTACKS_DATA_END = 0xf45ff
     ATTACKS_DATA_SIZE = 2
 
-    def __init__(self, rom, args, enemies, rages):
+    def __init__(self, rom: ROM, args, enemies, rages):
         self.rom = rom
         self.args = args
         self.enemies = enemies

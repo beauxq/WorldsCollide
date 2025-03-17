@@ -2,6 +2,7 @@ from ..data.lore import Lore
 from ..data.ability_data import AbilityData
 from ..data.structures import DataBits, DataArray, DataList
 
+from ..memory.rom import ROM
 from ..memory.space import Bank, Reserve, Allocate, Write, Space
 from ..instruction import asm as asm
 
@@ -27,7 +28,7 @@ class Lores:
     ABILITY_DATA_START = 0x04725a
     ABILITY_DATA_END = 0x0473a9
 
-    def __init__(self, rom, args, characters):
+    def __init__(self, rom: ROM, args, characters):
         self.rom = rom
         self.args = args
         self.characters = characters

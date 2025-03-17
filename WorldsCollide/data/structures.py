@@ -1,5 +1,8 @@
 from functools import total_ordering
 
+from ..memory.rom import ROM
+
+
 @total_ordering
 class DataPointer:
     def __init__(self, address: int, data_address: int) -> None:
@@ -15,7 +18,7 @@ class DataPointer:
 # pointers to data
 # number of pointers and pointer addresses do not change, only the data addresses they store change
 class DataPointers:
-    def __init__(self, rom, start_address: int, end_address: int, pointer_size: int) -> None:
+    def __init__(self, rom: ROM, start_address: int, end_address: int, pointer_size: int) -> None:
         self.rom = rom
         self.start_address = start_address
         self.end_address = end_address
@@ -78,7 +81,7 @@ class DataElement:
 
 # contiguous bit field
 class DataBits:
-    def __init__(self, rom, start_address: int, end_address: int) -> None:
+    def __init__(self, rom: ROM, start_address: int, end_address: int) -> None:
         self.rom = rom
         self.start_address = start_address
         self.end_address = end_address
@@ -126,7 +129,7 @@ class DataBits:
 # array of data
 # all elements are the same size and the size does not change but the number of elements can change
 class DataArray:
-    def __init__(self, rom, start_address: int, end_address: int, element_size: int) -> None:
+    def __init__(self, rom: ROM, start_address: int, end_address: int, element_size: int) -> None:
         self.rom  = rom
         self.start_address = start_address
         self.end_address = end_address
@@ -175,7 +178,7 @@ class DataArray:
 # each array pointed to can be zero or more elements long and each element is the same size
 # the number of pointers/arrays does not change but the array sizes can change
 class DataArrays:
-    def __init__(self, rom, pointers_start_address: int, pointers_end_address: int, pointer_size: int, data_start_address: int, data_end_address: int, data_element_size: int) -> None:
+    def __init__(self, rom: ROM, pointers_start_address: int, pointers_end_address: int, pointer_size: int, data_start_address: int, data_end_address: int, data_element_size: int) -> None:
         self.rom = rom
         self.pointers = DataPointers(rom, pointers_start_address, pointers_end_address, pointer_size)
 
@@ -243,7 +246,7 @@ class DataArrays:
 #                ---------------------
 # pointer 0 points to block 4, pointer 1 points to block 3, pointer 2 points to block 1, ...
 class _DataBlocks:
-    def __init__(self, rom, pointers_start_address: int, pointers_end_address: int, pointer_size: int, pointer_offset: int, data_start_address: int, data_end_address: int) -> None:
+    def __init__(self, rom: ROM, pointers_start_address: int, pointers_end_address: int, pointer_size: int, pointer_offset: int, data_start_address: int, data_end_address: int) -> None:
         self.rom = rom
         self.pointers = DataPointers(rom, pointers_start_address, pointers_end_address, pointer_size)
         self.pointer_offset = pointer_offset
@@ -329,7 +332,7 @@ class _DataBlocks:
         print(repr(self))
 
 class DataList(_DataBlocks):
-    def __init__(self, rom, pointers_start_address: int, pointers_end_address: int, pointer_size: int, pointer_offset: int, data_start_address: int, data_end_address: int) -> None:
+    def __init__(self, rom: ROM, pointers_start_address: int, pointers_end_address: int, pointer_size: int, pointer_offset: int, data_start_address: int, data_end_address: int) -> None:
         super().__init__(rom, pointers_start_address, pointers_end_address, pointer_size, pointer_offset, data_start_address, data_end_address)
 
         # pointers already sorted by address, create list of indices for base class convenience
@@ -361,7 +364,7 @@ class DataList(_DataBlocks):
             self.data_blocks[index] = data_block
 
 class DataMap(_DataBlocks):
-    def __init__(self, rom, pointers_start_address: int, pointers_end_address: int, pointer_size: int, pointer_offset: int, data_start_address: int, data_end_address: int) -> None:
+    def __init__(self, rom: ROM, pointers_start_address: int, pointers_end_address: int, pointer_size: int, pointer_offset: int, data_start_address: int, data_end_address: int) -> None:
         super().__init__(rom, pointers_start_address, pointers_end_address, pointer_size, pointer_offset, data_start_address, data_end_address)
 
         # sort pointer indices by the address they point to

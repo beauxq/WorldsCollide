@@ -1,4 +1,6 @@
 from ..data.enemy_zone import WOBZone, WORZone, MapZone
+from ..memory.rom import ROM
+
 
 class EnemyZones:
     # world of balance is split into 64 zones
@@ -9,7 +11,7 @@ class EnemyZones:
     MAP_COUNT = 512
     ZONE_COUNT = WOB_COUNT + WOR_COUNT + MAP_COUNT
 
-    def __init__(self, rom, args):
+    def __init__(self, rom: ROM, args):
         self.rom = rom
         self.args = args
         self.read()

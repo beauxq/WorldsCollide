@@ -1,11 +1,13 @@
 from ..data.party_battle_script import PartyBattleScript
 from ..data.structures import DataArray
+from ..memory.rom import ROM
+
 
 class PartyBattleScripts:
     DATA_START = 0x10fd00
     DATA_END = 0x10ffff
 
-    def __init__(self, rom, args, characters):
+    def __init__(self, rom: ROM, args, characters):
         self.rom = rom
         self.args = args
         self.characters = characters

@@ -1,6 +1,8 @@
 from ..data.enemy_formation import EnemyFormation
 from ..data.structures import DataArray
 from ..data import bosses as bosses
+from ..memory.rom import ROM
+
 
 class EnemyFormations:
     FLAGS_START = 0xf5900
@@ -19,7 +21,7 @@ class EnemyFormations:
     COLISEUM = 575
     CHUPON = 563 # Otherwise unused formation -- we'll use it for the random_encounters_chupon flag.
 
-    def __init__(self, rom, args, enemies):
+    def __init__(self, rom: ROM, args, enemies):
         self.rom = rom
         self.args = args
         self.enemies = enemies

@@ -1,6 +1,8 @@
 from ..data.chest import Chest
 from ..data import chests_asm as chests_asm
 from ..data.structures import DataArrays
+from ..memory.rom import ROM
+
 import random
 
 class Chests:
@@ -10,7 +12,7 @@ class Chests:
     DATA_END = 0x2d8e5a
     DATA_SIZE = 5
 
-    def __init__(self, rom, args, items):
+    def __init__(self, rom: ROM, args, items):
         self.rom = rom
         self.args = args
         self.items = items

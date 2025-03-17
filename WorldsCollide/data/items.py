@@ -8,6 +8,8 @@ from ..constants.items import id_name, name_id
 
 from ..data import items_asm as items_asm
 from ..data import text as text
+from ..memory.rom import ROM
+
 
 class Items:
     ITEM_COUNT = 256
@@ -24,7 +26,7 @@ class Items:
 
     GOOD = args.item_rewards_ids
 
-    def __init__(self, rom, args, dialogs, characters):
+    def __init__(self, rom: ROM, args, dialogs, characters):
         self.rom = rom
         self.args = args
         self.dialogs = dialogs

@@ -1,6 +1,7 @@
 from ..data.swdtech import SwdTech
 from ..data.structures import DataArray
 
+from ..memory.rom import ROM
 from ..memory.space import Bank, Reserve, Allocate, Write
 from ..instruction import asm as asm
 
@@ -8,7 +9,7 @@ class SwdTechs:
     NAMES_START = 0x0f3c40
     NAMES_END = 0x0f3c9f
 
-    def __init__(self, rom, args, characters):
+    def __init__(self, rom: ROM, args, characters):
         self.rom = rom
         self.args = args
         self.characters = characters

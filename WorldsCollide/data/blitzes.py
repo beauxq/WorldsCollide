@@ -1,6 +1,7 @@
 from ..data.blitz import Blitz
 from ..data.structures import DataArray
 
+from ..memory.rom import ROM
 from ..memory.space import Bank, Reserve, Allocate, Write, Read
 from ..instruction import asm as asm
 
@@ -8,7 +9,7 @@ class Blitzes:
     LEVELS_START = 0x26f498
     LEVELS_END = 0x26f49f
 
-    def __init__(self, rom, args, characters):
+    def __init__(self, rom: ROM, args, characters):
         self.rom = rom
         self.args = args
         self.characters = characters

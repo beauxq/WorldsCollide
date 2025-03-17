@@ -1,11 +1,14 @@
 # world map event modifications change the world map if an event bit is set
 # e.g. if event bit 0x9e (floating continent) is set the sealed gate is removed
 
+from ..memory.rom import ROM
+
+
 class WorldMapEventModification:
     DATA_SIZE = 0x04
     DATA_START_ADDR = 0xef600
 
-    def __init__(self, rom, id):
+    def __init__(self, rom: ROM, id):
         self.rom = rom
 
         self.set_id(id)

@@ -5,6 +5,8 @@ from ..data.enemy_script_abilities import EnemyScriptAbilities
 from ..data.structures import DataMap
 
 from ..data import enemy_script_commands as ai_instr
+from ..memory.rom import ROM
+
 
 class EnemyScripts:
     SCRIPT_PTRS_START = 0xf8400
@@ -12,7 +14,7 @@ class EnemyScripts:
     SCRIPTS_START = 0xf8700
     SCRIPTS_END   = 0xfc04f
 
-    def __init__(self, rom, args, enemies):
+    def __init__(self, rom: ROM, args, enemies):
         self.rom = rom
         self.args = args
         self.enemies = enemies

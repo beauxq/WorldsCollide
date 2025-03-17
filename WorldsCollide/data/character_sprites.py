@@ -1,6 +1,7 @@
 from ..data.character_sprite import CharacterSprite
 from ..data.structures import DataArray
 from ..constants.entities import id_character, name_id
+from ..memory.rom import ROM
 
 # portrait args are for characters + imp
 PORTRAIT_CHARACTERS = list(id_character) + [name_id["Imp"]]
@@ -27,7 +28,7 @@ class CharacterSprites:
     PORTRAIT_DATA_END = 0x2d585f
     PORTRAIT_DATA_SIZE = 800
 
-    def __init__(self, rom, args):
+    def __init__(self, rom: ROM, args):
         self.rom = rom
         self.args = args
 

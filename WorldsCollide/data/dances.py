@@ -1,6 +1,7 @@
 from ..data.dance import Dance
 from ..data.structures import DataArray
 
+from ..memory.rom import ROM
 from ..memory.space import Bank, Reserve, Allocate, Write, Read
 from ..instruction import asm as asm
 
@@ -18,7 +19,7 @@ class Dances:
     ABILITY_NAMES_START = 0x26f881
     ABILITY_NAME_SIZE = 10
 
-    def __init__(self, rom, args, characters):
+    def __init__(self, rom: ROM, args, characters):
         self.rom = rom
         self.args = args
         self.characters = characters

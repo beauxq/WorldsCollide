@@ -1,5 +1,6 @@
 from ..data.character_palette import CharacterPalette
 from ..data.structures import DataArray
+from ..memory.rom import ROM
 
 SPRITE_PALETTE_COUNT = 7
 DEFAULT_CHARACTER_PALETTES = list(range(SPRITE_PALETTE_COUNT))
@@ -27,7 +28,7 @@ class CharacterPalettes:
     # default palette ids for sprites <= kefka (banon's palette for banon/duncan)
     DEFAULTS = [2, 1, 4, 4, 0, 0, 0, 3, 3, 4, 5, 3, 3, 5, 1, 0, 0, 3, 6, 1, 0, 3]
 
-    def __init__(self, rom, args, menu_character_sprites):
+    def __init__(self, rom: ROM, args, menu_character_sprites):
         self.rom = rom
         self.args = args
         self.menu_character_sprites = menu_character_sprites

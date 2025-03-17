@@ -1,5 +1,6 @@
 from ..data.control import Control
 from ..data.structures import DataArray
+from ..memory.rom import ROM
 from ..memory.space import Reserve, Allocate, Bank, Write
 from ..instruction import asm as asm
 
@@ -9,7 +10,7 @@ class Controls:
     ATTACKS_DATA_SIZE = 4
     ATTACKS_DATA_TOTAL_BYTES = (ATTACKS_DATA_END - ATTACKS_DATA_START) + 1
 
-    def __init__(self, rom, args, enemies, rages):
+    def __init__(self, rom: ROM, args, enemies, rages):
         self.rom = rom
         self.args = args
         self.enemies = enemies

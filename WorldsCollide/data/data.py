@@ -1,3 +1,4 @@
+from ..memory.rom import ROM
 from ..data import dialogs as dialogs
 from ..data import spells as spells
 from ..data import characters as characters
@@ -20,7 +21,7 @@ from ..data import coliseum as coliseum
 from ..data import title_graphics as title_graphics
 
 class Data:
-    def __init__(self, rom, args):
+    def __init__(self, rom: ROM, args):
         self.dialogs = dialogs
 
         self.spells = spells.Spells(rom, args)

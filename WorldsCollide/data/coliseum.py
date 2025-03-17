@@ -1,10 +1,12 @@
 from ..data.match import Match
+from ..memory.rom import ROM
+
 
 class Coliseum:
     MATCH_COUNT = 256
     DATA_START_ADDR = 0x1fb600
 
-    def __init__(self, rom, args, enemies, items):
+    def __init__(self, rom: ROM, args, enemies, items):
         self.rom = rom
         self.args = args
         self.enemies = enemies

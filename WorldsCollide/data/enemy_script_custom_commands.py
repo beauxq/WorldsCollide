@@ -1,3 +1,4 @@
+from ..memory.rom import ROM
 from ..memory.space import Bank, START_ADDRESS_SNES, Reserve, Allocate, Write
 from ..instruction import asm as asm
 
@@ -13,7 +14,7 @@ def get_custom_ability_tier(category_tier: int) -> int:
     return category_tier % 3
 
 class EnemyScriptCommands:
-    def __init__(self, rom, args, enemy_scripts, enemies):
+    def __init__(self, rom: ROM, args, enemy_scripts, enemies):
         self.rom = rom
         self.args = args
         self.enemy_scripts = enemy_scripts

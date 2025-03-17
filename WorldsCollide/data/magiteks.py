@@ -2,6 +2,7 @@ from ..data.magitek import Magitek
 from ..data.ability_data import AbilityData
 from ..data.structures import DataArray
 
+from ..memory.rom import ROM
 from ..memory.space import Bank, Reserve, Allocate, Write
 
 class Magiteks:
@@ -15,7 +16,7 @@ class Magiteks:
     ABILITY_DATA_START = 0x0471ea
     ABILITY_DATA_END = 0x047259
 
-    def __init__(self, rom, args):
+    def __init__(self, rom: ROM, args):
         self.rom = rom
         self.args = args
 

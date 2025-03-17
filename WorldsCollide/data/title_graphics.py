@@ -1,9 +1,10 @@
 from ..graphics.title_loader import get_title_data
+from ..memory.rom import ROM
 from ..memory.space import Reserve
 
 
 class TitleGraphics:
-    def __init__(self, rom, args):
+    def __init__(self, rom: ROM, args):
         self.rom = rom
         self.args = args
 

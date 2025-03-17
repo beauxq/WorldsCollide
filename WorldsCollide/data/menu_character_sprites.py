@@ -1,5 +1,6 @@
 from ..data.menu_character_sprite import MenuCharacterSprite
 from ..data.structures import DataArray, DataPointers
+from ..memory.rom import ROM
 
 # each menu sprite contains data about a pose and how to draw it
 # for the main playable characters (0-13) the menu sprite data alternates betwen standing and hands up (both left facing)
@@ -16,7 +17,7 @@ class MenuCharacterSprites:
     SPRITE_PTRS_END = 0xff968
     SPRITE_PTR_SIZE = 4 # 3 bytes would have been enough
 
-    def __init__(self, rom, args):
+    def __init__(self, rom: ROM, args):
         self.rom = rom
         self.args = args
 

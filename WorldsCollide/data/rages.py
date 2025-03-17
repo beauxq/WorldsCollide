@@ -1,6 +1,8 @@
 from ..data.rage import Rage
 from ..data.structures import DataBits, DataArray
 from ..data.ability_data import AbilityData
+from ..memory.rom import ROM
+
 
 class Rages:
     RAGE_COUNT = 256 # 255 available
@@ -19,7 +21,7 @@ class Rages:
     ABILITY_DATA_START = 0x046ac0
     ABILITY_DATA_END = 0x0478bf
 
-    def __init__(self, rom, args, enemies):
+    def __init__(self, rom: ROM, args, enemies):
         self.rom = rom
         self.args = args
         self.enemies = enemies

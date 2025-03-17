@@ -1,8 +1,9 @@
+from ..memory.rom import ROM
 from ..memory.space import Bank, Reserve, Allocate, Write
 from ..instruction import asm as asm
 
 class Steal:
-    def __init__(self, rom, args):
+    def __init__(self, rom: ROM, args):
         self.rom = rom
         self.args = args
 

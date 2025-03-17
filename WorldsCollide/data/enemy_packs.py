@@ -1,6 +1,8 @@
 from ..data.enemy_pack import EnemyPack4, EnemyPack2
 from ..data.structures import DataArray
 from ..data import bosses as bosses
+from ..memory.rom import ROM
+
 
 class EnemyPacks:
     # the first 256 enemy packs are groups of 4 formations -- these are the Battle -> "Random Battle Groups" in ff6tools
@@ -19,7 +21,7 @@ class EnemyPacks:
     PHUNBABA3 = bosses.name_pack["Phunbaba 3"]
     DOOM_GAZE = bosses.name_pack["Doom Gaze"]
 
-    def __init__(self, rom, args, formations):
+    def __init__(self, rom: ROM, args, formations):
         self.rom = rom
         self.args = args
         self.formations = formations

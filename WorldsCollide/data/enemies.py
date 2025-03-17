@@ -6,6 +6,7 @@ from ..data.enemy_packs import EnemyPacks
 from ..data.enemy_zones import EnemyZones
 from ..data.enemy_scripts import EnemyScripts
 from ..data import bosses as bosses
+from ..memory.rom import ROM
 
 class Enemies:
     DATA_START = 0xf0000
@@ -29,7 +30,7 @@ class Enemies:
     SRBEHEMOTH2_ID = 127
     INVINCIBLE_GUARDIAN_ID = 273
 
-    def __init__(self, rom, args, items=[]):
+    def __init__(self, rom: ROM, args, items=[]):
         self.rom = rom
         self.args = args
         self.items = items

@@ -8,6 +8,8 @@ from ..data.party_battle_scripts import PartyBattleScripts
 from ..data.structures import DataArray
 
 from ..data import characters_asm as characters_asm
+from ..memory.rom import ROM
+
 
 class Characters:
     CHARACTER_COUNT = 14   # 14 playable characters
@@ -28,7 +30,7 @@ class Characters:
     NAMES_END = 0x47a3f
     NAME_SIZE = 6
 
-    def __init__(self, rom, args, spells):
+    def __init__(self, rom: ROM, args, spells):
         self.rom = rom
         self.args = args
 

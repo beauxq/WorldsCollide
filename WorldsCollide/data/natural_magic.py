@@ -1,6 +1,7 @@
 from ..data.natural_spell import NaturalSpell
 from ..data.structures import DataArray
 
+from ..memory.rom import ROM
 from ..memory.space import Bank, Reserve, Allocate
 from ..instruction import asm as asm
 
@@ -13,7 +14,7 @@ class NaturalMagic:
 
     SPELL_DATA_SIZE = 2
 
-    def __init__(self, rom, args, characters, spells):
+    def __init__(self, rom: ROM, args, characters, spells):
         self.rom = rom
         self.args = args
         self.characters = characters

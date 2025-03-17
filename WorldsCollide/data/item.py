@@ -1,5 +1,7 @@
 from ..data import text as text
 from ..data.text.text2 import text_value, value_text
+from ..memory.rom import ROM
+
 
 class Item:
     NAME_LENGTH = 13
@@ -11,7 +13,7 @@ class Item:
     ITEM_TYPE_COUNT = 7
     TOOL, WEAPON, ARMOR, SHIELD, HELMET, RELIC, ITEM = range(ITEM_TYPE_COUNT)
 
-    def __init__(self, id, rom, desc_data):
+    def __init__(self, id, rom: ROM, desc_data):
         self.rom = rom
 
         self.id = id

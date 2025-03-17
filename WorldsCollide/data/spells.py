@@ -2,6 +2,7 @@ from ..data.spell import Spell
 from ..data.spell_names import id_name, name_id
 from ..data.ability_data import AbilityData
 from ..data.structures import DataArray
+from ..memory.rom import ROM
 from ..memory.space import Reserve
 
 class Spells:
@@ -22,7 +23,7 @@ class Spells:
     import itertools
     spell_menu_order = itertools.chain(range(45, 54), range(45))
 
-    def __init__(self, rom, args):
+    def __init__(self, rom: ROM, args):
         self.rom = rom
         self.args = args
 

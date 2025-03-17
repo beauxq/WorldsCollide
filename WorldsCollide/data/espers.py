@@ -3,7 +3,10 @@ from ..data.ability_data import AbilityData
 from ..data.structures import DataArray
 
 from ..data import espers_asm as espers_asm
+from ..memory.rom import ROM
+
 import random
+
 
 class Espers:
     ESPER_COUNT = 27
@@ -29,7 +32,7 @@ class Espers:
     ABILITY_DATA_START = 0x046db4
     ABILITY_DATA_END = 0x046fd5
 
-    def __init__(self, rom, args, spells, characters):
+    def __init__(self, rom: ROM, args, spells, characters):
         self.rom = rom
         self.args = args
         self.spells = spells

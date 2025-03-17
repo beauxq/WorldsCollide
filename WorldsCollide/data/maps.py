@@ -15,6 +15,7 @@ from ..data import world_map_event_modifications as world_map_event_modification
 from ..data.world_map import WorldMap
 
 from ..instruction import asm as asm
+from ..memory.rom import ROM
 from ..memory.space import Reserve
 
 class Maps:
@@ -29,7 +30,7 @@ class Maps:
 
     NPCS_PTR_START = 0x41a10
 
-    def __init__(self, rom, args, items):
+    def __init__(self, rom: ROM, args, items):
         self.rom = rom
         self.args = args
 
