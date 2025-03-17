@@ -1,3 +1,6 @@
+from collections.abc import Sequence
+
+
 def name():
     return "Items"
 
@@ -219,9 +222,9 @@ def options(args):
     ]
 
 
-def _format_items_log_entries(item_ids):
+def _format_items_log_entries(item_ids: Sequence[int]) -> list[tuple[str, str]]:
     from ..constants.items import id_name
-    item_entries = []
+    item_entries: list[tuple[str, str]] = []
     for item_id in item_ids:
         item_entries.append(("", id_name[item_id]))
     return item_entries

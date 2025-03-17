@@ -1,7 +1,7 @@
 from ..data import enemy_script_parser as parser
 
 class EnemyScript:
-    def __init__(self, id: int, data):
+    def __init__(self, id: int, data: list):
         self.id = id
         self.instructions = parser.parse_script(data)
 

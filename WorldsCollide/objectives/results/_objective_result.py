@@ -9,7 +9,7 @@ from ...instruction import asm as asm
 import random
 
 class ObjectiveResult:
-    def __init__(self, field_class, battle_class, *args):
+    def __init__(self, field_class: type, battle_class: type, *args):
         self.field_class = field_class
         self.battle_class = battle_class
         self.args = args

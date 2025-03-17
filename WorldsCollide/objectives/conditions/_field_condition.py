@@ -12,7 +12,7 @@ class _Condition(_CachedFunction, field.Call):
         field.Call.__init__(self, self.address(*args, **kwargs))
 
 class _BitCondition(_Condition):
-    def write(self, branch, true, false, description: str):
+    def write(self, branch, true: list | None, false: list | None, description: str):
         if true is None:
             true = []
         if false is None:
@@ -31,7 +31,7 @@ class _BitCondition(_Condition):
         return Write(Bank.CA, src, description)
 
 class EventBitCondition(_BitCondition):
-    def write(self, bit: int, true = None, false = None):
+    def write(self, bit: int, true: list | None = None, false: list | None = None):
         return super().write(
             field.BranchIfEventBitClear(bit, "FALSE"),
             true, false,
@@ -39,7 +39,7 @@ class EventBitCondition(_BitCondition):
         )
 
 class BattleBitCondition(_BitCondition):
-    def write(self, bit, true = None, false = None):
+    def write(self, bit, true: list | None = None, false: list | None = None):
         return super().write(
             field.BranchIfBattleEventBitClear(bit, "FALSE"),
             true, false,
@@ -47,7 +47,7 @@ class BattleBitCondition(_BitCondition):
         )
 
 class CharacterCondition(_BitCondition):
-    def write(self, character, true = None, false = None):
+    def write(self, character, true: list | None = None, false: list | None = None):
         return super().write(
             field.BranchIfCharacterNotRecruited(character, "FALSE"),
             true, false,
@@ -55,7 +55,7 @@ class CharacterCondition(_BitCondition):
         )
 
 class EsperCondition(_BitCondition):
-    def write(self, esper, true = None, false = None):
+    def write(self, esper, true: list | None = None, false: list | None = None):
         return super().write(
             field.BranchIfEsperNotFound(esper, "FALSE"),
             true, false,
@@ -63,7 +63,7 @@ class EsperCondition(_BitCondition):
         )
 
 class EventWordCondition(_Condition):
-    def write(self, word: int, count: int, ge = None, lt = None):
+    def write(self, word: int, count: int, ge: list | None = None, lt: list | None = None):
         if ge is None:
             ge = []
         if lt is None:

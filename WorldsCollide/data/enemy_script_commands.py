@@ -1,5 +1,5 @@
 class Instruction:
-    def __init__(self, values):
+    def __init__(self, values: list):
         if len(values) != len(self):
             raise ValueError(f"{self.__class__.__name__} invalid number arguments: {len(values)} != {len(self)}")
         if values[0] != self.OPCODE and self.OPCODE >= 0xf0:

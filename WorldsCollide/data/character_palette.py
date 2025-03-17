@@ -1,7 +1,7 @@
 from ..graphics.palette import Palette
 
 class CharacterPalette(Palette):
-    def __init__(self, id: int, data):
+    def __init__(self, id: int, data: list):
         self.id = id
         self.data = data
 

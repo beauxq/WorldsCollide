@@ -1,7 +1,7 @@
 from ..data import enemy_script_commands as ai_instr
 
 # parse until EndMainLoop or EndScript instructions found
-def parse_section(script, index: int, InstructionTypes):
+def parse_section(script: list, index: int, InstructionTypes: list):
     blocks = [[]] # stack of instruction blocks
     instructions = []
 
@@ -27,7 +27,7 @@ def parse_section(script, index: int, InstructionTypes):
 
     return (index, instructions)
 
-def parse_script(script):
+def parse_script(script: list):
     CommonInstructionTypes = [ai_instr.RandomAttack, ai_instr.SetTarget, ai_instr.SetFormation, ai_instr.Message, ai_instr.RandomCommand, ai_instr.ChangeEnemies, ai_instr.RandomItem, ai_instr.Event, ai_instr.Arithmetic, ai_instr.Bits, ai_instr.Animate, ai_instr.Misc, ai_instr.If, ai_instr.EndTurn, ai_instr.EndIf]
 
     MainLoopInstructionTypes = CommonInstructionTypes + [ai_instr.EndMainLoop]

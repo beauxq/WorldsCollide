@@ -72,7 +72,7 @@ class DataPointers:
                 self.rom.set_bytes(pointer.address, pointer.data_address.to_bytes(self.pointer_size, "little"))
 
 class DataElement:
-    def __init__(self, data, address: int) -> None:
+    def __init__(self, data: list, address: int) -> None:
         self.data = data
         self.address = address
 

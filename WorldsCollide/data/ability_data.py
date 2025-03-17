@@ -1,7 +1,10 @@
+from collections.abc import Sequence
+
+
 class AbilityData:
     DATA_SIZE = 14
 
-    def __init__(self, id, data):
+    def __init__(self, id: int, data: Sequence[int]) -> None:
         self.id = id
 
         self.targets        = data[0]
@@ -19,7 +22,7 @@ class AbilityData:
         self.status3        = data[12]
         self.status4        = data[13]
 
-    def ability_data(self):
+    def ability_data(self) -> list[int]:
         data = [0x00] * self.DATA_SIZE
 
         data[0]     = self.targets

@@ -1,7 +1,7 @@
 from ...instruction import asm as asm
 character_data_size = 37
 
-def ApplyToCharacters(instructions):
+def ApplyToCharacters(instructions: list):
     from ...constants.entities import CHARACTER_COUNT
 
     return [
@@ -40,7 +40,7 @@ def ApplyToCharacter(character, instructions):
         asm.PLP(),
     ]
 
-def ApplyToParty(instructions):
+def ApplyToParty(instructions: list):
     character_party_start = 0x1850
     current_party = 0x1a6d
 

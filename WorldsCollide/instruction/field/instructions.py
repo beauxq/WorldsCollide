@@ -1,4 +1,6 @@
+from collections.abc import Sequence
 from typing import Literal
+
 from ...data import event_bit as event_bit
 
 from ...instruction.event import _Instruction, _Branch, _LoadMap, EVENT_CODE_START
@@ -589,7 +591,7 @@ class SetMapTiles(_Instruction):
     # x, y = top left of where to replace tiles
     # w, h = width, height of area to replace
     # tiles = what to replace the area with
-    def __init__(self, layer: int, x: int, y: int, w: int, h: int, tiles) -> None:
+    def __init__(self, layer: int, x: int, y: int, w: int, h: int, tiles: Sequence[int]) -> None:
         self.x = x
         self.y = y
         self.w = w
@@ -662,7 +664,7 @@ class ReturnIfEventBitClear(BranchIfEventBitClear):
         super().__init__(event_bit, RETURN)
 
 class BranchIfAny(_Branch):
-    def __init__(self, checks, destination: str | int) -> None:
+    def __init__(self, checks: list, destination: str | int) -> None:
         assert len(checks) // 2 <= 7
         opcode = 0xc1 + (len(checks) // 2) - 2
 
@@ -685,7 +687,7 @@ class BranchIfAny(_Branch):
         return super().__str__(substring)
 
 class BranchIfAll(_Branch):
-    def __init__(self, checks, destination: int) -> None:
+    def __init__(self, checks: list, destination: int) -> None:
         assert len(checks) // 2 <= 7
         opcode = 0xc9 + (len(checks) // 2) - 2
 
@@ -708,12 +710,12 @@ class BranchIfAll(_Branch):
         return super().__str__(substring)
 
 class ReturnIfAny(BranchIfAny):
-    def __init__(self, checks):
+    def __init__(self, checks: list):
         from ...instruction.field.functions import RETURN
         super().__init__(checks, RETURN)
 
 class ReturnIfAll(BranchIfAll):
-    def __init__(self, checks):
+    def __init__(self, checks: list):
         from ...instruction.field.functions import RETURN
         super().__init__(checks, RETURN)
 

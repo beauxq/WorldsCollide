@@ -8,17 +8,17 @@ def separator(label: str) -> None:
     logging.info("")
     logging.info(get_separator(label))
 
-def columns(lcolumn, rcolumn):
+def columns(lcolumn: list, rcolumn: list):
     import logging
     import itertools
     for column in itertools.zip_longest(lcolumn, rcolumn, fillvalue = ""):
         logging.info(f"{column[0]:<{COLUMN_WIDTH}}{column[1]:<{COLUMN_WIDTH}}".rstrip())
 
-def section(label: str, lcolumn, rcolumn):
+def section(label: str, lcolumn: list, rcolumn: list):
     separator(label)
     columns(lcolumn, rcolumn)
 
-def section_entries(label: str, lentries, rentries):
+def section_entries(label: str, lentries: list, rentries: list):
     # log section with multi-line entries in each column as a grid
 
     # resize each row of entries to the minimum number of lines needed

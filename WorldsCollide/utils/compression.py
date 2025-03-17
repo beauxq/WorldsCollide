@@ -1,3 +1,6 @@
+from collections.abc import Sequence
+
+
 WINDOW_SIZE = 0x800
 WINDOW_START = 0x7de # why start here?
 
@@ -5,16 +8,16 @@ MIN_MULTI_LENGTH = 3
 MAX_MULTI_LENGTH = 34
 MAX_COMPRESS_SIZE = 2 ** 16 - 1
 
-def compress(data):
-    result = []
+def compress(data: Sequence[int]) -> list[int]:
+    result: list[int] = []
     data_index = 0
 
-    group = []
+    group: list[int] = []
     control_byte = 0
     control_bit = 1
 
-    byte_positions = {} # lists of sorted positions each byte occurs at
-    window_indices = {} # start indices of byte_positions within current window
+    byte_positions: dict[int, list[int]] = {} # lists of sorted positions each byte occurs at
+    window_indices: dict[int, int] = {} # start indices of byte_positions within current window
     for index, byte in enumerate(data):
         if byte in byte_positions:
             byte_positions[byte].append(index)
@@ -38,8 +41,8 @@ def compress(data):
                 window_indices[start_byte] += 1
                 continue
 
+            length = 1
             try:
-                length = 1
                 while length < MAX_MULTI_LENGTH and data[data_index + length] == data[position + length]:
                     length += 1
             except IndexError:
@@ -77,11 +80,11 @@ def compress(data):
         size = MAX_COMPRESS_SIZE
     return list(size.to_bytes(2, "little")) + result
 
-def decompress(data):
+def decompress(data: Sequence[int]) -> list[int]:
     window = [0] * WINDOW_SIZE
     window_index = WINDOW_START
 
-    result = []
+    result: list[int] = []
     data_index = 2 # first two bytes should be len(data)
     assert int.from_bytes(data[ : data_index], byteorder = "little") == len(data)
     while data_index < len(data):

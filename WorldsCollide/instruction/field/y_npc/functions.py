@@ -6,7 +6,7 @@ from ....instruction.field.y_npc.instructions import SetYNPCGraphics, YEffect, Y
 
 DEFAULT_SOUND = 0x4f # lagomorph
 
-def _graphics_group(possibilities):
+def _graphics_group(possibilities: list):
     from ....instruction.field.custom import BranchChance
     space = Allocate(Bank.CC, 200, "field y npc graphics group", field.NOP())
 

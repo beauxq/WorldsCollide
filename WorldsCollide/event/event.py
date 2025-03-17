@@ -16,7 +16,7 @@ from ..instruction.event import EVENT_CODE_START
 from ..event.event_reward import RewardType, Reward
 
 class Event:
-    def __init__(self, events, rom, args, dialogs, characters, items, maps, enemies, espers, shops):
+    def __init__(self, events: dict, rom, args, dialogs, characters, items, maps, enemies, espers, shops):
         self.events = events
         self.rom = rom
         self.args = args

@@ -1,3 +1,6 @@
+from collections.abc import Sequence
+
+
 def name():
     return "Challenges"
 
@@ -115,17 +118,9 @@ def options(args):
         ("No Saves", args.no_saves, "no_saves"),
     ]
 
-    return opts
-def _format_spells_log_entries(spell_ids):
+def _format_spells_log_entries(spell_ids: Sequence[int]) -> list[tuple[str, str]]:
     from ..constants.spells import id_spell
-    spell_entries = []
-    for i, spell_id in enumerate(spell_ids):
-        spell_entries.append(("", id_spell[spell_id], f"rls_{i}"))
-    return spell_entries
-
-def _format_spells_log_entries(spell_ids):
-    from ..constants.spells import id_spell
-    spell_entries = []
+    spell_entries: list[tuple[str, str]] = []
     for spell_id in spell_ids:
         spell_entries.append(("", id_spell[spell_id]))
     return spell_entries

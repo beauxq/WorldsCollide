@@ -1,7 +1,9 @@
+from collections.abc import Sequence
+
 from ..data import text as text
 
 class Dance:
-    def __init__(self, id: int, data, name_data):
+    def __init__(self, id: int, data: list, name_data: Sequence[int]):
         self.id = id
         self.dances = data
         self.name = text.get_string(name_data, text.TEXT2).rstrip('\0')

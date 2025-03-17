@@ -4,7 +4,7 @@ import random
 from .. import args as args
 
 class Commands:
-    def __init__(self, characters):
+    def __init__(self, characters: list):
         self.characters = characters
 
     def mod_commands(self):

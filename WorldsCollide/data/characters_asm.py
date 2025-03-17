@@ -11,7 +11,7 @@ def set_starting_level(start_level: int) -> None:
     space = Reserve(0x09fc6, 0x09fc6, "Starting level")
     space.write(start_level.to_bytes(1, 'little'))
 
-def update_morph_character(characters):
+def update_morph_character(characters: list):
     from ..constants.commands import id_name
 
     # NOTE: this assumes only 1 character has morph

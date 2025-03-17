@@ -1,5 +1,5 @@
 class CharacterSprite:
-    def __init__(self, id: int, data):
+    def __init__(self, id: int, data: list):
         self.id = id
         self._data = data
 

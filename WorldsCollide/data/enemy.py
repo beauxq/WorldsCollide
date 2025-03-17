@@ -1,8 +1,11 @@
+from collections.abc import Sequence
+
 from ..data import text as text
 from ..data.status_effects import StatusEffects
 
 class Enemy:
-    def __init__(self, id: int, data, name_data, item_data, special_name_data):
+    def __init__(self, id: int, data: Sequence[int], name_data: Sequence[int],
+                 item_data: Sequence[int], special_name_data: Sequence[int]) -> None:
         self.id = id
         self.name = text.get_string(name_data, text.TEXT2).rstrip('\0')
 
@@ -87,7 +90,7 @@ class Enemy:
         self.original_gold          = self.gold
         self.original_level         = self.level
 
-    def debug_mod(self):
+    def debug_mod(self) -> None:
         self.speed              = 1
         self.vigor              = 1
         self.accuracy           = 1
@@ -102,7 +105,7 @@ class Enemy:
 
         self.no_scan            = 0
 
-    def data(self):
+    def data(self) -> list[int]:
         from ..data.enemies import Enemies
         data = [0x00] * Enemies.DATA_SIZE
 
@@ -166,13 +169,13 @@ class Enemy:
 
         return data
 
-    def name_data(self):
+    def name_data(self) -> list[int]:
         from ..data.enemies import Enemies
         data = text.get_bytes(self.name, text.TEXT2)
         data.extend([0xff] * (Enemies.NAME_SIZE - len(data)))
         return data
 
-    def item_data(self):
+    def item_data(self) -> list[int]:
         from ..data.enemies import Enemies
         item_data = [0x00] * Enemies.ITEMS_SIZE
 
@@ -183,11 +186,11 @@ class Enemy:
 
         return item_data
 
-    def special_name_data(self):
+    def special_name_data(self) -> list[int]:
         from ..data.enemies import Enemies
         data = text.get_bytes(self.special_name, text.TEXT2)
         data.extend([0xff] * (Enemies.SPECIAL_NAMES_SIZE - len(data)))
         return data
 
-    def print(self):
+    def print(self) -> None:
         print(f"{self.id} {self.name}")

@@ -281,7 +281,7 @@ def Free(start_address: int, end_address: int) -> None:
     heap = Space.heaps[Bank(bank_start)]
     heap.free(start_address, end_address)
 
-def Write(destination, data, description: str):
+def Write(destination, data: int | list, description: str):
     from ..utils.flatten import flatten
 
     size = 0

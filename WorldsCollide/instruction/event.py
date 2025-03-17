@@ -22,7 +22,7 @@ class _Instruction:
         return f"{type(self).__name__}{substring}"
 
 class _Branch(_Instruction):
-    def __init__(self, opcode: int, args, *destinations: str | int):
+    def __init__(self, opcode: int, args: list[str | bytes], *destinations: str | int) -> None:
         self.destinations = list(destinations)
         for destination in destinations:
             if isinstance(destination, str):
