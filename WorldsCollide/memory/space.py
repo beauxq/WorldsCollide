@@ -262,14 +262,14 @@ class Space:
     def printr(self):
         print(repr(self))
 
-def Reserve(start_address: int, end_address: int, description, clear_value = None):
+def Reserve(start_address: int, end_address: int, description, clear_value = None) -> Space:
     bank_start = (start_address // BANK_SIZE) * BANK_SIZE
     heap = Space.heaps[Bank(bank_start)]
     heap.reserve(start_address, end_address)
 
     return Space(start_address, end_address, description, clear_value)
 
-def Allocate(bank, size: int, description: str, clear_value = None):
+def Allocate(bank: Bank, size: int, description: str, clear_value = None) -> Space:
     heap = Space.heaps[bank]
     start_address = heap.allocate(size)
     end_address = start_address + size - 1
@@ -281,7 +281,10 @@ def Free(start_address: int, end_address: int) -> None:
     heap = Space.heaps[Bank(bank_start)]
     heap.free(start_address, end_address)
 
-def Write(destination, data: int | list, description: str):
+# TODO: this Bank | int is technically redundant,
+# but it shouldn't be because Bank shouldn't be a subclass of int
+# because the 2 types are treated completely different from each other
+def Write(destination: Bank | int, data: int | list, description: str) -> Space:
     from ..utils.flatten import flatten
 
     size = 0

@@ -44,6 +44,7 @@ ignore = [
     "E714",  # prefer not is
     "D105", "D107", "D202", "D210", "D212", "D400", "D403", "D415",
     "CPY", "TC001", "ERA001",
+    "W504",  # line break after binary operator
     "SIM108", "SIM118", "SIM910",
     "PLC0414",  # import a as a (standard practice for reexport)
     "PLR5501",  # elif when possible (else: if)

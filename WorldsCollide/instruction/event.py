@@ -1,7 +1,7 @@
 EVENT_CODE_START = 0x0a0000
 
 class _Instruction:
-    def __init__(self, opcode, *args):
+    def __init__(self, opcode: int, *args):
         self.opcode = opcode
 
         from ..utils.flatten import flatten

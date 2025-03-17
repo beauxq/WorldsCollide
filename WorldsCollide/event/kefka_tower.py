@@ -263,6 +263,7 @@ class KefkaTower(Event):
             field.Return(),
         ]
         post_battle = Write(Bank['CC'], src, f"{boss_name} post-battle. 1) Set event bit. 2) Finish check")
+        # TODO: is there a reason ^ this isn't Bank.CC ?
 
         space = Reserve(start_target, end_target, description, asm.NOP())
         space.write([

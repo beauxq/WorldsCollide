@@ -61,7 +61,7 @@ class Speed(IntEnum):
     FAST    = 0xc3
     FASTEST = 0xc4
 class SetSpeed(_Instruction):
-    def __init__(self, speed):
+    def __init__(self, speed: Speed) -> None:
         super().__init__(speed)
 
     def __str__(self):
