@@ -1,7 +1,10 @@
+from argparse import ArgumentParser
+
+
 def name():
     return "Coliseum"
 
-def parse(parser):
+def parse(parser: ArgumentParser):
     from ..constants.items import ITEM_COUNT
 
     coliseum = parser.add_argument_group("Coliseum")

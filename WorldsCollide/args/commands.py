@@ -1,9 +1,12 @@
+from argparse import ArgumentParser
+
 from ..constants.commands import COMMAND_OPTIONS, RANDOM_COMMAND, RANDOM_UNIQUE_COMMAND, NONE_COMMAND, RANDOM_EXCLUDE_COMMANDS, id_name, name_id
+
 
 def name():
     return "Commands"
 
-def parse(parser):
+def parse(parser: ArgumentParser):
     commands = parser.add_argument_group("Commands")
     commands.add_argument("-com", "--commands", type = str, help = "Character commands")
     commands.add_argument("-scc", "--shuffle-commands", action = "store_true", help = "Shuffle selected/randomized commands")

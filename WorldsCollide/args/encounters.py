@@ -1,7 +1,10 @@
+from argparse import ArgumentParser
+
+
 def name():
     return "Encounters"
 
-def parse(parser):
+def parse(parser: ArgumentParser):
     encounters = parser.add_argument_group("Encounters")
 
     random = encounters.add_mutually_exclusive_group()

@@ -1,7 +1,10 @@
+from argparse import ArgumentParser
+
+
 def name():
     return "Settings"
 
-def parse(parser):
+def parse(parser: ArgumentParser):
     mode = parser.add_mutually_exclusive_group()
     mode.add_argument("-open", "--open-world", action = "store_true",
                       help = "Unrestricted event access")

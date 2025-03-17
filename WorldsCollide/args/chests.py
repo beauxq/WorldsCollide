@@ -1,7 +1,10 @@
+from argparse import ArgumentParser
+
+
 def name():
     return "Chests"
 
-def parse(parser):
+def parse(parser: ArgumentParser):
     chests = parser.add_argument_group("Chests")
 
     chests_contents = chests.add_mutually_exclusive_group()

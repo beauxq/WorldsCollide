@@ -1,7 +1,10 @@
+from argparse import ArgumentParser
+
+
 def name():
     return "Characters"
 
-def parse(parser):
+def parse(parser: ArgumentParser):
     characters = parser.add_argument_group("Characters")
 
     characters.add_argument("-sal", "--start-average-level", action = "store_true",

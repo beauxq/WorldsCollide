@@ -1,7 +1,10 @@
+from argparse import ArgumentParser
+
+
 def name():
     return "SwdTechs"
 
-def parse(parser):
+def parse(parser: ArgumentParser):
     swdtechs = parser.add_argument_group("SwdTechs")
 
     swdtechs.add_argument("-fst", "--fast-swdtech", action = "store_true",

@@ -1,10 +1,11 @@
+from argparse import ArgumentParser
 from collections.abc import Sequence
 
 
 def name():
     return "Challenges"
 
-def parse(parser):
+def parse(parser: ArgumentParser):
     challenges = parser.add_argument_group("Challenges")
     challenges.add_argument("-nmc", "--no-moogle-charms", action = "store_true",
                             help = "Moogle Charms will not appear in coliseum/auction/shops/chests/events")

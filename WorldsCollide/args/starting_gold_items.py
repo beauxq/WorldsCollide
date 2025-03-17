@@ -1,7 +1,10 @@
+from argparse import ArgumentParser
+
+
 def name():
     return "Starting Gold/Items"
 
-def parse(parser):
+def parse(parser: ArgumentParser):
     starting_gold_items = parser.add_argument_group("Starting Gold/Items")
 
     starting_gold_items.add_argument("-gp", "--gold", default = 0, type = int, choices = range(0, 1000000), metavar = "COUNT",

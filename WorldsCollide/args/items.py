@@ -1,3 +1,4 @@
+from argparse import ArgumentParser
 from collections.abc import Sequence
 
 
@@ -5,7 +6,7 @@ def name():
     return "Items"
 
 
-def parse(parser):
+def parse(parser: ArgumentParser):
     from ..data.characters import Characters
     items = parser.add_argument_group("Items")
 

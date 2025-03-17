@@ -1,7 +1,10 @@
+from argparse import ArgumentParser
+
+
 def name():
     return "Natural Magic"
 
-def parse(parser):
+def parse(parser: ArgumentParser):
     natural_magic = parser.add_argument_group("Natural Magic")
 
     from ..data.characters import Characters

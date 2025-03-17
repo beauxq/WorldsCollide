@@ -1,7 +1,10 @@
+from argparse import ArgumentParser
+
+
 def name():
     return "Rages"
 
-def parse(parser):
+def parse(parser: ArgumentParser):
     from ..data.rages import Rages
 
     rages = parser.add_argument_group("Rages")

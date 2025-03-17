@@ -1,7 +1,10 @@
+from argparse import ArgumentParser
+
+
 def name():
     return "Blitzes"
 
-def parse(parser):
+def parse(parser: ArgumentParser):
     blitzes = parser.add_argument_group("Blitzes")
 
     blitzes.add_argument("-brl", "--bum-rush-last", action = "store_true",

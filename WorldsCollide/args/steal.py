@@ -1,7 +1,10 @@
+from argparse import ArgumentParser
+
+
 def name():
     return "Steal"
 
-def parse(parser):
+def parse(parser: ArgumentParser):
     steal = parser.add_argument_group("Steal")
 
     steal_chances = steal.add_mutually_exclusive_group()

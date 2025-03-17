@@ -1,7 +1,10 @@
+from argparse import ArgumentParser
+
+
 def name():
     return "Scaling"
 
-def parse(parser):
+def parse(parser: ArgumentParser):
     scaling = parser.add_argument_group("Scaling")
 
     level_scaling = scaling.add_mutually_exclusive_group()

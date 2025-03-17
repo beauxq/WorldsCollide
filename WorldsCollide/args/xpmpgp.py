@@ -1,7 +1,10 @@
+from argparse import ArgumentParser
+
+
 def name():
     return "Experience, Magic Points, Gold"
 
-def parse(parser):
+def parse(parser: ArgumentParser):
     xpmpgp = parser.add_argument_group("Experience, Magic Points, Gold")
 
     xpmpgp.add_argument("-xpm", "--xp-mult", default = 1, type = int, choices = range(0, 256), metavar = "VALUE",

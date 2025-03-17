@@ -1,7 +1,10 @@
+from argparse import ArgumentParser
+
+
 def name():
     return "Bug Fixes"
 
-def parse(parser):
+def parse(parser: ArgumentParser):
     bug_fixes = parser.add_argument_group("Bug Fixes")
     bug_fixes.add_argument("-fs", "--fix-sketch", action = "store_true",
                            help = "Sketch missing will not cause various major glitches")

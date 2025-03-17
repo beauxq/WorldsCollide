@@ -1,7 +1,10 @@
+from argparse import ArgumentParser
+
+
 def name():
     return "Sketch/Control"
 
-def parse(parser):
+def parse(parser: ArgumentParser):
     sketch_control = parser.add_argument_group("Sketch/Control")
 
     sketch_control.add_argument("-scis", "--sketch-control-improved-stats", action = "store_true",

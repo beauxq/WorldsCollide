@@ -1,7 +1,10 @@
+from argparse import ArgumentParser
+
+
 def name():
     return "Starting Party"
 
-def parse(parser):
+def parse(parser: ArgumentParser):
     starting_party = parser.add_argument_group("Starting Party")
 
     from ..data.characters import Characters

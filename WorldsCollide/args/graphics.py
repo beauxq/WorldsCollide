@@ -1,8 +1,11 @@
+from argparse import ArgumentParser
+
 from ..data.character_sprites import PORTRAIT_CHARACTERS, SPRITE_CHARACTERS, DEFAULT_CHARACTER_PORTRAITS, DEFAULT_CHARACTER_SPRITES
 from ..data.character_palettes import SPRITE_PALETTE_COUNT, DEFAULT_CHARACTER_PALETTES, DEFAULT_CHARACTER_SPRITE_PALETTES
 from ..data.characters import Characters
 
-def parse(parser):
+
+def parse(parser: ArgumentParser):
     graphics = parser.add_argument_group("Graphics")
     graphics.add_argument("-name", "--character-names", type = str, help = "Character names")
     graphics.add_argument("-cpal", "--character-palettes", type = str, help = "Character palette indices")

@@ -1,6 +1,9 @@
+from argparse import ArgumentParser
+
 from ..constants.objectives import MAX_OBJECTIVES, MAX_CONDITIONS
 
-def parse(parser):
+
+def parse(parser: ArgumentParser):
     objectives = parser.add_argument_group("Objectives")
     for oi in range(MAX_OBJECTIVES):
         objectives.add_argument("-o" + chr(ord('a') + oi), "--objective_" + chr(ord('a') + oi),

@@ -1,9 +1,10 @@
+from argparse import ArgumentParser
 
 
 def name():
     return "Misc."
 
-def parse(parser):
+def parse(parser: ArgumentParser):
     misc = parser.add_argument_group("Misc.")
 
     misc.add_argument("-ond", "--original-name-display", action = "store_true",

@@ -1,3 +1,5 @@
+from argparse import ArgumentParser
+
 from ..data.bosses import BossLocations
 
 
@@ -6,7 +8,7 @@ DEFAULT_STATUE_PROTOCOL = BossLocations.MIX
 def name():
     return "Bosses"
 
-def parse(parser):
+def parse(parser: ArgumentParser):
     bosses = parser.add_argument_group("Bosses")
 
     bosses_battles = bosses.add_mutually_exclusive_group()

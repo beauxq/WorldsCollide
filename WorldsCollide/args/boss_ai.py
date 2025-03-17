@@ -1,7 +1,10 @@
+from argparse import ArgumentParser
+
+
 def name():
     return "Boss AI"
 
-def parse(parser):
+def parse(parser: ArgumentParser):
     boss_ai = parser.add_argument_group("Bosses")
     boss_ai.add_argument("-dgne", "--doom-gaze-no-escape", action = "store_true",
                          help = "Doom Gaze does not escape and cannot be escaped from")

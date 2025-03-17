@@ -1,7 +1,10 @@
+from argparse import ArgumentParser
+
+
 def name():
     return "Misc. Magic"
 
-def parse(parser):
+def parse(parser: ArgumentParser):
     magic = parser.add_argument_group("Misc. Magic")
 
     magic_mp = magic.add_mutually_exclusive_group()

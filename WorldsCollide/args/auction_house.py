@@ -1,7 +1,10 @@
+from argparse import ArgumentParser
+
+
 def name():
     return "Auction House"
 
-def parse(parser):
+def parse(parser: ArgumentParser):
     auction = parser.add_argument_group("Auction House")
     auction.add_argument("-ari", "--auction-random-items", action = "store_true",
                          help = "Normal items randomized. Does not affect unbuyable items or Golem/Zoneseek slots")

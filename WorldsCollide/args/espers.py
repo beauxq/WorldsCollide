@@ -1,3 +1,5 @@
+from argparse import ArgumentParser
+
 from ..data.espers import Espers
 from ..event.event_reward import CHARACTER_ESPER_ONLY_REWARDS
 
@@ -10,7 +12,7 @@ MAX_STARTING_ESPERS = Espers.ESPER_COUNT - CHARACTER_ESPER_ONLY_REWARDS
 def name():
     return "Espers"
 
-def parse(parser):
+def parse(parser: ArgumentParser):
     from ..data.esper import Esper
     from ..data.characters import Characters
     espers = parser.add_argument_group("Espers")
