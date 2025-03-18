@@ -8,7 +8,7 @@ class RewardType(Flag):
 
 CHARACTER_ESPER_ONLY_REWARDS = 6
 class Reward:
-    def __init__(self, event, possible_types):
+    def __init__(self, event, possible_types: RewardType):
         self.id = None
         self.type = None
         self.event = event
@@ -30,7 +30,7 @@ class Reward:
 
         return result + " (" + ', '.join(possible_strings) + ")"
 
-def choose_reward(possible_types, characters, espers, items):
+def choose_reward(possible_types: RewardType, characters, espers, items):
     import random
 
     all_types = [flag for flag in RewardType]

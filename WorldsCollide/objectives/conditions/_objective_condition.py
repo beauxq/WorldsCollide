@@ -12,7 +12,7 @@ from enum import Enum
 ConditionType = Enum("ConditionType", "EventWord EventBit BattleBit Character Esper")
 
 class ObjectiveCondition:
-    def __init__(self, condition_type, *args):
+    def __init__(self, condition_type: ConditionType, *args):
         self.args = args
 
         self.field_class = getattr(field_condition, condition_type.name + "Condition")

@@ -177,7 +177,7 @@ class RemoveEsper(_Instruction):
     def __str__(self):
         return super().__str__(self.esper_id)
 
-class Status(IntEnum):
+class Status(IntFlag):
     DOG_BLOCK   = 0x0040
     FLOAT       = 0x0080
     DARKNESS    = 0x0100
@@ -190,7 +190,7 @@ class Status(IntEnum):
     DEATH       = 0x8000
 
 class RemoveStatusEffects(_Instruction):
-    def __init__(self, character: int, status_effects) -> None:
+    def __init__(self, character: int, status_effects: Status) -> None:
         status_effects = 0xffff - status_effects # command 0x88 is really remove all status effects EXCEPT given
         self.status_effects = status_effects
         super().__init__(0x88, character, (status_effects & 0xff00) >> 8, status_effects & 0xff)
@@ -199,7 +199,7 @@ class RemoveStatusEffects(_Instruction):
         return super().__str__(f"{self.args[0]} {hex(self.status_effects)}")
 
 class AddStatusEffects(_Instruction):
-    def __init__(self, character: int, status_effects) -> None:
+    def __init__(self, character: int, status_effects: Status) -> None:
         self.status_effects = status_effects
         super().__init__(0x89, character, (status_effects & 0xff00) >> 8, status_effects & 0xff)
 
@@ -207,7 +207,7 @@ class AddStatusEffects(_Instruction):
         return super().__str__(f"{self.args[0]} {hex(self.status_effects)}")
 
 class ToggleStatusEffects(_Instruction):
-    def __init__(self, character: int, status_effects) -> None:
+    def __init__(self, character: int, status_effects: Status) -> None:
         self.status_effects = status_effects
         super().__init__(0x8a, character, (status_effects & 0xff00) >> 8, status_effects & 0xff)
 
@@ -342,7 +342,7 @@ class Vehicle(IntEnum):
     MAGITEK_AND_RIDER   = 0xc0
     RAFT_AND_RIDER      = 0xe0
 class SetVehicle(_Instruction):
-    def __init__(self, entity: int, vehicle) -> None:
+    def __init__(self, entity: int, vehicle: Vehicle) -> None:
         super().__init__(0x44, entity, vehicle)
 
     def __str__(self):
@@ -383,7 +383,7 @@ class Tint(IntEnum):
     NIGHT       = 0x9b
     BLACK       = 0x9f
 class TintBackground(_Instruction):
-    def __init__(self, tint, invert = False):
+    def __init__(self, tint: Tint, invert: bool = False) -> None:
         self.tint = tint
         self.invert = invert
         if invert:
@@ -419,10 +419,10 @@ class Flash(IntFlag):
     RED         = 0x20
     GREEN       = 0x40
     BLUE        = 0x80
-    YELLOW      = RED | GREEN,
+    YELLOW      = RED | GREEN
     WHITE       = RED | GREEN | BLUE
 class FlashScreen(_Instruction):
-    def __init__(self, color):
+    def __init__(self, color: Flash):
         if color != Flash.NONE and (not (color & Flash.RED) and not (color & Flash.GREEN) and not (color & Flash.BLUE)):
             raise ValueError(f"FlashScreen: invalid color {hex(color)}")
         super().__init__(0x55, color)
@@ -929,10 +929,10 @@ class BattleType(IntEnum):
     BACK    = 1
     PINCER  = 2
     SIDE    = 3
-def InvokeBattleType(pack: int, battle_type, background: int = 0x3f, check_game_over: bool = True):
+def InvokeBattleType(pack: int, battle_type: BattleType, background: int = 0x3f, check_game_over: bool = True):
     from ...instruction.field.custom import _InvokeBattleType
     InvokeBattleType = type("InvokeBattleType", (_InvokeBattleType,), {})
-    commands = [InvokeBattleType(pack, battle_type, background)]
+    commands: list[_Instruction] = [InvokeBattleType(pack, battle_type, background)]
     if check_game_over:
         from ...instruction.field.functions import CHECK_GAME_OVER
         commands.append(Call(CHECK_GAME_OVER))

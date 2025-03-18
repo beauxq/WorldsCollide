@@ -70,7 +70,7 @@ class YEffect(IntEnum):
     RANDOM_GRAPHIC      = 0x05
     ANY_RANDOM_GRAPHIC  = 0x06 # includes glitchy graphics
 class YNPCEffect(_Instruction):
-    def __init__(self, effect):
+    def __init__(self, effect: YEffect) -> None:
         src = [
             asm.TDC(),                      # clear a
             asm.LDA(0xeb, asm.DIR),         # a = npc id
