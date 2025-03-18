@@ -27,6 +27,7 @@ reportUnusedCallResult = "none"
 reportUnusedParameter = "hint"
 reportUnannotatedClassAttribute = "none"
 reportImportCycles = "none"
+reportAny = "none"
 
 [tool.ruff.lint.isort]
 force-sort-within-sections = true

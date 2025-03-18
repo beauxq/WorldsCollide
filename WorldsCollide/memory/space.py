@@ -2,10 +2,8 @@ from ..memory.rom import ROM
 from ..memory.heap import Heap
 from ..memory.label import Label, LabelPointer
 from .. import args as args
+from .bank import BANK_SIZE as BANK_SIZE, Bank as Bank
 
-from enum import IntEnum
-BANK_SIZE = 0x10000
-Bank = IntEnum("Bank", [(f"{value:X}", (value - 0xc0) * BANK_SIZE) for value in range(0xc0, 0x100)])
 
 START_ADDRESS_SNES = 0xc00000
 
