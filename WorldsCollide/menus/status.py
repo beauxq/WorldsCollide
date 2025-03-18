@@ -1,9 +1,10 @@
+from ..data.characters import Characters
 from ..memory.space import Bank, Reserve, Allocate
 from ..instruction import asm as asm
 from .. import args as args
 
 class StatusMenu:
-    def __init__(self, characters):
+    def __init__(self, characters: Characters) -> None:
         self.free_space = Allocate(Bank.C3, 61, "status menu")
         self.characters = characters
 

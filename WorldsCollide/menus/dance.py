@@ -1,9 +1,10 @@
+from ..data.dances import Dances
 from ..memory.space import Bank, Reserve, Allocate
 from ..instruction import asm as asm
 from .. import args as args
 
 class DanceMenu:
-    def __init__(self, dances):
+    def __init__(self, dances: Dances) -> None:
         self.free_space = Allocate(Bank.C3, 112, "dance menu")
         self.dances = dances
 

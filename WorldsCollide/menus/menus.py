@@ -1,3 +1,6 @@
+from ..data.characters import Characters
+from ..data.dances import Dances
+from ..data.rages import Rages
 from ..menus import pregame_track as pregame_track
 from ..menus import pregame as pregame
 from ..menus import track as track
@@ -10,7 +13,7 @@ from ..menus import sell as sell
 from ..menus import magic as magic
 
 class Menus:
-    def __init__(self, characters, dances, rages, enemies):
+    def __init__(self, characters: Characters, dances: Dances, rages: Rages, enemies):
         self.characters = characters
         self.dances = dances
         self.rages = rages

@@ -1,4 +1,8 @@
 from enum import Flag, unique, auto
+
+from ..data.characters import Characters
+
+
 @unique
 class RewardType(Flag):
     NONE = auto()
@@ -30,7 +34,7 @@ class Reward:
 
         return result + " (" + ', '.join(possible_strings) + ")"
 
-def choose_reward(possible_types: RewardType, characters, espers, items):
+def choose_reward(possible_types: RewardType, characters: Characters, espers, items):
     import random
 
     all_types = [flag for flag in RewardType]

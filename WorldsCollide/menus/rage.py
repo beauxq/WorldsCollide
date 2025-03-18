@@ -1,10 +1,11 @@
+from ..data.rages import Rages
 from ..memory.space import Bank, Reserve, Allocate, Write
 from ..instruction import asm as asm
 from ..data.spell_names import name_id, id_name
 
 
 class RageMenu:
-    def __init__(self, rages, enemies):
+    def __init__(self, rages: Rages, enemies):
         self.rages = rages
         self.enemies = enemies
 

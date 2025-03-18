@@ -1,3 +1,4 @@
+from .instructions import BattleType
 from ...memory.space import Bank, START_ADDRESS_SNES, Reserve, Write, Read
 from ...instruction.event import _Instruction, _Branch
 from ...instruction import asm as asm
@@ -262,7 +263,7 @@ class RecruitCharacter(_Instruction):
 
 class _InvokeBattleType(_Instruction):
     # invoke battle with given type (front/back/pincer/side) regardless of formation settings
-    def __init__(self, pack: int, battle_type, background: int) -> None:
+    def __init__(self, pack: int, battle_type: BattleType, background: int) -> None:
         self.pack = pack
         self.battle_type = battle_type
 

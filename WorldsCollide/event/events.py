@@ -1,10 +1,11 @@
+from ..data.data import Data
 from ..memory.rom import ROM
 from ..memory.space import Bank, Allocate
 from ..event.event_reward import CHARACTER_ESPER_ONLY_REWARDS, RewardType, choose_reward, weighted_reward_choice
 from ..instruction import field as field
 
 class Events:
-    def __init__(self, rom: ROM, args, data):
+    def __init__(self, rom: ROM, args, data: Data):
         self.rom = rom
         self.args = args
 
