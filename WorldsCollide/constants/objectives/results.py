@@ -1,3 +1,6 @@
+from collections.abc import Mapping
+from typing import NamedTuple
+
 from ...constants.blitzes import id_blitz
 from ...constants.dances import id_dance
 from ...constants.lores import id_lore
@@ -5,8 +8,13 @@ from ...constants.rages import id_rage
 from ...constants.swdtechs import id_swdtech
 from ...constants.spells import id_spell
 
-from collections import namedtuple
-ResultType = namedtuple("ResultType", ["id", "name", "format_string", "value_range"])
+
+class ResultType(NamedTuple):
+    id: int
+    name: str
+    format_string: str
+    value_range: list[int] | None
+
 
 category_types = {
     "Random" : [
@@ -104,15 +112,15 @@ category_types["Item"].append(ResultType(73, "High Tier Relic", "High Tier Relic
 
 categories = list(category_types.keys())
 
-id_type = {}
-name_type = {}
-name_category = {}
-for category in category_types:
-    for _type in category_types[category]:
-        id_type[_type.id] = _type
-        name_type[_type.name] = _type
-        name_category[_type.name] = category
+id_type: Mapping[int, ResultType] = {}
+name_type: Mapping[str, ResultType] = {}
+name_category: Mapping[str, str] = {}
+for category, result_types in category_types.items():
+    for type_ in result_types:
+        id_type[type_.id] = type_
+        name_type[type_.name] = type_
+        name_category[type_.name] = category
 
 names = list(name_type.keys())
 
-types = [_type for name, _type in name_type.items()]
+types = [type_ for _name, type_ in name_type.items()]

@@ -1,10 +1,9 @@
+from dataclasses import dataclass
+
 from ..memory.space import START_ADDRESS_SNES, Bank, Write
 from ..instruction import asm as asm
 from ..instruction import f0 as f0
 from ..instruction import c3 as c3
-
-from enum import IntEnum
-from collections import namedtuple
 
 WIDTH = 26  # max characters per row
 HEIGHT = 10 # rows visible on screen
@@ -17,7 +16,12 @@ SCROLLBAR_INDEX = 0x30 # always the same because remove old one before creating 
 
 CURRENT_TYPE_ADDR = 0x0204  # address to store currently displayed scroll area type
 
-Line = namedtuple("Line", ["text", "color_function"])
+
+@dataclass(frozen=True)
+class Line:
+    text: str
+    color_function: int
+
 
 def _draw_mod():
     src = [
@@ -59,12 +63,14 @@ def memory_page_position(menu_number: int) -> int:
     return MEMORY_PAGE_POSITIONS_START_ADDR + menu_number * 3
 
 class ScrollArea:
-    def __init__(self):
+    lines: list[Line]
+
+    def __init__(self) -> None:
         # fill out entire scroll area so everything in window is overwritten when switching menus
         for _ in range(len(self.lines), HEIGHT):
             self.lines.append(Line("", f0.set_user_text_color))
 
-        line_color_addresses = []
+        line_color_addresses: list[int] = []
         for li in range(len(self.lines)):
             line_color_addresses.extend((self.lines[li].color_function & 0xffff).to_bytes(2, "little"))
             self.lines[li] = Line(self.lines[li].text.ljust(WIDTH), self.lines[li].color_function)

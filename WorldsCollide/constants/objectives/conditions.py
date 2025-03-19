@@ -1,9 +1,17 @@
+from collections.abc import Callable
+from typing import NamedTuple
+
 from ...constants.objectives.condition_bits import check_bit, quest_bit, boss_bit, dragon_bit
 from ...constants.entities import id_character
 from ...constants.espers import id_esper
 
-from collections import namedtuple
-ConditionType = namedtuple("ConditionType", ["name", "string_function", "value_range", "min_max"])
+
+class ConditionType(NamedTuple):
+    name: str
+    string_function: str | Callable[[int], str]
+    value_range: list[int | str] | None
+    min_max: bool
+
 
 types = [
     ConditionType("None", "", None, False),
@@ -11,11 +19,11 @@ types = [
     ConditionType("Characters", lambda count : f"Recruit {count} Characters",
                   list(range(1, len(id_character) + 1)), True),
     ConditionType("Character", lambda character : f"Recruit {id_character[character].capitalize()}",
-                  ["r"] + sorted(id_character, key = id_character.get), False),
+                  ["r"] + sorted(id_character, key = id_character.__getitem__), False),
     ConditionType("Espers", lambda count : f"Find {count} Espers",
                   list(range(1, len(id_esper) + 1)), True),
     ConditionType("Esper", lambda esper : f"Find {id_esper[esper]}",
-                  ["r"] + sorted(id_esper, key = id_esper.get), False),
+                  ["r"] + sorted(id_esper, key = id_esper.__getitem__), False),
     ConditionType("Dragons", lambda count : f"Defeat {count} Dragons",
                   list(range(1, len(dragon_bit) + 1)), True),
     ConditionType("Dragon", lambda dragon : f"Defeat {dragon_bit[dragon].name}",

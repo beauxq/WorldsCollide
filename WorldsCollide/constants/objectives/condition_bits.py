@@ -1,10 +1,16 @@
+from dataclasses import dataclass
+
 from ...data import event_bit as event_bit
 from ...data import npc_bit as npc_bit
 from ...data import battle_bit as battle_bit
 from ...data.bosses import normal_formation_name, dragon_formation_name
 
-from collections import namedtuple
-NameBit = namedtuple("NameBit", ["name", "bit"])
+
+@dataclass(frozen=True)
+class NameBit:
+    name: str
+    bit: int
+
 
 check_bit = [
     NameBit("Ancient Castle", event_bit.GOT_RAIDEN),
@@ -92,10 +98,12 @@ quest_bit = [
 
 from ...constants.objectives.boss_ids import boss_objective_ids
 
-boss_bit = []
-for formation_id in boss_objective_ids:
-    boss_bit.append(NameBit(normal_formation_name[formation_id], battle_bit.boss_defeated(formation_id)))
+boss_bit = [
+    NameBit(normal_formation_name[formation_id], battle_bit.boss_defeated(formation_id))
+    for formation_id in boss_objective_ids
+]
 
-dragon_bit = []
-for formation_id in sorted(dragon_formation_name, key = dragon_formation_name.get):
-    dragon_bit.append(NameBit(dragon_formation_name[formation_id], battle_bit.dragon_defeated(formation_id)))
+dragon_bit = [
+    NameBit(dragon_formation_name[formation_id], battle_bit.dragon_defeated(formation_id))
+    for formation_id in sorted(dragon_formation_name, key = dragon_formation_name.__getitem__)
+]

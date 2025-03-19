@@ -1,4 +1,14 @@
+from dataclasses import dataclass
+
 from ..event.event import *
+
+
+@dataclass(frozen=True)
+class ForestPos:
+    map_id: int
+    x: int
+    y: int
+
 
 class PhantomTrain(Event):
     def name(self):
@@ -150,8 +160,6 @@ class PhantomTrain(Event):
     def ghost_shop_forest_mod(self):
         # select a location at random where ghost shop will appear in forest
         import random
-        from collections import namedtuple
-        ForestPos = namedtuple("ForestPos", ["map_id", "x", "y"])
         possible_positions = [ForestPos(0x84, 10, 9), ForestPos(0x84, 17, 9), ForestPos(0x84, 27, 10),
                               ForestPos(0x85, 3, 9), ForestPos(0x85, 13, 10), ForestPos(0x85, 18, 9),
                               ForestPos(0x86, 5, 10), ForestPos(0x86, 7, 9), ForestPos(0x86, 13, 9)]

@@ -1,4 +1,14 @@
+from typing import NamedTuple
+
 from ..event.event import *
+
+
+class DragonData(NamedTuple):
+    name: str
+    event_bit: int
+    battle_address: int
+    countdown_address: int
+
 
 class EightDragons(Event):
     def name(self):
@@ -15,8 +25,6 @@ class EightDragons(Event):
         )
 
     def mod(self):
-        from collections import namedtuple
-        DragonData = namedtuple("DragonData", ["name", "event_bit", "battle_address", "countdown_address"])
         self.dragon_data = [
             DragonData("Ice Dragon", event_bit.DEFEATED_NARSHE_DRAGON, 0xc36df, 0xc36ec),
             DragonData("Storm Drgn", event_bit.DEFEATED_MT_ZOZO_DRAGON, 0xc43cd, 0xc43dc),

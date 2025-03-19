@@ -1,4 +1,24 @@
+from dataclasses import dataclass
+
 from ..event.event import *
+
+
+@dataclass(frozen=True)
+class DialogBranchData:
+    dialog_id: int
+    correct_destination: int
+    incorrect_destination: int
+    start_address: int
+    end_address: int
+    description: str
+
+
+@dataclass(frozen=True)
+class Clue:
+    dialog_id: int
+    dialog_string: str
+    string_format: str
+
 
 class Zozo(Event):
     def name(self):
@@ -160,7 +180,6 @@ class Zozo(Event):
     def randomize_clock_mod(self):
         import random
         import copy
-        from collections import namedtuple
 
         # original clues:
         # 1046 'It's now 2:00.<end>'
@@ -208,8 +227,6 @@ class Zozo(Event):
         time_string = time_string[:-1]
 
         # update clock's correct dialog choices
-        DialogBranchData = namedtuple("DialogBranchData", ["dialog_id", "correct_destination", "incorrect_destination",
-                                                           "start_address", "end_address", "description"])
         dialog_branches = [
             DialogBranchData(0x041d, 0xa96e2, 0xa96e4, 0xa96cb, 0xa96e1, "zozo clock select hour dialog branch"),
             DialogBranchData(0x041f, 0xa96f8, 0xa96fa, 0xa96e4, 0xa96f7, "zozo clock select minute dialog branch"),
@@ -250,7 +267,6 @@ class Zozo(Event):
             self.dialogs.set_text(1059, f"The {options[digit_index].name}s? They're not divisible by {divisor}!<end>")
 
         # remaining clues exclude one value each
-        Clue = namedtuple("Clue", ["dialog_id", "dialog_string", "string_format"])
         clues = [
             Clue(1046, "It's now {}.<end>", "clock"),
             Clue(1047, "Time?<line>It's {}.<end>", "clock"),
