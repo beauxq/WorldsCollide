@@ -1,9 +1,11 @@
+from collections.abc import Sequence
+
 from ..data.item_names import name_id
 from ..data.item import Item
 from .. import args as args
 
-tiers = [None] * Item.ITEM_TYPE_COUNT
-weights = [None] * Item.ITEM_TYPE_COUNT
+tiers: list[Sequence[list[int]]] = [()] * Item.ITEM_TYPE_COUNT
+weights: list[list[float]] = [[]] * Item.ITEM_TYPE_COUNT
 
 tiers[Item.TOOL] = [
     [

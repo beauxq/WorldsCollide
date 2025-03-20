@@ -1,3 +1,5 @@
+from collections.abc import Container
+
 from ..data.shop import Shop
 from ..data.structures import DataArray
 from ..memory.rom import ROM
@@ -80,8 +82,8 @@ class Shops:
                     if shop.item_count == item_counts[shop_index]:
                         shop_indices.remove(shop_index)
 
-    def random_tiered(self):
-        def get_item(item_type, exclude = None):
+    def random_tiered(self) -> None:
+        def get_item(item_type: int, exclude: Container[int] | None = None) -> int:
             import random
             from ..utils.weighted_random import weighted_random
             from ..data.shop_item_tiers import tiers, weights
