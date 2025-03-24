@@ -14,6 +14,7 @@ if root not in sys.path:
 print(f"{sys.path = }")
 
 ORIGINAL_HASH = "0f51b4fca41b7fd509e4b8f9d543151f68efa5e97b08493e4b2a0c06f5d8d5e2"
+_NAME_OF_TEMP_COPY_OF_ORIGINAL = "ff6.sfc"
 
 
 def find_original_rom() -> Path | None:
@@ -36,7 +37,7 @@ def compare_hash(flags: list[str], expected_hash: str) -> None:
     result_hash = None
     with tempfile.TemporaryDirectory() as temp_dir:
         temp_dir_path = Path(temp_dir)
-        temp_original_path = temp_dir_path / "ff6.sfc"
+        temp_original_path = temp_dir_path / _NAME_OF_TEMP_COPY_OF_ORIGINAL
         shutil.copy(original_rom, temp_original_path)
         print(f"{temp_original_path = }")
         assert temp_original_path.exists()
@@ -51,9 +52,11 @@ def compare_hash(flags: list[str], expected_hash: str) -> None:
         from WorldsCollide.wc import main
         main()
 
-        dir_list = glob.glob(str(temp_dir_path) + "/*.sfc")
+        extension = _NAME_OF_TEMP_COPY_OF_ORIGINAL[-4:]
+        assert extension[0] == ".", extension
+        dir_list = glob.glob(str(temp_dir_path) + "/*" + _NAME_OF_TEMP_COPY_OF_ORIGINAL[-4:])
         assert len(dir_list) == 2, dir_list
-        randomized_file = next(name for name in dir_list if not name.endswith("ff6.sfc"))
+        randomized_file = next(name for name in dir_list if not name.endswith(_NAME_OF_TEMP_COPY_OF_ORIGINAL))
         randomized_file_path = Path(randomized_file)
         result_hash = sha256(randomized_file_path.read_bytes()).hexdigest()
     assert result_hash == expected_hash, f"{flags = } {result_hash = }"
