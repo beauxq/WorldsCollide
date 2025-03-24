@@ -25,7 +25,7 @@ class DataPointers:
         self.pointer_size = pointer_size
         self.max_address = 2 ** (self.pointer_size * 8) - 1
 
-        self.pointers = []
+        self.pointers: list[DataPointer] = []
         pointer_count = self.size() // self.pointer_size
         for index in range(pointer_count):
             pointer_address = self.start_address + index * self.pointer_size
@@ -47,20 +47,20 @@ class DataPointers:
             pointer = DataPointer(pointer_address, data_address)
             self.pointers.append(pointer)
 
-    def size(self):
+    def size(self) -> int:
         # equivalent to len(self) * self.pointer_size
         return self.end_address - self.start_address + 1
 
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self.pointers)
 
-    def __getitem__(self, index):
+    def __getitem__(self, index: int) -> int:
         return self.pointers[index].data_address
 
-    def __setitem__(self, index, data_address):
+    def __setitem__(self, index: int, data_address: int) -> None:
         self.pointers[index].data_address = data_address
 
-    def write(self):
+    def write(self) -> None:
         if self.pointer_size == 4:
             # write out four byte pointers as pairs of 2 bytes (e.g. 0x12345678 as 0x34127856)
             half_pointer_size = self.pointer_size // 2
@@ -88,31 +88,31 @@ class DataBits:
 
         self.bytes = self.rom.get_bytes(self.start_address, self.size())
 
-    def size(self):
+    def size(self) -> int:
         return self.end_address - self.start_address + 1
 
-    def set_all(self):
+    def set_all(self) -> None:
         for byte_index in range(self.size()):
             self.bytes[byte_index] = 0xff
 
-    def clear_all(self):
+    def clear_all(self) -> None:
         for byte_index in range(self.size()):
             self.bytes[byte_index] = 0x00
 
-    def __len__(self):
+    def __len__(self) -> int:
         return self.size() * 8
 
-    def __getitem__(self, index):
+    def __getitem__(self, index: int) -> int:
         byte_index = index // 8
         bit_index = index % 8
         return (self.bytes[byte_index] >> bit_index) & 1
 
-    def __setitem__(self, index, value):
+    def __setitem__(self, index: int, value: int) -> None:
         byte_index = index // 8
         bit_index = index % 8
         self.bytes[byte_index] = (self.bytes[byte_index] & ~(1 << bit_index)) | (value << bit_index)
 
-    def __str__(self):
+    def __str__(self) -> str:
         result = ""
         for byte in self.bytes:
             for bit_index in range(8):
@@ -123,7 +123,7 @@ class DataBits:
             result += " "
         return result
 
-    def write(self):
+    def write(self) -> None:
         self.rom.set_bytes(self.start_address, self.bytes)
 
 # array of data
@@ -135,7 +135,7 @@ class DataArray:
         self.end_address = end_address
         self.element_size = element_size
 
-        self.elements = []
+        self.elements: list[DataElement] = []
         self.element_capacity = self.size() // self.element_size
         for index in range(self.element_capacity):
             data_address = self.start_address + index * self.element_size
@@ -144,30 +144,30 @@ class DataArray:
             element = DataElement(data, data_address)
             self.elements.append(element)
 
-    def size(self):
+    def size(self) -> int:
         # equivalent to len(self) * self.element_size
         return self.end_address - self.start_address + 1
 
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self.elements)
 
-    def __getitem__(self, index):
+    def __getitem__(self, index: int):
         return self.elements[index].data
 
-    def __setitem__(self, index, data):
+    def __setitem__(self, index: int, data) -> None:
         assert (len(data) == self.element_size)
         self.elements[index].data = data
 
-    def __delitem__(self, index):
+    def __delitem__(self, index: int) -> None:
         del self.elements[index]
         self.end_address -= self.element_size
 
-    def append(self, data):
+    def append(self, data) -> None:
         assert (len(data) == self.element_size)
         self.elements.append(DataElement(data, self.end_address))
         self.end_address += self.element_size
 
-    def write(self):
+    def write(self) -> None:
         if len(self) > self.element_capacity:
             raise MemoryError(f"{self.__class__.__name__} write(): Not enough space ({len(self)}/{self.element_capacity} elements)")
 
@@ -186,7 +186,7 @@ class DataArrays:
         self.end_address = data_end_address
         self.element_size = data_element_size
 
-        self.data_arrays = []
+        self.data_arrays: list[DataArray] = []
         for index in range(len(self)):
             start_address = self.start_address + self.pointers[index]
             if index < len(self) - 1:
@@ -197,17 +197,17 @@ class DataArrays:
             data_array = DataArray(self.rom, start_address, end_address, self.element_size)
             self.data_arrays.append(data_array)
 
-    def size(self):
+    def size(self) -> int:
         return self.end_address - self.start_address + 1
 
-    def __len__(self):
+    def __len__(self) -> int:
         # equivalent to len(self.data_arrays) after initialization
         return len(self.pointers)
 
     def __getitem__(self, index):
         return self.data_arrays[index]
 
-    def write(self):
+    def write(self) -> None:
         data_address = self.start_address
         for index in range(len(self)):
             self.pointers[index] = data_address - self.start_address
@@ -250,16 +250,16 @@ class _DataBlocks:
         self.rom = rom
         self.pointers = DataPointers(rom, pointers_start_address, pointers_end_address, pointer_size)
         self.pointer_offset = pointer_offset
-        self.data_blocks = [None] * len(self)
+        self.data_blocks: list[list[int] | None] = [None] * len(self)
 
         self.start_address = data_start_address
         self.end_address = data_end_address
         self.free_space = 0
 
-    def size(self):
+    def size(self) -> int:
         return self.end_address - self.start_address + 1
 
-    def __len__(self):
+    def __len__(self) -> int:
         # equivalent to len(self.data_blocks) after initialization
         return len(self.pointers)
 
