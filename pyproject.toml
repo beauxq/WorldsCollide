@@ -57,7 +57,7 @@ ignore = [
     "PLC1901",  # use falsy container
     "PLC0415",  # no imports in functions
     "TID252",  # no .. in imports
-    "TRY003", "EM102",  # (long) strings in exceptions
+    "TRY003", "EM101", "EM102",  # (long) strings in exceptions
     "Q000", "Q001", "Q002", "D300",  # prefer double quotes (single/triple/docstring)
     "Q003",  # change outer to avoid escaping inner
     "PLR1714",  # repeated ==
