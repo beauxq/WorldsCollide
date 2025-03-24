@@ -58,7 +58,13 @@ class FlagMetadataWriter:
                 if action.choices is not None and isinstance(action.choices, list) and not isinstance(action.choices, range):
                     self.metadata[key].allowed_values = list(action.choices)
                 if type(group_title):
-                    self.metadata[key].group = group_title if type(group_title) == str else None if group_title == None else group_title()
+                    self.metadata[key].group = (
+                        group_title
+                        if isinstance(group_title, str)
+                        else None
+                        if group_title is None
+                        else group_title()
+                    )
                 if getattr(action, 'mutually_exclusive_group_title', None) is not None:
                     self.metadata[key].mutually_exclusive_group = action.mutually_exclusive_group_title
                 if getattr(action, 'choices', None) is not None:

@@ -127,7 +127,7 @@ class EnemyScriptCommands:
 
         tier_table_pointers = space.next_address
         for address in tier_addresses:
-            space.write(address.to_bytes(3, "little")[:2]),
+            space.write(address.to_bytes(3, "little")[:2])
 
         # ability tier is distorted by between [-2, 2], the distortion amounts are weighted
         # store thresholds for mapping 0-255 random number generator to distribution

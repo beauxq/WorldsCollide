@@ -9,7 +9,7 @@ class Label:
 class LabelPointer:
     ABSOLUTE, ABSOLUTE16, ABSOLUTE24, RELATIVE, ABSOLUTE_RELATIVE, BRANCH_RELATIVE = range(6)
 
-    def __init__(self, label, address, mode):
+    def __init__(self, label: Label, address, mode):
         self.label = label          # reference to the label pointed to
         self.offset = 0             # offset to apply to label (i.e. pointer arithmetic)
         self.address = address      # address of the pointer itself

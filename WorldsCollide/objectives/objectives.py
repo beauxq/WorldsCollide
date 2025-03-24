@@ -1,3 +1,5 @@
+from typing import ClassVar
+
 from .. import args as args
 
 from ..objectives.results import results
@@ -7,7 +9,7 @@ from ..objectives.objective import Objective
 from ..objectives.result_dict import ResultDict
 
 class Objectives:
-    results = ResultDict()
+    results: ClassVar[ResultDict[list[Objective]]] = ResultDict()
 
     def __init__(self):
         self.objectives = []

@@ -1,3 +1,5 @@
+from collections.abc import Sequence
+
 from ..menus import pregame_track_scroll_area as scroll_area
 from ..data.text.text2 import text_value
 from ..instruction import f0 as f0
@@ -5,7 +7,7 @@ from ..instruction import f0 as f0
 class FlagsRemoveLearnableSpells(scroll_area.ScrollArea):
     MENU_NUMBER = 15
 
-    def __init__(self, spell_ids):
+    def __init__(self, spell_ids: Sequence[int]) -> None:
         self.number_items = len(spell_ids)
         self.lines = []
 
@@ -19,7 +21,8 @@ class FlagsRemoveLearnableSpells(scroll_area.ScrollArea):
 
         super().__init__()
 
-    def _format_spells_menu(spell_ids):
+    @staticmethod
+    def _format_spells_menu(spell_ids: Sequence[int]) -> list[str]:
         from ..constants.spells import id_spell
         COLUMN_WIDTHS = [8, 8, 8]
         spell_lines = []
@@ -42,7 +45,8 @@ class FlagsRemoveLearnableSpells(scroll_area.ScrollArea):
             spell_lines.append(current_line)
         return spell_lines
 
-    def _get_spell_icon(spell_id):
+    @staticmethod
+    def _get_spell_icon(spell_id: int) -> str:
         from ..constants.spells import black_magic_ids, gray_magic_ids, white_magic_ids
         from ..data.text.text2 import text_value
         icon = ''

@@ -57,7 +57,7 @@ class BurningHouse(Event):
         )
 
         space = Reserve(0xbd73f, 0xbd746, "burning house inn stranger check", field.NOP())
-        space.add_label("STRANGER_PRICE", 0xbd769),
+        space.add_label("STRANGER_PRICE", 0xbd769)
         space.write(
             field.BranchIfEventBitClear(event_bit.character_recruited(self.character_gate()), "STRANGER_PRICE"),
         )

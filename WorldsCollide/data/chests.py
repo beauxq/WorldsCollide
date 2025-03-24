@@ -34,10 +34,10 @@ class Chests:
 
         # some chests are duplicated on multiple maps (mt kolts, doma, albrook, kefka's tower)
         # list of tuples (<first chest id>, <duplicate chest id>)
-        self.duplicates = [(68, 70), (69, 71)] + \
-                          [(95, 97), (91, 98), (92, 99), (93, 100), (94, 101), (95, 102), (96, 103)] + \
-                          [(202, 203)] + \
-                          [(174, 284), (175, 285)]
+        self.duplicates = [(68, 70), (69, 71),
+                           (95, 97), (91, 98), (92, 99), (93, 100), (94, 101), (95, 102), (96, 103),
+                           (202, 203),
+                           (174, 284), (175, 285)]
 
         # list of all available chests (for shuffling and modifying)
         # exclude lone wolf chest, unreachabe, duplicate chests so they are not modified

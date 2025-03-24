@@ -18,7 +18,7 @@ pythonpath = [
     ".",
 ]
 
-[tool.basedpyright]
+[tool.pyright]  # also applies to basedpyright
 typeCheckingMode = "recommended"
 strictGenericNarrowing = true
 reportImplicitOverride = "none"
@@ -28,6 +28,7 @@ reportUnusedParameter = "hint"
 reportUnannotatedClassAttribute = "none"
 reportImportCycles = "none"
 reportAny = "none"
+reportAttributeAccessIssue = "none"  # module members that are dynamically defined (args)
 
 [tool.ruff.lint.isort]
 force-sort-within-sections = true
@@ -40,10 +41,11 @@ preview = true
 [tool.ruff.lint]
 select = ["ALL"]
 ignore = [
+    "ARG", "PLR6301",  # unused arguments (shouldn't be reported because of structural interfaces - pyright will "hint" it)
     "B011", "PT015",  # no assert false
     "S101", "S311", "S603", "S605", "S607",
     "E714",  # prefer not is
-    "D105", "D107", "D202", "D210", "D212", "D400", "D403", "D415",
+    "D104", "D105", "D107", "D202", "D205", "D210", "D212", "D400", "D401", "D403", "D415",
     "CPY", "TC001", "ERA001",
     "SIM108", "SIM118", "SIM910",
     "PLC0414",  # import a as a (standard practice for reexport)
@@ -52,25 +54,34 @@ ignore = [
     "PLR0904",  # too many public methods
     "RET504",  # don't assign variable before returning it (disables debugging a value at break point)
     "PLC1802",  # len(_) condition
+    "PLC1901",  # use falsy container
     "PLC0415",  # no imports in functions
     "TID252",  # no .. in imports
+    "TRY003", "EM102",  # (long) strings in exceptions
     "Q000", "Q001", "Q002", "D300",  # prefer double quotes (single/triple/docstring)
     "Q003",  # change outer to avoid escaping inner
+    "PLR1714",  # repeated ==
     "PLR1730",  # use max() instead of if
     "PLR2044",  # empty comment (holding space)
     "RET505", "RET506",  # no elif after return/raise
     "FURB140",  # use starmap (obscure function that's less type-safe)
     "PIE808",  # start arg 0 in range (range(0, 3))
+    "SIM102",  # Use a single `if` statement instead of nested `if` statements
     "SIM300",  # constant left of == (incorrect detection of constant)
     "I001",  # import order - global module state relies on order
     "A002",  # shadowing builtin (lots of `id`)
     "PLR6104",  # use |=
+    "PLW2901",  # redefined loop variable
     "C901", "PLR0912", "PLR0915",  # function too complex / too many statements/branches
     "F405",  # from star imports
     "PLR2004",  # magic numbers
-    # "ANN",
+    "PLR6201",  # Use a set literal when testing for membership
+    "TD002", "TD003",  # Missing author/issue link for this TODO
+    "TD004",  # Missing colon in TODO
+    "FIX002",  # contains TODO
+    "ANN",
     "D100", "D101", "D102",  # docstring in module/class/public method
-    "PTH207",  # Path.glob
+    "PTH",  # Path.open, Path.glob, etc. instead of os, etc.
 
     "F401",  # unused import (from x import _a as a)
     "F811",  # redefined import (not confident about safety of fix)
@@ -94,3 +105,4 @@ ignore = [
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["PLR2004", "D100", "D103", "T201", "INP001"]
 "*" = ["D103", "T201"]
+"WorldsCollide/data/text/text3.py" = ["F601"]

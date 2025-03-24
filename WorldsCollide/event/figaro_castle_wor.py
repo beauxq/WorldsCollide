@@ -81,7 +81,7 @@ class FigaroCastleWOR(Event):
         # normally, cannot access cave to ancient castle until get falcon,
         # change the condition to check if defeated tentacles
         space = Reserve(0xa5f26, 0xa5f26, "figaro castle wor ancient castle cave check")
-        space.write(event_bit.DEFEATED_TENTACLES_FIGARO),
+        space.write(event_bit.DEFEATED_TENTACLES_FIGARO)
 
         # this leaves event bit 0x26e unused and free for other things
         space = Reserve(0xa6a2c, 0xa6a47, "figaro castle wor gerad wounded soldier", field.NOP())

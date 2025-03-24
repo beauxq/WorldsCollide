@@ -265,7 +265,7 @@ class _DialogBranch(_Branch):
         super().__init__(0xb6, [], *args)
 
 def DialogBranch(dialog_id: int, dest1: str | int, dest2: str | int | None = None, dest3: str | int | None = None,
-                 dest4: int | None = None, dest5: int | None = None, dest6: int | None = None,
+                 dest4: int | None = None, dest5: int | None = None, dest6: int | None = None, *,
                  wait_for_input: bool = True, inside_text_box: bool = True, top_of_screen: bool = True):
 
     dialog = Dialog(dialog_id, wait_for_input, inside_text_box, top_of_screen)
@@ -436,7 +436,7 @@ class HoldScreen(_Instruction):
 
 class FreeScreen(_Instruction):
     def __init__(self) -> None:
-        super().__init__(0x39),
+        super().__init__(0x39)
 
 class FreeMovement(_Instruction):
     def __init__(self) -> None:
@@ -945,7 +945,7 @@ class InvokeColiseumBattle(_Instruction):
 class _EntityAct(_Instruction):
     def __init__(self, entity: int, wait_until_complete: bool, *actions: _Instruction) -> None:
         from ...instruction.field import entity as field_entity
-        actions = tuple(actions) + (field_entity.End(),)
+        actions = (*actions, field_entity.End())
 
         self.actions_size = 0
         for action in actions:

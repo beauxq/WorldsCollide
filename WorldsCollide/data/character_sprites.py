@@ -4,7 +4,7 @@ from ..constants.entities import id_character, name_id
 from ..memory.rom import ROM
 
 # portrait args are for characters + imp
-PORTRAIT_CHARACTERS = list(id_character) + [name_id["Imp"]]
+PORTRAIT_CHARACTERS = [*id_character.keys(), name_id["Imp"]]
 
 # sprite args are for characters + soldier/imp/esper terra/merchant/ghost/kefka (args do not include leo/banon)
 SPRITE_CHARACTERS = list(id_character)

@@ -30,8 +30,8 @@ def parse_section(script: list, index: int, InstructionTypes: list):
 def parse_script(script: list):
     CommonInstructionTypes = [ai_instr.RandomAttack, ai_instr.SetTarget, ai_instr.SetFormation, ai_instr.Message, ai_instr.RandomCommand, ai_instr.ChangeEnemies, ai_instr.RandomItem, ai_instr.Event, ai_instr.Arithmetic, ai_instr.Bits, ai_instr.Animate, ai_instr.Misc, ai_instr.If, ai_instr.EndTurn, ai_instr.EndIf]
 
-    MainLoopInstructionTypes = CommonInstructionTypes + [ai_instr.EndMainLoop]
-    CallbackInstructionTypes = CommonInstructionTypes + [ai_instr.EndScript]
+    MainLoopInstructionTypes = [*CommonInstructionTypes, ai_instr.EndMainLoop]
+    CallbackInstructionTypes = [*CommonInstructionTypes, ai_instr.EndScript]
 
     index, main_loop_instructions = parse_section(script, 0, MainLoopInstructionTypes)
     index, callback_instructions = parse_section(script, index, CallbackInstructionTypes)

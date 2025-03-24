@@ -105,6 +105,7 @@ class Objective:
                 possible_random_types.remove(random_type.name)
 
                 if random_type.min_max:
+                    assert random_type.value_range is not None, random_type
                     random_value = random.choice(random_type.value_range)
                     self.conditions[index] = conditions[random_type.name](random_value, random_value)
                 else:
@@ -128,5 +129,5 @@ class Objective:
             if value != 'r' and quest_bit[value].name == cls.suplex_train_quest_name:
                 cls.suplex_train_quest_value = value
                 return
-        assert False, f"'{suplex_train_quest_name}' quest value not found"
+        assert False, f"'{cls.suplex_train_quest_name}' quest value not found"
 Objective._init_suplex_train_quest_value()

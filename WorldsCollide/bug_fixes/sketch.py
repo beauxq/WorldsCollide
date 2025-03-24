@@ -24,7 +24,7 @@ class Sketch:
         )
 
         space = Reserve(0x2f5d9, 0x2f5f7, "sketch bug fix monster sprite data lookup")
-        space.add_label("JMP", 0x2f5cf),
+        space.add_label("JMP", 0x2f5cf)
         space.write(
             asm.LDA(0x01, asm.IMM8),
             asm.TRB(0x898d, asm.ABS),

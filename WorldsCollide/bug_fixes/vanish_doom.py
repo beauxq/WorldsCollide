@@ -14,7 +14,7 @@ class VanishDoom:
 
         # add original instant death protection to the beginning of where original code used to be
         space = Reserve(0x22215, 0x22222, "vanish/doom bug fix death check")
-        space.add_label("MISS", 0x22291),
+        space.add_label("MISS", 0x22291)
         space.write(
             asm.LDA(0x11a2, asm.ABS),
             asm.BIT(0x02, asm.IMM8),    # instant death spell bit?

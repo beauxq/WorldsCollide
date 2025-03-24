@@ -131,11 +131,11 @@ class EbotsRock(Event):
         # remove dialogs
         # strago's actions repeat while dialog is showing so add pauses to have animations play a little without dialogs
         space = Reserve(0xb7325, 0xb7327, "ebots rock there i was, in a cave that seemed endless", field.NOP())
-        space.write(field.Pause(0.5)),
+        space.write(field.Pause(0.5))
         space = Reserve(0xb733b, 0xb733d, "ebots rock G'pow!! Thwack!! Crash!!", field.NOP())
-        space.write(field.Pause(2.0)),
+        space.write(field.Pause(2.0))
         space = Reserve(0xb7347, 0xb7349, "ebots rock true meaning of the word, hero", field.NOP())
-        space.write(field.Pause(2.0)),
+        space.write(field.Pause(2.0))
         space = Reserve(0xb734e, 0xb7351, "ebots rock and then...", field.NOP())
 
         space = Reserve(0xb7356, 0xb73e0, "ebots rock relm gungho night scene", field.NOP())

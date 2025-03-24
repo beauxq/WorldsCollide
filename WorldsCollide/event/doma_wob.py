@@ -160,7 +160,7 @@ class DomaWOB(Event):
     def cyan_npc_mod(self, initial_character):
         # character who walks out with the two sentries
         space = Reserve(0xb9d31, 0xb9d31, "doma initial character position")
-        space.write(initial_character),
+        space.write(initial_character)
         space = Reserve(0xb9e4f, 0xb9e4f, "doma character appears")
         space.write(initial_character)
 

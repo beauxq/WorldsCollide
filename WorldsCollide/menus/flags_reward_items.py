@@ -1,3 +1,5 @@
+from collections.abc import Sequence
+
 from ..menus import pregame_track_scroll_area as scroll_area
 from ..data.text.text2 import text_value
 from ..instruction import f0 as f0
@@ -5,7 +7,7 @@ from ..instruction import f0 as f0
 class FlagsRewardItems(scroll_area.ScrollArea):
     MENU_NUMBER = 16
 
-    def __init__(self, item_ids):
+    def __init__(self, item_ids: Sequence[int]) -> None:
         self.number_items = len(item_ids)
         self.lines = []
 
@@ -20,10 +22,11 @@ class FlagsRewardItems(scroll_area.ScrollArea):
 
         super().__init__()
 
-    def _format_items_menu(item_ids):
+    @staticmethod
+    def _format_items_menu(item_ids: Sequence[int]) -> list[str]:
         from ..constants.items import id_name
         COLUMN_WIDTHS = [13, 13]
-        item_lines = []
+        item_lines: list[str] = []
 
         # Step through each item by the number of columns
         for item_idx in range(0, len(item_ids), len(COLUMN_WIDTHS)):
@@ -43,7 +46,8 @@ class FlagsRewardItems(scroll_area.ScrollArea):
             item_lines.append(current_line)
         return item_lines
 
-    def _get_item_icon(item_id):
+    @staticmethod
+    def _get_item_icon(item_id: int) -> str:
         from ..constants.items import DIRKS, SWORDS, LANCES, KNIVES, KATANAS, RODS, BRUSHES, \
             STARS, SPECIAL, GAMBLER, CLAWS, SHIELDS, HELMETS, ARMORS, TOOLS, SKEANS, RELICS
         from ..data.text.text2 import text_value

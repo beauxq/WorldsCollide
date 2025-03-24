@@ -139,7 +139,7 @@ class MoblizWOR(Event):
         boss_pack_id = self.get_boss("Phunbaba 4")
 
         space = Reserve(0xc4cda, 0xc4cec, "mobliz wor phunbaba 4 battle, esper terra and children scene", field.NOP())
-        space.add_label("FINISH_EVENT", 0xc502a),
+        space.add_label("FINISH_EVENT", 0xc502a)
         space.write(
             field.InvokeBattle(boss_pack_id),
             field.RecruitAndSelectParty(character),
@@ -170,7 +170,7 @@ class MoblizWOR(Event):
         boss_pack_id = self.get_boss("Phunbaba 4")
 
         space = Reserve(0xc4cca, 0xc4cec, "mobliz wor phunbaba 4 battle, esper terra and children scene", field.NOP())
-        space.add_label("FINISH_EVENT", 0xc502a),
+        space.add_label("FINISH_EVENT", 0xc502a)
         space.write(
             field.InvokeBattle(boss_pack_id),
         )

@@ -1,8 +1,12 @@
+from collections.abc import Iterable
+
 from ..memory.rom import ROM
 from ..memory.heap import Heap
 from ..memory.label import Label, LabelPointer
 from .. import args as args
 from .bank import BANK_SIZE as BANK_SIZE, Bank as Bank
+
+from ..instruction.event import _Instruction
 
 
 START_ADDRESS_SNES = 0xc00000
@@ -127,9 +131,9 @@ class Space:
         self.label_pointers.append(label_pointer)
         return label_pointer # return a new pointer to a new label
 
-    def _invoke_callables(self, values):
+    def _invoke_callables(self, values: Iterable[int | _Instruction]) -> list[int]:
         from ..utils.flatten import flatten
-        result = []
+        result: list[int] = []
         index = 0
         for value in values:
             if callable(value):

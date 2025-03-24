@@ -46,7 +46,7 @@ class SouthFigaroCaveWOB(Event):
         # after lete river a different figaro cave is loaded which has tunnel armor
         # remove the lete river completed requirement
         space = Reserve(0xa5ee3, 0xa5ee8, "figaro cave lete river complete requirement")
-        space.add_label("LOAD_MAP", 0xa5ef0),
+        space.add_label("LOAD_MAP", 0xa5ef0)
         space.write(
             world.Branch("LOAD_MAP"),
         )

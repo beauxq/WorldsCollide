@@ -128,10 +128,10 @@ class NarsheMoogleDefense(Event):
 
         # For parties 2 and 3, just iterate 4 times each
         for party in range(2,4):
-             for party_spot in range(0, 4):
-                 src += [
-                     field.Call(self.add_moogle_to_party[party - 1]),
-                 ]
+            for party_spot in range(0, 4):
+                src += [
+                    field.Call(self.add_moogle_to_party[party - 1]),
+                ]
 
         src += [
             field.RefreshEntities(),
@@ -304,7 +304,11 @@ class NarsheMoogleDefense(Event):
 
         # Change Arvis Script
         prepared_dialog = 0x21 # reuse "OLD MAN: Make your way out through the mines! I’ll keep these brutes occupied!"
-        self.dialogs.set_text(prepared_dialog, "Imperial troops are searching the mines as we speak. They must have found something important!<line>Will you stop them?<line><choice> Yes<line><choice> No<end>")
+        self.dialogs.set_text(
+            prepared_dialog,
+            "Imperial troops are searching the mines as we speak. They must have found something important!<line>"
+            "Will you stop them?<line><choice> Yes<line><choice> No<end>",
+        )
         space = Reserve(0xca06f, 0xca07d, "arvis dialog", field.NOP())
         space.write(
              field.DialogBranch(prepared_dialog,

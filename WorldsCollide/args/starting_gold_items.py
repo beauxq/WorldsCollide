@@ -20,9 +20,9 @@ def parse(parser: ArgumentParser):
     starting_gold_items.add_argument("-sfd", "--start-fenix-downs", default = 0, type = int, choices = range(11), metavar = "COUNT",
                                      help = "Start game with %(metavar)s Fenix Downs")
     starting_gold_items.add_argument("-sto", "--start-tools", default = 0, type = int, choices = range(9), metavar = "COUNT",
-                                     help = "Start game with %(metavar)s different random tools"),
+                                     help = "Start game with %(metavar)s different random tools")
     starting_gold_items.add_argument("-sj", "--start-junk", default = 0, type = int, choices = range(25), metavar = "COUNT",
-                                     help = "Start game with %(metavar)s unique low tier items. Includes weapons, armors, helmets, shields, and relics"),
+                                     help = "Start game with %(metavar)s unique low tier items. Includes weapons, armors, helmets, shields, and relics")
 
 def process(args):
     pass

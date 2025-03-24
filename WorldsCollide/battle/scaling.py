@@ -62,11 +62,11 @@ class _Scaling:
         ]
 
         if self.scaling_functions.level is not None:
-            src += scale_level(self, self.scaling_functions.level, args.level_scaling_factor, self.level_scale),
+            src += scale_level(self, self.scaling_functions.level, args.level_scaling_factor, self.level_scale)
         if self.scaling_functions.hp_mp is not None:
-            src += scale_level(self, self.scaling_functions.hp_mp, args.hp_mp_scaling_factor, self.hp_mp_scale),
+            src += scale_level(self, self.scaling_functions.hp_mp, args.hp_mp_scaling_factor, self.hp_mp_scale)
         if self.scaling_functions.xp_gp is not None:
-            src += scale_level(self, self.scaling_functions.xp_gp, args.xp_gp_scaling_factor, self.xp_gp_scale),
+            src += scale_level(self, self.scaling_functions.xp_gp, args.xp_gp_scaling_factor, self.xp_gp_scale)
 
         src += [
             "RETURN",
