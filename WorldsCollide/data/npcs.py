@@ -30,7 +30,7 @@ class NPCs:
         return self.npcs[index]
 
     def add_npc(self, index, new_npc):
-       # some sprites are broken up
+        # some sprites are broken up
         if new_npc.sprite == 109:
             new_npc.split_sprite = 1
 

@@ -736,7 +736,7 @@ class PreGameTrack:
             asm.STA(0x26, asm.DIR),         # add wait for fade to queue
             asm.JMP(self.refresh_sprites, asm.ABS),
         ]
-         # Keep in C3 -- called by C3 JSR jump table
+        # Keep in C3 -- called by C3 JSR jump table
         space = Write(Bank.C3, src, "pregame track fade in")
         self.fade_in = space.start_address
 
@@ -749,7 +749,7 @@ class PreGameTrack:
             asm.STA(0x26, asm.DIR),       # add wait for fade to queue
             asm.JMP(self.refresh_sprites, asm.ABS),   # refresh sprites
         ]
-         # Keep in C3 -- called by C3 JSR jump table
+        # Keep in C3 -- called by C3 JSR jump table
         space = Write(Bank.C3, src, "pregame track fade out")
         self.fade_out = space.start_address
 

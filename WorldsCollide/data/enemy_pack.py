@@ -6,8 +6,11 @@ class EnemyPack:
         self.id = id
 
         self.formations = []
-        self.extra_formations = [] # flags to randomize corresponding formation with the following 3 formations
-                                   # this is used to allow 16 possible battles on the floating continent instead of only 4
+
+        self.extra_formations = []
+        # flags to randomize corresponding formation with the following 3 formations
+        # this is used to allow 16 possible battles on the floating continent instead of only 4
+
         for formation_index in range(self.FORMATION_COUNT):
             formation_start = formation_index * self.FORMATION_ID_SIZE
             formation_short = int.from_bytes(data[formation_start : formation_start + self.FORMATION_ID_SIZE], "little")

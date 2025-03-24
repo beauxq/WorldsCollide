@@ -346,8 +346,8 @@ class NarsheMoogleDefense(Event):
         locke_action_queues = [0xca76b, 0xca77b, 0xca786,
                                0xca78e, 0xca793 , 0xca799, 0xca79f,
                                0xca7a4, 0xca7a8, 0xca7af, 0xca7b3,
-                               0xca7b8]
-                               # 0xca868 NO-OP'd below
+                               0xca7b8]  # 0xca868 NO-OP'd below
+
         for address in locke_action_queues:
             space = Reserve(address, address, "locke drop down to protect terra")
             space.write(field_entity.PARTY0)
