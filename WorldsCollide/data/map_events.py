@@ -48,7 +48,7 @@ class MapEvents:
                 self.events.remove(event)
                 self.EVENT_COUNT -= 1
                 return
-        raise IndexError("delete_event: could not find event at {x} {y}")
+        raise IndexError(f"delete_event: could not find event at {x} {y}")
 
     def print_range(self, start, count):
         for offset in range(count):
@@ -109,7 +109,7 @@ class LongMapEvents:
                 self.events.remove(event)
                 self.EVENT_COUNT -= 1
                 return
-        raise IndexError("delete_event: could not find event at {x} {y}")
+        raise IndexError(f"delete_event: could not find event at {x} {y}")
 
     def print_range(self, start, count):
         for offset in range(count):

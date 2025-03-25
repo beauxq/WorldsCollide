@@ -5,7 +5,7 @@ from ..instruction import c1 as c1
 
 def _set_opcode_address(opcode: int, address: int) -> None:
     opcode_table_address = 0x1fdbe + opcode * 2
-    space = Reserve(opcode_table_address, opcode_table_address + 1, "battle event table, {opcode} {hex(address)}")
+    space = Reserve(opcode_table_address, opcode_table_address + 1, f"battle event table, {opcode} {hex(address)}")
     space.write(
         (address & 0xffff).to_bytes(2, "little"),
     )

@@ -8,7 +8,7 @@ from enum import IntEnum
 def _set_opcode_address(opcode: int, address: int) -> None:
     FIRST_OPCODE = 0x35
     opcode_table_address = 0x098c4 + (opcode - FIRST_OPCODE) * 2
-    space = Reserve(opcode_table_address, opcode_table_address + 1, "field opcode table, {opcode} {hex(address)}")
+    space = Reserve(opcode_table_address, opcode_table_address + 1, f"field opcode table, {opcode} {hex(address)}")
     space.write(
         (address & 0xffff).to_bytes(2, "little"),
     )

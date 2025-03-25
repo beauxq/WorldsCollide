@@ -11,20 +11,20 @@ class RageMenu:
 
         # Build an array to lookup enemy-specific Special command effects
         from ..constants.status_effects import A, B, C, D
-        self.status_effects = []
+        self.status_effects: list[str] = []
         self.status_effects.extend(list(A.id_name.values()))
         self.status_effects.extend(list(B.id_name.values()))
         self.status_effects.extend(list(C.id_name.values()))
         self.status_effects.extend(list(D.id_name.values()))
 
         # Remove death from the status effects list, as it requires a second bit from flags1
-        self.status_effects = list(map(lambda x: x.replace("Death", ""), self.status_effects))
+        self.status_effects = [x.replace("Death", "") for x in self.status_effects]
 
         # Remove other statuses that aren't really relevant
-        self.status_effects = list(map(lambda x: x.replace("Near Fatal", ""), self.status_effects))
-        self.status_effects = list(map(lambda x: x.replace("Hide", ""), self.status_effects))
+        self.status_effects = [x.replace("Near Fatal", "") for x in self.status_effects]
+        self.status_effects = [x.replace("Hide", "") for x in self.status_effects]
 
-        self.special_effects = []
+        self.special_effects: list[str] = []
         self.special_effects.extend(self.status_effects)
         for i in range(15, 95, 5): # going from 1.5x - 9.0x damage
             dmg_multiplier = i / 10

@@ -71,6 +71,7 @@ ignore = [
     "I001",  # import order - global module state relies on order
     "A002",  # shadowing builtin (lots of `id`)
     "PLR6104",  # use |=
+    "PLW1641",  # define __hash__ (better if mutable things don't have __hash__)
     "PLW2901",  # redefined loop variable
     "C901", "PLR0912", "PLR0915",  # function too complex / too many statements/branches
     "F405",  # from star imports
