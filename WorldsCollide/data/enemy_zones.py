@@ -1,4 +1,4 @@
-from ..data.enemy_zone import WOBZone, WORZone, MapZone
+from ..data.enemy_zone import EnemyZone, WOBZone, WORZone, MapZone
 from ..memory.rom import ROM
 
 
@@ -10,6 +10,8 @@ class EnemyZones:
     WOR_COUNT = 64
     MAP_COUNT = 512
     ZONE_COUNT = WOB_COUNT + WOR_COUNT + MAP_COUNT
+
+    zones: list[EnemyZone]
 
     def __init__(self, rom: ROM, args):
         self.rom = rom

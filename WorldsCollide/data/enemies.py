@@ -2,6 +2,7 @@ from ..data.enemy import Enemy
 from ..data.structures import DataArray
 
 from ..data.enemy_formations import EnemyFormations
+from ..data.enemy_pack import EnemyPack
 from ..data.enemy_packs import EnemyPacks
 from ..data.enemy_zones import EnemyZones
 from ..data.enemy_scripts import EnemyScripts
@@ -228,7 +229,7 @@ class Enemies:
 
         return False
 
-    def skip_shuffling_formation(self, formation):
+    def skip_shuffling_formation(self, formation: int) -> bool:
         if formation == EnemyFormations.PRESENTER:
             return True
 
@@ -237,7 +238,7 @@ class Enemies:
     def shuffle_encounters(self, maps):
         import collections
         # find all packs that are randomly encountered in zones
-        packs = collections.OrderedDict()
+        packs: collections.OrderedDict[EnemyPack, None] = collections.OrderedDict()
         for zone in self.zones.zones:
             if self.skip_shuffling_zone(maps, zone):
                 continue

@@ -1,4 +1,4 @@
-from ..data.enemy_pack import EnemyPack4, EnemyPack2
+from ..data.enemy_pack import EnemyPack, EnemyPack4, EnemyPack2
 from ..data.structures import DataArray
 from ..data import bosses as bosses
 from ..memory.rom import ROM
@@ -29,7 +29,7 @@ class EnemyPacks:
         self.pack4_data = DataArray(self.rom, self.PACK4_START, self.PACK4_END, self.PACK4_SIZE)
         self.pack2_data = DataArray(self.rom, self.PACK2_START, self.PACK2_END, self.PACK2_SIZE)
 
-        self.packs = []
+        self.packs: list[EnemyPack] = []
         for pack4_index in range(len(self.pack4_data)):
             pack = EnemyPack4(pack4_index, self.pack4_data[pack4_index])
             self.packs.append(pack)

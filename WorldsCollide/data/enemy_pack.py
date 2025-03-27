@@ -5,9 +5,9 @@ class EnemyPack:
     def __init__(self, id, data):
         self.id = id
 
-        self.formations = []
+        self.formations: list[int] = []
 
-        self.extra_formations = []
+        self.extra_formations: list[bool] = []
         # flags to randomize corresponding formation with the following 3 formations
         # this is used to allow 16 possible battles on the floating continent instead of only 4
 

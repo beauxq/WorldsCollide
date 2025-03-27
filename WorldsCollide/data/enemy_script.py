@@ -36,8 +36,8 @@ class EnemyScript:
         else:
             try:
                 return self.instructions.index(instruction, start, end)
-            except ValueError:
-                raise ValueError(f"{instruction!s} not found in script {self.id}")
+            except ValueError as e:
+                raise ValueError(f"{instruction!s} not found in script {self.id}") from e
 
     def remove(self, instructions, count = 1):
         if type(instructions) is list:
@@ -49,8 +49,8 @@ class EnemyScript:
             try:
                 for _ in range(count):
                     self.instructions.remove(instructions)
-            except ValueError:
-                raise ValueError(f"{instructions!s} not found in script {self.id}")
+            except ValueError as e:
+                raise ValueError(f"{instructions!s} not found in script {self.id}") from e
 
     def replace(self, old_instructions, new_instructions, count = 1):
         old_instructions_len = 1

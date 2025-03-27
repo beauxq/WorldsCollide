@@ -8,13 +8,21 @@ class EnemyZone:
     ENCOUNTER_RATES = {0 : "Normal", 1 : "Lower", 2 : "Higher"}
     NORMAL_ENCOUNTER_RATE, LOW_ENCOUNTER_RATE, HIGH_ENCOUNTER_RATE = range(3)
 
-    def __init__(self, rom: ROM, id):
+    rom: ROM
+    id: int
+    data_addr: int
+    rate_addr: int
+    rate_bits_start: int
+    packs: list[int]
+    encounter_rates: list[int]
+
+    def __init__(self, rom: ROM, id: int) -> None:
         self.rom = rom
 
         self.set_id(id)
         self.read()
 
-    def set_id(self, id):
+    def set_id(self, id: int) -> None:
         self.id = id
         self.data_addr = self.DATA_START + self.id * self.DATA_SIZE
 
@@ -30,7 +38,7 @@ class EnemyZone:
         # therefore, need to take into account zone id for zones with fewer than 4 packs to know which bits to start at
         self.rate_bits_start = (self.id % (4 // self.PACK_COUNT)) * (self.PACK_COUNT * 2)
 
-    def read(self):
+    def read(self) -> None:
         self.packs = []
         self.encounter_rates = []
 
@@ -41,12 +49,12 @@ class EnemyZone:
             rate_bits_start = self.rate_bits_start + x * 2
             self.encounter_rates.append((rate_byte >> rate_bits_start) & 0x3)
 
-    def write(self):
+    def write(self) -> None:
         # TODO write out encounter rate
         for x in range(self.PACK_COUNT):
             self.rom.set_byte(self.data_addr + x, self.packs[x])
 
-    def print(self):
+    def print(self) -> None:
         print(f"{self.id}: ", end = '')
         for x in range(self.PACK_COUNT):
             print(f"{self.packs[x]}", end = ' -> ')
