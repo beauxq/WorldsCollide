@@ -1,4 +1,4 @@
-def __init__():
+def _init():
     from ...data.fonts.widths import Widths
     widths = Widths()
 
@@ -6,4 +6,4 @@ def __init__():
     import inspect
     module = sys.modules[__name__]
     module.widths = widths
-__init__()
+_init()

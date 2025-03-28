@@ -1,4 +1,4 @@
-def __init__():
+def _init():
     from ...data.dialogs.dialogs import Dialogs
     dialogs = Dialogs()
 
@@ -11,4 +11,4 @@ def __init__():
 
     module.OBJECTIVES = Dialogs.OBJECTIVES
     module.BATTLE_OBJECTIVES = Dialogs.BATTLE_OBJECTIVES
-__init__()
+_init()
