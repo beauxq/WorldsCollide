@@ -281,7 +281,7 @@ class INC(_Instruction):
     }
 
     def __init__(self, arg = None, mode = None):
-            super().__init__(arg, mode)
+        super().__init__(arg, mode)
 
 class DEC(_Instruction):
     mode_opcode = {

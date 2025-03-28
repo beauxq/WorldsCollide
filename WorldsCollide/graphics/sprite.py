@@ -36,18 +36,18 @@ class Sprite:
         #                             tile 1]]
         result = []
         for tile_row in tile_id_matrix:
-                for row_index in range(SpriteTile.ROW_COUNT):
-                    result_row = []
-                    try:
-                        for tile_id in tile_row:
-                            try:
-                                result_row += self.tiles[tile_id].colors[row_index]
-                            except IndexError:
-                                result_row += [0] * SpriteTile.COL_COUNT
-                    except TypeError:
-                        tile_id = tile_row # tile_row is not a list of lists, the matrix is one column
-                        result_row = self.tiles[tile_id].colors[row_index]
-                    result.append(result_row)
+            for row_index in range(SpriteTile.ROW_COUNT):
+                result_row = []
+                try:
+                    for tile_id in tile_row:
+                        try:
+                            result_row += self.tiles[tile_id].colors[row_index]
+                        except IndexError:
+                            result_row += [0] * SpriteTile.COL_COUNT
+                except TypeError:
+                    tile_id = tile_row # tile_row is not a list of lists, the matrix is one column
+                    result_row = self.tiles[tile_id].colors[row_index]
+                result.append(result_row)
         return result
 
     def rgb_data(self, pose):
