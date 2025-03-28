@@ -25,7 +25,7 @@ class Progress(scroll_area.ScrollArea):
         ]
 
         self.lines = []
-        for index, label in enumerate(labels):
+        for label in labels:
             self.lines.append(scroll_area.Line(label, f0.set_user_text_color))
             self.lines.append(scroll_area.Line("", f0.set_user_text_color))
         del self.lines[-1] # exclude final empty line

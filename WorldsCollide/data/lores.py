@@ -1,3 +1,5 @@
+from typing import Literal
+
 from ..data.lore import Lore
 from ..data.ability_data import AbilityData
 from ..data.structures import DataBits, DataArray, DataList
@@ -173,7 +175,8 @@ class Lores:
             value = int(lore.mp * mp_percent)
             lore.mp = max(min(value, 254), 0)
 
-    def _get_new_level_desc(lore_index, level_divisor):
+    @staticmethod
+    def _get_new_level_desc(lore_index: int, level_divisor: int | Literal["?"]) -> str:
         level_string = f'LV{level_divisor}' # keeping it simple to not use extra space
         new_desc = ''
         if (lore_index == Lores.L_5_DOOM):

@@ -1,3 +1,5 @@
+from collections.abc import Sequence
+from dataclasses import dataclass
 from functools import total_ordering
 
 from ..memory.rom import ROM
@@ -74,10 +76,12 @@ class DataPointers:
             for pointer in self.pointers:
                 self.rom.set_bytes(pointer.address, pointer.data_address.to_bytes(self.pointer_size, "little"))
 
+
+@dataclass
 class DataElement:
-    def __init__(self, data: list, address: int) -> None:
-        self.data = data
-        self.address = address
+    data: Sequence[int]
+    address: int
+
 
 # contiguous bit field
 class DataBits:
@@ -154,7 +158,7 @@ class DataArray:
     def __getitem__(self, index: int):
         return self.elements[index].data
 
-    def __setitem__(self, index: int, data) -> None:
+    def __setitem__(self, index: int, data: Sequence[int]) -> None:
         assert (len(data) == self.element_size)
         self.elements[index].data = data
 
@@ -162,7 +166,7 @@ class DataArray:
         del self.elements[index]
         self.end_address -= self.element_size
 
-    def append(self, data) -> None:
+    def append(self, data: Sequence[int]) -> None:
         assert (len(data) == self.element_size)
         self.elements.append(DataElement(data, self.end_address))
         self.end_address += self.element_size

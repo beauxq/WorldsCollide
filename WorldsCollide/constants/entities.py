@@ -33,4 +33,4 @@ id_name.update({
 })
 name_id = {v: k for k, v in id_name.items()}
 
-sorted_character_names = sorted(list(character_id))
+sorted_character_names = sorted(character_id.keys())

@@ -8,10 +8,10 @@ class Commands:
         self.characters = characters
 
     def mod_commands(self):
-        command_set = set(name_id[name] for name in RANDOM_POSSIBLE_COMMANDS)
+        command_set = {name_id[name] for name in RANDOM_POSSIBLE_COMMANDS}
         command_list = list(command_set)
 
-        allowed_commands = command_set | set([name_id["Fight"], RANDOM_COMMAND, RANDOM_UNIQUE_COMMAND, NONE_COMMAND])
+        allowed_commands = command_set | {name_id["Fight"], RANDOM_COMMAND, RANDOM_UNIQUE_COMMAND, NONE_COMMAND}
 
         # if morph was explicitly selected remove from available command list
         morph_id = name_id["Morph"]

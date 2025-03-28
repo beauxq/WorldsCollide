@@ -50,6 +50,7 @@ ignore = [
     "SIM",  # a bunch of rules that sometimes reduce readability
     "PLC0414",  # import a as a (standard practice for reexport)
     "PLR5501",  # elif when possible (else: if)
+    "PYI041",  # use unsafe int subclass of float
     "DOC201",  # return in docstring
     "PLR0904",  # too many public methods
     "RET504",  # don't assign variable before returning it (disables debugging a value at break point)

@@ -31,7 +31,7 @@ class Enemies:
     SRBEHEMOTH2_ID = 127
     INVINCIBLE_GUARDIAN_ID = 273
 
-    def __init__(self, rom: ROM, args, items=[]):
+    def __init__(self, rom: ROM, args, items):
         self.rom = rom
         self.args = args
         self.items = items

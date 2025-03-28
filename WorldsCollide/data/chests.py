@@ -338,7 +338,7 @@ class Chests:
         from textwrap import wrap
         from ..data.enemy_battle_groups import event_battle_group_name
 
-        lcolumn = []
+        lcolumn: list[str] = []
         if self.args.chest_contents_random_scaled:
             lcolumn.append("Items:")
             items_per_line = 5
@@ -346,7 +346,7 @@ class Chests:
             lines = [self.item_contents[index : index + items_per_line] for index in range(0, len(self.item_contents), items_per_line)]
             for line_index, line_items in enumerate(lines):
                 line = f"{line_index * items_per_line:>3}: "
-                for item_index, item_id in enumerate(line_items):
+                for item_id in line_items:
                     line += f"{id_name[item_id]:<{Item.NAME_LENGTH}}"
                 lcolumn.append(line)
 
@@ -356,7 +356,7 @@ class Chests:
             for area_name, chest_ids in area_chests.items():
                 lcolumn.append(area_name)
 
-                contents = []
+                contents: list[str] = []
                 for chest_id in chest_ids:
                     chest = self.all_chests[chest_id]
                     if chest.type == Chest.ITEM:
