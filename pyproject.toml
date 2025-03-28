@@ -45,7 +45,7 @@ ignore = [
     "B011", "PT015",  # no assert false
     "S101", "S311", "S603", "S605", "S607",
     "E714",  # prefer not is
-    "D104", "D105", "D107", "D202", "D205", "D210", "D212", "D400", "D401", "D403", "D415",
+    "D104", "D105", "D106", "D107", "D202", "D205", "D210", "D212", "D400", "D401", "D403", "D415",
     "CPY", "TC001", "ERA001",
     "SIM",  # a bunch of rules that sometimes reduce readability
     "PLC0414",  # import a as a (standard practice for reexport)

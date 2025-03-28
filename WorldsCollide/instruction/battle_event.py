@@ -48,7 +48,7 @@ LAST_CHARACTER_ANIMATION_SLOT = 6
 _character_animation_slot = FIRST_CHARACTER_ANIMATION_SLOT
 class AddCharacterAnimation(_Instruction):
     def __init__(self, character: int, address: int) -> None:
-        global LAST_CHARACTER_ANIMATION_SLOT, _character_animation_slot
+        global _character_animation_slot
         self.character = character
         self.address = address
         self.slot = _character_animation_slot
@@ -66,7 +66,7 @@ class ClearAnimations(_Instruction):
 
 class ExecuteAnimations(_Instruction):
     def __init__(self):
-        global FIRST_CHARACTER_ANIMATION_SLOT, _character_animation_slot
+        global _character_animation_slot
         super().__init__(0x0f)
         _character_animation_slot = FIRST_CHARACTER_ANIMATION_SLOT
 
