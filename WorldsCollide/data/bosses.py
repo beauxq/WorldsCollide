@@ -3,6 +3,8 @@
 # "Formations" refer to the Battle -> Battles listing. Those IDs should line up directly.
 # "Enemies" refer to Monster -> Monsters. Those IDs should line up directly.
 
+from collections.abc import Mapping
+
 final_battle_pack_name = {
     357 : "Final Battle", # (face, short arm, long arm) no pack for other final battles
 }
@@ -259,7 +261,7 @@ removed_enemy_name = {
     363 : "Phunbaba 2",
 }
 
-pack_name = {}
+pack_name: Mapping[int, str] = {}
 pack_name.update(final_battle_pack_name)
 pack_name.update(dragon_pack_name)
 pack_name.update(normal_pack_name)
@@ -267,7 +269,7 @@ pack_name.update(removed_pack_name)
 
 name_pack = {v: k for k, v in pack_name.items()}
 
-formation_name = {}
+formation_name: Mapping[int, str] = {}
 formation_name.update(final_battle_formation_name)
 formation_name.update(dragon_formation_name)
 formation_name.update(normal_formation_name)
@@ -275,7 +277,7 @@ formation_name.update(removed_formation_name)
 
 name_formation = {v: k for k, v in formation_name.items()}
 
-enemy_name = {}
+enemy_name: Mapping[int, str] = {}
 enemy_name.update(final_battle_enemy_name)
 enemy_name.update(dragon_enemy_name)
 enemy_name.update(normal_enemy_name)

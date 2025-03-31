@@ -1,4 +1,5 @@
 from collections.abc import Iterable
+from typing import ClassVar
 
 from ..memory.rom import ROM
 from ..memory.heap import Heap
@@ -12,11 +13,11 @@ from ..instruction.event import _Instruction
 START_ADDRESS_SNES = 0xc00000
 
 class Space:
-    rom = None
-    heaps = {bank : Heap() for bank in Bank}
-    spaces = []
+    rom: ClassVar[ROM | None] = None
+    heaps: ClassVar[dict[Bank, Heap]] = {bank : Heap() for bank in Bank}
+    spaces: "ClassVar[list[Space]]" = []
 
-    def __init__(self, start_address, end_address, description, clear_value = None):
+    def __init__(self, start_address: int, end_address: int, description: str, clear_value = None):
         self._start_address = start_address
         self._end_address = end_address
         self._next_address = self.start_address
@@ -264,7 +265,7 @@ class Space:
     def printr(self):
         print(repr(self))
 
-def Reserve(start_address: int, end_address: int, description, clear_value = None) -> Space:
+def Reserve(start_address: int, end_address: int, description: str, clear_value = None) -> Space:
     bank_start = (start_address // BANK_SIZE) * BANK_SIZE
     heap = Space.heaps[Bank(bank_start)]
     heap.reserve(start_address, end_address)
@@ -305,5 +306,5 @@ def Write(destination: Bank | int, data: int | list, description: str) -> Space:
     space.write(data)
     return space
 
-def Read(start_address: int, end_address: int):
+def Read(start_address: int, end_address: int) -> list[int]:
     return Space.rom.get_bytes(start_address, end_address - start_address + 1)

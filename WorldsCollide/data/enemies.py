@@ -41,8 +41,8 @@ class Enemies:
         self.enemy_item_data = DataArray(self.rom, self.ITEMS_START, self.ITEMS_END, self.ITEMS_SIZE)
         self.enemy_special_name_data = DataArray(self.rom, self.SPECIAL_NAMES_START, self.SPECIAL_NAMES_END, self.SPECIAL_NAMES_SIZE)
 
-        self.enemies = []
-        self.bosses = []
+        self.enemies: list[Enemy] = []
+        self.bosses: list[Enemy] = []
         for enemy_index in range(len(self.enemy_data)):
             enemy = Enemy(enemy_index, self.enemy_data[enemy_index], self.enemy_name_data[enemy_index], self.enemy_item_data[enemy_index], self.enemy_special_name_data[enemy_index])
             self.enemies.append(enemy)
@@ -69,12 +69,13 @@ class Enemies:
         random_enemy = random.choice(self.enemies[:255])
         return random_enemy.id
 
-    def get_enemy(self, name):
+    def get_enemy(self, name: str) -> int:
         if name in bosses.name_enemy:
             return bosses.name_enemy[name]
         for enemy in self.enemies:
             if enemy.name == name:
                 return enemy.id
+        raise ValueError(f"enemy {name} not found")
 
     def get_name(self, enemy_id):
         if enemy_id in bosses.enemy_name:
