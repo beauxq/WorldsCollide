@@ -1,4 +1,8 @@
+from collections.abc import Sequence
+from typing import Literal
+
 from ..data import text as text
+
 
 class Character:
     # every 2 seconds while running in battle the character's run value is incremented by a
@@ -7,7 +11,7 @@ class Character:
     MIN_RUN_SUCCESS = 2
     MAX_RUN_SUCCESS = 5
 
-    def __init__(self, id, init_data, name_data):
+    def __init__(self, id: int, init_data: Sequence[int], name_data: Sequence[int]) -> None:
         self.id = id
         self.name = text.get_string(name_data, text.TEXT2).rstrip('\0')
 
@@ -33,7 +37,7 @@ class Character:
         self._init_level_factor = (init_data[21] & 0x0c) >> 2
         self._cant_reequip      = (init_data[21] & 0x10) >> 4
 
-    def init_data(self):
+    def init_data(self) -> list[int]:
         from ..data.characters import Characters
         init_data = [0x00] * Characters.INIT_DATA_SIZE
 
@@ -61,13 +65,13 @@ class Character:
 
         return init_data
 
-    def name_data(self):
+    def name_data(self) -> list[int]:
         from ..data.characters import Characters
         data = text.get_bytes(self.name, text.TEXT2)
         data.extend([0xff] * (Characters.NAME_SIZE - len(data)))
         return data
 
-    def clear_init_equip(self):
+    def clear_init_equip(self) -> None:
         from ..data.items import Items
         self.init_right_hand = Items.EMPTY
         self.init_left_hand = Items.EMPTY
@@ -77,11 +81,11 @@ class Character:
         self.init_relic2 = Items.EMPTY
 
     @property
-    def init_run_success(self):
+    def init_run_success(self) -> int:
         return self.MAX_RUN_SUCCESS - self._init_run_success
 
     @init_run_success.setter
-    def init_run_success(self, value):
+    def init_run_success(self, value: int) -> None:
         if value < self.MIN_RUN_SUCCESS or value > self.MAX_RUN_SUCCESS:
             raise ValueError(f"Character.init_run_success setter: invalid value {value}")
 
@@ -90,16 +94,16 @@ class Character:
     # initial level of characters is 3
     # when new character is recruited, their level is set to the average of all other recruited characters + init_level_factor
     @property
-    def init_level_factor(self):
-        VALUE_ADJUSTMENT = [0, 2, 5, -3]
+    def init_level_factor(self) -> Literal[0, 2, 5, -3]:
+        VALUE_ADJUSTMENT = (0, 2, 5, -3)
         return VALUE_ADJUSTMENT[self._init_level_factor]
 
     @init_level_factor.setter
-    def init_level_factor(self, adjustment):
+    def init_level_factor(self, adjustment: Literal[0, 2, 5, -3]) -> None:
         ADJUSTMENT_VALUE = {0 : 0, 2 : 1, 5 : 2, -3 : 3} # level adjustment -> data value
         self._init_level_factor = ADJUSTMENT_VALUE[adjustment]
 
-    def print(self):
+    def print(self) -> None:
         print(f"{self.id}: {self.name}\n"
               f"{self.init_extra_hp}, {self.init_extra_mp}, {self.commands}"
               f"{self.init_vigor}, {self.init_speed}, {self.init_stamina}, {self.init_magic}, {self.init_attack}, "
