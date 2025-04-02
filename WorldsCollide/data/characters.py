@@ -1,3 +1,5 @@
+from collections.abc import Container
+
 from ..data.character import Character
 from ..data.natural_magic import NaturalMagic
 from ..data.commands import Commands
@@ -37,7 +39,7 @@ class Characters:
         self.init_data = DataArray(self.rom, self.INIT_DATA_START, self.INIT_DATA_END, self.INIT_DATA_SIZE)
         self.name_data = DataArray(self.rom, self.NAMES_START, self.NAMES_END, self.NAME_SIZE)
 
-        self.characters = []
+        self.characters: list[Character] = []
         for character_index in range(len(self.name_data)):
             character = Character(character_index, self.init_data[character_index], self.name_data[character_index])
             self.characters.append(character)
@@ -57,15 +59,15 @@ class Characters:
 
         # path of characters required to unlock each character
         # e.g. self.character_paths[self.TERRA] = all characters required for terra (in order)
-        self.character_paths = [[] for char_index in range(self.CHARACTER_COUNT)]
+        self.character_paths: list[list[int]] = [[] for char_index in range(self.CHARACTER_COUNT)]
 
-    def get_available_count(self):
+    def get_available_count(self) -> int:
         return len(self.available_characters)
 
-    def set_unavailable(self, character):
+    def set_unavailable(self, character: int) -> None:
         self.available_characters.remove(character)
 
-    def get_random_available(self, exclude = None):
+    def get_random_available(self, exclude: Container[int] | None = None) -> int:
         if exclude is None:
             exclude = []
 
@@ -75,22 +77,22 @@ class Characters:
         self.set_unavailable(random_character)
         return random_character
 
-    def set_character_path(self, character, required_character):
+    def set_character_path(self, character: int, required_character: int | None) -> None:
         if required_character is not None:
             self.character_paths[character].extend(self.character_paths[required_character])
             self.character_paths[character].append(required_character)
 
-    def get_character_path(self, character):
+    def get_character_path(self, character: int) -> list[int]:
         return self.character_paths[character]
 
-    def mod_init_levels(self):
+    def mod_init_levels(self) -> None:
         # remove all variation in leveling, since we're controlling level directly
         for character in self.characters:
             character.init_level_factor = 0
 
         characters_asm.set_starting_level(self.args.start_level)
 
-    def stats_random_percent(self):
+    def stats_random_percent(self) -> None:
         import random
         stats = ["init_extra_hp", "init_extra_mp", "init_vigor", "init_speed", "init_stamina", "init_magic",
                  "init_attack", "init_defense", "init_magic_defense", "init_evasion", "init_magic_evasion"]
@@ -103,11 +105,11 @@ class Characters:
                     value = int(stat_value * character_stat_percent)
                     setattr(character, stat, max(min(value, 255), 0))
 
-    def get_characters_with_command(self, command_name):
+    def get_characters_with_command(self, command_name: str) -> list[int]:
         from ..constants.commands import name_id
         command_id = name_id[command_name]
 
-        result = []
+        result: list[int] = []
         for character in self.characters:
             if command_id in character.commands:
                 result.append(character.id)
@@ -172,30 +174,32 @@ class Characters:
         for char in self.characters:
             char.print()
 
-    def get(self, character):
+    def get(self, character: int) -> Character:
         for char in self.characters:
             if char.id == character:
                 return char
+        raise ValueError(f"{character=} not found")
 
-    def get_by_name(self, name):
+    def get_by_name(self, name: str) -> Character:
         for char in self.characters:
             if self.DEFAULT_NAME[char.id].lower() == name.lower():
                 return char
+        raise ValueError(f"{name=} not found")
 
-    def get_name(self, character):
+    def get_name(self, character: int) -> str:
         return self.characters[character].name.rstrip('\0')
 
-    def get_default_name(self, character):
+    def get_default_name(self, character: int) -> str:
         return self.DEFAULT_NAME[character]
 
-    def get_sprite(self, character):
+    def get_sprite(self, character: int):
         return self.character_sprites.character_sprites[character].id
 
-    def get_random_esper_item_sprite(self):
+    def get_random_esper_item_sprite(self) -> int:
         sprites = [self.SOLDIER, self.IMP, self.MERCHANT, self.GHOST]
 
         import random
-        return sprites[random.randrange(len(sprites))]
+        return random.choice(sprites)
 
-    def get_palette(self, character):
+    def get_palette(self, character: int) -> int:
         return self.character_palettes.get(character)

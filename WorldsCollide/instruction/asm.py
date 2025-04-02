@@ -25,7 +25,7 @@ class _Instruction:
 
         self.opcode = self.mode_opcode[mode]
 
-    def __opcode__(self, opcode, arg = None):
+    def __opcode__(self, opcode, arg: int | None = None):
         self.opcode = opcode
         self.arg = arg
         self.mode = None

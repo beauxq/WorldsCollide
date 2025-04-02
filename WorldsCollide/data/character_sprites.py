@@ -7,8 +7,7 @@ from ..memory.rom import ROM
 PORTRAIT_CHARACTERS = [*id_character.keys(), name_id["Imp"]]
 
 # sprite args are for characters + soldier/imp/esper terra/merchant/ghost/kefka (args do not include leo/banon)
-SPRITE_CHARACTERS = list(id_character)
-SPRITE_CHARACTERS += [name_id[x] for x in ["Soldier", "Imp", "Esper Terra", "Merchant", "Ghost", "Kefka"]]
+SPRITE_CHARACTERS = list(id_character) + [name_id[x] for x in ["Soldier", "Imp", "Esper Terra", "Merchant", "Ghost", "Kefka"]]
 
 DEFAULT_CHARACTER_PORTRAITS = list(range(len(PORTRAIT_CHARACTERS)))
 DEFAULT_CHARACTER_SPRITES = list(range(len(SPRITE_CHARACTERS)))
@@ -36,20 +35,20 @@ class CharacterSprites:
         self.other_sprite_data = DataArray(self.rom, self.OTHER_DATA_START, self.OTHER_DATA_END, self.OTHER_DATA_SIZE)
         self.portrait_sprite_data = DataArray(self.rom, self.PORTRAIT_DATA_START, self.PORTRAIT_DATA_END, self.PORTRAIT_DATA_SIZE)
 
-        self.sprites = []
-        self.character_sprites = []
+        self.sprites: list[CharacterSprite] = []
+        self.character_sprites: list[CharacterSprite] = []
         for character_sprite_index in range(len(self.character_sprite_data)):
             character_sprite = CharacterSprite(character_sprite_index, self.character_sprite_data[character_sprite_index])
             self.character_sprites.append(character_sprite)
             self.sprites.append(character_sprite)
 
-        self.other_sprites = []
+        self.other_sprites: list[CharacterSprite] = []
         for other_sprite_index in range(len(self.other_sprite_data)):
             other_sprite = CharacterSprite(other_sprite_index, self.other_sprite_data[other_sprite_index])
             self.other_sprites.append(other_sprite)
             self.sprites.append(other_sprite)
 
-        self.portrait_sprites = []
+        self.portrait_sprites: list[CharacterSprite] = []
         for portrait_sprite_index in range(len(self.portrait_sprite_data)):
             portrait_sprite = CharacterSprite(portrait_sprite_index, self.portrait_sprite_data[portrait_sprite_index])
             self.portrait_sprites.append(portrait_sprite)

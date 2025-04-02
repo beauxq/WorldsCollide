@@ -29,10 +29,10 @@ class Event:
         self.enemies = enemies
         self.espers = espers
         self.shops = shops
-        self.rewards = []
+        self.rewards: list[Reward] = []
 
-        self.rewards_log = []
-        self.changes_log = []
+        self.rewards_log: list[str] = []
+        self.changes_log: list[str] = []
 
     def name(self):
         raise NotImplementedError(self.__class__.__name__ + " event name")
@@ -43,7 +43,7 @@ class Event:
     def characters_required(self):
         return 1
 
-    def add_reward(self, possible_types):
+    def add_reward(self, possible_types: RewardType) -> Reward:
         new_reward = Reward(self, possible_types)
         self.rewards.append(new_reward)
         return new_reward
@@ -54,7 +54,7 @@ class Event:
     def init_event_bits(self, space):
         pass
 
-    def get_boss(self, original_boss_name, log_change = True):
+    def get_boss(self, original_boss_name: str, log_change: bool = True) -> int:
         pack_id = self.enemies.get_event_boss(original_boss_name)
 
         if (self.args.boss_battles_shuffle or self.args.boss_battles_random) and log_change:
@@ -73,7 +73,7 @@ class Event:
         formation_id = self.enemies.formations.get_id(location_boss)
         return self.enemies.formations.formations[formation_id]
 
-    def log_reward(self, reward, prefix = "", suffix = ""):
+    def log_reward(self, reward: Reward, prefix = "", suffix = ""):
         reward_string = prefix
         if reward.type == RewardType.CHARACTER:
             reward_string += self.characters.get_name(reward.id)

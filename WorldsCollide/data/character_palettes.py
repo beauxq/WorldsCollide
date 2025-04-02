@@ -55,7 +55,7 @@ class CharacterPalettes:
         battle_palette_id_count = self.BATTLE_ID_DATA_END - self.BATTLE_ID_DATA_START + 1
         self.battle_palette_ids = self.rom.get_bytes(self.BATTLE_ID_DATA_START, battle_palette_id_count)
 
-    def get(self, character_id):
+    def get(self, character_id: int) -> int:
         return self.battle_palette_ids[character_id]
 
     def mod_palette_colors(self):

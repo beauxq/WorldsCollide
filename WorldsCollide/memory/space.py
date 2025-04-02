@@ -151,7 +151,7 @@ class Space:
     def _parse_labels(self, values):
         # find labels (strs) in given values list and update the addresses of the labels and the label pointers
         index = 0
-        new_values = []
+        new_values: list[int] = []
         for value in values:
             if isinstance(value, str):
                 if value in self.labels:

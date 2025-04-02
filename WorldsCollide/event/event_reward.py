@@ -13,7 +13,7 @@ class RewardType(Flag):
 CHARACTER_ESPER_ONLY_REWARDS = 6
 class Reward:
     def __init__(self, event, possible_types: RewardType):
-        self.id = None
+        self.id: int | None = None
         self.type = None
         self.event = event
         self.possible_types = possible_types
