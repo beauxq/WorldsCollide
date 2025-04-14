@@ -1,7 +1,10 @@
+from typing import Literal
+
+
 class Label:
     def __init__(self, name: str) -> None:
         self.name = name
-        self.address = None
+        self.address: int | None = None
 
     def __repr__(self):
         return f"{self.name} ({hex(self.address)})"
@@ -9,7 +12,7 @@ class Label:
 class LabelPointer:
     ABSOLUTE, ABSOLUTE16, ABSOLUTE24, RELATIVE, ABSOLUTE_RELATIVE, BRANCH_RELATIVE = range(6)
 
-    def __init__(self, label: Label, address, mode):
+    def __init__(self, label: Label, address: int | None, mode: int):
         self.label = label          # reference to the label pointed to
         self.offset = 0             # offset to apply to label (i.e. pointer arithmetic)
         self.address = address      # address of the pointer itself
@@ -31,10 +34,10 @@ class LabelPointer:
                 return value + 0xff
         return value
 
-    def to_bytes(self, length, byteorder, *, signed = False):
+    def to_bytes(self, length: int, byteorder: Literal["little", "big"], *, signed: bool = False) -> bytes:
         return int(self).to_bytes(length, byteorder, signed = signed)
 
-    def __index__(self):
+    def __index__(self) -> int:
         return int(self)
 
     def __add__(self, value):
